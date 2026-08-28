@@ -1,0 +1,63 @@
+/* PasswordEpic — theme overrides on top of Docusaurus classic. */
+
+:root {
+  --ifm-color-primary: #2563eb;
+  --ifm-color-primary-dark: #1d4ed8;
+  --ifm-color-primary-darker: #1b46c4;
+  --ifm-color-primary-darkest: #163aa1;
+  --ifm-color-primary-light: #3b76ef;
+  --ifm-color-primary-lighter: #4a80f0;
+  --ifm-color-primary-lightest: #6f9bf4;
+  --ifm-code-font-size: 92%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #6ea8ff;
+  --ifm-color-primary-dark: #4b93ff;
+  --ifm-color-primary-darker: #3988ff;
+  --ifm-color-primary-darkest: #0068ff;
+  --ifm-color-primary-light: #91bdff;
+  --ifm-color-primary-lighter: #a3c8ff;
+  --ifm-color-primary-lightest: #d9e8ff;
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+}
+
+/* Landing page */
+.heroBanner {
+  padding: 4rem 1rem 3rem;
+  text-align: center;
+}
+.heroTitle {
+  font-size: clamp(1.9rem, 5vw, 2.9rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+.heroSubtitle {
+  font-size: 1.12rem;
+  color: var(--ifm-color-emphasis-700);
+  max-width: 44rem;
+  margin: 0 auto 2rem;
+}
+.featureGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  margin: 0 auto 3rem;
+  max-width: 58rem;
+  padding: 0 1rem;
+}
+@media (min-width: 700px) {
+  .featureGrid { grid-template-columns: 1fr 1fr; }
+}
+.featureCard {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  padding: 1.15rem 1.25rem;
+  background: var(--ifm-background-surface-color);
+}
+.featureCard h3 { margin: 0 0 0.4rem; font-size: 1.02rem; }
+.featureCard p { margin: 0; color: var(--ifm-color-emphasis-700); font-size: 0.95rem; }
+
+.sectionNarrow { max-width: 52rem; margin: 0 auto; padding: 0 1rem 3rem; }
