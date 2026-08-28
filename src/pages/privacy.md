@@ -63,8 +63,9 @@ request deletion.
 
 ## Children
 
-PasswordEpic is not directed at children under 13, and we do not knowingly
-collect their data.
+PasswordEpic is not directed at children under 13 — or the higher age of digital
+consent that applies where you live, such as 16 in Vietnam and much of the EU —
+and we do not knowingly collect their data.
 
 ## Changes
 

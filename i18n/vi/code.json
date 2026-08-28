@@ -1,0 +1,181 @@
+{
+  "_comment": {
+    "message": "Strings this site owns, plus the one theme.* key Docusaurus has not translated yet. Copying the rest of theme.* here would freeze them at today's version and quietly drift on the next upgrade."
+  },
+
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "chế độ hệ thống",
+    "description": "Upstream vi.json still has this one in English while light/dark are translated - drop this override once it lands."
+  },
+
+  "home.meta.title": {
+    "message": "Trình quản lý mật khẩu không thể đọc mật khẩu của bạn"
+  },
+  "home.meta.description": {
+    "message": "Trình quản lý mật khẩu zero-knowledge cho Android, dựa trên phần cứng bảo mật. Mã mở khoá không bao giờ rời khỏi thiết bị của bạn, và khoá của kho mật khẩu không thể ghép lại nếu thiếu nó."
+  },
+  "home.hero.title": {
+    "message": "Trình quản lý mật khẩu không thể đọc mật khẩu của bạn"
+  },
+  "home.hero.subtitle": {
+    "message": "Không phải một lời hứa — mà là hệ quả của cách khoá được tạo ra. Một mảnh của khoá được sinh ra bên trong phần cứng bảo mật của điện thoại và không bao giờ rời khỏi đó, nên khoá của kho mật khẩu không thể ghép lại ở bất kỳ đâu ngoài thiết bị của bạn, đúng vào lúc bạn mở khoá."
+  },
+  "home.hero.cta": {
+    "message": "Xem chính xác bằng cách nào"
+  },
+
+  "home.who.heading": {
+    "message": "Ai thấy được gì"
+  },
+  "home.who.intro": {
+    "message": "Đáng chú ý là những hàng có câu trả lời “không bao giờ” — và hàng duy nhất không phải vậy."
+  },
+  "home.who.col.data": {
+    "message": "Dữ liệu"
+  },
+  "home.who.col.device": {
+    "message": "Thiết bị của bạn"
+  },
+  "home.who.col.server": {
+    "message": "Máy chủ của chúng tôi"
+  },
+  "home.never": {
+    "message": "Không bao giờ"
+  },
+  "home.who.passwords": {
+    "message": "Mật khẩu của bạn"
+  },
+  "home.who.passwords.device": {
+    "message": "Chỉ được giải mã trong lúc bạn đang xem"
+  },
+  "home.who.passwords.server": {
+    "message": "— các mục đã mã hoá không được tải lên"
+  },
+  "home.who.passcode": {
+    "message": "Mã mở khoá của bạn"
+  },
+  "home.who.passcode.device": {
+    "message": "Chỉ giữ đủ lâu để dẫn xuất ra khoá"
+  },
+  "home.who.passcode.server": {
+    "message": "— nó không được truyền đi"
+  },
+  "home.who.share1": {
+    "message": "Mảnh khoá 1"
+  },
+  "home.who.share1.device": {
+    "message": "Sinh ra bên trong StrongBox/TEE, không thể xuất ra"
+  },
+  "home.who.share1.server": {
+    "message": "— đây là thứ khiến mọi điều còn lại đứng vững"
+  },
+  "home.who.share2": {
+    "message": "Mảnh khoá 2"
+  },
+  "home.who.share2.device": {
+    "message": "Lưu ở dạng đã mã hoá"
+  },
+  "home.who.share2.server": {
+    "message": "Được xử lý trong chốc lát khi dẫn xuất khoá, và lưu ở dạng đã mã hoá. Tự nó thì vô dụng nếu thiếu mảnh 1"
+  },
+  "home.who.account": {
+    "message": "Email, mẫu thiết bị, sự kiện bảo mật"
+  },
+  "home.who.account.server": {
+    "message": "Có — để vận hành tài khoản của bạn và chặn lạm dụng"
+  },
+  "home.who.footnote": {
+    "message": "Chúng tôi liệt kê thẳng hàng thứ tư đó thay vì làm tròn nó đi. Máy chủ của chúng tôi có xử lý một mảnh của khoá — và vẫn không thể mở kho mật khẩu của bạn, bởi mảnh 1 chưa từng tồn tại ở đâu khác ngoài điện thoại của bạn."
+  },
+
+  "home.proof.heading": {
+    "message": "Bằng chứng nằm ở những gì chúng tôi không thể làm"
+  },
+  "home.proof.lead": {
+    "message": "Không có khôi phục tài khoản. Nếu bạn quên mã mở khoá hoặc mất thiết bị, kho mật khẩu mất theo."
+  },
+  "home.proof.body": {
+    "message": "Không có liên kết đặt lại, không có câu hỏi khôi phục, không có quyền can thiệp của bộ phận hỗ trợ — và cũng không có cách nào để chúng tôi bị ép phải tạo ra một quyền như vậy. Một dịch vụ có thể khôi phục kho mật khẩu của bạn là một dịch vụ có thể đọc nó; đây chính là điều đó, nói từ phía ngược lại."
+  },
+  "home.proof.backups": {
+    "message": "Bản sao lưu và bản xuất mang một lớp mã hoá gắn với thiết bị đã tạo ra chúng, nên chỉ mở được ở đúng thiết bị đó. Xin cân nhắc điều này trước khi ứng dụng trở thành bản lưu duy nhất của thứ gì đó quan trọng."
+  },
+
+  "home.controls.heading": {
+    "message": "Những gì bạn kiểm soát"
+  },
+  "home.controls.reset.title": {
+    "message": "Xoá sạch mọi thứ, ngay lập tức"
+  },
+  "home.controls.reset.body": {
+    "message": "Cài đặt → Đặt lại tài khoản xoá kho mật khẩu và dữ liệu tài khoản của bạn khỏi máy chủ của chúng tôi. Không hàng đợi, không thời gian lưu giữ, không cần mở phiếu hỗ trợ."
+  },
+  "home.controls.backup.title": {
+    "message": "Bản sao lưu đi vào Drive của bạn"
+  },
+  "home.controls.backup.body": {
+    "message": "Không phải Drive của chúng tôi. Tệp sao lưu được ghi vào chính tài khoản Google Drive của bạn, ở dạng đã mã hoá. Chúng tôi không bao giờ nhận được chúng."
+  },
+  "home.controls.device.title": {
+    "message": "Bạn biết thiết bị nào đang giữ tài khoản"
+  },
+  "home.controls.device.body": {
+    "message": "Ở các gói trả phí, mỗi tài khoản chỉ chạy trên một thiết bị tại một thời điểm, và ứng dụng cho bạn biết tên thiết bị đang giữ nó. Lần đăng nhập thứ hai bị từ chối, chứ không được lặng lẽ cho qua."
+  },
+  "home.controls.autofill.title": {
+    "message": "Không gì được điền nếu không có bạn"
+  },
+  "home.controls.autofill.body": {
+    "message": "Mỗi lần tự động điền đều phải qua xác thực vân tay hoặc mã mở khoá — mọi lần, không ngoại lệ."
+  },
+
+  "home.tiers.heading": {
+    "message": "Chọn mức bảo vệ bạn muốn"
+  },
+  "home.tiers.col.tier": {
+    "message": "Gói"
+  },
+  "home.tiers.col.encryption": {
+    "message": "Mã hoá"
+  },
+  "home.tiers.col.extras": {
+    "message": "Bổ sung"
+  },
+  "home.tiers.free": {
+    "message": "Miễn phí"
+  },
+  "home.tiers.silver.encryption": {
+    "message": "AES-256-CTR kèm HMAC-SHA256, bằng phần mềm"
+  },
+  "home.tiers.silver.extras": {
+    "message": "Không giới hạn thiết bị"
+  },
+  "home.tiers.gold.encryption": {
+    "message": "AES-256-GCM trong mã native, khoá dựa trên StrongBox/TEE"
+  },
+  "home.tiers.gold.extras": {
+    "message": "Mảnh khoá trên đám mây, một thiết bị cho mỗi tài khoản"
+  },
+  "home.tiers.sameAsGold": {
+    "message": "Giống Gold"
+  },
+  "home.tiers.platinum.extras": {
+    "message": "Chứng thực thiết bị, ghim chứng chỉ, phát hiện lớp phủ và can thiệp"
+  },
+  "home.tiers.titanium.extras": {
+    "message": "Giao thức zero-knowledge OPAQUE viết bằng Rust — máy chủ không bao giờ thấy bất cứ thứ gì dẫn xuất từ mã mở khoá của bạn"
+  },
+  "home.tiers.footnote": {
+    "message": "Silver chạy bằng JavaScript và không dùng lưu trữ khoá bằng phần cứng. Các gói trả phí chuyển phần mã hoá sang mã native với khoá được phần cứng bảo vệ."
+  },
+
+  "home.availability.heading": {
+    "message": "Chạy được trên thiết bị nào"
+  },
+  "home.availability.lead": {
+    "message": "Android 7.0 trở lên."
+  },
+  "home.availability.body": {
+    "message": "Các gói dựa trên phần cứng cần thiết bị có StrongBox hoặc TEE; chống quay màn hình khi nhập mã mở khoá cần Android 15. Không có phiên bản iOS."
+  }
+}

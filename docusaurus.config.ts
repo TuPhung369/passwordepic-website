@@ -38,9 +38,16 @@ const config: Config = {
     hooks: { onBrokenMarkdownLinks: 'warn' },
   },
 
+  // Adding a language = add the code here, then drop translated Markdown into
+  // `i18n/<code>/`. Untranslated strings fall back to English rather than
+  // breaking the build, so a locale can ship before it is complete.
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'vi'],
+    localeConfigs: {
+      en: { label: 'English', htmlLang: 'en-US' },
+      vi: { label: 'Tiếng Việt', htmlLang: 'vi-VN' },
+    },
   },
 
   presets: [
@@ -72,6 +79,7 @@ const config: Config = {
         { to: '/support', label: 'Support', position: 'left' },
         { to: '/privacy', label: 'Privacy', position: 'right' },
         { to: '/terms', label: 'Terms', position: 'right' },
+        { type: 'localeDropdown', position: 'right' },
       ],
     },
     footer: {
