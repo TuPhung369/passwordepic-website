@@ -133,32 +133,35 @@ const config: Config = {
         // Support, Privacy and Terms are one group: the reader who wants any
         // of them wants "help and the legal bits", and three separate top-level
         // items for that crowded out the one that matters, Documentation.
+        // It sits beside Documentation because both are places to read.
         {
           type: 'dropdown',
           label: 'Help',
-          position: 'right',
+          position: 'left',
           items: [
             { to: '/support', label: 'Support' },
             { to: '/privacy', label: 'Privacy Policy' },
             { to: '/terms', label: 'Terms of Service' },
           ],
         },
-        // `navbar-locale` reduces this to the globe alone on desktop and puts
-        // a flag beside each language - see src/css/custom.css.
-        {
-          type: 'localeDropdown',
-          position: 'right',
-          className: 'navbar-locale',
-        },
         // The only thing on this site a visitor can actually *do*, so it gets
-        // the last slot and a button treatment - see `.navbar-cta` in
-        // src/css/custom.css.
+        // a button treatment - see `.navbar-cta` in src/css/custom.css.
         {
           href: PLAY_STORE_URL,
           label: 'Get the app',
           position: 'right',
           className: 'navbar-cta',
           'aria-label': 'Get PasswordEpic on Google Play',
+        },
+        // Last of the configured items, which puts the globe immediately
+        // before the colour-mode toggle Docusaurus appends after them. The two
+        // belong together: both change how the page is presented to you rather
+        // than what it says. `navbar-locale` reduces this to the globe alone on
+        // desktop and puts a flag beside each language - see custom.css.
+        {
+          type: 'localeDropdown',
+          position: 'right',
+          className: 'navbar-locale',
         },
       ],
     },

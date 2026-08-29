@@ -269,6 +269,13 @@ main.container--fluid > .row > .col > article {
     margin-right: 0;
   }
 
+  /* Pull the globe in against the colour-mode toggle that follows it. Navbar
+     items carry 0.75rem of padding each side; at full width the pair read as
+     two unrelated controls instead of one group. */
+  .navbar-locale {
+    padding-right: 0.4rem;
+  }
+
   /* The caret is a border triangle, so font-size does not remove it. Without a
      label there is nothing for it to point at. */
   .navbar-locale::after {
