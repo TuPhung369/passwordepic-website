@@ -27,6 +27,10 @@
     "message": "Cách hoạt động",
     "description": "Navbar item with label How it works"
   },
+  "item.label.What these words mean": {
+    "message": "Những từ này nghĩa là gì",
+    "description": "Navbar item with label What these words mean"
+  },
   "item.label.Security tiers": {
     "message": "Các gói bảo mật",
     "description": "Navbar item with label Security tiers"

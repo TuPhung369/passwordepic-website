@@ -27,78 +27,6 @@
   "home.cta.contact": {
     "message": "Hỏi chúng tôi"
   },
-  "home.features.tag.paid": {
-    "message": "Từ Gold trở lên"
-  },
-  "home.features.tag.hardened": {
-    "message": "Platinum và Titanium"
-  },
-  "home.features.hardware.title": {
-    "message": "Khoá sinh ra trong phần cứng bảo mật"
-  },
-  "home.features.hardware.text": {
-    "message": "Shard 1 được sinh bên trong StrongBox hoặc TEE và không thể xuất ra — không phải bởi chúng tôi, không phải bởi bạn, cũng không phải bởi kẻ tấn công đang nắm tài khoản của bạn."
-  },
-  "home.features.zk.title": {
-    "message": "Zero-knowledge từ trong thiết kế"
-  },
-  "home.features.zk.text": {
-    "message": "Các mục trong kho được mã hoá trên thiết bị và không bao giờ được tải lên. Cơ sở dữ liệu của chúng tôi chỉ chứa dữ liệu tài khoản và ciphertext của mảnh khoá, không có thứ gì bạn đã lưu."
-  },
-  "home.features.drive.title": {
-    "message": "Bản sao lưu đi vào Drive của bạn"
-  },
-  "home.features.drive.text": {
-    "message": "Tệp sao lưu được ghi vào chính tài khoản Google Drive của bạn, ở dạng đã mã hoá. Chúng tôi không bao giờ nhận được chúng, và có nhận cũng không đọc được."
-  },
-  "home.features.autofill.title": {
-    "message": "Không gì được điền nếu không có bạn"
-  },
-  "home.features.autofill.text": {
-    "message": "Mỗi lần tự động điền đều phải qua xác thực vân tay hoặc mã mở khoá, và các cửa sổ của chính ứng dụng được loại khỏi ảnh chụp và bản ghi màn hình."
-  },
-  "home.features.reset.title": {
-    "message": "Xoá sạch mọi thứ, ngay lập tức"
-  },
-  "home.features.reset.text": {
-    "message": "Cài đặt → Đặt lại tài khoản xoá kho mật khẩu và dữ liệu tài khoản của bạn khỏi máy chủ của chúng tôi. Không hàng đợi, không thời gian lưu giữ, không cần mở phiếu hỗ trợ."
-  },
-  "home.features.device.title": {
-    "message": "Một thiết bị, có tên và nhìn thấy được"
-  },
-  "home.features.device.text": {
-    "message": "Tài khoản trả phí chạy trên một thiết bị tại một thời điểm, được nhận diện bằng một khoá phần cứng chứ không phải bằng mã định danh mà máy nào cũng có thể tự khai. Lần đăng nhập thứ hai bị từ chối, chứ không được lặng lẽ cho qua."
-  },
-  "home.features.integrity.title": {
-    "message": "Ứng dụng tự kiểm tra rằng nó đúng là nó"
-  },
-  "home.features.integrity.text": {
-    "message": "Play Integrity được xác minh phía máy chủ, và kết nối trả về một phần khoá được ghim chứng chỉ. Mật mã học giả định ứng dụng còn nguyên vẹn; đây là thứ kiểm chứng giả định đó."
-  },
-  "home.features.tamper.title": {
-    "message": "Phát hiện lớp phủ và can thiệp"
-  },
-  "home.features.tamper.text": {
-    "message": "Các thao tác khoá bị từ chối trên thiết bị đã bị root, hook hay phủ lớp giả, thay vì cứ chạy tiếp và hy vọng."
-  },
-  "home.features.rust.title": {
-    "message": "OPAQUE, trong một lõi Rust"
-  },
-  "home.features.rust.text": {
-    "message": "Ở Titanium, mã mở khoá mở kho thông qua OPAQUE, nên không có gì dẫn xuất từ nó được ghi ra đĩa — và lõi Rust có thể xoá sạch những giá trị đó khỏi bộ nhớ native, điều JavaScript không làm được."
-  },
-  "home.features.tag.titanium": {
-    "message": "Titanium"
-  },
-  "home.features.eyebrow": {
-    "message": "Khả năng"
-  },
-  "home.features.heading": {
-    "message": "Ứng dụng thật sự làm được gì"
-  },
-  "home.features.lead": {
-    "message": "Chỗ nào một tính năng không có ở mọi gói, thẻ đó sẽ ghi rõ."
-  },
   "home.unlock.1.title": {
     "message": "Bạn gõ mã mở khoá"
   },
@@ -308,6 +236,168 @@
   },
   "home.stats.lead": {
     "message": "Ba con số đầu khiến kho mật khẩu trở nên đắt đỏ để tấn công. Con số thứ tư là cái giá bạn phải trả cho chúng."
+  },
+  "home.threats.tier.hardened": {
+    "message": "Platinum · Titanium"
+  },
+  "home.threats.tier.paid": {
+    "message": "Từ Gold trở lên"
+  },
+  "home.threats.group.phone": {
+    "message": "Ai đó đang cầm điện thoại của bạn"
+  },
+  "home.threats.guessing.fear": {
+    "message": "“Họ cứ thế đoán mã mở khoá của tôi thôi.”"
+  },
+  "home.threats.guessing.answer": {
+    "message": "Mỗi lần đoán đều tốn của họ 128 MiB bộ nhớ và một khoảng thời gian thật, bởi đó đúng là cái giá bạn trả khi mở khoá. Đoán mã không còn là việc làm được hàng triệu lần mỗi giờ."
+  },
+  "home.threats.guessing.how": {
+    "message": "Argon2id, 128 MiB mỗi lần thử"
+  },
+  "home.threats.rooted.fear": {
+    "message": "“Họ sẽ root máy rồi moi chiếc khoá ra khỏi bộ nhớ.”"
+  },
+  "home.threats.rooted.answer": {
+    "message": "Một mảnh của khoá được sinh ra bên trong một con chip bảo mật riêng, và con chip đó không có lệnh nào trả mảnh khoá ấy ra — cho bất kỳ ai. Root giúp họ có được chiếc điện thoại. Nó không giúp họ có được mảnh khoá đó."
+  },
+  "home.threats.rooted.how": {
+    "message": "Kho khoá phần cứng (StrongBox / TEE)"
+  },
+  "home.threats.group.us": {
+    "message": "Mối nguy chính là chúng tôi"
+  },
+  "home.threats.breach.fear": {
+    "message": "“Các anh bị tấn công và mật khẩu của tôi nằm trong đống dữ liệu rò rỉ.”"
+  },
+  "home.threats.breach.answer": {
+    "message": "Mật khẩu bạn lưu không bao giờ được tải lên chỗ chúng tôi. Cơ sở dữ liệu của chúng tôi chứa thông tin tài khoản và một mảnh khoá đã mã hoá. Ai lấy trọn cả cơ sở dữ liệu cũng không lấy được thứ gì mở được một kho mật khẩu."
+  },
+  "home.threats.breach.how": {
+    "message": "Nội dung kho không bao giờ rời khỏi máy"
+  },
+  "home.threats.insider.fear": {
+    "message": "“Người bên trong công ty các anh xem trộm — hoặc toà buộc các anh phải giao ra.”"
+  },
+  "home.threats.insider.answer": {
+    "message": "Không có công cụ nội bộ, không có quyền can thiệp của bộ phận hỗ trợ, không có chế độ quản trị. Không phải vì một chính sách mà chúng tôi có thể đổi khi bị gây sức ép — mà vì mảnh khoá hoàn thiện chiếc khoá của bạn chưa từng tồn tại ở phía chúng tôi."
+  },
+  "home.threats.insider.how": {
+    "message": "Không có đường khôi phục nào để mà đòi"
+  },
+  "home.threats.group.watching": {
+    "message": "Có thứ gì đó trên máy đang rình"
+  },
+  "home.threats.overlay.fear": {
+    "message": "“Một màn hình giả hiện đè lên ứng dụng và tôi gõ mã vào đó.”"
+  },
+  "home.threats.overlay.answer": {
+    "message": "Ứng dụng theo dõi mọi thứ được vẽ đè lên bàn phím nhập mã và từ chối đi tiếp. Một lớp vô hình chuyên thu lại thao tác chạm cũng bị chặn y như vậy. Cả hai kiểu tấn công đều bỏ qua hoàn toàn phần mã hoá bằng cách tiếp cận bí mật ngay lúc bạn gõ — nên chúng bị chặn trước khi bạn gõ xong."
+  },
+  "home.threats.overlay.how": {
+    "message": "Chống lớp phủ và cướp thao tác chạm"
+  },
+  "home.threats.a11y.fear": {
+    "message": "“Một ứng dụng tôi cài có thể đọc màn hình của tôi.”"
+  },
+  "home.threats.a11y.answer": {
+    "message": "Quyền trợ năng của Android cho phép một ứng dụng đọc mọi ô trên màn hình, kể cả ô mật khẩu. Rất nhiều ứng dụng bình thường cũng xin quyền này. Khi có một dịch vụ như vậy đang chạy, các thao tác khoá sẽ dừng."
+  },
+  "home.threats.a11y.how": {
+    "message": "Chống dịch vụ trợ năng"
+  },
+  "home.threats.recording.fear": {
+    "message": "“Có thứ gì đó đang quay màn hình lúc tôi mở khoá.”"
+  },
+  "home.threats.recording.answer": {
+    "message": "Các cửa sổ của chính ứng dụng hiện ra màu đen trong mọi bản ghi. Từ Android 15 nó đi xa hơn: nó biết được có bản ghi đang chạy, nên xoá ô nhập mã và từ chối cho nhập cho tới khi bạn dừng bản ghi. Dưới Android 15 thì nó không biết được — và chúng tôi thà nói thẳng còn hơn để bạn tưởng ngược lại."
+  },
+  "home.threats.recording.how": {
+    "message": "Cửa sổ bị loại khỏi bản ghi · từ chối nhập từ Android 15"
+  },
+  "home.threats.keyboard.fear": {
+    "message": "“Bàn phím của tôi ghi lại mọi thứ tôi gõ.”"
+  },
+  "home.threats.keyboard.answer": {
+    "message": "Cái này chúng tôi không sửa được, và giả vờ ngược lại mới là chỗ không trung thực. Bàn phím nào cũng nhìn thấy những phím bạn gõ cho nó, trong mọi ứng dụng trên máy. Thứ chúng tôi làm được là báo cho bạn khi bàn phím đang dùng không đi kèm máy — một cảnh báo, không bao giờ là rào chặn, vì khoá bạn ra khỏi kho chỉ vì bạn thích một bàn phím khác thì chẳng giúp được ai."
+  },
+  "home.threats.keyboard.how": {
+    "message": "Cảnh báo bàn phím — một lỗ hổng thật, được nói ra"
+  },
+  "home.threats.group.integrity": {
+    "message": "Đây có đúng là ứng dụng thật không?"
+  },
+  "home.threats.fake.fear": {
+    "message": "“Tôi cài nhầm một bản ứng dụng đã bị sửa mà không hay biết.”"
+  },
+  "home.threats.fake.answer": {
+    "message": "Trước các thao tác khoá, máy chủ của chúng tôi hỏi Google xem đây có phải ứng dụng thật, chạy trên một thiết bị thật và chưa bị xâm phạm không. Phép kiểm tra diễn ra ở máy chủ chứ không phải trên điện thoại — nên một ứng dụng đã bị sửa không thể chỉ việc vá bỏ kết luận về chính nó."
+  },
+  "home.threats.fake.how": {
+    "message": "Google Play Integrity, xác minh phía máy chủ"
+  },
+  "home.threats.hooked.fear": {
+    "message": "“Có thứ gì đó cắm được vào ứng dụng và đọc nó từ bên trong.”"
+  },
+  "home.threats.hooked.answer": {
+    "message": "Root, đóng gói lại, trình gỡ lỗi đang gắn vào và các bộ công cụ hook phổ biến đều bị phát hiện, và các thao tác khoá từ chối chạy. Phần mã hoá chỉ có giá trị khi ứng dụng bao quanh nó còn nguyên vẹn — nên ứng dụng đi kiểm tra điều đó thay vì mặc định là đúng."
+  },
+  "home.threats.hooked.how": {
+    "message": "Phát hiện root, can thiệp, gỡ lỗi và hook"
+  },
+  "home.threats.network.fear": {
+    "message": "“Ai đó trong cùng mạng Wi-Fi — hoặc công ty tôi — chặn bắt kết nối.”"
+  },
+  "home.threats.network.answer": {
+    "message": "Lời gọi trả về một phần khoá của bạn chỉ chấp nhận một tập cố định các chứng chỉ gốc của chính Google. Một chứng chỉ mà điện thoại bạn đã được bảo là phải tin — hồ sơ công ty, hay một chứng chỉ gốc cài thêm — vẫn bị từ chối."
+  },
+  "home.threats.network.how": {
+    "message": "Ghim chứng chỉ trên TLS 1.3"
+  },
+  "home.threats.bots.fear": {
+    "message": "“Bot dò tài khoản của tôi không ngừng nghỉ.”"
+  },
+  "home.threats.bots.answer": {
+    "message": "Mỗi lần đăng nhập đều được chấm điểm ngầm về khả năng là hành vi tự động — bạn không thấy gì trừ khi có điều bất thường — và còn bị giới hạn tần suất bên trên nữa."
+  },
+  "home.threats.bots.how": {
+    "message": "Chấm điểm bot ngầm và giới hạn tần suất"
+  },
+  "home.threats.group.yours": {
+    "message": "Dữ liệu là của bạn, kể cả lúc bạn muốn rời đi"
+  },
+  "home.threats.backup.fear": {
+    "message": "“Ai đó lấy được tệp sao lưu của tôi trong Drive.”"
+  },
+  "home.threats.backup.answer": {
+    "message": "Bản sao lưu đi vào Drive của bạn chứ không phải của chúng tôi, và chúng chỉ mở được trên chiếc điện thoại đã tạo ra chúng — ở mọi gói. Một tệp sao lưu bị đánh cắp là một cục gạch. Cũng chính đặc tính đó khiến bạn không chuyển được kho sang máy mới, và chúng tôi muốn bạn biết điều đó ngay từ bây giờ."
+  },
+  "home.threats.backup.how": {
+    "message": "Hai lớp mã hoá, lớp trong gắn với thiết bị"
+  },
+  "home.threats.delete.fear": {
+    "message": "“Tôi muốn rời đi. Các anh có xoá thật không?”"
+  },
+  "home.threats.delete.answer": {
+    "message": "Cài đặt → Đặt lại tài khoản, và xong. Không hàng đợi, không thời gian lưu giữ ba mươi ngày, không phiếu hỗ trợ, không bảng khảo sát lý do rời đi."
+  },
+  "home.threats.delete.how": {
+    "message": "Ngay lập tức, ngay trong ứng dụng"
+  },
+  "home.threats.eyebrow": {
+    "message": "Phòng thủ nhiều lớp"
+  },
+  "home.threats.heading": {
+    "message": "Bạn thật sự đang sợ điều gì?"
+  },
+  "home.threats.lead": {
+    "message": "Mã hoá là phần dễ — trình quản lý mật khẩu nào cũng có. Thứ tạo ra khác biệt là mọi lớp bao quanh khoảnh khắc bạn gõ mã mở khoá. Dưới đây là từng nỗi lo, và đúng thứ trả lời cho nó."
+  },
+  "home.threats.glossary": {
+    "message": "Mọi thuật ngữ kỹ thuật ở trên đều được giải thích bằng lời thường tại đây:"
+  },
+  "home.threats.glossaryLink": {
+    "message": "những từ này nghĩa là gì"
   },
   "home.tiers.free": {
     "message": "Miễn phí"

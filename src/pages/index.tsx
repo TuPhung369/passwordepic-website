@@ -6,7 +6,7 @@ import Hero from '@site/src/components/home/Hero';
 import Stats from '@site/src/components/home/Stats';
 import Visibility from '@site/src/components/home/Visibility';
 import {UnlockFlow, AutofillFlow} from '@site/src/components/home/Flows';
-import Features from '@site/src/components/home/Features';
+import Threats from '@site/src/components/home/Threats';
 import Tiers from '@site/src/components/home/Tiers';
 import Limits from '@site/src/components/home/Limits';
 import CallToAction from '@site/src/components/home/CallToAction';
@@ -28,8 +28,14 @@ import CallToAction from '@site/src/components/home/CallToAction';
  *    service able to read it.
  *
  * Section order follows that argument: the claim, the numbers behind it, who
- * sees what, how the key is actually built, what the app does day to day, which
- * tier does which, and then - before any call to action - what it costs you.
+ * sees what, how the key is actually built, then every worry a reader brings
+ * with them answered one at a time, how a fill works, which tier does which,
+ * and finally - before any call to action - what it costs you.
+ *
+ * The threats section deliberately replaced a feature grid. Listing StrongBox,
+ * Play Integrity and certificate pinning as capabilities meant the strongest
+ * part of this product read as jargon to everyone who is not already a security
+ * engineer, which is nearly every reader.
  *
  * The fastest way to lose this audience is one discoverable overstatement, so
  * every claim traces back to the app repository. See CLAUDE.md, especially the
@@ -56,7 +62,7 @@ export default function Home(): ReactNode {
         <Stats />
         <Visibility />
         <UnlockFlow />
-        <Features />
+        <Threats />
         <AutofillFlow />
         <Tiers />
         <Limits />

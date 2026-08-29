@@ -625,3 +625,139 @@
   color: var(--ifm-color-emphasis-700);
   font-style: italic;
 }
+
+/* ---------------------------------------------------------------------------
+ * Threats - the fear-first security section
+ * ------------------------------------------------------------------------ */
+
+.threatGroup {
+  margin-bottom: 2.5rem;
+}
+
+.threatGroup:last-of-type {
+  margin-bottom: 0;
+}
+
+.threatGroupTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-600);
+  margin-bottom: 1rem;
+}
+
+/* Rule that runs to the right of the group name, so the five groups read as
+   bands rather than as one undifferentiated wall of thirteen cards. */
+.threatGroupTitle::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--pe-border);
+}
+
+.threatGrid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 780px) {
+  .threatGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.threatCard {
+  display: flex;
+  gap: 0.95rem;
+  padding: 1.2rem 1.25rem;
+  border-radius: 16px;
+  border: 1px solid var(--pe-border);
+  border-left: 3px solid var(--card-accent);
+  background: var(--pe-surface);
+  box-shadow: var(--pe-shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.threatCard:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--pe-shadow-md);
+}
+
+.threatIcon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  font-size: 1.15rem;
+  background: var(--pe-surface-accent);
+  background: color-mix(in srgb, var(--card-accent) 14%, transparent);
+  color: var(--card-accent);
+}
+
+.threatBody {
+  min-width: 0;
+}
+
+/* The worry, in the reader's own voice. Set apart from the answer so the eye
+   can skim only the fears and stop at the one it recognises. */
+.threatFear {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.4;
+  color: var(--ifm-heading-color);
+}
+
+.threatAnswer {
+  margin: 0;
+  font-size: 0.91rem;
+  line-height: 1.6;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.threatMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+/* The mechanism's real name. Deliberately quiet - it is here so a technical
+   reader can go and check the claim, not to impress anyone else. */
+.threatHow {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.16rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  font-family: var(--ifm-font-family-monospace);
+  border: 1px solid var(--pe-border);
+  color: var(--ifm-color-emphasis-600);
+}
+
+.threatTier {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.16rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  background: var(--pe-surface-accent);
+  color: var(--ifm-color-primary);
+}
+
+.threatFooter {
+  margin: 2.25rem 0 0;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--ifm-color-emphasis-700);
+}

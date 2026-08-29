@@ -27,6 +27,10 @@
     "message": "Các gói bảo mật",
     "description": "The label of footer link with label=Security tiers linking to /docs/security-tiers"
   },
+  "link.item.label.What these words mean": {
+    "message": "Những từ này nghĩa là gì",
+    "description": "The label of footer link with label=What these words mean linking to /docs/plain-words"
+  },
   "link.item.label.Your passcode": {
     "message": "Mã mở khoá của bạn",
     "description": "The label of footer link with label=Your passcode linking to /docs/your-passcode"

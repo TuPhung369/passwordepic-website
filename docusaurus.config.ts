@@ -102,6 +102,7 @@ const config: Config = {
           position: 'left',
           items: [
             { to: '/docs/how-it-works', label: 'How it works' },
+            { to: '/docs/plain-words', label: 'What these words mean' },
             { to: '/docs/security-tiers', label: 'Security tiers' },
             { to: '/docs/your-passcode', label: 'Your passcode' },
             { to: '/docs/autofill', label: 'Autofill' },
@@ -124,6 +125,7 @@ const config: Config = {
             { label: 'Overview', to: '/' },
             { label: 'How it works', to: '/docs/how-it-works' },
             { label: 'Security tiers', to: '/docs/security-tiers' },
+            { label: 'What these words mean', to: '/docs/plain-words' },
           ],
         },
         {
