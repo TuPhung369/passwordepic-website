@@ -115,18 +115,31 @@ const config: Config = {
       logo: { alt: 'PasswordEpic', src: 'img/logo.png' },
       hideOnScroll: false,
       items: [
+        // Two dropdowns rather than one: "how do I use it" and "how does it
+        // work" are different visits, and a single twelve-item list served
+        // neither.
         {
           type: 'dropdown',
-          label: 'Documentation',
+          label: 'User guide',
           position: 'left',
           items: [
-            { to: '/docs/how-it-works', label: 'How it works' },
-            { to: '/docs/plain-words', label: 'What these words mean' },
-            { to: '/docs/security-tiers', label: 'Security tiers' },
-            { to: '/docs/attack-scenarios', label: 'The war for the vault' },
-            { to: '/docs/your-passcode', label: 'Your passcode' },
+            { to: '/docs/guide-vault', label: 'Your vault' },
+            { to: '/docs/guide-generator', label: 'Generating passwords' },
+            { to: '/docs/guide-settings', label: 'Settings' },
             { to: '/docs/autofill', label: 'Setting up autofill' },
+            { to: '/docs/your-passcode', label: 'Your passcode' },
             { to: '/docs/faq', label: 'Common problems' },
+          ],
+        },
+        {
+          type: 'dropdown',
+          label: 'How it works',
+          position: 'left',
+          items: [
+            { to: '/docs/how-it-works', label: 'The key, and where it lives' },
+            { to: '/docs/attack-scenarios', label: 'The war for the vault' },
+            { to: '/docs/security-tiers', label: 'Security tiers' },
+            { to: '/docs/plain-words', label: 'What these words mean' },
             { to: '/docs/backups', label: 'Backups and exports' },
             { to: '/docs/your-device', label: 'One device per account' },
           ],
@@ -183,8 +196,11 @@ const config: Config = {
         {
           title: 'Guides',
           items: [
-            { label: 'Your passcode', to: '/docs/your-passcode' },
+            { label: 'Your vault', to: '/docs/guide-vault' },
+            { label: 'Generating passwords', to: '/docs/guide-generator' },
+            { label: 'Settings', to: '/docs/guide-settings' },
             { label: 'Setting up autofill', to: '/docs/autofill' },
+            { label: 'Your passcode', to: '/docs/your-passcode' },
             { label: 'Common problems', to: '/docs/faq' },
             { label: 'Backups and exports', to: '/docs/backups' },
             { label: 'One device per account', to: '/docs/your-device' },

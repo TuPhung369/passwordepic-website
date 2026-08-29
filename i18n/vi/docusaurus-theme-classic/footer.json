@@ -39,13 +39,25 @@
     "message": "Những từ này nghĩa là gì",
     "description": "The label of footer link with label=What these words mean linking to /docs/plain-words"
   },
-  "link.item.label.Your passcode": {
-    "message": "Mã mở khoá của bạn",
-    "description": "The label of footer link with label=Your passcode linking to /docs/your-passcode"
+  "link.item.label.Your vault": {
+    "message": "Kho của bạn",
+    "description": "The label of footer link with label=Your vault linking to /docs/guide-vault"
+  },
+  "link.item.label.Generating passwords": {
+    "message": "Tạo mật khẩu",
+    "description": "The label of footer link with label=Generating passwords linking to /docs/guide-generator"
+  },
+  "link.item.label.Settings": {
+    "message": "Cài đặt",
+    "description": "The label of footer link with label=Settings linking to /docs/guide-settings"
   },
   "link.item.label.Setting up autofill": {
     "message": "Cài đặt tự động điền",
     "description": "The label of footer link with label=Setting up autofill linking to /docs/autofill"
+  },
+  "link.item.label.Your passcode": {
+    "message": "Mã mở khoá của bạn",
+    "description": "The label of footer link with label=Your passcode linking to /docs/your-passcode"
   },
   "link.item.label.Common problems": {
     "message": "Sự cố thường gặp",

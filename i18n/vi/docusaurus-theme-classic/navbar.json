@@ -7,9 +7,13 @@
     "message": "PasswordEpic",
     "description": "The alt text of navbar logo"
   },
-  "item.label.Documentation": {
-    "message": "Tài liệu",
-    "description": "Navbar item with label Documentation"
+  "item.label.User guide": {
+    "message": "Hướng dẫn sử dụng",
+    "description": "Navbar item with label User guide"
+  },
+  "item.label.How it works": {
+    "message": "Cách hoạt động",
+    "description": "Navbar item with label How it works"
   },
   "item.label.Help": {
     "message": "Trợ giúp",
@@ -19,33 +23,45 @@
     "message": "Tải ứng dụng",
     "description": "Navbar item with label Get the app"
   },
-  "item.label.How it works": {
-    "message": "Cách hoạt động",
-    "description": "Navbar item with label How it works"
+  "item.label.Your vault": {
+    "message": "Kho của bạn",
+    "description": "Navbar item with label Your vault"
   },
-  "item.label.What these words mean": {
-    "message": "Những từ này nghĩa là gì",
-    "description": "Navbar item with label What these words mean"
+  "item.label.Generating passwords": {
+    "message": "Tạo mật khẩu",
+    "description": "Navbar item with label Generating passwords"
   },
-  "item.label.Security tiers": {
-    "message": "Các gói bảo mật",
-    "description": "Navbar item with label Security tiers"
-  },
-  "item.label.The war for the vault": {
-    "message": "Cuộc chiến giành kho mật khẩu",
-    "description": "Navbar item with label The war for the vault"
-  },
-  "item.label.Your passcode": {
-    "message": "Mã mở khoá của bạn",
-    "description": "Navbar item with label Your passcode"
+  "item.label.Settings": {
+    "message": "Cài đặt",
+    "description": "Navbar item with label Settings"
   },
   "item.label.Setting up autofill": {
     "message": "Cài đặt tự động điền",
     "description": "Navbar item with label Setting up autofill"
   },
+  "item.label.Your passcode": {
+    "message": "Mã mở khoá của bạn",
+    "description": "Navbar item with label Your passcode"
+  },
   "item.label.Common problems": {
     "message": "Sự cố thường gặp",
     "description": "Navbar item with label Common problems"
+  },
+  "item.label.The key, and where it lives": {
+    "message": "Chiếc khoá, và nó nằm ở đâu",
+    "description": "Navbar item with label The key, and where it lives"
+  },
+  "item.label.The war for the vault": {
+    "message": "Cuộc chiến giành kho mật khẩu",
+    "description": "Navbar item with label The war for the vault"
+  },
+  "item.label.Security tiers": {
+    "message": "Các gói bảo mật",
+    "description": "Navbar item with label Security tiers"
+  },
+  "item.label.What these words mean": {
+    "message": "Những từ này nghĩa là gì",
+    "description": "Navbar item with label What these words mean"
   },
   "item.label.Backups and exports": {
     "message": "Sao lưu và xuất dữ liệu",

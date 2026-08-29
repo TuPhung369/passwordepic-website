@@ -370,6 +370,26 @@ body::before {
   }
 }
 
+/* Screenshots in the user guide. A phone screenshot is tall enough to fill the
+   viewport on its own, which turns a guide into a scroll; capping the height
+   keeps the surrounding text in view where the reader can follow it. */
+.markdown img[src*='/img/guide/'] {
+  display: block;
+  max-width: min(100%, 26rem);
+  max-height: 78vh;
+  width: auto;
+  margin: 1.5rem auto;
+  border-radius: 12px;
+  border: 1px solid var(--pe-border);
+  box-shadow: var(--pe-shadow-md);
+}
+
+/* Cropped strips - the toolbar shot - are wide rather than tall, so let them
+   use the measure instead of being squeezed into a phone-shaped box. */
+.markdown img[src*='vault-header'] {
+  max-width: 100%;
+}
+
 /* ---------------------------------------------------------------------------
  * Diagrams
  * ------------------------------------------------------------------------ */
