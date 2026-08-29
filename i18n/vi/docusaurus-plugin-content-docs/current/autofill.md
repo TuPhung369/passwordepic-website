@@ -161,17 +161,43 @@ flowchart LR
   E --> F["🧹 Bản rõ và khoá<br/>bị bỏ đi ngay"]
 ```
 
-## Một bản ghi màn hình thấy được gì
+## Ảnh chụp và bản ghi màn hình bắt được gì
 
-Các cửa sổ của chính ứng dụng — bao gồm cả hộp thoại tự động điền — được loại khỏi
-ảnh chụp và bản ghi màn hình. Khi bị quay, chúng hiện ra màu đen.
+Đây là hai chuyện khác nhau và Android xử lý chúng khác hẳn nhau. Một cái được xử
+lý trọn vẹn; cái còn lại thì không, và chính khác biệt đó là lý do ứng dụng hành
+xử như nó đang làm.
+
+### Ảnh chụp màn hình bị từ chối thẳng
+
+Khi một màn hình của PasswordEpic đang hiện trước mặt bạn — bản thân ứng dụng, hay
+hộp thoại tự động điền nằm trên một app khác — Android sẽ **không chụp gì cả**.
+Bạn nhận được thông báo "Không thể chụp màn hình do chính sách của ứng dụng" và
+không có tấm ảnh nào: không có ứng dụng, không có bàn phím, không có bất cứ thứ gì
+đang ở trên màn hình lúc đó.
+
+### Bản ghi màn hình được xử lý theo từng cửa sổ
+
+Bản ghi màn hình thì không bị từ chối. Thay vào đó mỗi cửa sổ được xử lý riêng:
+các cửa sổ của chính ứng dụng — kể cả hộp thoại tự động điền — hiện ra **màu đen**.
 
 **Bàn phím không nằm trong số đó.** Nó do ứng dụng bàn phím bạn đang dùng vẽ ra,
 trong tiến trình riêng của nó, và không ứng dụng nào có thể mở rộng lớp bảo vệ ấy
-sang cửa sổ của ứng dụng khác. Vì vậy một bản ghi sẽ cho thấy hộp thoại tối đen
-với một bàn phím hiện rõ bên dưới.
+sang cửa sổ của ứng dụng khác. Nên một bản ghi sẽ cho thấy hộp thoại tối đen với
+một bàn phím hiện rõ bên dưới.
 
-Hai điều rút ra từ đó, và cả hai đều đáng lưu ý:
+### Và đó là lý do ứng dụng chặn bạn nhập
+
+Từ **Android 15 trở lên**, ứng dụng biết được có bản ghi đang quay cửa sổ của nó,
+và nó dùng điều đó để xoá ô nhập mã và từ chối cho nhập cho tới khi bản ghi dừng —
+cả trong ứng dụng lẫn ở hộp thoại tự động điền.
+
+Chỉ phát hiện thôi thì chẳng được gì. Từ chối cho nhập mới là phần có ích: tới lúc
+bạn gõ xong thì một bàn phím đang bị quay đã nhìn thấy tất cả rồi.
+
+Dưới Android 15 không có cách nào phát hiện bản ghi một cách đáng tin cậy, và ứng
+dụng không giả vờ là có.
+
+Còn hai điều nữa đáng biết:
 
 - **Bong bóng xem trước phím mới là chỗ rò rỉ thật sự.** Bàn phím chỉ tắt cái chữ
   cái nhỏ nảy lên phía trên mỗi phím khi ô nhập là ô mật khẩu — nên ô nhập mã mở

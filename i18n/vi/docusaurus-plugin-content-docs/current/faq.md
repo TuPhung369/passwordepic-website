@@ -183,10 +183,14 @@ cái nào có nghĩa là ứng dụng bị hỏng.
 Có thứ gì đó đang quay màn hình của bạn, và ứng dụng đã khoá việc nhập mã cho tới
 khi nó dừng.
 
-Đây là cố ý. Các cửa sổ của chính ứng dụng hiện ra màu đen trong bản ghi, nhưng
-**bàn phím thuộc về một ứng dụng khác** và không thể bị che — nên mã mở khoá của
-bạn vẫn sẽ hiện trong bản ghi dù nội dung ứng dụng thì không. Hãy dừng bản ghi rồi
-thử lại.
+Đây là cố ý, và nó áp dụng cả trong ứng dụng lẫn ở hộp thoại tự động điền. Các
+cửa sổ của chính ứng dụng hiện ra màu đen trong bản ghi, nhưng **bàn phím thuộc về
+một ứng dụng khác** và không thể bị che — nên mã mở khoá của bạn vẫn sẽ hiện trong
+bản ghi dù nội dung ứng dụng thì không. Hãy dừng bản ghi rồi thử lại.
+
+Lưu ý *chụp ảnh màn hình* lại là chuyện khác: Android từ chối thẳng khi một màn
+hình của PasswordEpic đang hiện, nên không bắt được gì cả. Chỉ có quay màn hình
+mới cần thêm bước này.
 
 Có từ Android 15 trở lên. Ở phiên bản cũ hơn, ứng dụng hoàn toàn không phát hiện
 được bản ghi, và cũng không hề nói là phát hiện được.

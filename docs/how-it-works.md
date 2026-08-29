@@ -141,9 +141,11 @@ read it.**
 - **Backups and exports open only on the device that created them.** They carry
   a layer of encryption tied to that phone's secure hardware, so copying the
   file to another phone does not help. See [Backups and exports](./backups.md).
-- **Screen-recording protection during passcode entry needs Android 15.** Below
-  that, the app's own windows are still excluded from screenshots and
-  recordings, but the on-screen keyboard belongs to another app and cannot be.
+- **Screenshots are refused outright** while a PasswordEpic screen is showing —
+  Android blocks the capture for the whole screen, keyboard included. A screen
+  *recording* is different: the app's own windows come out black, but the
+  keyboard belongs to another app and still renders, which is why the app
+  refuses passcode entry while one is running. Detecting that needs Android 15.
 - **A keyboard you install can read what you type**, in any app. If that matters
   to you, use the keyboard that shipped with your phone; PasswordEpic warns you
   when the active one did not.

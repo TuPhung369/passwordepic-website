@@ -136,21 +136,28 @@ cái sau có số khả năng nhiều hơn khoảng 40 triệu lần. Đếm ký
 
 ### Chống chụp và quay màn hình
 
-Android cho phép một ứng dụng đánh dấu cửa sổ của chính nó là "không được chụp".
-Ảnh chụp màn hình sẽ thất bại, và bản ghi màn hình sẽ hiện chúng thành ô đen.
-
-**Giới hạn quan trọng:** bàn phím là một ứng dụng khác, nằm trong cửa sổ riêng.
+Android cho phép một ứng dụng đánh dấu cửa sổ của chính nó là được bảo vệ. Điều
+đó có nghĩa gì thì phụ thuộc hoàn toàn vào *cách* màn hình đang bị ghi lại, và
+hai trường hợp không giống nhau:
 
 ```mermaid
 flowchart TD
-  A["🎥 Có bản ghi màn hình đang chạy"] --> B["Cửa sổ của ứng dụng<br/>hiện ra màu đen ✅"]
-  A --> C["Bàn phím thuộc về<br/>một ứng dụng khác"]
-  C --> D["❌ Không ứng dụng nào che được<br/>cửa sổ của ứng dụng khác"]
-  B --> E{"Android 15<br/>trở lên?"}
-  D --> E
-  E -->|"Có"| F["🛡️ Từ chối cho nhập mã<br/>cho tới khi dừng quay"]
-  E -->|"Không"| G["⚠️ Ứng dụng không biết được,<br/>và cũng không nói là biết"]
+  A["Có thứ gì đó muốn ghi lại màn hình"] --> B{"Chụp ảnh,<br/>hay quay?"}
+  B -->|"📸 Chụp ảnh"| C["🛡️ Bị từ chối thẳng.<br/>Không bắt được gì cả —<br/>không ứng dụng, không bàn phím,<br/>không cả phần còn lại của màn hình."]
+  B -->|"🎥 Quay màn hình"| D["Cửa sổ của ứng dụng<br/>hiện ra màu đen ✅"]
+  D --> E["Bàn phím là cửa sổ của một<br/>ứng dụng khác, và vẫn hiện rõ ❌"]
+  E --> F{"Android 15<br/>trở lên?"}
+  F -->|"Có"| G["🛡️ Từ chối cho nhập mã<br/>cho tới khi dừng quay"]
+  F -->|"Không"| H["⚠️ Ứng dụng không phát hiện được,<br/>và cũng không nói là phát hiện được"]
 ```
+
+**Chụp ảnh màn hình** trong lúc một cửa sổ được bảo vệ đang hiện sẽ bị từ chối cho
+toàn màn hình — bạn nhận được thông báo từ Android và không có tấm ảnh nào.
+
+**Quay màn hình** thì không bị từ chối; mỗi cửa sổ được xử lý riêng. Cửa sổ của
+ứng dụng hiện ra màu đen, nhưng bàn phím thuộc về một ứng dụng khác và không ứng
+dụng nào bảo vệ được cửa sổ của ứng dụng khác. Chính khoảng hở đó là lý do ứng
+dụng từ chối cho bạn gõ mã mở khoá trong lúc có bản ghi đang chạy.
 
 ### Độ tin cậy của bàn phím
 

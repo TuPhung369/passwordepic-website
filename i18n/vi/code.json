@@ -178,13 +178,13 @@
     "message": "Bàn phím của bạn đọc được những gì bạn gõ"
   },
   "home.limits.keyboard.text": {
-    "message": "Trong mọi ứng dụng, không riêng ứng dụng này. Các cửa sổ của chính ứng dụng được loại khỏi ảnh chụp và bản ghi màn hình, nhưng bàn phím thuộc về một ứng dụng khác nên không thể. PasswordEpic sẽ cảnh báo khi bàn phím đang dùng không đi kèm máy."
+    "message": "Trong mọi ứng dụng, không riêng ứng dụng này. Ảnh chụp một màn hình PasswordEpic bị từ chối thẳng, và cửa sổ của chính ứng dụng hiện ra màu đen trong bản ghi — nhưng bàn phím thuộc về một ứng dụng khác, và không ứng dụng nào bảo vệ được cửa sổ của ứng dụng khác. PasswordEpic sẽ cảnh báo khi bàn phím đang dùng không đi kèm máy."
   },
   "home.limits.recording.title": {
-    "message": "Từ chối nhập mã khi đang bị quay màn hình cần Android 15"
+    "message": "Phát hiện bản ghi màn hình cần Android 15"
   },
   "home.limits.recording.text": {
-    "message": "Ở phiên bản thấp hơn, ứng dụng vẫn làm đen các cửa sổ của chính nó trong bản ghi, nhưng không phát hiện được là đang có bản ghi để dừng bạn lại."
+    "message": "Ảnh chụp màn hình bị từ chối thẳng ở mọi phiên bản. Quay màn hình thì không: cửa sổ của chính ứng dụng hiện ra màu đen, nhưng bàn phím là cửa sổ của ứng dụng khác và vẫn hiện. Android 15 cho phép ứng dụng nhận ra bản ghi và từ chối cho nhập mã; dưới đó thì nó không nhận ra được, và nói thẳng điều đó thay vì ám chỉ ngược lại."
   },
   "home.limits.silver.title": {
     "message": "Gói miễn phí hoàn toàn bằng phần mềm"
@@ -313,10 +313,10 @@
     "message": "“Có thứ gì đó đang quay màn hình lúc tôi mở khoá.”"
   },
   "home.threats.recording.answer": {
-    "message": "Các cửa sổ của chính ứng dụng hiện ra màu đen trong mọi bản ghi. Từ Android 15 nó đi xa hơn: nó biết được có bản ghi đang chạy, nên xoá ô nhập mã và từ chối cho nhập cho tới khi bạn dừng bản ghi. Dưới Android 15 thì nó không biết được — và chúng tôi thà nói thẳng còn hơn để bạn tưởng ngược lại."
+    "message": "Ảnh chụp màn hình bị từ chối thẳng khi một màn hình của PasswordEpic đang hiện — không bắt được gì cả, kể cả bàn phím. Quay màn hình thì khó hơn: cửa sổ của ứng dụng hiện ra màu đen, nhưng bàn phím thuộc về một ứng dụng khác và vẫn hiện rõ. Nên từ Android 15, ứng dụng phát hiện bản ghi và từ chối không cho bạn gõ. Dưới đó thì nó không phát hiện được, và chúng tôi thà nói thẳng còn hơn để bạn tưởng ngược lại."
   },
   "home.threats.recording.how": {
-    "message": "Cửa sổ bị loại khỏi bản ghi · từ chối nhập từ Android 15"
+    "message": "Chặn chụp màn hình · từ chối nhập khi đang quay, Android 15+"
   },
   "home.threats.keyboard.fear": {
     "message": "“Bàn phím của tôi ghi lại mọi thứ tôi gõ.”"

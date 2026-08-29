@@ -64,7 +64,7 @@ export default function Limits(): ReactNode {
       }),
       text: translate({
         id: 'home.limits.keyboard.text',
-        message: 'In any app, not just this one. The app’s own windows are excluded from screenshots and recordings, but the keyboard belongs to another app and cannot be. PasswordEpic warns you when the active keyboard did not ship with your phone.',
+        message: 'In any app, not just this one. Screenshots of a PasswordEpic screen are refused outright, and the app’s own windows come out black in a recording — but the keyboard belongs to another app, and no app can protect another app’s window. PasswordEpic warns you when the active keyboard did not ship with your phone.',
       }),
     },
     {
@@ -72,11 +72,11 @@ export default function Limits(): ReactNode {
       icon: <FaVideo aria-hidden />,
       title: translate({
         id: 'home.limits.recording.title',
-        message: 'Refusing passcode entry mid-recording needs Android 15',
+        message: 'Detecting a screen recording needs Android 15',
       }),
       text: translate({
         id: 'home.limits.recording.text',
-        message: 'Below that version the app still blanks its own windows in a recording, but it cannot detect that one is running and stop you.',
+        message: 'Screenshots are refused outright on every version. Recordings are not: the app’s own windows come out black, but the keyboard is another app’s window and still shows. Android 15 lets the app notice the recording and refuse passcode entry; below that it cannot notice, and says so rather than implying otherwise.',
       }),
     },
     {

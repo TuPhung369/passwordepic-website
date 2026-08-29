@@ -160,17 +160,42 @@ flowchart LR
   E --> F["🧹 Plaintext and key<br/>dropped immediately"]
 ```
 
-## What a screen recorder sees
+## What a screenshot or a recording can capture
 
-The app's own windows — including the autofill dialog — are excluded from
-screenshots and screen recordings. Under a recording they appear black.
+These are two different things and Android treats them differently. One is
+fully handled; the other is not, and that difference is the whole reason the
+app behaves the way it does.
+
+### Screenshots are refused outright
+
+While a PasswordEpic screen is in front of you — the app itself, or the autofill
+dialog over another app — Android will not take a screenshot at all. You get
+"Couldn't capture screenshot due to app policy" and no image: not of the app,
+not of the keyboard, not of anything else on screen at that moment.
+
+### Recordings are handled window by window
+
+A screen recording is not refused. Instead each window is treated separately:
+the app's own windows — including the autofill dialog — come out **black**.
 
 **The keyboard is not one of those windows.** It is drawn by whichever keyboard
 app you use, in its own process, and no app can extend that protection to
-another app's window. A recording therefore shows a blacked-out dialog with a
-fully visible keyboard beneath it.
+another app's window. So a recording shows a blacked-out dialog with a fully
+visible keyboard beneath it.
 
-Two things follow, and both matter:
+### Which is why the app stops you typing
+
+On **Android 15 and newer** the app can tell that a recording is capturing its
+windows, and it uses that to clear the passcode field and refuse entry until the
+recording stops — in the app and in the autofill dialog alike.
+
+Detection alone would achieve nothing. Refusing input is the part that helps: by
+the time you have finished typing, a recorded keyboard has already seen it.
+
+Below Android 15 there is no reliable way to detect a recording, and the app
+does not pretend there is.
+
+Two more things are worth knowing:
 
 - **Key-preview bubbles are the real leak.** Keyboards suppress the little
   letter that pops up above each key only for password fields — so the passcode

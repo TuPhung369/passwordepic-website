@@ -214,11 +214,11 @@ export default function Threats(): ReactNode {
           }),
           answer: translate({
             id: 'home.threats.recording.answer',
-            message: 'The app’s own windows come out black in any recording. On Android 15 it goes further: it can tell a recording is running, so it clears the passcode field and refuses entry until you stop it. Below Android 15 it cannot tell — and we would rather say that than let you assume otherwise.',
+            message: 'Screenshots are refused outright while a PasswordEpic screen is showing — nothing is captured, keyboard included. A recording is harder: the app’s windows come out black, but the keyboard belongs to another app and still renders. So on Android 15 the app detects the recording and refuses to let you type at all. Below that it cannot detect one, and we would rather say so than let you assume otherwise.',
           }),
           how: translate({
             id: 'home.threats.recording.how',
-            message: 'Windows excluded from capture · refusal on Android 15+',
+            message: 'Screenshots blocked · entry refused while recording, Android 15+',
           }),
         },
         {

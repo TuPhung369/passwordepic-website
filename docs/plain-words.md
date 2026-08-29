@@ -137,21 +137,27 @@ Counting characters cannot express that; counting bits can. See
 
 ### Screen capture protection
 
-Android lets an app mark its own windows as "do not capture". Screenshots of
-them fail, and screen recordings show them as black rectangles.
-
-**The important limit:** the keyboard is a different app, in its own window.
+Android lets an app mark its own windows as protected. What that means depends
+entirely on *how* the screen is being captured, and the two cases are not alike:
 
 ```mermaid
 flowchart TD
-  A["🎥 A recording is running"] --> B["The app's own windows<br/>record as black ✅"]
-  A --> C["The keyboard belongs to<br/>a different app"]
-  C --> D["❌ No app can hide<br/>another app's window"]
-  B --> E{"Android 15<br/>or newer?"}
-  D --> E
-  E -->|"Yes"| F["🛡️ Passcode entry is refused<br/>until the recording stops"]
-  E -->|"No"| G["⚠️ The app cannot tell,<br/>and does not claim to"]
+  A["Something tries to capture the screen"] --> B{"Screenshot,<br/>or recording?"}
+  B -->|"📸 Screenshot"| C["🛡️ Refused outright.<br/>Nothing is captured at all —<br/>not the app, not the keyboard,<br/>not the rest of the screen."]
+  B -->|"🎥 Recording"| D["The app's own windows<br/>come out black ✅"]
+  D --> E["The keyboard is a different<br/>app's window, and still renders ❌"]
+  E --> F{"Android 15<br/>or newer?"}
+  F -->|"Yes"| G["🛡️ Passcode entry is refused<br/>until the recording stops"]
+  F -->|"No"| H["⚠️ The app cannot detect it,<br/>and does not claim to"]
 ```
+
+A **screenshot** taken while a protected window is showing is refused for the
+whole screen — you get a message from Android and no image.
+
+A **recording** is not refused; each window is handled separately. The app's
+windows come out black, but the keyboard belongs to a different app and no app
+can protect another app's window. That gap is why the app refuses to let you
+type your passcode at all while a recording is running.
 
 ### Keyboard trust
 

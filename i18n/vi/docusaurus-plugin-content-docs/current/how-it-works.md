@@ -146,10 +146,11 @@ là một dịch vụ có thể đọc nó.**
   Chúng mang một lớp mã hoá gắn với phần cứng bảo mật của chiếc điện thoại đó, nên
   chép tệp sang máy khác cũng vô ích. Xem
   [Sao lưu và xuất dữ liệu](./backups.md).
-- **Chống quay màn hình khi nhập mã mở khoá cần Android 15.** Ở phiên bản thấp
-  hơn, các cửa sổ của chính ứng dụng vẫn được loại khỏi ảnh chụp và bản ghi màn
-  hình, nhưng bàn phím trên màn hình thuộc về một ứng dụng khác nên không thể loại
-  trừ được.
+- **Ảnh chụp màn hình bị từ chối thẳng** khi một màn hình của PasswordEpic đang
+  hiện — Android chặn việc chụp cho toàn màn hình, kể cả bàn phím. *Quay* màn hình
+  thì khác: cửa sổ của chính ứng dụng hiện ra màu đen, nhưng bàn phím thuộc về một
+  ứng dụng khác và vẫn hiện rõ, và đó là lý do ứng dụng từ chối cho nhập mã khi có
+  bản ghi đang chạy. Phát hiện được điều đó cần Android 15.
 - **Bàn phím bạn cài đặt có thể đọc những gì bạn gõ**, trong mọi ứng dụng. Nếu
   điều đó quan trọng với bạn, hãy dùng bàn phím đi kèm máy; PasswordEpic sẽ cảnh
   báo khi bàn phím đang dùng không phải bàn phím gốc.
