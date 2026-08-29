@@ -64,7 +64,7 @@ export default function Limits(): ReactNode {
       }),
       text: translate({
         id: 'home.limits.keyboard.text',
-        message: 'In any app, not just this one. Screenshots of a PasswordEpic screen are refused outright, and the app’s own windows come out black in a recording — but the keyboard belongs to another app, and no app can protect another app’s window. PasswordEpic warns you when the active keyboard did not ship with your phone.',
+        message: 'In any app, not just this one, and no amount of screen protection touches it — a keyboard is handed the keystrokes directly, before anything is drawn. PasswordEpic warns you when the active keyboard did not ship with your phone, which is a nudge rather than a verdict.',
       }),
     },
     {
@@ -76,7 +76,7 @@ export default function Limits(): ReactNode {
       }),
       text: translate({
         id: 'home.limits.recording.text',
-        message: 'Screenshots are refused outright on every version. Recordings are not: the app’s own windows come out black, but the keyboard is another app’s window and still shows. Android 15 lets the app notice the recording and refuse passcode entry; below that it cannot notice, and says so rather than implying otherwise.',
+        message: 'A recording of the app itself comes out black on every version. The gap is the autofill dialog, which sits over another app that is being recorded normally — Android 15 lets the app notice and refuse passcode entry there, and below that it cannot notice, and says so rather than implying otherwise.',
       }),
     },
     {

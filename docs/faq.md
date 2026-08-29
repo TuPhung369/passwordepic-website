@@ -182,14 +182,13 @@ mean the app is broken.
 Something is recording your screen, and the app has locked passcode entry until
 it stops.
 
-This is deliberate, and it applies both in the app and in the autofill dialog.
-The app's own windows record as black, but **the keyboard belongs to another
-app** and cannot be hidden — so your passcode would be visible in the recording
-even though the app content is not. Stop the recording and try again.
+This is deliberate. It matters most for the **autofill dialog**, which sits over
+a different app that is being recorded normally — inside PasswordEpic itself a
+recording comes out black anyway, keyboard included. Stop the recording and try
+again.
 
-Note that a *screenshot* is a different matter: Android refuses those outright
-while a PasswordEpic screen is showing, so nothing at all is captured. It is
-recordings that need this extra step.
+A *screenshot* is a different matter: Android refuses those outright while a
+PasswordEpic screen is showing, so nothing at all is captured.
 
 Available on Android 15 and above. On older versions the app cannot detect a
 recording at all, and does not claim to.

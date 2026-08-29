@@ -214,11 +214,11 @@ export default function Threats(): ReactNode {
           }),
           answer: translate({
             id: 'home.threats.recording.answer',
-            message: 'Screenshots are refused outright while a PasswordEpic screen is showing — nothing is captured, keyboard included. A recording is harder: the app’s windows come out black, but the keyboard belongs to another app and still renders. So on Android 15 the app detects the recording and refuses to let you type at all. Below that it cannot detect one, and we would rather say so than let you assume otherwise.',
+            message: 'Screenshots are refused outright, and a recording of the app comes out black — the app and the keyboard over it, nothing to read. The gap is the autofill dialog, which sits over a different app that is being recorded normally, so on Android 15 the app detects the recording and refuses to let you type at all. Below that it cannot detect one, and we would rather say so than let you assume otherwise.',
           }),
           how: translate({
             id: 'home.threats.recording.how',
-            message: 'Screenshots blocked · entry refused while recording, Android 15+',
+            message: 'Screenshots blocked · recordings black · entry refused, Android 15+',
           }),
         },
         {

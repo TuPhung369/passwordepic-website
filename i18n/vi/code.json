@@ -178,13 +178,13 @@
     "message": "Bàn phím của bạn đọc được những gì bạn gõ"
   },
   "home.limits.keyboard.text": {
-    "message": "Trong mọi ứng dụng, không riêng ứng dụng này. Ảnh chụp một màn hình PasswordEpic bị từ chối thẳng, và cửa sổ của chính ứng dụng hiện ra màu đen trong bản ghi — nhưng bàn phím thuộc về một ứng dụng khác, và không ứng dụng nào bảo vệ được cửa sổ của ứng dụng khác. PasswordEpic sẽ cảnh báo khi bàn phím đang dùng không đi kèm máy."
+    "message": "Trong mọi ứng dụng, không riêng ứng dụng này, và không lớp bảo vệ màn hình nào chạm tới được — bàn phím được trao thẳng từng phím bạn gõ, trước cả khi có gì được vẽ ra. PasswordEpic sẽ cảnh báo khi bàn phím đang dùng không đi kèm máy, và đó là một lời nhắc chứ không phải một phán quyết."
   },
   "home.limits.recording.title": {
     "message": "Phát hiện bản ghi màn hình cần Android 15"
   },
   "home.limits.recording.text": {
-    "message": "Ảnh chụp màn hình bị từ chối thẳng ở mọi phiên bản. Quay màn hình thì không: cửa sổ của chính ứng dụng hiện ra màu đen, nhưng bàn phím là cửa sổ của ứng dụng khác và vẫn hiện. Android 15 cho phép ứng dụng nhận ra bản ghi và từ chối cho nhập mã; dưới đó thì nó không nhận ra được, và nói thẳng điều đó thay vì ám chỉ ngược lại."
+    "message": "Quay màn hình chính ứng dụng thì ra toàn màu đen, ở mọi phiên bản. Khoảng hở là hộp thoại tự động điền, vì nó nằm trên một ứng dụng khác đang bị quay bình thường — Android 15 cho phép ứng dụng nhận ra và từ chối cho nhập mã ở đó, còn dưới đó thì nó không nhận ra được, và nói thẳng điều đó thay vì ám chỉ ngược lại."
   },
   "home.limits.silver.title": {
     "message": "Gói miễn phí hoàn toàn bằng phần mềm"
@@ -313,10 +313,10 @@
     "message": "“Có thứ gì đó đang quay màn hình lúc tôi mở khoá.”"
   },
   "home.threats.recording.answer": {
-    "message": "Ảnh chụp màn hình bị từ chối thẳng khi một màn hình của PasswordEpic đang hiện — không bắt được gì cả, kể cả bàn phím. Quay màn hình thì khó hơn: cửa sổ của ứng dụng hiện ra màu đen, nhưng bàn phím thuộc về một ứng dụng khác và vẫn hiện rõ. Nên từ Android 15, ứng dụng phát hiện bản ghi và từ chối không cho bạn gõ. Dưới đó thì nó không phát hiện được, và chúng tôi thà nói thẳng còn hơn để bạn tưởng ngược lại."
+    "message": "Ảnh chụp màn hình bị từ chối thẳng, và quay màn hình trong ứng dụng thì ra toàn màu đen — cả ứng dụng lẫn bàn phím phủ lên trên, không có gì để đọc. Khoảng hở là hộp thoại tự động điền, vì nó nằm trên một ứng dụng khác đang bị quay bình thường; nên từ Android 15, ứng dụng phát hiện bản ghi và từ chối không cho bạn gõ. Dưới đó thì nó không phát hiện được, và chúng tôi thà nói thẳng còn hơn để bạn tưởng ngược lại."
   },
   "home.threats.recording.how": {
-    "message": "Chặn chụp màn hình · từ chối nhập khi đang quay, Android 15+"
+    "message": "Chặn chụp ảnh · bản ghi ra màu đen · từ chối nhập, Android 15+"
   },
   "home.threats.keyboard.fear": {
     "message": "“Bàn phím của tôi ghi lại mọi thứ tôi gõ.”"

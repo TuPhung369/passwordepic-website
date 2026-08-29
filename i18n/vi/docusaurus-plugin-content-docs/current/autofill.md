@@ -173,41 +173,41 @@ Bạn nhận được thông báo "Không thể chụp màn hình do chính sác
 không có tấm ảnh nào: không có ứng dụng, không có bàn phím, không có bất cứ thứ gì
 đang ở trên màn hình lúc đó.
 
-### Bản ghi màn hình được xử lý theo từng cửa sổ
+### Quay màn hình trong ứng dụng thì ra toàn màu đen
 
-Bản ghi màn hình thì không bị từ chối. Thay vào đó mỗi cửa sổ được xử lý riêng:
-các cửa sổ của chính ứng dụng — kể cả hộp thoại tự động điền — hiện ra **màu đen**.
+Quay màn hình không bị từ chối thẳng. Nhưng thứ nó ghi lại được khi PasswordEpic
+đang ở trước mặt bạn là **màu đen** — cả ứng dụng lẫn bàn phím phủ lên trên. Trong
+khung hình không có gì để đọc cả.
 
-**Bàn phím không nằm trong số đó.** Nó do ứng dụng bàn phím bạn đang dùng vẽ ra,
-trong tiến trình riêng của nó, và không ứng dụng nào có thể mở rộng lớp bảo vệ ấy
-sang cửa sổ của ứng dụng khác. Nên một bản ghi sẽ cho thấy hộp thoại tối đen với
-một bàn phím hiện rõ bên dưới.
+### Hộp thoại tự động điền mới là trường hợp cần thêm biện pháp
 
-### Và đó là lý do ứng dụng chặn bạn nhập
+Hộp thoại đó hiện lên trên một ứng dụng *khác*, và ứng dụng khác ấy vẫn đang bị
+quay bình thường. Nên đây mới là chỗ một bản ghi có thể bắt được gì đó.
 
-Từ **Android 15 trở lên**, ứng dụng biết được có bản ghi đang quay cửa sổ của nó,
-và nó dùng điều đó để xoá ô nhập mã và từ chối cho nhập cho tới khi bản ghi dừng —
-cả trong ứng dụng lẫn ở hộp thoại tự động điền.
+Từ **Android 15 trở lên**, ứng dụng phát hiện có bản ghi đang chạy và từ chối hẳn
+việc nhập mã: ô nhập bị xoá và vô hiệu hoá, bàn phím bị đóng lại, và mọi thứ trở
+lại bình thường khi bản ghi dừng.
 
-Chỉ phát hiện thôi thì chẳng được gì. Từ chối cho nhập mới là phần có ích: tới lúc
-bạn gõ xong thì một bàn phím đang bị quay đã nhìn thấy tất cả rồi.
+Chỉ phát hiện thôi thì chẳng được gì. Từ chối cho nhập mới là phần có ích — tới
+lúc bạn gõ xong thì đã muộn rồi.
 
 Dưới Android 15 không có cách nào phát hiện bản ghi một cách đáng tin cậy, và ứng
-dụng không giả vờ là có.
+dụng không giả vờ là có. Nếu điều đó quan trọng với bạn, trên máy cũ hãy điền từ
+bên trong ứng dụng thay vì qua hộp thoại tự động điền.
 
-Còn hai điều nữa đáng biết:
+Còn hai điều nữa đáng biết về khoảng hở trên máy Android cũ đó:
 
-- **Bong bóng xem trước phím mới là chỗ rò rỉ thật sự.** Bàn phím chỉ tắt cái chữ
-  cái nhỏ nảy lên phía trên mỗi phím khi ô nhập là ô mật khẩu — nên ô nhập mã mở
+- **Bong bóng xem trước phím mới là chỗ có thể rò rỉ.** Bàn phím chỉ tắt cái chữ
+  cái nhỏ nảy lên phía trên mỗi phím khi ô nhập là ô *mật khẩu* — nên ô nhập mã mở
   khoá luôn được giữ ở chế độ mật khẩu, kể cả khi bạn chạm vào hình con mắt để xem
   những gì mình vừa gõ. Hiển thị nội dung bên trong một cửa sổ được bảo vệ là an
   toàn; đưa bàn phím ra khỏi chế độ mật khẩu thì không.
 - **Vị trí chạm không bị ghi lại**, trừ khi bạn đã bật tuỳ chọn nhà phát triển
   "Hiển thị thao tác chạm".
 
-Phần rủi ro còn lại là nhỏ, nhưng không phải bằng không. Loại bỏ nó hoàn toàn sẽ
-cần một bàn phím số dựng sẵn trong ứng dụng, đồng nghĩa với việc từ bỏ những mã mở
-khoá có chữ cái và ký hiệu.
+Nên ngay cả trong trường hợp đó cũng gần như không có gì để đọc. Nhưng "gần như"
+không phải là "không có gì", và đó là lý do việc từ chối nhập tồn tại trên những
+phiên bản hỗ trợ được nó.
 
 :::caution Bàn phím của bạn có thể đọc những gì bạn gõ
 

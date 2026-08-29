@@ -142,22 +142,24 @@ hai trường hợp không giống nhau:
 
 ```mermaid
 flowchart TD
-  A["Có thứ gì đó muốn ghi lại màn hình"] --> B{"Chụp ảnh,<br/>hay quay?"}
-  B -->|"📸 Chụp ảnh"| C["🛡️ Bị từ chối thẳng.<br/>Không bắt được gì cả —<br/>không ứng dụng, không bàn phím,<br/>không cả phần còn lại của màn hình."]
-  B -->|"🎥 Quay màn hình"| D["Cửa sổ của ứng dụng<br/>hiện ra màu đen ✅"]
-  D --> E["Bàn phím là cửa sổ của một<br/>ứng dụng khác, và vẫn hiện rõ ❌"]
-  E --> F{"Android 15<br/>trở lên?"}
-  F -->|"Có"| G["🛡️ Từ chối cho nhập mã<br/>cho tới khi dừng quay"]
-  F -->|"Không"| H["⚠️ Ứng dụng không phát hiện được,<br/>và cũng không nói là phát hiện được"]
+  A["Có thứ gì đó đang ghi lại màn hình"] --> B{"Chụp ảnh,<br/>hay quay?"}
+  B -->|"📸 Chụp ảnh"| C["🛡️ Bị từ chối thẳng.<br/>Không có tấm ảnh nào — không app,<br/>không bàn phím, không cả phần<br/>còn lại của màn hình."]
+  B -->|"🎥 Quay màn hình"| D{"Bạn đang ở đâu?"}
+  D -->|"Trong PasswordEpic"| E["🛡️ Khung hình ra toàn màu đen:<br/>cả ứng dụng lẫn bàn phím<br/>phủ lên trên"]
+  D -->|"Đang điền trong app khác,<br/>qua hộp thoại tự động điền"| F["App đó vẫn đang<br/>bị quay bình thường"]
+  F --> G{"Android 15<br/>trở lên?"}
+  G -->|"Có"| H["🛡️ Từ chối cho nhập mã<br/>cho tới khi dừng quay"]
+  G -->|"Không"| I["⚠️ Ứng dụng không phát hiện được,<br/>và cũng không nói là phát hiện được"]
 ```
 
-**Chụp ảnh màn hình** trong lúc một cửa sổ được bảo vệ đang hiện sẽ bị từ chối cho
-toàn màn hình — bạn nhận được thông báo từ Android và không có tấm ảnh nào.
+**Chụp ảnh màn hình** trong lúc một màn hình được bảo vệ đang hiện sẽ bị từ chối
+cho toàn màn hình — bạn nhận được thông báo từ Android và không có tấm ảnh nào.
 
-**Quay màn hình** thì không bị từ chối; mỗi cửa sổ được xử lý riêng. Cửa sổ của
-ứng dụng hiện ra màu đen, nhưng bàn phím thuộc về một ứng dụng khác và không ứng
-dụng nào bảo vệ được cửa sổ của ứng dụng khác. Chính khoảng hở đó là lý do ứng
-dụng từ chối cho bạn gõ mã mở khoá trong lúc có bản ghi đang chạy.
+**Quay màn hình** thì không bị từ chối, nhưng khi bạn đang ở trong ứng dụng thì
+trong bản ghi không có gì để đọc: khung hình toàn màu đen, kể cả bàn phím. Trường
+hợp cần thêm biện pháp là hộp thoại tự động điền, vì nó nằm trên một ứng dụng
+*khác* đang bị quay bình thường — và đó là lý do ứng dụng từ chối hẳn việc cho bạn
+gõ mã mở khoá khi có bản ghi đang chạy.
 
 ### Độ tin cậy của bàn phím
 

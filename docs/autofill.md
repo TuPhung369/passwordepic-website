@@ -172,41 +172,40 @@ dialog over another app — Android will not take a screenshot at all. You get
 "Couldn't capture screenshot due to app policy" and no image: not of the app,
 not of the keyboard, not of anything else on screen at that moment.
 
-### Recordings are handled window by window
+### Recordings of the app come out black
 
-A screen recording is not refused. Instead each window is treated separately:
-the app's own windows — including the autofill dialog — come out **black**.
+A screen recording is not refused outright. What it captures while PasswordEpic
+is in front of you is **black** — the app itself and the keyboard over it. There
+is nothing in the frame to read.
 
-**The keyboard is not one of those windows.** It is drawn by whichever keyboard
-app you use, in its own process, and no app can extend that protection to
-another app's window. So a recording shows a blacked-out dialog with a fully
-visible keyboard beneath it.
+### The autofill dialog is the case that needs more
 
-### Which is why the app stops you typing
+That dialog appears over a *different* app, and that app is being recorded
+normally. So this is where a recording could catch something.
 
-On **Android 15 and newer** the app can tell that a recording is capturing its
-windows, and it uses that to clear the passcode field and refuse entry until the
-recording stops — in the app and in the autofill dialog alike.
+On **Android 15 and newer** the app detects that a recording is running and
+refuses passcode entry entirely: the field is cleared and disabled, the keyboard
+is dismissed, and everything comes back when the recording stops.
 
-Detection alone would achieve nothing. Refusing input is the part that helps: by
-the time you have finished typing, a recorded keyboard has already seen it.
+Detection alone would achieve nothing. Refusing input is the part that helps —
+by the time you have finished typing, it is too late.
 
 Below Android 15 there is no reliable way to detect a recording, and the app
-does not pretend there is.
+does not pretend there is. If that matters to you, fill from inside the app on
+an older phone rather than through the autofill dialog.
 
-Two more things are worth knowing:
+Two more things are worth knowing about that older-Android gap:
 
-- **Key-preview bubbles are the real leak.** Keyboards suppress the little
-  letter that pops up above each key only for password fields — so the passcode
-  field stays in password mode permanently, even when you tap the eye to reveal
-  what you typed. Revealing the text inside a protected window is safe; taking
-  the keyboard out of password mode is not.
+- **Key-preview bubbles would be the leak.** Keyboards suppress the little
+  letter that pops up above each key only for *password* fields — so the
+  passcode field stays in password mode permanently, even when you tap the eye
+  to reveal what you typed. Revealing the text inside a protected window is
+  safe; taking the keyboard out of password mode would not be.
 - **Touch positions are not recorded** unless you have turned on the "Show taps"
   developer option.
 
-The residual exposure is small, but it is not zero. Eliminating it entirely
-would require an in-app keypad, which would mean giving up passcodes that
-contain letters and symbols.
+So even in that case there is little to read. It is not nothing, though, which
+is why the refusal exists on the versions that can support it.
 
 :::caution Your keyboard can read what you type
 

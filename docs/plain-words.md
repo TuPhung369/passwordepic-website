@@ -142,22 +142,24 @@ entirely on *how* the screen is being captured, and the two cases are not alike:
 
 ```mermaid
 flowchart TD
-  A["Something tries to capture the screen"] --> B{"Screenshot,<br/>or recording?"}
-  B -->|"📸 Screenshot"| C["🛡️ Refused outright.<br/>Nothing is captured at all —<br/>not the app, not the keyboard,<br/>not the rest of the screen."]
-  B -->|"🎥 Recording"| D["The app's own windows<br/>come out black ✅"]
-  D --> E["The keyboard is a different<br/>app's window, and still renders ❌"]
-  E --> F{"Android 15<br/>or newer?"}
-  F -->|"Yes"| G["🛡️ Passcode entry is refused<br/>until the recording stops"]
-  F -->|"No"| H["⚠️ The app cannot detect it,<br/>and does not claim to"]
+  A["Something is capturing the screen"] --> B{"Screenshot,<br/>or recording?"}
+  B -->|"📸 Screenshot"| C["🛡️ Refused outright.<br/>No image at all — not the app,<br/>not the keyboard, not the<br/>rest of the screen."]
+  B -->|"🎥 Recording"| D{"Where are you?"}
+  D -->|"In PasswordEpic"| E["🛡️ The frame comes out black:<br/>the app and the keyboard<br/>drawn over it"]
+  D -->|"Filling in another app,<br/>through the autofill dialog"| F["That app is being<br/>recorded normally"]
+  F --> G{"Android 15<br/>or newer?"}
+  G -->|"Yes"| H["🛡️ Passcode entry is refused<br/>until the recording stops"]
+  G -->|"No"| I["⚠️ The app cannot detect it,<br/>and does not claim to"]
 ```
 
-A **screenshot** taken while a protected window is showing is refused for the
-whole screen — you get a message from Android and no image.
+A **screenshot** taken while a protected screen is showing is refused for the
+whole display — you get a message from Android and no image.
 
-A **recording** is not refused; each window is handled separately. The app's
-windows come out black, but the keyboard belongs to a different app and no app
-can protect another app's window. That gap is why the app refuses to let you
-type your passcode at all while a recording is running.
+A **recording** is not refused, but while you are in the app there is nothing in
+it to read: the frame is black, keyboard included. The case that needs more is
+the autofill dialog, which sits over a *different* app that is being recorded
+normally — which is why the app refuses to let you type a passcode at all while
+a recording is running.
 
 ### Keyboard trust
 

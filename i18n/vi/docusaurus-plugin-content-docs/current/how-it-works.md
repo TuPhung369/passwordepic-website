@@ -40,10 +40,10 @@ flowchart LR
 
 | Mảnh | Nằm ở đâu | Có rời đi được không? |
 | --- | --- | --- |
-| **Shard 1** | Bên trong StrongBox hoặc TEE của điện thoại bạn | **Không.** Không thể xuất ra, do thiết kế của phần cứng |
-| **Shard 2** | Trên thiết bị của bạn, đã mã hoá — kèm một bản sao ciphertext được đồng bộ để phòng mất dữ liệu | Chỉ ở dạng ciphertext |
+| **Shard1** | Bên trong StrongBox hoặc TEE của điện thoại bạn | **Không.** Không thể xuất ra, do thiết kế của phần cứng |
+| **Shard2** | Trên thiết bị của bạn, đã mã hoá — kèm một bản sao ciphertext được đồng bộ để phòng mất dữ liệu | Chỉ ở dạng ciphertext |
 | **Pepper** | Một mô-đun bảo mật phần cứng của Google Cloud KMS | **Không bao giờ** — kể cả trong phản hồi gửi về máy chủ của chính chúng tôi |
-| **Shard 4** | Google Cloud Secret Manager | Không bao giờ tới được điện thoại bạn |
+| **Shard4** | Google Cloud Secret Manager | Không bao giờ tới được điện thoại bạn |
 
 Hai mảnh cuối không được ghép trực tiếp. Máy chủ của chúng tôi dùng chúng để tính
 ra một giá trị thứ ba, **ShardVault**, rồi trả giá trị đó về. Sau đó, ngay trên
@@ -146,11 +146,12 @@ là một dịch vụ có thể đọc nó.**
   Chúng mang một lớp mã hoá gắn với phần cứng bảo mật của chiếc điện thoại đó, nên
   chép tệp sang máy khác cũng vô ích. Xem
   [Sao lưu và xuất dữ liệu](./backups.md).
-- **Ảnh chụp màn hình bị từ chối thẳng** khi một màn hình của PasswordEpic đang
-  hiện — Android chặn việc chụp cho toàn màn hình, kể cả bàn phím. *Quay* màn hình
-  thì khác: cửa sổ của chính ứng dụng hiện ra màu đen, nhưng bàn phím thuộc về một
-  ứng dụng khác và vẫn hiện rõ, và đó là lý do ứng dụng từ chối cho nhập mã khi có
-  bản ghi đang chạy. Phát hiện được điều đó cần Android 15.
+- **Việc ghi lại màn hình đã được xử lý, còn đúng một khoảng hở.** Chụp ảnh bị từ
+  chối thẳng khi một màn hình của PasswordEpic đang hiện, và quay màn hình trong
+  ứng dụng thì ra toàn màu đen — kể cả bàn phím. Khoảng hở là hộp thoại tự động
+  điền, vì nó nằm trên một ứng dụng khác đang bị quay bình thường; ở đó ứng dụng từ
+  chối cho nhập mã khi có bản ghi đang chạy, nhưng phát hiện được bản ghi thì cần
+  Android 15.
 - **Bàn phím bạn cài đặt có thể đọc những gì bạn gõ**, trong mọi ứng dụng. Nếu
   điều đó quan trọng với bạn, hãy dùng bàn phím đi kèm máy; PasswordEpic sẽ cảnh
   báo khi bàn phím đang dùng không phải bàn phím gốc.

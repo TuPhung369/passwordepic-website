@@ -40,10 +40,10 @@ flowchart LR
 
 | Shard | Where it lives | Can it leave? |
 | --- | --- | --- |
-| **Shard 1** | Inside your phone's StrongBox or TEE | **No.** Non-exportable by hardware design |
-| **Shard 2** | On your device, encrypted — with a ciphertext copy synced for durability | Only as ciphertext |
+| **Shard1** | Inside your phone's StrongBox or TEE | **No.** Non-exportable by hardware design |
+| **Shard2** | On your device, encrypted — with a ciphertext copy synced for durability | Only as ciphertext |
 | **Pepper** | A Google Cloud KMS hardware security module | **Never** — not even in a reply to our own servers |
-| **Shard 4** | Google Cloud Secret Manager | Never reaches your phone |
+| **Shard4** | Google Cloud Secret Manager | Never reaches your phone |
 
 The last two are not combined directly. Our server uses them to compute a third
 value, **ShardVault**, and hands that back. Then, on your device, in native
@@ -141,11 +141,11 @@ read it.**
 - **Backups and exports open only on the device that created them.** They carry
   a layer of encryption tied to that phone's secure hardware, so copying the
   file to another phone does not help. See [Backups and exports](./backups.md).
-- **Screenshots are refused outright** while a PasswordEpic screen is showing —
-  Android blocks the capture for the whole screen, keyboard included. A screen
-  *recording* is different: the app's own windows come out black, but the
-  keyboard belongs to another app and still renders, which is why the app
-  refuses passcode entry while one is running. Detecting that needs Android 15.
+- **Screen capture is handled, with one gap.** A screenshot is refused outright
+  while a PasswordEpic screen is showing, and a recording of the app comes out
+  black — keyboard included. The gap is the autofill dialog, which sits over a
+  different app that is being recorded normally; the app refuses passcode entry
+  there while a recording runs, but detecting one needs Android 15.
 - **A keyboard you install can read what you type**, in any app. If that matters
   to you, use the keyboard that shipped with your phone; PasswordEpic warns you
   when the active one did not.
