@@ -31,10 +31,11 @@
   --pe-hero-from: #0f172a;
   --pe-hero-to: #1e3a8a;
 
-  /* How wide content runs. Full width on phones, 80% everywhere else - with no
-     sidebar and no table-of-contents column, a fixed reading measure left most
-     of a laptop screen empty on both sides. */
-  --pe-content-width: 80%;
+  /* How wide content runs: everything on a phone, and progressively more of a
+     big screen. With no sidebar and no table-of-contents column there is
+     nothing else competing for the width, and empty gutters were the loudest
+     thing on the page. Overridden per breakpoint below. */
+  --pe-content-width: 100%;
 
   /* Elemental accents, taken from the five keys in the app icon. Used to give
      each tier and each workflow step its own identity without inventing a
@@ -75,6 +76,19 @@
   --pe-earth: #d69e2e;
 }
 
+@media (min-width: 997px) {
+  :root {
+    --pe-content-width: 90%;
+  }
+}
+
+/* Wider still on a large monitor, where 90% still left visible gutters. */
+@media (min-width: 1600px) {
+  :root {
+    --pe-content-width: 94%;
+  }
+}
+
 /* ---------------------------------------------------------------------------
  * Navbar-only chrome
  * ------------------------------------------------------------------------ */
@@ -109,6 +123,14 @@
    `container--fluid`; doc pages have to be told. */
 main[class*='docMainContainer'] > .container {
   max-width: none;
+}
+
+/* Doc pages reserve room for a sidebar that no longer exists: Docusaurus sets
+   `max-width: calc(100% - var(--doc-sidebar-hidden-width))` on the main column
+   even with `sidebarPath: false`. Reclaim it - there is nothing to make room
+   for. */
+:root {
+  --doc-sidebar-hidden-width: 0px;
 }
 
 /* Infima already gives every Markdown table `display: block; overflow: auto`,
@@ -192,6 +214,66 @@ main.container--fluid > .row > .col > article {
   margin-left: 0;
   margin-right: 0;
   border-radius: 0.25rem;
+}
+
+/* ---------------------------------------------------------------------------
+ * Language switcher
+ *
+ * A flag beside each language, and on desktop the trigger is the globe alone -
+ * the current language is already visible in the page you are reading, so
+ * spelling it out in the navbar spends space on something nobody is looking
+ * for. The mobile drawer keeps its text label, because there the items are
+ * rows in a list with nothing else to identify them.
+ *
+ * Flags are SVG rather than the flag emoji they resemble: Windows ships no
+ * glyphs for regional-indicator pairs, so 🇻🇳 renders there as the letters
+ * "VN". An image is the only version that looks the same everywhere.
+ * ------------------------------------------------------------------------ */
+
+/* `lang` is set by Docusaurus from each locale's htmlLang, which is what makes
+   this addressable without swizzling the component. */
+.dropdown__link[lang]::before,
+.menu__link[lang]::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 14px;
+  margin-right: 0.6rem;
+  vertical-align: -2px;
+  border-radius: 2px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14);
+}
+
+/* Prefix matching, so an htmlLang of `en`, `en-US` or `en-GB` all resolve. */
+.dropdown__link[lang^='en']::before,
+.menu__link[lang^='en']::before {
+  background-image: url('/img/flag-en.svg');
+}
+
+.dropdown__link[lang^='vi']::before,
+.menu__link[lang^='vi']::before {
+  background-image: url('/img/flag-vi.svg');
+}
+
+@media (min-width: 997px) {
+  /* Zeroing the font size drops the label without touching the globe, which
+     carries its own width and height. The dropdown menu is a sibling of this
+     link, not a child, so its text is unaffected. */
+  .navbar-locale {
+    font-size: 0;
+  }
+
+  .navbar-locale > svg {
+    margin-right: 0;
+  }
+
+  /* The caret is a border triangle, so font-size does not remove it. Without a
+     label there is nothing for it to point at. */
+  .navbar-locale::after {
+    display: none;
+  }
 }
 
 /* ---------------------------------------------------------------------------

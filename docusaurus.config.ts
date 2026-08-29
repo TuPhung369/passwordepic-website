@@ -143,7 +143,13 @@ const config: Config = {
             { to: '/terms', label: 'Terms of Service' },
           ],
         },
-        { type: 'localeDropdown', position: 'right' },
+        // `navbar-locale` reduces this to the globe alone on desktop and puts
+        // a flag beside each language - see src/css/custom.css.
+        {
+          type: 'localeDropdown',
+          position: 'right',
+          className: 'navbar-locale',
+        },
         // The only thing on this site a visitor can actually *do*, so it gets
         // the last slot and a button treatment - see `.navbar-cta` in
         // src/css/custom.css.
