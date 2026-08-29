@@ -409,6 +409,17 @@ export default function Threats(): ReactNode {
       ))}
 
       <p className={styles.threatFooter}>
+        <Translate id="home.threats.deeper">
+          Each of these is one floor of a longer story — an attacker walking
+          upwards, and what it costs them at every step:
+        </Translate>{' '}
+        <Link to="/docs/attack-scenarios">
+          <Translate id="home.threats.deeperLink">
+            if someone came after your vault
+          </Translate>{' '}
+          <FaArrowRight aria-hidden size={12} />
+        </Link>
+        <br />
         <Translate id="home.threats.glossary">
           Every technical name above is explained in plain words here:
         </Translate>{' '}
