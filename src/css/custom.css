@@ -265,15 +265,23 @@ main.container--fluid > .row > .col > article {
     font-size: 0;
   }
 
-  .navbar-locale > svg {
-    margin-right: 0;
+  /* Flex, not inline. Docusaurus gives the globe `vertical-align: text-bottom`,
+     which positions it against the line box of the label text - and the rule
+     above sets that text to `font-size: 0`. The icon was being aligned to the
+     bottom of a text box with no height, which is what tipped it out of line
+     with the toggle beside it. Flex centring does not care about text metrics.
+
+     Padding is trimmed on the right so the globe and the toggle read as one
+     group; navbar items otherwise carry 0.75rem each side. */
+  .navbar-locale {
+    display: inline-flex;
+    align-items: center;
+    padding-right: 0.4rem;
   }
 
-  /* Pull the globe in against the colour-mode toggle that follows it. Navbar
-     items carry 0.75rem of padding each side; at full width the pair read as
-     two unrelated controls instead of one group. */
-  .navbar-locale {
-    padding-right: 0.4rem;
+  .navbar-locale > svg {
+    margin-right: 0;
+    vertical-align: middle;
   }
 
   /* The caret is a border triangle, so font-size does not remove it. Without a

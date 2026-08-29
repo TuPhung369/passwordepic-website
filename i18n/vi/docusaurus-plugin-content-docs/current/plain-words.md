@@ -50,9 +50,10 @@ nhau, nên không nơi nào — kể cả chúng tôi — nắm đủ để dự
 
 ```mermaid
 flowchart TD
+  M["🧠 Mã mở khoá của bạn<br/>Chỉ nằm trong đầu bạn"] --> Q
   P["🔒 Mảnh 1<br/>Chip bảo mật trong máy bạn"] --> K["🔑 Khoá kho"]
-  Q["📦 Mảnh 2<br/>Trên máy bạn, đã mã hoá"] --> K
-  R["🧮 Mảnh 3<br/>Máy chủ tính ra"] --> K
+  Q["📦 Mảnh 2<br/>Mã hoá trong cơ sở dữ liệu,<br/>điện thoại bạn tải về"] --> K
+  R["🧮 Mảnh 3<br/>Tính bên trong Google Cloud KMS"] --> K
   K --> N["Bỏ đi bất kỳ mảnh nào<br/>là không có khoá"]
 ```
 

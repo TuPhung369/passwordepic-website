@@ -13,8 +13,12 @@ import React, {type ComponentProps, type ReactNode} from 'react';
  * either theme, because it is strokes in `currentColor`.
  */
 export default function IconLanguage({
-  width = 20,
-  height = 20,
+  // 22 rather than Docusaurus' 20: the colour-mode toggle beside this renders
+  // its glyph in a 24px box, and at 20 the globe read as the smaller of a pair
+  // that should look like one control. Not 24, because a full circle fills its
+  // box where a crescent moon does not.
+  width = 22,
+  height = 22,
   ...props
 }: ComponentProps<'svg'>): ReactNode {
   return (

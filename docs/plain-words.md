@@ -50,9 +50,10 @@ places, so no single place — including ours — holds enough to rebuild it.
 
 ```mermaid
 flowchart TD
+  M["🧠 Your passcode<br/>Only in your head"] --> Q
   P["🔒 Shard 1<br/>Your phone's security chip"] --> K["🔑 Vault key"]
-  Q["📦 Shard 2<br/>On your phone, encrypted"] --> K
-  R["🧮 Shard 3<br/>Computed by our server"] --> K
+  Q["📦 Shard 2<br/>Encrypted in our database,<br/>fetched by your phone"] --> K
+  R["🧮 Shard 3<br/>Computed inside Google Cloud KMS"] --> K
   K --> N["Take away any one<br/>and there is no key"]
 ```
 

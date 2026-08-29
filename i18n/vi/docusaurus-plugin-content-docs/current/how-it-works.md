@@ -21,33 +21,31 @@ Những mảnh ấy gọi là **shard**, và chúng nằm ở bốn nơi khác n
 
 ```mermaid
 flowchart LR
-  subgraph phone["📱 Điện thoại của bạn"]
-    P1["🔒 Mảnh 1<br/>Khoá trong chip bảo mật.<br/>Không ra ngoài được."]
-    P2["📦 Mảnh 2<br/>Lưu ở dạng mã hoá"]
-  end
-
-  subgraph ours["☁️ Máy chủ của chúng tôi"]
-    C2["📦 Bản sao của mảnh 2<br/>Vẫn đang mã hoá"]
-    P3["🧮 Mảnh 3<br/>Tính riêng cho bạn<br/>mỗi lần mở khoá"]
-  end
-
-  P1 --> KEY
-  P2 --> KEY
-  P3 --> KEY
-
-  KEY["🔑 Khoá kho của bạn<br/>Dựng trên máy bạn.<br/>Xoá ngay sau đó."]
+  P["🧠 Mã mở khoá của bạn<br/>Chỉ nằm trong đầu bạn.<br/>Không lưu, không gửi đi."] --> S2
+  S2["☁️ Shard 2<br/>Mã hoá trong cơ sở dữ liệu của chúng tôi.<br/>Điện thoại bạn tải về, và không<br/>mở được nếu thiếu bạn."]
+  S1["📱 Shard 1<br/>Chip bảo mật trong máy bạn.<br/>Không bao giờ rời khỏi đó."] --> KEY
+  S2 --> KEY
+  S3["🔐 Shard 3<br/>Tính bên trong Google Cloud KMS,<br/>mới tinh ở mỗi lần mở khoá."] --> KEY
+  KEY["🔑 Khoá kho của bạn<br/>Ghép lại trên máy bạn.<br/>Xoá ngay sau đó."]
+  KEY --> N["Bốn nơi, và không hai nơi nào<br/>nằm dưới cùng một quyền kiểm soát."]
 ```
 
 | Mảnh | Nằm ở đâu | Có rời đi được không? |
 | --- | --- | --- |
+| **Mã mở khoá của bạn** | Trong trí nhớ của bạn, và không ở đâu khác | Không bao giờ được lưu hay truyền đi, dưới bất kỳ dạng nào |
 | **Shard1** | Bên trong StrongBox hoặc TEE của điện thoại bạn | **Không.** Không thể xuất ra, do thiết kế của phần cứng |
-| **Shard2** | Trên thiết bị của bạn, đã mã hoá — kèm một bản sao ciphertext được đồng bộ để phòng mất dữ liệu | Chỉ ở dạng ciphertext |
+| **Shard2** | Nằm mã hoá trong cơ sở dữ liệu của chúng tôi. Điện thoại bạn tải nó về | Chỉ ở dạng ciphertext, và tự nó không mở được gì |
 | **Pepper** | Một mô-đun bảo mật phần cứng của Google Cloud KMS | **Không bao giờ** — kể cả trong phản hồi gửi về máy chủ của chính chúng tôi |
 | **Shard4** | Google Cloud Secret Manager | Không bao giờ tới được điện thoại bạn |
 
-Hai mảnh cuối không được ghép trực tiếp. Máy chủ của chúng tôi dùng chúng để tính
-ra một giá trị thứ ba, **ShardVault**, rồi trả giá trị đó về. Sau đó, ngay trên
-thiết bị của bạn, trong mã native:
+Hãy để ý danh sách đó thật ra là gì: **bốn nơi tách biệt, và không có hai nơi nào
+nằm dưới cùng một quyền kiểm soát.** Trí nhớ của bạn, phần cứng điện thoại bạn, cơ
+sở dữ liệu của chúng tôi, và dịch vụ khoá của Google. Chiếm được bất kỳ một nơi
+nào cũng không đủ.
+
+Pepper và Shard4 không bao giờ được giao ra ngoài. Máy chủ của chúng tôi dùng
+chúng để tính ra một giá trị thứ ba, **ShardVault**, và chỉ trả về đúng giá trị
+đó. Sau đó, ngay trên thiết bị của bạn, trong mã native:
 
 ```
 khoá kho = Shard 1  ⊕  Shard 2  ⊕  ShardVault

@@ -21,33 +21,30 @@ Those pieces are called **shards**, and they live in four different places.
 
 ```mermaid
 flowchart LR
-  subgraph phone["📱 Your phone"]
-    P1["🔒 Piece 1<br/>Locked inside the<br/>security chip.<br/>Cannot come out."]
-    P2["📦 Piece 2<br/>Stored, encrypted"]
-  end
-
-  subgraph ours["☁️ Our servers"]
-    C2["📦 A copy of piece 2<br/>Still encrypted"]
-    P3["🧮 Piece 3<br/>Calculated for you<br/>each time you unlock"]
-  end
-
-  P1 --> KEY
-  P2 --> KEY
-  P3 --> KEY
-
-  KEY["🔑 The key to your vault<br/>Built on your phone.<br/>Wiped straight after."]
+  P["🧠 Your passcode<br/>Only in your head.<br/>Never stored, never sent."] --> S2
+  S2["☁️ Shard 2<br/>Encrypted in our database.<br/>Your phone fetches it, and<br/>cannot open it without you."]
+  S1["📱 Shard 1<br/>Your phone's security chip.<br/>Never leaves it."] --> KEY
+  S2 --> KEY
+  S3["🔐 Shard 3<br/>Computed inside Google Cloud KMS,<br/>fresh at every unlock."] --> KEY
+  KEY["🔑 Your vault key<br/>Assembled on your phone.<br/>Wiped straight after."]
+  KEY --> N["Four places, no two of them<br/>under the same control."]
 ```
 
-| Shard | Where it lives | Can it leave? |
+| Piece | Where it lives | Can it leave? |
 | --- | --- | --- |
+| **Your passcode** | Your memory, and nowhere else | It is never stored or transmitted at all |
 | **Shard1** | Inside your phone's StrongBox or TEE | **No.** Non-exportable by hardware design |
-| **Shard2** | On your device, encrypted — with a ciphertext copy synced for durability | Only as ciphertext |
+| **Shard2** | Encrypted in our database. Your phone fetches it | Only as ciphertext, and alone it opens nothing |
 | **Pepper** | A Google Cloud KMS hardware security module | **Never** — not even in a reply to our own servers |
 | **Shard4** | Google Cloud Secret Manager | Never reaches your phone |
 
-The last two are not combined directly. Our server uses them to compute a third
-value, **ShardVault**, and hands that back. Then, on your device, in native
-code:
+Notice what that list really is: **four separate places, and no two of them
+under the same control.** Your memory, your phone's hardware, our database, and
+Google's key service. Taking any one of them is not enough.
+
+The pepper and Shard4 are never handed over. Our server uses them to compute a
+third value, **ShardVault**, and returns only that. Then, on your device, in
+native code:
 
 ```
 vault key = Shard 1  ⊕  Shard 2  ⊕  ShardVault
