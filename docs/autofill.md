@@ -32,8 +32,7 @@ flowchart TD
   D -->|"On websites,<br/>in Chrome"| F["Chrome → Settings →<br/>turn on 'Autofill using<br/>another service'"]
   F --> G["Close Chrome fully,<br/>then reopen it"]
   G --> E
-  D -->|"In an app that<br/>never offers it"| H["Optional: turn on<br/>PasswordEpic Autofill Refill<br/>under Accessibility"]
-  H --> E
+  D -->|"In an app that<br/>never offers it"| H["❌ Nothing can fill there.<br/>That app opted out of autofill<br/>for every password manager."]
 ```
 
 ## Where the setting actually lives
@@ -111,29 +110,28 @@ password manager can override it.
 ```mermaid
 flowchart TD
   A["Where do you need filling?"] --> B["Most apps, and websites"]
-  A --> C["An app that never offers it"]
+  A --> C["An app that opted out"]
   B --> D["✅ Standard autofill<br/>No extra permission needed"]
-  C --> E["⚠️ Autofill Refill<br/>Uses the accessibility permission.<br/>Optional — read what it does first."]
+  C --> E["❌ Nothing can fill there.<br/>Open PasswordEpic and copy<br/>the password across instead."]
 ```
 
-For those, PasswordEpic offers a **separate, optional** service called
-**PasswordEpic Autofill Refill**, which uses Android's accessibility permission
-to fill forms the standard framework cannot reach.
+There is no way around it, and you should be suspicious of any password manager
+that claims otherwise.
 
-**Settings → Accessibility → PasswordEpic Autofill Refill → On**
+:::note Why we do not work around it
 
-:::warning This one deserves a moment's thought
+The usual trick is an **accessibility service** — the Android permission that
+lets an app read every field on screen. It would work, and PasswordEpic
+deliberately does not ship one.
 
-Accessibility is a powerful permission — it is exactly the permission this site
-warns you about elsewhere, because malware abuses it to read screens.
+Google does not permit the accessibility API to be used this way, and the
+reason is sound: it is the single most abused permission on Android, which is
+why this site warns you about it elsewhere. A password manager asking for it
+is asking you to grant the exact capability that credential-stealing malware
+needs.
 
-What the app does with it: reads on-screen fields only to find login forms and
-fill credentials you saved, always after a fingerprint or passcode check.
-Everything happens on your device; the contents of your screen are never
-collected, stored or transmitted.
-
-It is **optional**. If the standard autofill covers the apps you use, leave this
-off. You can turn it off at any time from the same screen.
+For an app that refuses autofill, open PasswordEpic, copy the password, and
+paste it. Slower, and honest.
 
 :::
 

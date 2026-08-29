@@ -29,7 +29,7 @@ flowchart TD
   D -->|"Không"| D1["❌ Tự động điền cần Android 8.0"]
   D -->|"Có"| D2["Loại PasswordEpic khỏi<br/>danh sách tối ưu pin"]
   B -->|"Có, nhưng không<br/>chạy trên trang web"| E["Chrome: bật 'Tự động điền bằng<br/>dịch vụ khác', rồi khởi động lại Chrome"]
-  B -->|"Có, nhưng không chạy<br/>trong một app cụ thể"| F["App đó từ chối dùng.<br/>Tuỳ chọn: Autofill Refill<br/>trong mục Trợ năng"]
+  B -->|"Có, nhưng không chạy<br/>trong một app cụ thể"| F["App đó từ chối tự động điền.<br/>Hãy sao chép và dán — không<br/>trình nào điền được ở đó."]
 ```
 
 1. **PasswordEpic có đang thật sự được chọn làm dịch vụ tự động điền không?** Đặt
@@ -76,10 +76,9 @@ trước, thoát khỏi màn hình, quay lại — lúc này PasswordEpic sẽ x
 Một số ứng dụng chủ động không dùng khung tự động điền. Đó là lựa chọn của họ và
 không trình quản lý mật khẩu nào ghi đè được.
 
-Dịch vụ trợ năng **PasswordEpic Autofill Refill** không bắt buộc sinh ra đúng cho
-những trường hợp này. Hãy
-[đọc xem nó làm gì trước đã](./autofill.md#khi-một-ứng-dụng-từ-chối-hẳn-tự-động-điền)
-— đó là một quyền rất mạnh và đáng hiểu rõ trước khi bật.
+Hãy mở PasswordEpic, sao chép mật khẩu rồi dán vào ứng dụng đó. Chậm hơn, nhưng
+đó là câu trả lời trung thực duy nhất — xem
+[vì sao chúng tôi không lách](./autofill.md#khi-một-ứng-dụng-từ-chối-hẳn-tự-động-điền).
 
 ### Có gợi ý nhưng lại là mục sai
 
@@ -218,8 +217,8 @@ Hãy đóng ứng dụng đang vẽ đè lên màn hình — bộ lọc ánh sá
 dụng quay màn hình là những thủ phạm quen thuộc — hoặc tạm tắt dịch vụ trợ năng,
 rồi thử lại.
 
-Nếu bạn đã bật dịch vụ **Autofill Refill** của chính PasswordEpic thì đó cũng là
-một dịch vụ trợ năng, và ứng dụng biết cách bỏ qua dịch vụ của chính nó.
+Bản thân PasswordEpic không cài dịch vụ trợ năng nào, nên không có cảnh báo nào ở
+đây là do chính nó gây ra.
 
 ## Sao lưu và khôi phục
 

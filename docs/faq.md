@@ -29,7 +29,7 @@ flowchart TD
   D -->|"No"| D1["❌ Autofill needs Android 8.0"]
   D -->|"Yes"| D2["Exclude PasswordEpic from<br/>battery optimisation"]
   B -->|"Yes, but not<br/>on websites"| E["Chrome: turn on 'Autofill using<br/>another service', then restart Chrome"]
-  B -->|"Yes, but not in<br/>one specific app"| F["That app opted out.<br/>Optional: Autofill Refill<br/>under Accessibility"]
+  B -->|"Yes, but not in<br/>one specific app"| F["That app opted out of autofill.<br/>Copy and paste instead —<br/>no manager can fill there."]
 ```
 
 1. **Is PasswordEpic actually selected as the autofill service?** Setting it once
@@ -75,10 +75,9 @@ leave the screen, come back, and PasswordEpic should now be listed.
 Some apps opt out of the autofill framework entirely. That is their choice and
 no password manager can override it.
 
-The optional **PasswordEpic Autofill Refill** accessibility service exists for
-exactly these cases. Read
-[what it does first](./autofill.md#when-an-app-refuses-autofill-entirely) — it is
-a powerful permission and worth understanding before you turn it on.
+Open PasswordEpic, copy the password, and paste it into the app. Slower, but it
+is the only honest answer — see
+[why we do not work around it](./autofill.md#when-an-app-refuses-autofill-entirely).
 
 ### The suggestion appears but the wrong entry is offered
 
@@ -218,8 +217,8 @@ Close the app that is drawing over the screen — screen dimmers, chat heads and
 screen recorders are common causes — or turn off the accessibility service
 temporarily, then try again.
 
-If you turned on PasswordEpic's own **Autofill Refill** service, that is an
-accessibility service too, and the app knows to ignore its own.
+PasswordEpic itself installs no accessibility service, so nothing it warns you
+about here is its own doing.
 
 ## Backups and restore
 

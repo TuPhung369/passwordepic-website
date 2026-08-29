@@ -32,8 +32,7 @@ flowchart TD
   D -->|"Trên trang web,<br/>trong Chrome"| F["Chrome → Cài đặt →<br/>bật 'Tự động điền<br/>bằng dịch vụ khác'"]
   F --> G["Đóng hẳn Chrome,<br/>rồi mở lại"]
   G --> E
-  D -->|"Trong app không bao giờ<br/>hiện tự động điền"| H["Tuỳ chọn: bật<br/>PasswordEpic Autofill Refill<br/>trong mục Trợ năng"]
-  H --> E
+  D -->|"Trong app không bao giờ<br/>hiện tự động điền"| H["❌ Không gì điền được ở đó.<br/>App đó đã từ chối tự động điền<br/>với mọi trình quản lý mật khẩu."]
 ```
 
 ## Mục cài đặt nằm ở đâu
@@ -112,29 +111,27 @@ không trình quản lý mật khẩu nào ghi đè được.
 ```mermaid
 flowchart TD
   A["Bạn cần điền ở đâu?"] --> B["Hầu hết ứng dụng, và trang web"]
-  A --> C["Một app không bao giờ hiện nó"]
+  A --> C["Một app đã từ chối tính năng này"]
   B --> D["✅ Tự động điền tiêu chuẩn<br/>Không cần quyền gì thêm"]
-  C --> E["⚠️ Autofill Refill<br/>Dùng quyền trợ năng.<br/>Không bắt buộc — đọc kỹ trước đã."]
+  C --> E["❌ Không gì điền được ở đó.<br/>Hãy mở PasswordEpic và<br/>chép mật khẩu sang."]
 ```
 
-Cho những trường hợp đó, PasswordEpic có một dịch vụ **riêng và không bắt buộc**
-tên là **PasswordEpic Autofill Refill**, dùng quyền trợ năng của Android để điền
-vào những biểu mẫu mà khung tiêu chuẩn không với tới.
+Không có cách nào lách được, và bạn nên nghi ngờ bất kỳ trình quản lý mật khẩu
+nào nói ngược lại.
 
-**Cài đặt → Trợ năng → PasswordEpic Autofill Refill → Bật**
+:::note Vì sao chúng tôi không lách
 
-:::warning Cái này đáng để bạn cân nhắc một chút
+Chiêu thường thấy là dùng một **dịch vụ trợ năng** — quyền của Android cho phép
+một ứng dụng đọc mọi ô trên màn hình. Cách đó chạy được, và PasswordEpic **cố ý
+không** cài một dịch vụ như vậy.
 
-Trợ năng là một quyền rất mạnh — đó đúng là quyền mà trang này cảnh báo bạn ở
-những chỗ khác, vì mã độc hay lợi dụng nó để đọc màn hình.
+Google không cho phép dùng API trợ năng theo kiểu đó, và lý do là chính đáng: đây
+là quyền bị lạm dụng nhiều nhất trên Android, và cũng chính là quyền mà trang này
+cảnh báo bạn ở những chỗ khác. Một trình quản lý mật khẩu đi xin quyền đó là đang
+xin bạn cấp đúng thứ mà mã độc chuyên đánh cắp thông tin đăng nhập cần.
 
-Ứng dụng dùng nó để làm gì: đọc các ô trên màn hình chỉ nhằm tìm biểu mẫu đăng
-nhập và điền thông tin bạn đã lưu, và luôn sau khi bạn xác thực bằng vân tay hoặc
-mã mở khoá. Mọi thứ diễn ra trên máy bạn; nội dung màn hình không bao giờ được
-thu thập, lưu trữ hay truyền đi.
-
-Nó **không bắt buộc**. Nếu tự động điền tiêu chuẩn đã phủ hết các ứng dụng bạn
-dùng thì cứ để tắt. Bạn có thể tắt nó bất cứ lúc nào ở cùng màn hình đó.
+Với một app từ chối tự động điền, hãy mở PasswordEpic, sao chép mật khẩu rồi dán
+vào. Chậm hơn, nhưng trung thực.
 
 :::
 
