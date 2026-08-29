@@ -151,8 +151,13 @@ main.container--fluid > .row > .col > article {
 .navbar-cta {
   display: inline-flex;
   align-items: center;
+  /* Navbar items normally carry 0.75rem of horizontal padding, and that is
+     what spaces them apart. Replacing it with the button's own padding took
+     the gap with it, leaving the theme toggle flush against this button - so
+     the spacing comes back as margins. */
   padding: 0.35rem 0.9rem;
-  margin-left: 0.35rem;
+  margin-left: 0.5rem;
+  margin-right: 0.75rem;
   border-radius: 8px;
   background: var(--ifm-color-primary);
   color: #fff !important;
@@ -176,6 +181,7 @@ main.container--fluid > .row > .col > article {
 .navbar-sidebar .navbar-cta {
   display: block;
   margin-left: 0;
+  margin-right: 0;
   border-radius: 0.25rem;
 }
 
