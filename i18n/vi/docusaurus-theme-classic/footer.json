@@ -31,9 +31,9 @@
     "message": "Các gói bảo mật",
     "description": "The label of footer link with label=Security tiers linking to /docs/security-tiers"
   },
-  "link.item.label.If someone came after your vault": {
-    "message": "Nếu có người nhắm vào kho của bạn",
-    "description": "The label of footer link with label=If someone came after your vault linking to /docs/attack-scenarios"
+  "link.item.label.The war for the vault": {
+    "message": "Cuộc chiến giành kho mật khẩu",
+    "description": "The label of footer link with label=The war for the vault linking to /docs/attack-scenarios"
   },
   "link.item.label.What these words mean": {
     "message": "Những từ này nghĩa là gì",

@@ -31,9 +31,9 @@
     "message": "Các gói bảo mật",
     "description": "Navbar item with label Security tiers"
   },
-  "item.label.If someone came after your vault": {
-    "message": "Nếu có người nhắm vào kho của bạn",
-    "description": "Navbar item with label If someone came after your vault"
+  "item.label.The war for the vault": {
+    "message": "Cuộc chiến giành kho mật khẩu",
+    "description": "Navbar item with label The war for the vault"
   },
   "item.label.Your passcode": {
     "message": "Mã mở khoá của bạn",

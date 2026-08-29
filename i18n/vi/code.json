@@ -12,10 +12,6 @@
   "home.meta.description": {
     "message": "Trình quản lý mật khẩu zero-knowledge cho Android, dựa trên phần cứng bảo mật. Mã mở khoá không bao giờ rời khỏi thiết bị của bạn, và khoá của kho mật khẩu không thể ghép lại nếu thiếu nó."
   },
-  "starToc.label": {
-    "message": "Mục lục",
-    "description": "Label for the floating table-of-contents button"
-  },
   "home.cta.heading": {
     "message": "Hãy thẩm định, đừng chỉ tin"
   },
@@ -401,10 +397,10 @@
     "message": "Mã hoá là phần dễ — trình quản lý mật khẩu nào cũng có. Thứ tạo ra khác biệt là mọi lớp bao quanh khoảnh khắc bạn gõ mã mở khoá. Dưới đây là từng nỗi lo, và đúng thứ trả lời cho nó."
   },
   "home.threats.deeper": {
-    "message": "Mỗi mục ở trên là một tầng trong một câu chuyện dài hơn — một kẻ tấn công leo lên từng tầng, và mỗi bước tốn của họ bao nhiêu:"
+    "message": "Mỗi mục ở trên là một tầng trong một câu chuyện dài hơn: một kẻ tấn công đứng trước cửa, leo lên từng tầng, và mỗi bước tốn của anh ta bao nhiêu."
   },
   "home.threats.deeperLink": {
-    "message": "nếu có người nhắm vào kho của bạn"
+    "message": "đọc trọn cuộc chiến"
   },
   "home.threats.glossary": {
     "message": "Mọi thuật ngữ kỹ thuật ở trên đều được giải thích bằng lời thường tại đây:"
@@ -561,5 +557,9 @@
   },
   "home.who.footnote": {
     "message": "Chúng tôi liệt kê thẳng hàng thứ tư đó thay vì làm tròn nó đi. Máy chủ của chúng tôi có xử lý một mảnh của khoá — và vẫn không thể mở kho mật khẩu của bạn, bởi mảnh 1 chưa từng tồn tại ở đâu khác ngoài điện thoại của bạn."
+  },
+  "starToc.label": {
+    "message": "Mục lục",
+    "description": "Label for the floating table-of-contents button"
   }
 }

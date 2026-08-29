@@ -1,258 +1,504 @@
 ---
-title: Nếu có người nhắm vào kho của bạn
-description: Một kẻ tấn công leo lên từng tầng — họ thử gì, cái gì chặn họ, họ tốn bao nhiêu, và tầng chúng tôi không giữ nổi.
+title: Cuộc chiến giành kho mật khẩu
+description: Có người muốn lấy mật khẩu của bạn. Tất cả. Xem họ thử, từng tầng một — và xem mỗi tầng tốn của họ bao nhiêu.
 hide_table_of_contents: true
 ---
 
-# Nếu có người nhắm vào kho của bạn
+# Cuộc chiến giành kho mật khẩu
 
-Phần lớn các trang bảo mật liệt kê sản phẩm *có* những gì. Trang này làm ngược
-lại: đặt một kẻ tấn công ngay trước cửa và cho họ leo lên, từng tầng một. Mỗi
-tầng — họ thử gì, cái gì chặn họ, và đi tiếp thì tốn bao nhiêu.
+Hãy tưởng tượng có người muốn lấy mật khẩu của bạn.
 
-Toà nhà này có một tầng trên cùng mà chúng tôi **không giữ nổi**. Tầng đó cũng
-nằm trên trang này, kèm theo cái giá thật sự để leo tới đó. Một trang nói ngược
-lại thì không đáng đọc.
+Không phải một mật khẩu. **Tất cả.**
 
-```mermaid
-flowchart TD
-  F1["🤖 Tầng 1 — Đoán mò từ bất cứ đâu"] --> F2["🪪 Tầng 2 — Họ có tài khoản Google của bạn"]
-  F2 --> F3["🏢 Tầng 3 — Họ chiếm máy chủ của chúng tôi"]
-  F3 --> F4["📡 Tầng 4 — Họ ngồi giữa đường truyền"]
-  F4 --> F5["📱 Tầng 5 — Họ cầm được điện thoại bạn"]
-  F5 --> F6["🔓 Tầng 6 — Họ root máy"]
-  F6 --> F7["👁️ Tầng 7 — Có thứ rình lúc bạn gõ"]
-  F7 --> F8["💾 Tầng 8 — Họ lấy tệp sao lưu"]
-  F8 --> F9["🎭 Tầng 9 — Họ đưa bạn một app giả"]
-  F9 --> F10["🧠 Tầng 10 — Bộ nhớ sống trên máy họ đã chiếm"]
-  F10 --> X["Tầng chúng tôi không giữ nổi.<br/>Hãy đọc xem nó tốn bao nhiêu."]
-```
+Phần lớn các trang bảo mật trả lời chuyện đó bằng cách liệt kê sản phẩm *có* gì:
+thuật toán này, chứng chỉ kia, một hàng logo. Trang này làm một việc thú vị hơn.
 
-## Tầng 1 — Đoán mò, từ bất cứ đâu trên thế giới
+**Hãy thử tấn công nó.**
 
-**Họ thử gì.** Email của bạn xuất hiện trong một vụ rò rỉ dữ liệu kèm một mật
-khẩu bạn từng dùng ở nơi khác. Một đoạn script thử nó ở đây, cùng vài nghìn biến
-thể, trên vài nghìn tài khoản.
+## Vòng 0 — Luật chơi
 
-**Cái gì chặn họ.** Mỗi lần đăng nhập đều được chấm điểm ngầm về khả năng là hành
-vi tự động, và còn bị giới hạn tần suất bên trên nữa. Bạn không thấy gì cả trừ
-khi có điều bất thường.
-
-**Họ tốn bao nhiêu.** Gần như không tốn gì để thử, và thu về cũng gần như không
-có gì. Ngay cả khi đăng nhập thành công, họ cũng chỉ mới lên tới Tầng 2 — nơi
-không có kho mật khẩu nào chờ sẵn.
-
-## Tầng 2 — Họ đã đăng nhập với danh nghĩa của bạn
-
-**Họ thử gì.** Họ có tài khoản Google của bạn. Họ cài PasswordEpic lên máy của họ
-và đăng nhập.
-
-**Cái gì chặn họ.** Ở các gói trả phí, tài khoản của bạn gắn với một thiết bị, và
-danh tính không phải là một mã định danh mà ứng dụng có thể tự khai — đó là việc
-sở hữu một chiếc khoá được sinh bên trong chip bảo mật của *chính điện thoại bạn*,
-và không thể xuất ra. Lần đăng nhập thứ hai bị từ chối thẳng.
-
-```mermaid
-flowchart TD
-  A["😈 Đăng nhập bằng tài khoản bạn<br/>trên máy của họ"] --> B{"Máy này có giữ chiếc khoá<br/>phần cứng đã gắn không?"}
-  B -->|"Không"| C["❌ Bị từ chối. Tài khoản đã<br/>gắn với thiết bị khác rồi."]
-  B -->|"Họ ngắt mạng<br/>để né phép kiểm tra"| D["Không có lời gọi dẫn xuất khoá"]
-  D --> E["❌ Không dẫn xuất khoá nghĩa là không có<br/>khoá kho, tức là không có kho.<br/>Ngắt mạng không giúp được gì."]
-```
-
-**Họ nhận được gì.** Một kho rỗng của riêng họ. Các mục của bạn chưa từng nằm
-trên máy chủ nào để phiên của họ tải về, và chiếc khoá giải mã chúng không thể
-dựng được trên một thiết bị không giữ Shard 1.
-
-## Tầng 3 — Họ chiếm trọn chúng tôi
-
-**Họ thử gì.** Không phải điện thoại bạn — mà là chúng tôi. Họ lấy trọn cơ sở dữ
-liệu.
-
-**Họ lấy được gì.** Hồ sơ tài khoản, và Shard 2 ở dạng đã mã hoá. Toàn bộ chiến
-lợi phẩm chỉ có vậy. Các mục trong kho được mã hoá ngay trên điện thoại bạn và
-không bao giờ được tải lên, nên trong đó không có gì của bạn để mà lấy.
-
-**Cái gì chặn họ đi tiếp.** Ba thứ, và họ cần đủ cả ba:
-
-```mermaid
-flowchart TD
-  A["😈 Đang nắm trọn cơ sở dữ liệu"] --> B["✅ Họ có Shard 2, đã mã hoá"]
-  B --> C{"Họ mở được nó không?"}
-  C -->|"Cần mã mở khoá của bạn"| D["❌ Không được lưu ở đâu cả.<br/>Nó nằm trong đầu bạn."]
-  C -->|"Thử hỏi máy chủ<br/>xin ShardVault"| E["❌ Nó được tính theo ID tài khoản<br/>của người đang hỏi, nên họ nhận<br/>đúng của họ — và chỉ 5 lần<br/>mỗi khoảng thời gian."]
-  C -->|"Lấy luôn Shard 1"| F["❌ Nó chưa từng ở đây.<br/>Nó chưa từng rời điện thoại bạn."]
-```
-
-**Họ tốn bao nhiêu.** Chiếm trọn hạ tầng của chúng tôi — và thu về không có gì mở
-được dù chỉ một kho mật khẩu. Đó chính là khác biệt giữa một dịch vụ *hứa* không
-nhìn và một dịch vụ *không thể* nhìn.
-
-## Tầng 4 — Họ ngồi giữa bạn và chúng tôi
-
-**Họ thử gì.** Một hồ sơ công ty, một chứng chỉ gốc cài thêm, một mạng Wi-Fi độc
-hại. Bất cứ thứ gì cho phép họ đưa ra một chứng chỉ mà điện thoại bạn sẽ tin, rồi
-đọc lời gọi trả về một phần khoá của bạn.
-
-**Cái gì chặn họ.** Ở Platinum và Titanium, lời gọi đó **chỉ chấp nhận một tập cố
-định các chứng chỉ gốc của chính Google**. Chứng chỉ mà điện thoại bạn được bảo là
-phải tin thì vẫn bị từ chối.
-
-**Một lời nói thật.** Ghim chứng chỉ là biện pháp có thể làm hỏng chính ứng dụng
-của mình nếu tổ chức cấp chứng chỉ xoay vòng mà bạn không theo kịp. Bộ ghim của
-chúng tôi được kiểm tra với các endpoint thật **trước mỗi lần phát hành** chứ
-không phải đoán — vì một bộ ghim không ai kiểm rồi sẽ khoá cửa đúng những người
-nó sinh ra để bảo vệ.
-
-## Tầng 5 — Họ cầm được điện thoại bạn, máy đang khoá
-
-**Họ thử gì.** Mã mở khoá. Hàng triệu lần đoán, ngoại tuyến, thong thả.
-
-**Cái gì chặn họ.** Mỗi lần đoán tốn 128 MiB bộ nhớ và thời gian thật, bởi đó
-đúng bằng cái giá bạn trả khi mở khoá. Ứng dụng cũng không cho bạn đặt mã dưới 45
-bit entropy, nên không có mục tiêu nào ngắn dễ nhắm.
+Hai người chơi. Cả hai đều nghiêm túc. Nhưng chỉ một bên cần may mắn.
 
 ```mermaid
 flowchart LR
-  Y["🙂 Bạn mở khoá một lần"] --> Y1["1 × 128 MiB<br/>Một khoảnh khắc"]
-  T["😈 Họ thử một triệu lần"] --> T1["1.000.000 × 128 MiB<br/>Bộ nhớ họ phải thật sự sở hữu,<br/>trong suốt thời gian đó"]
-  T1 --> N["Thiết kế ngốn bộ nhớ: thuê thêm máy<br/>không làm mỗi lần đoán rẻ đi."]
+  B["😈 Black Hat<br/>Mục tiêu: lấy được kho.<br/>Không quan tâm bằng cách nào."] --> V["🔐 KHO MẬT KHẨU"]
+  W["🛡️ White Hat<br/>Mục tiêu: làm mỗi bước tốn hơn<br/>giá trị của cái kho."] --> V
 ```
 
-**Họ tốn bao nhiêu.** Phần cứng thật, chạy trong thời gian dài, cho từng nạn nhân
-một. Đó chính là điểm của một hàm ngốn bộ nhớ — không thể làm nó rẻ đi bằng cách
-mua thêm.
+**Black Hat được dùng mọi thứ.** Đoán mật khẩu. Chiếm tài khoản Google. Đánh vào
+máy chủ. Ngồi giữa đường truyền. Lấy điện thoại. Root nó. Nhìn màn hình. Nhìn bàn
+phím. Trộm tệp sao lưu. Đưa bạn một app giả. Đọc bộ nhớ trong lúc bạn đang dùng.
 
-## Tầng 6 — Họ root máy
+**White Hat không cố dựng một bức tường không thể phá.** Thứ đó không tồn tại, và
+tuyên bố có nó chính là cách các trang bảo mật đánh mất người đọc hiểu chuyện. Mục
+tiêu hẹp hơn nhiều, nhưng hữu ích hơn nhiều:
 
-**Họ thử gì.** Gỡ bỏ các hạn chế của điện thoại và đọc thẳng bộ nhớ lưu trữ của
-PasswordEpic.
+> **Chúng tôi không hứa một bức tường không thể phá.
+> Chúng tôi xây một cầu thang mỗi bậc một đắt hơn.**
 
-**Cái gì chặn họ.** Shard 1 được sinh ra *bên trong* chip bảo mật và không có
-thao tác nào trả nó ra. Không cho ứng dụng, không cho root, không cho ai cả. Root
-giúp họ có chiếc điện thoại; nó không giúp họ có mảnh khoá đó.
-
-Ở Platinum và Titanium, root, đóng gói lại, trình gỡ lỗi và các bộ công cụ hook
-phổ biến còn bị phát hiện, và thao tác khoá từ chối chạy hẳn.
-
-**Họ tốn bao nhiêu.** Phải cầm được máy, cộng với một bản root chạy được cho đúng
-dòng máy đó — và cuối cùng vẫn dừng ở một con chip không chịu trả lời.
-
-## Tầng 7 — Có thứ gì đó rình lúc bạn gõ
-
-Tầng này khác hẳn. Nó bỏ qua toàn bộ phần mã hoá bằng cách tiếp cận mã mở khoá
-*ngay lúc bạn gõ nó*, trước khi mọi thứ ở trên kịp có tác dụng.
-
-| Họ thử gì | Cái gì chặn nó |
-| --- | --- |
-| Bàn phím nhập mã giả vẽ đè lên cái thật | Bất cứ thứ gì vẽ đè lên bàn phím nhập mã đều làm dừng việc mở khoá |
-| Một lớp vô hình thu lại thao tác chạm | Cùng cơ chế đó — đây là "tapjacking" |
-| Một app có quyền trợ năng đọc màn hình | Thao tác khoá dừng lại khi có dịch vụ như vậy đang chạy |
-| Chụp ảnh màn hình | Bị từ chối thẳng, cho toàn màn hình |
-| Quay màn hình trong ứng dụng | Ra toàn màu đen — cả ứng dụng lẫn bàn phím phủ lên |
-| Quay màn hình khi hộp thoại tự động điền nằm trên app khác | Từ chối hẳn việc nhập mã (Android 15+) |
-| **Một bàn phím ghi lại phím bạn gõ** | **Chúng tôi chỉ có thể cảnh báo bạn** |
-
-Dòng cuối không phải một lỗ hổng chúng tôi giấu đi. Bàn phím được trao thẳng từng
-phím bạn gõ, trước cả khi có gì được vẽ lên màn hình, nên không lớp bảo vệ màn
-hình nào chạm tới được. Ứng dụng báo cho bạn khi bàn phím đang dùng không đi kèm
-máy, và thật sự đó là tất cả những gì nó làm được.
-
-## Tầng 8 — Họ lấy được tệp sao lưu của bạn
-
-**Họ thử gì.** Bản sao lưu nằm trong Google Drive của bạn. Họ vào được Drive và
-lấy nó.
-
-**Cái gì chặn họ.** Hai ổ khoá, và ổ nào bắt được họ thì tuỳ vào gói của bạn:
+Mười tầng. Hãy xem cái giá leo lên thế nào.
 
 ```mermaid
 flowchart TD
-  A["💾 Họ có tệp sao lưu của bạn"] --> B["🔐 Ổ ngoài: từ Gold trở lên, gắn với<br/>chip bảo mật của đúng máy đó"]
-  A --> C["🔐 Ổ trong: ở mọi gói trừ Gold, các mục<br/>vẫn cần khoá kho của đúng máy đó"]
-  B --> D["❌ Tệp không mở ra được"]
+  F1["🤖 1 — Tôi biết email của bạn"] --> F2["🪪 2 — Tôi có tài khoản Google của bạn"]
+  F2 --> F3["🏢 3 — Vậy tôi lấy cả cơ sở dữ liệu"]
+  F3 --> F4["📡 4 — Tôi sẽ ngồi giữa đường truyền"]
+  F4 --> F5["📱 5 — Đưa điện thoại đây"]
+  F5 --> F6["🔓 6 — Được, tôi root nó"]
+  F6 --> F7["👁️ 7 — Tôi lấy lúc bạn đang gõ"]
+  F7 --> F8["💾 8 — Tôi trộm tệp sao lưu"]
+  F8 --> F9["🎭 9 — Đây, dùng PasswordEpic của tôi"]
+  F9 --> F10["🧠 10 — Tôi chiếm máy lúc kho đang mở"]
+  F10 --> X["Tầng mà White Hat<br/>không nhận là giữ nổi."]
+```
+
+---
+
+## Tầng 1 — "Tôi biết email của bạn"
+
+> 😈 **Black Hat.** *"Tôi không cần điện thoại của bạn. Không cần máy tính của
+> bạn. Thậm chí không cần biết bạn là ai. Địa chỉ của bạn nằm trong một vụ rò rỉ
+> dữ liệu, ngay cạnh một mật khẩu bạn từng dùng ở đâu đó năm 2019. Tôi thử nó ở
+> đây. Và chín nghìn biến thể. Trên mười nghìn tài khoản. Tốn của tôi một buổi
+> tối."*
+
+Anh ta nói đúng, nó gần như không tốn gì. Đó chính là lý do ai cũng bắt đầu từ
+đây.
+
+> 🛡️ **White Hat.** *"Cứ thử."*
+
+Mỗi lần đăng nhập đều được chấm điểm ngầm về khả năng là hành vi tự động, và còn
+bị giới hạn tần suất bên trên nữa. Bạn không thấy gì cả trừ khi có điều bất
+thường.
+
+Và đây mới là phần quan trọng hơn cả giới hạn tần suất:
+
+> **Đăng nhập thành công không có nghĩa là chạm được vào kho.**
+
+Ngay cả khi đoán trúng, anh ta cũng chưa tới được đâu cả. Anh ta chỉ mới lên tới
+Tầng 2.
+
+**Hoá đơn tới lúc này:** một buổi tối.
+
+---
+
+## Tầng 2 — "Tôi có tài khoản Google của bạn"
+
+> 😈 *"Được thôi. Tôi không đoán — tôi trộm luôn. Phishing, session token, gì
+> cũng được. Tôi có tài khoản Google của bạn. Tôi chỉ việc cài PasswordEpic lên
+> máy của tôi rồi đăng nhập bằng danh nghĩa của bạn."*
+
+Anh ta cài. Anh ta đăng nhập. Màn hình đang tải.
+
+> 🛡️ **TỪ CHỐI.**
+
+Ở các gói trả phí, tài khoản của bạn gắn với một thiết bị — và danh tính ở đây
+không phải một mã định danh mà ứng dụng chỉ cần khai là có. Đó là việc **sở hữu
+một chiếc khoá được sinh ra bên trong chip bảo mật của điện thoại bạn**, và không
+thể xuất ra ngoài.
+
+```mermaid
+flowchart TD
+  A["😈 Đăng nhập bằng tài khoản bạn,<br/>trên máy của anh ta"] --> B{"Máy này có giữ chiếc khoá<br/>phần cứng đã gắn không?"}
+  B -->|"Không"| C["❌ Từ chối. Tài khoản đã<br/>gắn với thiết bị khác."]
+  B -->|"😈 'Vậy tôi ngắt mạng<br/>để né phép kiểm tra'"| D["Không có lời gọi dẫn xuất khoá"]
+  D --> E["❌ Không dẫn xuất nghĩa là không có<br/>khoá kho, tức là không có kho.<br/>Ngắt mạng không né được — nó<br/>chỉ khiến chẳng gì mở ra."]
+```
+
+> **Anh ta có danh tính của bạn. Anh ta không có thiết bị của bạn.**
+
+Thứ anh ta nhận được là một cái kho rỗng của chính mình. Các mục của bạn chưa từng
+nằm trên máy chủ nào để phiên của anh ta tải về, và chiếc khoá giải mã chúng không
+thể ghép lại trên một thiết bị không giữ Shard 1.
+
+**Hoá đơn tới lúc này:** một tài khoản Google bị đánh cắp — và nó chẳng mua được
+gì.
+
+---
+
+## Tầng 3 — "Vậy tôi lấy cả cơ sở dữ liệu"
+
+> 😈 *"Quên điện thoại đi. Tôi quay sang các anh. Máy chủ, cơ sở dữ liệu, tất cả.
+> Cứ cho là tôi thắng hoàn toàn."*
+
+Cứ cho là vậy. Chiếm trọn. Mọi bản ghi.
+
+Phần lớn mọi người nghĩ câu chuyện kết thúc ở đây. Đây là chiến lợi phẩm thật sự:
+
+```
+ANH TA CÓ:                    ANH TA KHÔNG CÓ:
+✓ Hồ sơ tài khoản             ✗ Dù chỉ một mục trong kho
+✓ Shard 2, đã mã hoá          ✗ Shard 1
+                              ✗ Mã mở khoá của bạn
+                              ✗ Bất kỳ khoá kho nào
+```
+
+> 🛡️ *"Anh ta chiếm được máy chủ. Anh ta vẫn không có cái kho."*
+
+Các mục trong kho được mã hoá ngay trên điện thoại bạn và không bao giờ được tải
+lên, nên trong đó không có gì của bạn để mà lấy. Còn Shard 2 mà anh ta lấy được
+thì sao?
+
+```mermaid
+flowchart TD
+  A["😈 Đang nắm trọn cơ sở dữ liệu"] --> B["Anh ta có Shard 2 — đã mã hoá"]
+  B --> C{"Mở được không?"}
+  C -->|"😈 'Tôi dùng mã mở khoá'"| D["❌ Nó không ở đó.<br/>Nó không ở đâu cả.<br/>Nó nằm trong đầu bạn."]
+  C -->|"😈 'Vậy tôi hỏi chính máy chủ<br/>của các anh xin ShardVault'"| E["❌ Nó được tính theo ID tài khoản của<br/>người đang hỏi. Anh ta nhận đúng của<br/>mình, thứ chẳng mở được gì — và<br/>chỉ 5 lần mỗi khoảng thời gian."]
+  C -->|"😈 'Đưa luôn Shard 1'"| F["❌ Nó chưa từng ở đây.<br/>Nó chưa từng rời điện thoại bạn."]
+```
+
+**Hoá đơn tới lúc này:** chiếm trọn hạ tầng của cả một công ty — đổi lấy hồ sơ tài
+khoản và một mẩu ciphertext.
+
+Đó chính là khác biệt giữa một dịch vụ **hứa không nhìn** và một dịch vụ **không
+thể nhìn**.
+
+---
+
+## Tầng 4 — "Tôi sẽ ngồi giữa đường truyền"
+
+> 😈 *"Kế hoạch mới. Tôi không cần máy chủ nếu tôi có thể *là* máy chủ. Một hồ sơ
+> công ty. Một chứng chỉ gốc tôi dụ bạn cài vào. Một mạng Wi-Fi quán cà phê độc
+> hại. Tôi sẽ đọc lời gọi trao cho bạn một phần chiếc khoá."*
+
+Đây là đòn tấn công có thật, và với phần lớn ứng dụng thì nó ăn — vì phần lớn ứng
+dụng tin bất cứ chứng chỉ nào mà điện thoại tin.
+
+> 🛡️ *"Điện thoại bạn tin thêm một chứng chỉ, nhưng PasswordEpic thì không buộc
+> phải tin."*
+
+Ở Platinum và Titanium, lời gọi trả về một phần khoá kho **chỉ chấp nhận một tập
+cố định các chứng chỉ gốc của chính Google**. Mọi thứ khác đều bị từ chối — kể cả
+những chứng chỉ mà chính thiết bị coi là hoàn toàn hợp lệ.
+
+**Và đây là phần mà một trang quảng cáo sẽ bỏ qua.** Ghim chứng chỉ có thể làm
+hỏng chính ứng dụng của mình. Nếu tổ chức cấp chứng chỉ xoay vòng chứng chỉ gốc mà
+bạn không theo kịp, người dùng không kết nối được nữa và không bản cập nhật nào từ
+bên trong ứng dụng cứu được. Nên bộ ghim được kiểm tra với các endpoint thật
+**trước mỗi lần phát hành**, chứ không phải đoán.
+
+> Một biện pháp phòng thủ không ai kiểm tra rồi sẽ khoá cửa đúng những người nó
+> sinh ra để bảo vệ.
+
+**Hoá đơn tới lúc này:** một vị trí trên đường truyền — và một lời từ chối.
+
+---
+
+## Tầng 5 — "Đưa điện thoại đây"
+
+Hãy để ý ngân sách của anh ta vừa thay đổi thế nào. Mọi thứ tới lúc này đều làm
+được từ bất cứ đâu trên trái đất. Từ giờ thì không.
+
+> 😈 *"Vậy tôi lấy luôn cái điện thoại. Máy đang khoá à? Không sao. Tôi sẽ dò cạn
+> mã mở khoá. Tôi có cả thế giới thời gian và không cần phải im lặng."*
+
+> 🛡️ *"Cứ tự nhiên. Để tôi tính giá cho anh."*
+
+Biến mã mở khoá của bạn thành một chiếc khoá tốn **128 MiB bộ nhớ và tính toán
+thật — mỗi lần một.** Bạn trả cái giá đó một lần, lúc mở khoá. Anh ta trả nó cho
+từng lần đoán.
+
+```mermaid
+flowchart LR
+  Y["🙂 Bạn mở khoá một lần"] --> Y1["1 × 128 MiB<br/>Một khoảnh khắc trong ngày"]
+  T["😈 Anh ta thử một triệu lần"] --> T1["1.000.000 × 128 MiB<br/>Bộ nhớ anh ta phải thật sự sở hữu,<br/>suốt thời gian đó"]
+  T1 --> N["Thiết kế ngốn bộ nhớ.<br/>Thuê thêm máy không làm<br/>một lần đoán rẻ đi."]
+```
+
+Ứng dụng cũng không cho bạn *đặt* mã mở khoá dưới 45 bit entropy, nên không có mục
+tiêu nào ngắn ngủn chờ sẵn.
+
+**Hoá đơn tới lúc này:** phải cầm được điện thoại của bạn, cộng phần cứng thật
+chạy trong thời gian dài, **cho từng nạn nhân một**. Đòn này không nhân rộng được.
+Đó chính là toàn bộ ý nghĩa của một hàm ngốn bộ nhớ.
+
+---
+
+## Tầng 6 — "Được, tôi root nó"
+
+> 😈 *"Thôi không đoán nữa. Giờ tôi sở hữu cái máy này. Root. Gắn debugger. Cắm
+> Frida vào. Tôi sẽ đọc thẳng bộ nhớ lưu trữ của PasswordEpic và lấy chiếc khoá
+> ra."*
+
+> 🛡️ *"Đọc gì tuỳ anh. Shard 1 không nằm trong bộ nhớ lưu trữ."*
+
+Shard 1 được sinh ra **bên trong** chip bảo mật, và con chip đó không có thao tác
+nào trả nó ra. Không cho ứng dụng. Không cho root. Không cho ai cả. Bạn có thể nhờ
+nó *dùng* chiếc khoá; bạn không thể xin nó chiếc khoá.
+
+> **Root cho anh ta quyền kiểm soát hệ điều hành.
+> Nó không cho anh ta Shard 1.**
+
+Ở Platinum và Titanium, root, đóng gói lại, debugger đang gắn vào và các bộ công
+cụ hook phổ biến còn bị phát hiện — và thao tác khoá từ chối chạy hẳn.
+
+**Hoá đơn tới lúc này:** điện thoại của bạn, một bản root chạy được cho đúng dòng
+máy đó — và cuối cùng vẫn là một con chip không chịu trả lời.
+
+---
+
+## Tầng 7 — "Vậy tôi lấy lúc bạn đang gõ"
+
+Ở đây Black Hat đổi chiến thuật, và đó là nước đi khôn nhất của anh ta.
+
+> 😈 *"Nãy giờ tôi đánh nhầm chỗ. Tôi không cần phá mã hoá. Không cần máy chủ. Tôi
+> sẽ lấy mã mở khoá ra khỏi tay bạn trước khi mọi thứ đó kịp bắt đầu. **Tôi tấn
+> công con người.**"*
+
+| 😈 Anh ta thử | 🛡️ Cái gì đáp lại |
+| --- | --- |
+| Bàn phím nhập mã giả vẽ đè đúng lên cái thật | ❌ Bất cứ thứ gì vẽ đè lên đều làm dừng việc mở khoá |
+| Một lớp vô hình thu lại thao tác chạm | ❌ Cùng cơ chế — đây là "tapjacking" |
+| Một app có quyền trợ năng đọc màn hình | ❌ Thao tác khoá dừng khi có dịch vụ như vậy chạy |
+| Chụp ảnh màn hình | ❌ Từ chối thẳng, cho toàn màn hình |
+| Quay màn hình trong ứng dụng | ❌ Ra toàn màu đen — cả app lẫn bàn phím |
+| Quay lúc hộp thoại tự động điền nằm trên app khác | ❌ Từ chối hẳn việc nhập mã (Android 15+) |
+| **Một bàn phím ghi lại từng phím** | ⚠️ **Chỉ có thể cảnh báo** |
+
+Hãy đọc lại dòng cuối.
+
+> 🛡️ *"Đây là chỗ tôi không tuyên bố chiến thắng."*
+
+Bàn phím được trao thẳng từng phím bạn gõ, **trước khi** có bất cứ thứ gì được vẽ
+lên màn hình, nên không lớp bảo vệ màn hình nào chạm tới được. PasswordEpic báo cho
+bạn khi bàn phím đang dùng không đi kèm máy. Thật sự đó là tất cả những gì nó làm
+được.
+
+Vì sao lại nói ra, khi cả cột còn lại đều là ❌?
+
+> **Vì kỹ thuật bảo mật không phải là việc giả vờ rằng mọi đòn tấn công đều chặn
+> được.** Một trang tuyên bố thắng sạch ở đây là một trang hoặc chưa nhìn kỹ, hoặc
+> đang mong bạn không nhìn kỹ.
+
+**Hoá đơn tới lúc này:** đưa được mã độc lên máy bạn, hoặc dụ được bạn cài một bàn
+phím.
+
+---
+
+## Tầng 8 — "Tôi trộm tệp sao lưu"
+
+> 😈 *"Bạn sao lưu lên Google Drive. Mà tôi đã ở trong tài khoản Google của bạn
+> rồi — nhớ Tầng 2 chứ. Tôi chỉ việc tải tệp sao lưu về rồi mở ở nhà, nơi không có
+> thứ gì các anh xây được chạm tới tôi."*
+
+Anh ta lấy được tệp. Nó đúng là kho của bạn. Và nó là một cục gạch.
+
+```mermaid
+flowchart TD
+  A["💾 Anh ta có tệp sao lưu của bạn"] --> B["🔐 Ổ ngoài — từ Gold trở lên:<br/>gắn với chip bảo mật của đúng máy đó"]
+  A --> C["🔐 Ổ trong — mọi gói trừ Gold:<br/>các mục vẫn cần khoá kho của máy đó"]
+  B --> D["❌ Tệp thậm chí không mở ra được"]
   C --> E["❌ Tệp mở ra, và đọc thấy toàn nhiễu"]
   D --> F["Bị chặn ở mọi gói.<br/>Chỉ khác nhau ở lý do."]
   E --> F
 ```
 
-**Họ tốn bao nhiêu.** Không có gì họ tiêu được. Cũng chính đặc tính đó khiến *bạn*
-không chuyển được kho sang máy mới — cái giá này cả hai phía cùng trả.
+Và giờ là nửa còn lại của sự thật:
 
-## Tầng 9 — Họ đưa bạn một ứng dụng giả
+> **Chính cơ chế bảo vệ tệp sao lưu của bạn cũng là thứ khiến bạn không chuyển
+> được kho sang máy mới.**
 
-**Họ thử gì.** Một bản PasswordEpic đã bị sửa, cài từ ngoài hoặc từ một kho ứng
-dụng bên thứ ba. Mọi thứ ở trên đều giả định ứng dụng là ứng dụng thật; đòn này
-tấn công thẳng vào chính giả định đó.
+Chúng tôi sẽ không giả vờ rằng đó chỉ là một tính năng chứ không phải một cái giá.
+Nó là cả hai.
 
-**Cái gì chặn họ.** Trước các thao tác khoá, máy chủ của chúng tôi hỏi Google xem
-đây có phải ứng dụng thật, chưa bị sửa, trên một thiết bị thật hay không. Kết luận
-được kiểm tra **trên máy chủ của chúng tôi**, không phải trên điện thoại — một ứng
-dụng đã bị vá có thể bỏ qua phép kiểm tra nó tự chạy lên chính mình, nhưng không
-giả mạo được chữ ký của Google gửi cho một bên khác.
+> 🛡️ *"Bảo mật luôn có giá của nó. Giá của chúng tôi là chúng tôi cũng không cứu
+> được bạn."*
 
-## Tầng 10 — Bộ nhớ sống, trên một thiết bị họ đã kiểm soát
+**Hoá đơn tới lúc này:** Drive của bạn — đổi lấy một tệp mã hoá không mở được ở
+đâu.
 
-Đây là tầng chúng tôi không giữ nổi.
+---
 
-**Họ thử gì.** Root trên điện thoại bạn *trong lúc bạn đang dùng*, rồi đọc các giá
-trị đã giải mã ra khỏi bộ nhớ đúng khoảnh khắc chúng tồn tại.
+## Tầng 9 — "Đây, dùng PasswordEpic của tôi"
 
-**Chúng tôi làm gì với nó.** Thu khoảnh khắc đó xuống gần bằng không hết mức có
-thể:
+> 😈 *"Kế hay: tôi thôi tấn công ứng dụng của các anh, tôi sẽ *trở thành* ứng dụng
+> đó. Cùng icon. Cùng giao diện. Cài từ ngoài, hoặc từ một kho ứng dụng bên thứ ba
+> mà bạn tìm thấy vì kho thật không có ở nước bạn. Bạn sẽ gõ mã mở khoá thẳng vào
+> tôi."*
 
-- Khoá kho được dẫn xuất mới cho từng thao tác một và xoá sạch ngay sau đó. Không
-  bao giờ lưu đệm, không ghi ra đĩa, không ghi log.
-- Các mục được giải mã từng cái một, cho đúng một lần điền hoặc một lần xem.
+Đây là ý tưởng nguy hiểm nhất trên trang này, bởi vì **mọi tầng ở trên đều giả
+định ứng dụng là ứng dụng thật.**
+
+> 🛡️ *"Vậy thì đừng tin lời ứng dụng."*
+
+Trước các thao tác khoá, máy chủ của chúng tôi hỏi Google xem đây có phải ứng dụng
+thật, chưa bị sửa, đang chạy trên một thiết bị thật hay không. Kết luận được kiểm
+tra **trên máy chủ**, không phải trên điện thoại.
+
+Chính khác biệt đó là toàn bộ biện pháp phòng thủ:
+
+> **Đừng bao giờ tin client tự nói rằng client đáng tin.**
+
+Một ứng dụng đã bị vá có thể xoá phép kiểm tra mà nó tự chạy lên chính mình. Nó
+không giả mạo được câu trả lời có chữ ký của Google gửi cho một bên khác.
+
+**Hoá đơn tới lúc này:** một bản giả rất thuyết phục — mà máy chủ từ chối phục vụ.
+
+---
+
+## Tầng 10 — "Tôi chiếm máy lúc kho đang mở"
+
+Hết trò từ xa. Đây là trận đánh trùm cuối, và Black Hat bước vào với đầy đủ mọi
+thứ:
+
+```
+✓ Thiết bị vật lý của bạn
+✓ Root trên nó
+✓ Một phiên đang mở khoá
+✓ Khả năng đọc bộ nhớ trong lúc bạn dùng
+```
+
+> 😈 *"Rồi cũng phải có lúc bạn giải mã chứ. Đúng khoảnh khắc đó, nó nằm trong
+> RAM. Mà tôi thì đã ở sẵn trong RAM rồi."*
+
+Anh ta nói đúng.
+
+> 🛡️ *"Tôi không thể làm cho một hệ điều hành đã bị chiếm trở nên an toàn."*
+
+Đó là câu trung thực, và nó nằm trên trang này một cách có chủ đích.
+
+**White Hat làm gì thay vào đó — thu khoảnh khắc ấy xuống gần bằng không:**
+
+```mermaid
+flowchart LR
+  A["🔓 Dẫn xuất khoá<br/>cho đúng thao tác này"] --> B["🔑 Dùng nó"]
+  B --> C["🧹 Xoá sạch bộ nhớ"]
+  C --> D["💀 Khoá bị huỷ"]
+  D -.->|"Thao tác sau:<br/>lại dựng từ đầu"| A
+```
+
+- Khoá kho được dẫn xuất mới cho **từng thao tác một** và xoá sạch ngay sau đó.
+  Không bao giờ lưu đệm. Không ghi ra đĩa. Không ghi log.
+- Các mục được giải mã **từng cái một**, cho đúng một lần điền hoặc một lần xem.
 - Ở Titanium, những giá trị quan trọng nằm trong lõi Rust, thứ có thể ghi đè bộ
   nhớ và chắc chắn là chúng đã biến mất.
 
-**Chúng tôi không làm được gì.** Làm cho một hệ điều hành đã bị chiếm trở nên an
-toàn. Nếu kẻ tấn công sở hữu thiết bị trong lúc nó đang mở khoá, họ đã đứng bên
-trong ranh giới tin cậy mà mọi tầng phía dưới đều dựa vào. Không ứng dụng nào sửa
-được điều đó từ bên trong.
+**Cái giá để leo tới đây:** thiết bị vật lý của bạn, một bản root chạy được cho
+nó, *và* hoặc mã mở khoá của bạn hoặc một phiên đang mở khoá — tất cả cùng lúc,
+cho đúng một người. Không phải từ xa. Không nhân rộng được. Không có script nào
+làm được.
 
-**Leo tới tầng này thật ra tốn bao nhiêu.** Đây không phải tấn công từ xa và nó
-không nhân rộng được. Nó cần thiết bị vật lý của bạn, một bản root chạy được cho
-máy đó, và hoặc mã mở khoá của bạn hoặc một phiên đang mở khoá — tất cả cùng lúc,
-cho đúng một người. Đó là công việc của kẻ tấn công có chủ đích, với mức giá của
-kẻ tấn công có chủ đích.
+---
 
-Và điều đó dẫn tới câu hỏi trung thực duy nhất còn lại: **kho mật khẩu của bạn có
-đáng với ngân sách đó của ai đó không?** Với gần như tất cả mọi người, câu trả lời
-là không, và những tầng phía dưới mới là thứ thật sự quan trọng. Với một số ít
-người, câu trả lời là có — và những người đó nên biết rằng không trình quản lý mật
-khẩu nào, trên bất kỳ nền tảng nào, thay đổi được điều đó.
+## Câu hỏi cuối cùng
 
-## Vì sao dùng OPAQUE, và vì sao dùng Rust
+Tới lúc này, câu hỏi không còn là *"PasswordEpic có bị phá được không?"* Tất nhiên
+là được, trong những điều kiện phù hợp. Cái gì cũng vậy.
 
-Cả hai tồn tại vì Tầng 10, và không cái nào là trang trí.
+Câu hỏi là câu mà cả cầu thang này được xây ra để ép người ta phải hỏi:
 
-**OPAQUE** loại bỏ chính thứ mà kẻ tấn công lẽ ra sẽ đánh cắp rồi mang về tấn công
-thong thả. Ở các gói khác, có một giá trị được lưu để mở kho; nó được bọc bằng mã
-mở khoá của bạn, nhưng nó *tồn tại trên đĩa*. Ở Titanium thì không có gì để lấy —
-bằng chứng được tính lại từ mã mở khoá của bạn và không bao giờ được ghi xuống
-dưới bất kỳ dạng nào.
-
-**Rust** tồn tại vì JavaScript không dám hứa là một bí mật đã biến mất. Runtime
-của nó sao chép và di chuyển chuỗi khắp nơi, và không có cách nào ghi đè đáng tin
-cậy. Rust đặt giá trị vào đúng một chỗ mà bạn kiểm soát, nên có thể xoá sạch nó.
-Khi toàn bộ câu hỏi là *một bí mật sống trong bộ nhớ bao lâu*, thì đó không phải
-chuyện thích ngôn ngữ nào.
-
-## Nửa phần việc của bạn
-
-Mọi tầng ở trên là phía chúng tôi. Đây là phía bạn, và không phần nào là tuỳ chọn
-— giữ chìa khoá là một công việc.
+> ## Leo tới đó tốn bao nhiêu?
 
 ```mermaid
 flowchart TD
-  A["🔑 Bạn là người giữ chìa khoá"] --> B["Chọn mã mở khoá bạn không quên<br/>và không ai đoán được"]
-  A --> C["Đừng bao giờ dùng lại nó ở nơi khác"]
-  A --> D["Giữ khoá màn hình cho chính điện thoại"]
+  A["Từ xa, từ bất cứ đâu<br/>Giá: một buổi tối"] --> B["Tài khoản của bạn<br/>Giá: một cú phishing"]
+  B --> C["Hạ tầng của chúng tôi<br/>Giá: chiếm trọn một công ty"]
+  C --> D["Mạng của bạn<br/>Giá: một vị trí trên đường truyền"]
+  D --> E["Điện thoại bạn, cầm trên tay<br/>Giá: chiếm hữu vật lý"]
+  E --> F["Root trên chính máy đó<br/>Giá: một lỗ hổng cho đúng dòng máy"]
+  F --> G["Bộ nhớ sống, lúc đang mở khoá<br/>Giá: tất cả những thứ trên cùng lúc,<br/>cho đúng một người"]
+  G --> H["Mỗi tầng đòi hỏi nhiều quyền truy cập hơn,<br/>nhiều năng lực hơn, nhiều thời gian hơn,<br/>nhiều tiền hơn — và ăn được<br/>ít người hơn."]
+```
+
+Tầng 1 nhân rộng tới hàng triệu người với giá một buổi tối. Tầng 10 nhân rộng tới
+**một người**, và chỉ khi người đó đáng với ngân sách đó.
+
+> **Không phải là không thể tấn công.
+> Nhưng mỗi bước một đắt hơn để đánh bại.**
+
+---
+
+## Vì sao dùng OPAQUE?
+
+Mọi quyết định thiết kế trên trang này đều tồn tại để trả lời một nước đi cụ thể.
+Đây là nước đi mà OPAQUE trả lời.
+
+> 😈 *"Đưa tôi cái giá trị dùng để xác minh mật khẩu. Tôi không cần phá nó ở đây —
+> tôi mang về nhà nghiền ngoại tuyến, mãi mãi, không giới hạn tần suất, không ai
+> nhìn."*
+
+Đó là đòn đánh vào mọi hệ thống có giữ *một thứ gì đó* dùng để kiểm tra mật khẩu.
+Dù có bọc, dù có mã hoá: nếu nó tồn tại thì nó đánh cắp được, và một cuộc tấn công
+ngoại tuyến thì kiên nhẫn vô hạn.
+
+Ở Silver, Gold và Platinum, có một giá trị được lưu để mở kho. Nó được bọc bằng mã
+mở khoá của bạn — nhưng nó *tồn tại trên đĩa*.
+
+**Ở Titanium thì không có gì để lấy.**
+
+```mermaid
+flowchart LR
+  P["🔑 Mã mở khoá của bạn"] --> O["OPAQUE"]
+  O --> R["Một bằng chứng, tính mới hoàn toàn"]
+  R --> S["🔓 Kho mở ra"]
+  X["😈 Còn lại gì trên đĩa để anh ta<br/>lấy về và tấn công ngoại tuyến?"] -.->|"Không gì cả"| S
+```
+
+> 🛡️ *"OPAQUE ở đây vì tôi không muốn tồn tại bất cứ thứ gì có thể bị lấy đi rồi
+> đem về tấn công thong thả."*
+
+---
+
+## Vì sao dùng Rust?
+
+Tầng 10 hoàn toàn là câu hỏi về **một bí mật sống trong bộ nhớ bao lâu**. Nên ngôn
+ngữ giữ bí mật đó không phải chuyện sở thích.
+
+```mermaid
+flowchart LR
+  J["JavaScript"] --> J1["Runtime sao chép và di chuyển<br/>chuỗi một cách tự do"] --> J2["🗑️ Bộ dọn rác quyết định khi nào —<br/>hoặc liệu có — dọn thứ gì"] --> J3["❌ Bạn không dám hứa<br/>bí mật đã biến mất"]
+  R["Rust"] --> R1["Một giá trị, một chỗ,<br/>do bạn kiểm soát"] --> R2["✍️ Ghi đè lên nó một cách tường minh"] --> R3["✅ Nó đã biến mất"]
+```
+
+> 🛡️ *"Rust ở đây không phải vì Rust đang thời thượng. Rust ở đây vì tôi quan tâm
+> một bí mật sống trong bộ nhớ bao lâu."*
+
+---
+
+## Và nếu bạn nghĩ có người đã nhìn thấy mình gõ
+
+> 😈 *"Tôi đứng sau bạn trong hàng đợi. Tôi có camera. Tôi có sự kiên nhẫn."*
+
+Nhìn trộm qua vai không cần lỗ hổng nào và không tốn ngân sách nào cả, nên cách
+phòng thủ cũng phải rẻ đúng như vậy.
+
+**Đổi mã mở khoá thì nhanh, và không mã hoá lại thứ gì.** Nó chỉ bọc lại bí mật do
+máy sinh ra; bản thân khoá kho không đổi, nên không một mật khẩu nào bạn đã lưu bị
+đụng tới và các bản sao lưu hiện có vẫn còn giá trị.
+
+> 🛡️ *"Khắc phục một mã mở khoá có thể đã bị nhìn thấy thì phải rẻ. Nên nó rẻ."*
+
+Xem [Mã mở khoá của bạn](./your-passcode.md#đổi-mã-mở-khoá).
+
+---
+
+## Nửa phần việc của bạn
+
+Mọi tầng ở trên là phần của White Hat trong giao kèo. Đây là phần của bạn, và
+không phần nào là tuỳ chọn.
+
+Bởi vì White Hat có thể xây tất cả những thứ này —
+
+```
+StrongBox · Play Integrity · OPAQUE · Rust · Argon2id
+chống lớp phủ · chống tapjacking · chống ghi màn hình
+gắn thiết bị · giới hạn tần suất · xác minh phía máy chủ
+sao lưu hai lớp · khoá riêng cho từng thao tác · xoá sạch bộ nhớ
+```
+
+— và tất cả bảo vệ được **không gì cả** nếu mã mở khoá là `123456`, hoặc là cái mã
+bạn dùng ở mười trang khác, hoặc được ghi lên tờ giấy dán sau lưng điện thoại.
+
+```mermaid
+flowchart TD
+  A["🔑 Bạn là người giữ chìa khoá"] --> B["Một mã mở khoá bạn không quên<br/>và không ai đoán được"]
+  A --> C["Không bao giờ dùng lại ở nơi khác"]
+  A --> D["Bật khoá màn hình cho chính điện thoại"]
   A --> E["Đừng root máy của bạn"]
-  A --> F["Gõ mã mở khoá bằng bàn phím<br/>đi kèm máy"]
+  A --> F["Gõ nó bằng bàn phím<br/>đi kèm máy"]
   A --> G["Sao lưu — và biết rằng bản sao lưu<br/>không đi theo sang máy mới"]
-  B --> H["Thế giới mạng vận hành như thế giới thật:<br/>ổ khoá chắc nhất thế gian cũng không bảo vệ<br/>được gì nếu chìa khoá để lung tung."]
+  B --> H["🛡️ Cái kho chắc nhất thế gian cũng không<br/>bảo vệ được một chiếc chìa khoá mà<br/>chủ nhân để trên bàn."]
   C --> H
   D --> H
   E --> H
@@ -260,33 +506,45 @@ flowchart TD
   G --> H
 ```
 
-Còn một điều nữa, và đó là biện pháp rẻ nhất trên cả trang này: **đổi mã mở khoá
-thì nhanh và không mất gì.** Nó chỉ bọc lại bí mật do máy sinh ra mà không đụng
-tới một mật khẩu nào đã lưu — nên nếu có lúc bạn nghi ngờ ai đó đã nhìn thấy mình
-gõ, hãy đổi nó, và mọi thứ ở trên vẫn nguyên giá trị. Xem
-[Mã mở khoá của bạn](./your-passcode.md#đổi-mã-mở-khoá).
+**Thế giới thật vận hành y hệt như vậy.**
+
+Bạn có thể xây cái két sắt kiên cố nhất từng có. Cửa thép, chuông báo động,
+camera, bảo vệ. Nhưng nếu bạn để chìa khoá trên bàn, chẳng ai cần phá két cả.
+
+Họ chỉ việc cầm chìa khoá đi.
+
+Bảo mật mật khẩu không khác gì. PasswordEpic có thể bảo vệ cái kho. **Bạn vẫn phải
+bảo vệ chiếc chìa khoá.**
+
+---
 
 ## Cách đánh giá bất kỳ trình quản lý mật khẩu nào, kể cả cái này
 
-Chúng tôi sẽ không nói với bạn rằng chúng tôi hơn những sản phẩm mà chúng tôi
-không kiểm toán được. Thay vào đó, đây là những câu nên hỏi — hỏi chúng tôi, và
-hỏi bất kỳ ai khác:
+Chúng tôi sẽ không nói với bạn rằng PasswordEpic hơn những sản phẩm mà chúng tôi
+chưa kiểm toán. Lời khẳng định đó đáng giá đúng bằng những lời bạn đã đọc trên các
+trang khác.
+
+Hãy hỏi những câu này thay vào đó — hỏi chúng tôi, và hỏi tất cả những bên còn
+lại:
 
 1. **Họ có thể đặt lại mật khẩu cho bạn mà vẫn trả lại đủ dữ liệu không?** Nếu có,
    thì họ đọc được. Không có câu trả lời thứ ba.
 2. **Chiếc khoá nằm ở đâu, và họ có gọi tên được nơi đó không?** "Mã hoá khi lưu
    trữ" là nói về ổ đĩa của họ, không phải về chiếc khoá của bạn.
 3. **Mất điện thoại thì sao?** Một dịch vụ khôi phục được kho của bạn từ hư không
-   là một dịch vụ chưa bao giờ thật sự cần tới bạn.
-4. **Họ thừa nhận mình không làm được gì?** Một trang bảo mật không có mục giới
-   hạn là một trang quảng cáo.
+   thì ngay từ đầu đã chẳng cần tới bạn.
+4. **Nếu ngày mai máy chủ của họ bị chiếm, kẻ tấn công cầm được gì?** Bắt họ nói
+   cụ thể.
+5. **Nếu chính ứng dụng bị sửa thì sao?**
+6. **Nếu kẻ tấn công có thiết bị vật lý thì sao?**
+7. **Họ có công bố những thứ họ không bảo vệ được không?**
 
-Câu trả lời của chúng tôi nằm trên chính trang web này, kể cả câu cuối — đó là
-Tầng 10, ở ngay phía trên.
+Câu trả lời của chúng tôi cho cả bảy đều nằm trên trang này. Câu thứ bảy là Tầng 7
+và Tầng 10, và không câu nào bị giấu đi.
 
 ## Đọc tiếp
 
 - [Cách hoạt động](./how-it-works.md) — bốn nơi mà chiếc khoá được ghép lại từ đó
-- [Những từ này nghĩa là gì](./plain-words.md) — mọi thuật ngữ ở đây, nói bằng lời thường
-- [Mã mở khoá của bạn](./your-passcode.md) — phần duy nhất thuộc về bạn
+- [Những từ này nghĩa là gì](./plain-words.md) — mọi thuật ngữ ở trên, nói bằng lời thường
 - [Các gói bảo mật](./security-tiers.md) — gói của bạn phòng thủ những tầng nào
+- [Mã mở khoá của bạn](./your-passcode.md) — phần duy nhất thuộc về bạn

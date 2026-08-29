@@ -410,12 +410,12 @@ export default function Threats(): ReactNode {
 
       <p className={styles.threatFooter}>
         <Translate id="home.threats.deeper">
-          Each of these is one floor of a longer story — an attacker walking
-          upwards, and what it costs them at every step:
+          Every one of these is a floor in a longer story: an attacker at the
+          front door, walking upwards, and what each step costs him.
         </Translate>{' '}
         <Link to="/docs/attack-scenarios">
           <Translate id="home.threats.deeperLink">
-            if someone came after your vault
+            read the whole war
           </Translate>{' '}
           <FaArrowRight aria-hidden size={12} />
         </Link>
