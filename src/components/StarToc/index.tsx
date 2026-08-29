@@ -46,11 +46,21 @@ export default function StarToc(): React.ReactNode {
   // Pointer devices open the panel on hover; touch devices have no hover to
   // speak of, and reading the query once here keeps the handlers cheap.
   const hoverable = useRef(false);
+  const closeTimer = useRef<number | null>(null);
   const {pathname, hash} = useLocation();
 
   useEffect(() => {
     hoverable.current = window.matchMedia('(hover: hover)').matches;
   }, []);
+
+  const cancelClose = useCallback(() => {
+    if (closeTimer.current !== null) {
+      window.clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  }, []);
+
+  useEffect(() => cancelClose, [cancelClose]);
 
   const collect = useCallback(() => {
     const main = document.querySelector('main');
@@ -161,6 +171,7 @@ export default function StarToc(): React.ReactNode {
       return;
     }
     setActiveId(id);
+    cancelClose();
     setOpen(false);
     el.scrollIntoView({behavior: 'smooth', block: 'start'});
     // Keep the URL shareable without letting the browser's own jump fight the
@@ -175,12 +186,21 @@ export default function StarToc(): React.ReactNode {
       data-open={open || undefined}
       onMouseEnter={() => {
         if (hoverable.current) {
+          cancelClose();
           setOpen(true);
         }
       }}
       onMouseLeave={() => {
         if (hoverable.current) {
-          setOpen(false);
+          // Closing on a delay, rather than immediately, is what stops the
+          // flicker at the edges of the closed circle. The trigger is round
+          // and the open panel is a rounded rectangle, so a pointer resting a
+          // pixel or two inside one shape can be outside the other: it opens,
+          // the shape changes underneath the pointer, mouseleave fires, it
+          // closes, and the loop runs at frame rate. A short grace period
+          // means the pointer is back inside before the close would run.
+          cancelClose();
+          closeTimer.current = window.setTimeout(() => setOpen(false), 220);
         }
       }}>
       {/* One element in two states rather than a button with a panel hanging
