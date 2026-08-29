@@ -1,5 +1,17 @@
 /* Floating star table of contents. See index.tsx for why it exists. */
 
+/* Top right, under the navbar, at every width.
+ *
+ * It used to move to the bottom-right on phones, on the theory that a floating
+ * button belongs in thumb reach. That put it straight on top of Docusaurus'
+ * own back-to-top button, which is `right: 1.3rem; bottom: 1.3rem` and 3rem
+ * across - so a second, slightly offset grey circle appeared behind the star,
+ * but only once the reader had scrolled far enough for back-to-top to unhide
+ * itself. Hence "sometimes".
+ *
+ * Anchoring to `top` also sidesteps a second problem down there: mobile
+ * browsers show and hide their own bottom toolbar as you scroll, and anything
+ * fixed to `bottom` gets shoved around by it. */
 .container {
   position: fixed;
   top: calc(var(--ifm-navbar-height) + 0.75rem);
@@ -22,11 +34,27 @@
   cursor: pointer;
   box-shadow: var(--pe-shadow-sm);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+
+  /* Without this, tapping draws the browser's own highlight over the button's
+     rectangular box. On a round button that reads as a second, misaligned
+     circle behind the real one - visible only while the touch lasts, which is
+     what made it look intermittent. */
+  -webkit-tap-highlight-color: transparent;
 }
 
-.trigger:hover {
-  transform: scale(1.08);
-  box-shadow: var(--pe-shadow-md);
+/* Hover effects only where hovering exists. On a touchscreen `:hover` latches
+   after a tap and stays until you tap something else, leaving the button stuck
+   at 1.08 scale with the larger shadow. */
+@media (hover: hover) {
+  .trigger:hover {
+    transform: scale(1.08);
+    box-shadow: var(--pe-shadow-md);
+  }
+}
+
+/* Touch needs its own press feedback, since hover no longer provides any. */
+.trigger:active {
+  transform: scale(0.94);
 }
 
 .trigger:focus-visible {
@@ -48,7 +76,6 @@
   max-height: min(60vh, 32rem);
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 0.4rem;
   border-radius: 14px;
   border: 1px solid var(--pe-border);
   background: var(--pe-surface);
@@ -59,82 +86,87 @@
   display: none;
 }
 
+/* Solid header, so the panel reads as its own surface where it overlaps text. */
 .panelHead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 0.65rem 0.6rem;
-  font-size: 0.72rem;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--ifm-color-emphasis-600);
-  border-bottom: 1px solid var(--pe-border);
-  margin-bottom: 0.35rem;
+  color: #fff;
+  background: var(--ifm-color-primary);
+  border-radius: 13px 13px 0 0;
 }
 
 .panelHeadIcon {
-  color: var(--ifm-color-primary);
+  color: #fff;
 }
 
 .list {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0.35rem;
 }
 
 .link {
   display: block;
-  padding: 0.4rem 0.65rem;
-  border-radius: 8px;
+  padding: 0.45rem 0.65rem;
+  border-left: 3px solid transparent;
+  border-radius: 0 8px 8px 0;
   font-size: 0.88rem;
   line-height: 1.35;
+  font-weight: 600;
   color: var(--ifm-color-emphasis-800);
   text-decoration: none;
   transition: background 0.15s ease, color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
+/* Sub-headings step in and lighten, so the panel shows the page's shape rather
+   than a flat list. */
 .link[data-level='3'] {
   padding-left: 1.5rem;
-  font-size: 0.82rem;
+  font-size: 0.83rem;
+  font-weight: 400;
   color: var(--ifm-color-emphasis-700);
 }
 
-.link:hover {
-  background: var(--pe-surface-accent);
-  color: var(--ifm-color-primary);
-  text-decoration: none;
+@media (hover: hover) {
+  .link:hover {
+    background: var(--pe-surface-accent);
+    color: var(--ifm-color-primary);
+    text-decoration: none;
+  }
 }
 
 .link[data-active] {
   background: var(--pe-surface-accent);
+  border-left-color: var(--ifm-color-primary);
   color: var(--ifm-color-primary);
-  font-weight: 600;
 }
 
-/* Phones: a bottom sheet beats a dropdown pinned to a 40px button, and the
-   trigger moves out of the thumb's way for scrolling. */
+/* Phones: same position, slightly larger tap target, and the panel gets the
+   width it needs rather than being pinned to a 40px button. */
 @media (max-width: 768px) {
   .container {
-    top: auto;
-    bottom: 1rem;
-    right: 1rem;
+    right: 0.75rem;
   }
 
   .trigger {
-    width: 46px;
-    height: 46px;
+    width: 44px;
+    height: 44px;
     box-shadow: var(--pe-shadow-md);
   }
 
   .panel {
-    position: fixed;
-    top: auto;
-    bottom: calc(1rem + 46px + 0.6rem);
-    right: 1rem;
-    left: 1rem;
-    width: auto;
-    max-height: 55vh;
+    width: min(21rem, calc(100vw - 1.5rem));
+    max-height: 60vh;
   }
 }
 
@@ -142,7 +174,8 @@
   .trigger {
     transition: none;
   }
-  .trigger:hover {
+  .trigger:hover,
+  .trigger:active {
     transform: none;
   }
 }
