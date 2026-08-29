@@ -244,6 +244,33 @@ chúng tôi làm), đăng nhập trên máy mới, và nhập lại mật khẩu
 Chúng tôi thà nói thẳng điều này còn hơn để bạn phát hiện ra sau khi đã mất thiết
 bị.
 
+## 🎁 Một việc chúng tôi làm được mà chẳng liên quan gì tới mật khẩu
+
+### Tôi dùng app này để kiểm tra điện thoại cũ được không? \{#used-phone-check}
+
+Được, và bạn nên làm. Nó miễn phí và bạn không cần giữ lại ứng dụng.
+
+Các gói trả phí xác minh rằng thiết bị là hàng thật, chưa bị sửa, chưa root và
+khởi động từ một hệ thống đã được xác minh — vì đó là những điều phải đúng trước
+khi mật khẩu của bạn đến gần nó. Chính phép kiểm tra đó trả lời một câu hỏi đáng
+tiền thật khi bạn đi mua máy cũ.
+
+1. Cài PasswordEpic **từ Play Store** — một bản chép tay không thể vượt qua phép
+   kiểm tra dù chiếc máy có lành lặn tới đâu, nên nó sẽ chẳng nói lên điều gì.
+2. Lúc thiết lập, chọn **Platinum** hoặc **Titanium**.
+3. Nếu gói đó dùng được, máy đã đạt. Nếu bạn nhận được **"Device Integrity Check
+   Failed"** thì không đạt — và thông báo có nêu rõ kết luận.
+
+**Đạt nghĩa là:** thiết bị được Google chứng nhận, khởi động đã xác minh, chưa
+root, bootloader đang khoá, ứng dụng chưa bị can thiệp.
+
+**Đạt *không* có nghĩa là:** máy không phải đồ trộm cắp (hãy kiểm tra IMEI riêng),
+linh kiện là hàng thật, hay pin còn tốt. Nó trả lời đúng một câu hỏi — *phần mềm
+của chiếc máy này có bị can thiệp không?* — và trả lời chính xác câu đó.
+
+Bản dài hơn, kèm hình minh hoạ, nằm ở
+[Cuộc chiến giành kho mật khẩu](./attack-scenarios.md#used-phone-gift).
+
 ## Xoá sạch mọi thứ
 
 **Cài đặt → Đặt lại tài khoản.** Có hiệu lực ngay, không hàng đợi, không thời gian

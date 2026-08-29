@@ -396,6 +396,12 @@
   "home.threats.lead": {
     "message": "Mã hoá là phần dễ — trình quản lý mật khẩu nào cũng có. Thứ tạo ra khác biệt là mọi lớp bao quanh khoảnh khắc bạn gõ mã mở khoá. Dưới đây là từng nỗi lo, và đúng thứ trả lời cho nó."
   },
+  "home.threats.gift": {
+    "message": "🎁 Một trong những lớp phòng thủ này có ích ngay cả khi bạn không bao giờ lưu mật khẩu với chúng tôi: ứng dụng cho bạn biết một chiếc điện thoại cũ đã bị root hay bị can thiệp chưa, trước khi bạn trả tiền."
+  },
+  "home.threats.giftLink": {
+    "message": "cách kiểm tra một chiếc máy cũ"
+  },
   "home.threats.deeper": {
     "message": "Mỗi mục ở trên là một tầng trong một câu chuyện dài hơn: một kẻ tấn công đứng trước cửa, leo lên từng tầng, và mỗi bước tốn của anh ta bao nhiêu."
   },

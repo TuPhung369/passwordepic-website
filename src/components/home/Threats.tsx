@@ -408,6 +408,21 @@ export default function Threats(): ReactNode {
         </div>
       ))}
 
+      {/* An aside, not a feature: the integrity machinery above answers "is this
+          device what it claims to be", and that question is worth money to
+          somebody buying a second-hand phone. Worth handing over explicitly. */}
+      <p className={styles.threatGift}>
+        <Translate id="home.threats.gift">
+          🎁 One of these defences is useful even if you never store a password
+          with us: the app can tell you whether a second-hand phone has been
+          rooted or tampered with, before you pay for it.
+        </Translate>{' '}
+        <Link to="/docs/faq#used-phone-check">
+          <Translate id="home.threats.giftLink">how to check a used phone</Translate>{' '}
+          <FaArrowRight aria-hidden size={12} />
+        </Link>
+      </p>
+
       <p className={styles.threatFooter}>
         <Translate id="home.threats.deeper">
           Every one of these is a floor in a longer story: an attacker at the

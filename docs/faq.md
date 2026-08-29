@@ -242,6 +242,33 @@ device (or ask us to), sign in on the new one, and re-enter your passwords.
 
 We would rather say this plainly than let you discover it after losing a device.
 
+## 🎁 One thing we can do that has nothing to do with passwords
+
+### Can I use this to check a second-hand phone? \{#used-phone-check}
+
+Yes, and you should. It is free and you do not have to keep the app.
+
+The paid tiers verify that the device is genuine, unmodified, not rooted and
+booted from a verified system — because that is what has to be true before your
+passwords go anywhere near it. That same check answers a question worth real
+money when you are buying a used phone.
+
+1. Install PasswordEpic **from the Play Store** — a sideloaded copy cannot pass
+   the check no matter how healthy the phone is, so it would tell you nothing.
+2. At setup, choose **Platinum** or **Titanium**.
+3. If the tier is available, the device passed. If you get **"Device Integrity
+   Check Failed"**, it did not — and the message names the verdict.
+
+**A pass means:** a Google-certified device, verified boot, not rooted,
+bootloader locked, app not tampered with.
+
+**A pass does not mean:** the phone is not stolen (check the IMEI separately),
+the parts are genuine, or the battery is any good. It answers one question —
+*has this device's software been tampered with?* — and answers it precisely.
+
+The longer version, with a diagram, is in
+[The war for the vault](./attack-scenarios.md#used-phone-gift).
+
 ## Deleting everything
 
 **Settings → Reset Account.** Immediate, no queue, no retention window, no

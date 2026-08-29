@@ -825,3 +825,24 @@
   font-size: 0.95rem;
   color: var(--ifm-color-emphasis-700);
 }
+
+/* The second-hand-phone tip. Given its own surface rather than another line in
+   the footer paragraph: it is an aside about a completely different problem,
+   and it reads as an accident if it looks like more of the same. */
+.threatGift {
+  margin: 2.25rem auto 0;
+  max-width: 46rem;
+  padding: 1rem 1.25rem;
+  border-radius: 14px;
+  border: 1px dashed var(--pe-wood);
+  background: var(--pe-surface);
+  background: color-mix(in srgb, var(--pe-wood) 7%, transparent);
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.threatGift + .threatFooter {
+  margin-top: 1.25rem;
+}

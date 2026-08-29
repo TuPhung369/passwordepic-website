@@ -409,6 +409,63 @@ Tầng 1 nhân rộng tới hàng triệu người với giá một buổi tối
 
 ---
 
+## 🎁 Một món quà miễn phí: soi chiếc điện thoại bạn sắp mua \{#used-phone-gift}
+
+Mọi thứ ở trên tồn tại để bảo vệ kho mật khẩu của bạn. Nhưng hãy nhìn xem nó được
+làm từ gì — phép kiểm tra tính toàn vẹn của chính Google, phát hiện root, phát
+hiện can thiệp, xác minh bootloader. Tất cả đều nhắm tới đúng một câu hỏi:
+
+> **Chiếc máy này có đúng là thứ nó tự nhận không?**
+
+Câu hỏi đó đáng tiền với bạn trong một tình huống hoàn toàn khác: **khi bạn đi mua
+điện thoại cũ.**
+
+Vậy thì cứ dùng chúng tôi. Bạn không cần trả tiền, không cần đăng ký, và cũng
+không cần giữ lại ứng dụng sau đó.
+
+```mermaid
+flowchart TD
+  A["📱 Chiếc máy cũ bạn sắp<br/>rút ví ra trả tiền"] --> B["Cài PasswordEpic<br/>từ Play Store"]
+  B --> C["Lúc thiết lập, chọn<br/>Platinum hoặc Titanium"]
+  C --> D{"Nó nói gì?"}
+  D -->|"Gói đó dùng được"| E["✅ Máy được Google chứng nhận,<br/>khởi động đã xác minh,<br/>chưa root, bootloader đã khoá"]
+  D -->|"“Device Integrity Check Failed”"| F["⚠️ Cẩn thận. Đã root, bootloader mở,<br/>ROM tuỳ biến, hoặc một bản dựng<br/>Google không chứng nhận."]
+```
+
+**Hãy cài từ Play Store, đừng cài từ file.** Một bản cài ngoài không thể đạt kết
+quả đạt dù chiếc máy có lành lặn tới đâu, nên chữ "thất bại" trên một file APK
+chép tay chẳng nói lên điều gì cả.
+
+### Kết quả đạt thật sự chứng minh điều gì
+
+- Máy là **thiết bị được Google chứng nhận** — không phải hàng nhái, không phải
+  máy ảo.
+- Nó khởi động bằng một **hệ thống đã được xác minh, chưa bị sửa**.
+- Nó **chưa bị root**, và bootloader **đang khoá**.
+- Ứng dụng trên máy chưa bị can thiệp.
+
+Đó là một bộ câu trả lời thật sự hữu ích, đổi lấy vài phút thao tác — và phần lớn
+người mua không có cách nào kiểm tra được những điều đó.
+
+### Kết quả đạt *không* chứng minh điều gì
+
+Chúng tôi sẽ không thổi phồng một mẹo miễn phí:
+
+- **Không nói gì về việc máy có phải đồ trộm cắp hay không.** Hãy kiểm tra IMEI
+  riêng.
+- **Không nói gì về phần cứng.** Màn hình thay, linh kiện nhái và pin chai đều
+  vượt qua phép kiểm tra toàn vẹn một cách vui vẻ.
+- **Không nói gì về những thứ người bán đã cài** trước khi khoá máy lại.
+
+Nó trả lời đúng câu *"phần mềm của chiếc máy này có bị can thiệp không?"* — chính
+xác, và chỉ vậy thôi.
+
+> 🛡️ *"Chúng tôi xây thứ này để quyết định có nên giao mật khẩu của bạn cho một
+> chiếc điện thoại hay không. Bạn cũng có thể dùng nó để quyết định có nên giao
+> tiền của mình cho một chiếc điện thoại hay không."*
+
+---
+
 ## Vì sao dùng OPAQUE?
 
 Mọi quyết định thiết kế trên trang này đều tồn tại để trả lời một nước đi cụ thể.

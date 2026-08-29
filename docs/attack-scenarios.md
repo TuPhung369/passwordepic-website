@@ -401,6 +401,59 @@ scales to **one**, and only if that one is worth the budget.
 
 ---
 
+## 🎁 A free gift: point it at a phone you are about to buy \{#used-phone-gift}
+
+Everything above exists to protect your vault. But look at what it is made of —
+Google's own integrity check, root detection, tamper detection, bootloader
+verification. All of that is aimed at answering one question:
+
+> **Is this device what it claims to be?**
+
+That question is worth money to you in a completely different situation: **when
+you are buying a second-hand phone.**
+
+So use us. You do not have to pay, subscribe, or keep the app afterwards.
+
+```mermaid
+flowchart TD
+  A["📱 A used phone you are<br/>about to hand over money for"] --> B["Install PasswordEpic<br/>from the Play Store"]
+  B --> C["At setup, choose<br/>Platinum or Titanium"]
+  C --> D{"What does it say?"}
+  D -->|"The tier is available"| E["✅ Google-certified device,<br/>verified boot state,<br/>not rooted, bootloader locked"]
+  D -->|"“Device Integrity Check Failed”"| F["⚠️ Walk carefully. Rooted, unlocked<br/>bootloader, custom ROM, or a build<br/>Google does not certify."]
+```
+
+**Install it from the Play Store, not from a file.** A sideloaded build cannot
+obtain a passing verdict no matter how healthy the phone is, so a "fail" on a
+copied APK tells you nothing at all.
+
+### What a pass actually proves
+
+- The phone is a **Google-certified device** — not a clone, not an emulator.
+- It booted a **verified, unmodified system**.
+- It is **not rooted**, and the bootloader is **locked**.
+- The app on it has not been tampered with.
+
+That is a genuinely useful set of answers for a few minutes of work, and most
+buyers have no way to check any of it.
+
+### What a pass does not prove
+
+We are not going to oversell a free tip:
+
+- **Nothing about whether the phone is stolen.** Check the IMEI separately.
+- **Nothing about the hardware.** Replaced screens, counterfeit parts and a
+  worn-out battery all pass an integrity check happily.
+- **Nothing about what the seller installed** before locking it back up.
+
+It answers *"has this device's software been tampered with?"* — precisely, and
+only that.
+
+> 🛡️ *"We built this to decide whether to trust a phone with your passwords.
+> You may as well use it to decide whether to trust one with your money."*
+
+---
+
 ## Why OPAQUE?
 
 Every design decision on this page exists to answer a specific move. Here is the
