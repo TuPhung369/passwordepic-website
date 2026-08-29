@@ -46,6 +46,15 @@ device.
 Every tier is blocked. Only the reason differs — which is exactly why partial
 readings of this keep producing confident, wrong conclusions.
 
+```mermaid
+flowchart TD
+  A["💾 A backup file"] --> B{"Which phone are you<br/>opening it on?"}
+  B -->|"The one that made it"| C["✅ Opens normally"]
+  B -->|"Any other phone"| D["🔒 The outer lock needs<br/>that phone's security chip"]
+  D --> E["🔒 And the entries inside need<br/>that phone's vault key"]
+  E --> F["❌ It cannot be opened.<br/>On every tier."]
+```
+
 ## What backups are actually for
 
 They protect you against **losing data on the phone you still have**:

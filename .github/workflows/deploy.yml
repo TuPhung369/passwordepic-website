@@ -24,8 +24,13 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      # Docusaurus renders Mermaid in the browser, so a diagram with a syntax
+      # error builds clean and ships an error box to the reader instead. These
+      # diagrams carry troubleshooting steps, so check them here.
+      - run: npm run check:diagrams
       # `onBrokenLinks: 'throw'` means a dead internal link fails the build
       # rather than shipping a page whose qualifying link has gone missing.
+      # `onBrokenAnchors` is set the same way.
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:

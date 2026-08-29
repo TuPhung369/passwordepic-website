@@ -22,6 +22,20 @@ Nếu nó mở nhầm màn hình, hoặc không có gì xảy ra, hãy dùng đ�
 theo hãng máy ở dưới. Biết đường dẫn này vẫn có ích, vì Android đã dời mục cài
 đặt này vài lần và mỗi hãng lại đặt một cái tên khác nhau.
 
+```mermaid
+flowchart TD
+  A["Tôi muốn dùng tự động điền"] --> B{"Android 8.0<br/>trở lên?"}
+  B -->|"Không"| X["❌ Không được.<br/>Tự động điền có từ Android 8.0."]
+  B -->|"Có"| C["Mở Cài đặt, tìm 'autofill',<br/>chọn PasswordEpic"]
+  C --> D{"Bạn cần nó<br/>ở đâu?"}
+  D -->|"Trong ứng dụng"| E["✅ Xong"]
+  D -->|"Trên trang web,<br/>trong Chrome"| F["Chrome → Cài đặt →<br/>bật 'Tự động điền<br/>bằng dịch vụ khác'"]
+  F --> G["Đóng hẳn Chrome,<br/>rồi mở lại"]
+  G --> E
+  D -->|"Trong app không bao giờ<br/>hiện tự động điền"| H["Tuỳ chọn: bật<br/>PasswordEpic Autofill Refill<br/>trong mục Trợ năng"]
+  H --> E
+```
+
 ## Mục cài đặt nằm ở đâu
 
 <h3 id="samsung">Samsung</h3>
@@ -129,6 +143,15 @@ dùng thì cứ để tắt. Bạn có thể tắt nó bất cứ lúc nào ở 
 
 Không có khoảng thời gian nào mà việc điền diễn ra không cần bạn, và không có chế
 độ "mở khoá trong năm phút".
+
+```mermaid
+flowchart LR
+  A["👆 Bạn chạm vào<br/>ô đăng nhập"] --> B["🤖 Android hỏi<br/>PasswordEpic"]
+  B --> C["👤 Vân tay hoặc mã mở khoá.<br/>Mọi lần."]
+  C --> D["🔓 Đúng một mục được giải mã,<br/>chỉ cho lần điền này"]
+  D --> E["✅ Ô đã được điền"]
+  E --> F["🧹 Bản rõ và khoá<br/>bị bỏ đi ngay"]
+```
 
 ## Một bản ghi màn hình thấy được gì
 

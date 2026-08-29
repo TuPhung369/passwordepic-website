@@ -20,6 +20,13 @@ rest twice.
    Platinum and Titanium all run the same native engine, and differ only in what
    *guards* it or what *unwraps* the key.
 
+```mermaid
+flowchart LR
+  S["🥈 Silver<br/>Free<br/>Software only"] -->|"adds hardware keys<br/>and real AES-256-GCM"| G["🥇 Gold<br/>The baseline"]
+  G -->|"adds checks that the<br/>phone is not compromised"| P["💎 Platinum<br/>Same encryption as Gold"]
+  P -->|"adds: nothing that opens<br/>the vault is ever stored"| T["🛡️ Titanium"]
+```
+
 ## At a glance
 
 | | 🥈 Silver | 🥇 Gold | 💎 Platinum | 🛡️ Titanium |

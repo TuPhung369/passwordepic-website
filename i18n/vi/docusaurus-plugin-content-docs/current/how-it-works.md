@@ -19,6 +19,25 @@ cho đúng một thao tác, rồi bị xoá khỏi bộ nhớ ngay sau đó.
 
 Những mảnh ấy gọi là **shard**, và chúng nằm ở bốn nơi khác nhau.
 
+```mermaid
+flowchart LR
+  subgraph phone["📱 Điện thoại của bạn"]
+    P1["🔒 Mảnh 1<br/>Khoá trong chip bảo mật.<br/>Không ra ngoài được."]
+    P2["📦 Mảnh 2<br/>Lưu ở dạng mã hoá"]
+  end
+
+  subgraph ours["☁️ Máy chủ của chúng tôi"]
+    C2["📦 Bản sao của mảnh 2<br/>Vẫn đang mã hoá"]
+    P3["🧮 Mảnh 3<br/>Tính riêng cho bạn<br/>mỗi lần mở khoá"]
+  end
+
+  P1 --> KEY
+  P2 --> KEY
+  P3 --> KEY
+
+  KEY["🔑 Khoá kho của bạn<br/>Dựng trên máy bạn.<br/>Xoá ngay sau đó."]
+```
+
 | Mảnh | Nằm ở đâu | Có rời đi được không? |
 | --- | --- | --- |
 | **Shard 1** | Bên trong StrongBox hoặc TEE của điện thoại bạn | **Không.** Không thể xuất ra, do thiết kế của phần cứng |
@@ -47,6 +66,13 @@ không cho kẻ tấn công đang nắm tài khoản của bạn.
 Đó là toàn bộ lập luận. Nó dựa trên hành vi của phần cứng chứ không dựa vào thiện
 chí của chúng tôi — và đó là phiên bản duy nhất của lời khẳng định này đáng để
 đưa ra.
+
+```mermaid
+flowchart TD
+  A["😈 Ai đó lấy trọn<br/>cơ sở dữ liệu của chúng tôi"] --> B["Họ nắm mảnh 2<br/>và tính được mảnh 3"]
+  B --> C{"Họ dựng được<br/>khoá của bạn không?"}
+  C -->|"Thiếu mảnh 1"| D["❌ Không.<br/>Mảnh 1 chưa từng tồn tại<br/>ở đâu ngoài điện thoại bạn,<br/>và con chip không trả nó ra."]
+```
 
 ## Máy chủ của chúng tôi thật sự xử lý những gì
 

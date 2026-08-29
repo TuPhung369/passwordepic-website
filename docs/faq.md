@@ -19,6 +19,19 @@ address you sign in with. That is what we look up.
 
 Work through these in order — the first two account for most cases.
 
+```mermaid
+flowchart TD
+  A["Autofill is not appearing"] --> B{"Does it work<br/>anywhere else?"}
+  B -->|"No, nowhere"| C{"Is PasswordEpic still the<br/>selected autofill service?"}
+  C -->|"It is not in the list"| C1["Samsung? Choose 'None' first,<br/>leave the screen, come back"]
+  C -->|"No, something replaced it"| C2["Select it again.<br/>System updates reset this."]
+  C -->|"Yes, it is selected"| D{"Android 8.0<br/>or newer?"}
+  D -->|"No"| D1["❌ Autofill needs Android 8.0"]
+  D -->|"Yes"| D2["Exclude PasswordEpic from<br/>battery optimisation"]
+  B -->|"Yes, but not<br/>on websites"| E["Chrome: turn on 'Autofill using<br/>another service', then restart Chrome"]
+  B -->|"Yes, but not in<br/>one specific app"| F["That app opted out.<br/>Optional: Autofill Refill<br/>under Accessibility"]
+```
+
 1. **Is PasswordEpic actually selected as the autofill service?** Setting it once
    is not permanent: a system update, or another password manager being
    installed, can quietly replace it. Check with the paths in

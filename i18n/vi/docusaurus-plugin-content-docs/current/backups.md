@@ -44,6 +44,15 @@ kho — mà khoá kho cần Shard 1, thứ không bao giờ rời khỏi thiết
 Mọi gói đều bị chặn. Chỉ khác nhau ở lý do — và đó chính là vì sao đọc lướt phần
 này cứ liên tục dẫn tới những kết luận rất chắc chắn và rất sai.
 
+```mermaid
+flowchart TD
+  A["💾 Một tệp sao lưu"] --> B{"Bạn mở nó trên<br/>máy nào?"}
+  B -->|"Chính máy đã tạo ra nó"| C["✅ Mở bình thường"]
+  B -->|"Bất kỳ máy nào khác"| D["🔒 Lớp ngoài cần chip bảo mật<br/>của đúng máy đó"]
+  D --> E["🔒 Và các mục bên trong cần<br/>khoá kho của đúng máy đó"]
+  E --> F["❌ Không mở được.<br/>Ở mọi gói."]
+```
+
 ## Sao lưu thật ra để làm gì
 
 Chúng bảo vệ bạn khỏi việc **mất dữ liệu trên chiếc điện thoại bạn vẫn còn**:

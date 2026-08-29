@@ -49,6 +49,13 @@ On Titanium the middle step is an OPAQUE export key instead, derived the same
 expensive way but never stored at all. See
 [Security tiers](./security-tiers.md).
 
+```mermaid
+flowchart LR
+  A["🔑 Your passcode<br/>The only thing you type"] --> B["🐢 Argon2id<br/>128 MiB of memory.<br/>Deliberately slow."]
+  B --> C["🎲 A 256-bit secret<br/>The app generated it.<br/>You never see it."]
+  C --> D["📦 Unlocks piece 2<br/>of your vault key"]
+```
+
 ## Strength is measured in bits, not characters
 
 A "minimum 8 characters" rule cannot express that eight digits and eight mixed

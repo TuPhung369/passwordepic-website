@@ -140,6 +140,38 @@ main.container--fluid > .row > .col > article {
 }
 
 /* ---------------------------------------------------------------------------
+ * Diagrams
+ * ------------------------------------------------------------------------ */
+
+/* Mermaid renders one SVG at its natural width. On a phone that width is wider
+   than the screen, so the container scrolls rather than the page - the same
+   rule tables follow. */
+.docusaurus-mermaid-container {
+  overflow-x: auto;
+  margin: 1.75rem 0;
+  padding: 1.25rem 1rem;
+  border: 1px solid var(--pe-border);
+  border-radius: 14px;
+  background: var(--pe-surface-sunken);
+  text-align: center;
+}
+
+.docusaurus-mermaid-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Diagrams in the docs get a caption via a following blockquote-free italic
+   line; keep it tight to the figure it belongs to. */
+.docusaurus-mermaid-container + p em {
+  display: block;
+  margin-top: -1.25rem;
+  font-size: 0.88rem;
+  color: var(--ifm-color-emphasis-600);
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------------------
  * Shared page furniture
  * ------------------------------------------------------------------------ */
 

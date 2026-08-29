@@ -45,6 +45,16 @@ bypass it; it just means no vault either.
 
 ## Moving to a new phone
 
+```mermaid
+flowchart TD
+  A["📱 Moving to a new phone"] --> B{"Do you still have<br/>the old phone?"}
+  B -->|"Yes"| C["On the old phone:<br/>Settings → Reset Account"]
+  B -->|"No"| D["Email support.<br/>We release it for you."]
+  C --> E["Sign in on the new phone"]
+  D --> E
+  E --> F["⚠️ The vault does not come<br/>with you. You start fresh."]
+```
+
 :::warning Releasing an account does not carry the vault across
 
 It lets you start fresh on the new device. The old vault stays encrypted with a

@@ -19,6 +19,25 @@ from memory immediately after.
 
 Those pieces are called **shards**, and they live in four different places.
 
+```mermaid
+flowchart LR
+  subgraph phone["📱 Your phone"]
+    P1["🔒 Piece 1<br/>Locked inside the<br/>security chip.<br/>Cannot come out."]
+    P2["📦 Piece 2<br/>Stored, encrypted"]
+  end
+
+  subgraph ours["☁️ Our servers"]
+    C2["📦 A copy of piece 2<br/>Still encrypted"]
+    P3["🧮 Piece 3<br/>Calculated for you<br/>each time you unlock"]
+  end
+
+  P1 --> KEY
+  P2 --> KEY
+  P3 --> KEY
+
+  KEY["🔑 The key to your vault<br/>Built on your phone.<br/>Wiped straight after."]
+```
+
 | Shard | Where it lives | Can it leave? |
 | --- | --- | --- |
 | **Shard 1** | Inside your phone's StrongBox or TEE | **No.** Non-exportable by hardware design |
@@ -46,6 +65,13 @@ account.
 
 That is the whole argument. It rests on hardware behaviour rather than on our
 good intentions, which is the only version of this claim worth making.
+
+```mermaid
+flowchart TD
+  A["😈 Someone takes<br/>our entire database"] --> B["They now hold piece 2<br/>and can compute piece 3"]
+  B --> C{"Can they build<br/>your key?"}
+  C -->|"Piece 1 is missing"| D["❌ No.<br/>Piece 1 has never existed<br/>anywhere but your phone,<br/>and the chip will not release it."]
+```
 
 ## What our servers actually handle
 

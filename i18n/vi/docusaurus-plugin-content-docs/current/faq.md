@@ -19,6 +19,19 @@ dùng để đăng nhập. Đó là thứ chúng tôi tra cứu.
 
 Hãy làm lần lượt theo thứ tự — hai mục đầu chiếm phần lớn các trường hợp.
 
+```mermaid
+flowchart TD
+  A["Không thấy tự động điền"] --> B{"Nó có chạy ở<br/>chỗ nào khác không?"}
+  B -->|"Không, không chỗ nào"| C{"PasswordEpic có còn được chọn<br/>làm dịch vụ tự động điền?"}
+  C -->|"Không có trong danh sách"| C1["Máy Samsung? Chọn 'Không có' trước,<br/>thoát ra rồi vào lại"]
+  C -->|"Không, bị thứ khác thay"| C2["Chọn lại.<br/>Cập nhật hệ thống hay reset mục này."]
+  C -->|"Có, đang được chọn"| D{"Android 8.0<br/>trở lên?"}
+  D -->|"Không"| D1["❌ Tự động điền cần Android 8.0"]
+  D -->|"Có"| D2["Loại PasswordEpic khỏi<br/>danh sách tối ưu pin"]
+  B -->|"Có, nhưng không<br/>chạy trên trang web"| E["Chrome: bật 'Tự động điền bằng<br/>dịch vụ khác', rồi khởi động lại Chrome"]
+  B -->|"Có, nhưng không chạy<br/>trong một app cụ thể"| F["App đó từ chối dùng.<br/>Tuỳ chọn: Autofill Refill<br/>trong mục Trợ năng"]
+```
+
 1. **PasswordEpic có đang thật sự được chọn làm dịch vụ tự động điền không?** Đặt
    một lần không có nghĩa là vĩnh viễn: một bản cập nhật hệ thống, hoặc việc cài
    thêm một trình quản lý mật khẩu khác, có thể lặng lẽ thay thế nó. Kiểm tra

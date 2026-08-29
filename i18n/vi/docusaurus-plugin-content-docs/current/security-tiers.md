@@ -20,6 +20,13 @@ lại hai lần.
    Titanium đều chạy cùng một bộ máy native, và chỉ khác nhau ở chỗ cái gì *canh
    gác* nó hoặc cái gì *mở* khoá.
 
+```mermaid
+flowchart LR
+  S["🥈 Silver<br/>Miễn phí<br/>Chỉ bằng phần mềm"] -->|"thêm khoá phần cứng<br/>và AES-256-GCM thật"| G["🥇 Gold<br/>Mốc nền tảng"]
+  G -->|"thêm kiểm tra máy<br/>có bị xâm phạm không"| P["💎 Platinum<br/>Mã hoá y hệt Gold"]
+  P -->|"thêm: không lưu bất cứ thứ gì<br/>mở được kho"| T["🛡️ Titanium"]
+```
+
 ## Nhìn tổng quan
 
 | | 🥈 Silver | 🥇 Gold | 💎 Platinum | 🛡️ Titanium |

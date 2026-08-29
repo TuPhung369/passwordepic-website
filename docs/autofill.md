@@ -22,6 +22,20 @@ If it opens the wrong screen, or nothing happens, use the manual path for your
 brand below. This is worth knowing anyway, because Android moved this setting
 several times and every manufacturer renamed it.
 
+```mermaid
+flowchart TD
+  A["I want autofill"] --> B{"Android 8.0<br/>or newer?"}
+  B -->|"No"| X["❌ Not possible.<br/>Autofill arrived in Android 8.0."]
+  B -->|"Yes"| C["Open Settings, search 'autofill',<br/>choose PasswordEpic"]
+  C --> D{"Where do you<br/>need it?"}
+  D -->|"In apps"| E["✅ Done"]
+  D -->|"On websites,<br/>in Chrome"| F["Chrome → Settings →<br/>turn on 'Autofill using<br/>another service'"]
+  F --> G["Close Chrome fully,<br/>then reopen it"]
+  G --> E
+  D -->|"In an app that<br/>never offers it"| H["Optional: turn on<br/>PasswordEpic Autofill Refill<br/>under Accessibility"]
+  H --> E
+```
+
 ## Where the setting actually lives
 
 <h3 id="samsung">Samsung</h3>
@@ -128,6 +142,15 @@ off. You can turn it off at any time from the same screen.
 
 There is no window during which fills happen unattended, and no "unlock for five
 minutes" mode.
+
+```mermaid
+flowchart LR
+  A["👆 You tap a<br/>login field"] --> B["🤖 Android asks<br/>PasswordEpic"]
+  B --> C["👤 Fingerprint or passcode.<br/>Every time."]
+  C --> D["🔓 One entry decrypted,<br/>for this fill only"]
+  D --> E["✅ Field filled"]
+  E --> F["🧹 Plaintext and key<br/>dropped immediately"]
+```
 
 ## What a screen recorder sees
 

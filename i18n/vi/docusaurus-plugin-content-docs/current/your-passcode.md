@@ -48,6 +48,13 @@ khoá vừa phải thành một mục tiêu thật sự chậm chạp.
 Ở gói Titanium, bước ở giữa là một khoá OPAQUE, được dẫn xuất theo cách tốn kém
 tương tự nhưng không hề được lưu lại. Xem [Các gói bảo mật](./security-tiers.md).
 
+```mermaid
+flowchart LR
+  A["🔑 Mã mở khoá của bạn<br/>Thứ duy nhất bạn gõ"] --> B["🐢 Argon2id<br/>128 MiB bộ nhớ.<br/>Cố ý làm cho chậm."]
+  B --> C["🎲 Một bí mật 256-bit<br/>Ứng dụng tự sinh ra.<br/>Bạn không bao giờ thấy."]
+  C --> D["📦 Mở mảnh 2<br/>của khoá kho"]
+```
+
 ## Độ mạnh đo bằng bit, không phải số ký tự
 
 Quy tắc "tối thiểu 8 ký tự" không thể diễn tả được rằng tám chữ số và tám ký tự

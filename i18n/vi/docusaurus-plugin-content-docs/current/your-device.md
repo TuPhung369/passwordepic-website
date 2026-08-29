@@ -47,6 +47,16 @@ vượt qua nó, mà chỉ đồng nghĩa với việc cũng không có kho luô
 
 ## Chuyển sang điện thoại mới
 
+```mermaid
+flowchart TD
+  A["📱 Chuyển sang điện thoại mới"] --> B{"Bạn còn giữ<br/>máy cũ không?"}
+  B -->|"Còn"| C["Trên máy cũ:<br/>Cài đặt → Đặt lại tài khoản"]
+  B -->|"Không"| D["Gửi email cho hỗ trợ.<br/>Chúng tôi giải phóng giúp bạn."]
+  C --> E["Đăng nhập trên máy mới"]
+  D --> E
+  E --> F["⚠️ Kho cũ không đi theo bạn.<br/>Bạn bắt đầu lại từ đầu."]
+```
+
 :::warning Giải phóng tài khoản không mang kho mật khẩu đi theo
 
 Nó chỉ cho phép bạn bắt đầu lại từ đầu trên thiết bị mới. Kho cũ vẫn nằm nguyên ở
