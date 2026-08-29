@@ -42,15 +42,14 @@ export default function CallToAction(): ReactNode {
               <FaBook aria-hidden />
               <Translate id="home.cta.docs">Read the documentation</Translate>
             </Link>
-            <a
-              className={styles.btnGhost}
-              href="mailto:support@passwordepic.com"
-              aria-label={translate({
-                id: 'home.cta.contactAria',
-                message: 'Email support at passwordepic.com',
-              })}>
+            {/* Deliberately a plain anchor with no target: a `mailto:` opened
+                in a new tab leaves anyone without a configured mail client
+                staring at a blank one. The address is spelled out rather than
+                hidden behind "Ask us something", so a webmail user can copy it
+                instead. */}
+            <a className={styles.btnGhost} href="mailto:support@passwordepic.com">
               <FaEnvelope aria-hidden />
-              <Translate id="home.cta.contact">Ask us something</Translate>
+              support@passwordepic.com
             </a>
           </div>
 

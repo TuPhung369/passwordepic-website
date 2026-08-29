@@ -12,9 +12,8 @@ import styles from './styles.module.css';
  * one 40px button; open it is a panel over the content.
  *
  * On a pointer device it opens on hover, the way the sample project's does; on
- * touch it opens on tap. The panel's own top gap is bridged by a transparent
- * pseudo-element so that crossing from button to panel never leaves the
- * container and slams it shut mid-reach.
+ * touch it opens on tap. Because the panel grows out of the button rather than
+ * sitting below it, there is no gap for a travelling pointer to fall through.
  *
  * It reads the DOM rather than the route's TOC data on purpose: this renders
  * from `src/theme/Root`, which sits outside the doc plugin's context and has no
@@ -184,6 +183,10 @@ export default function StarToc(): React.ReactNode {
           setOpen(false);
         }
       }}>
+      {/* One element in two states rather than a button with a panel hanging
+          off it: closed it is the star, open it becomes the panel's header.
+          The previous shape put a star in the button and another in the panel
+          header directly below it, which read as a duplicate. */}
       <button
         type="button"
         className={styles.trigger}
@@ -192,13 +195,10 @@ export default function StarToc(): React.ReactNode {
         title={label}
         onClick={() => setOpen(v => !v)}>
         <FaStar aria-hidden />
+        <span className={styles.triggerLabel}>{label}</span>
       </button>
 
       <div className={styles.panel} role="navigation" aria-label={label} hidden={!open}>
-        <div className={styles.panelHead}>
-          <FaStar aria-hidden className={styles.panelHeadIcon} />
-          <span>{label}</span>
-        </div>
         <ul className={styles.list}>
           {entries.map(entry => (
             <li key={entry.id}>

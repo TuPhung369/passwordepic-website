@@ -12,10 +12,6 @@
   "home.meta.description": {
     "message": "Trình quản lý mật khẩu zero-knowledge cho Android, dựa trên phần cứng bảo mật. Mã mở khoá không bao giờ rời khỏi thiết bị của bạn, và khoá của kho mật khẩu không thể ghép lại nếu thiếu nó."
   },
-  "starToc.label": {
-    "message": "Mục lục",
-    "description": "Label for the floating table-of-contents button"
-  },
   "home.cta.heading": {
     "message": "Hãy thẩm định, đừng chỉ tin"
   },
@@ -27,12 +23,6 @@
   },
   "home.cta.docs": {
     "message": "Đọc tài liệu"
-  },
-  "home.cta.contactAria": {
-    "message": "Gửi email tới support@passwordepic.com"
-  },
-  "home.cta.contact": {
-    "message": "Hỏi chúng tôi"
   },
   "home.cta.qrAlt": {
     "message": "Mã QR dẫn tới PasswordEpic trên Google Play"
@@ -561,5 +551,9 @@
   },
   "home.who.footnote": {
     "message": "Chúng tôi liệt kê thẳng hàng thứ tư đó thay vì làm tròn nó đi. Máy chủ của chúng tôi có xử lý một mảnh của khoá — và vẫn không thể mở kho mật khẩu của bạn, bởi mảnh 1 chưa từng tồn tại ở đâu khác ngoài điện thoại của bạn."
+  },
+  "starToc.label": {
+    "message": "Mục lục",
+    "description": "Label for the floating table-of-contents button"
   }
 }
