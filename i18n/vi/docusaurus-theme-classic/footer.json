@@ -3,6 +3,10 @@
     "message": "Sản phẩm",
     "description": "The title of the footer links column with title=Product in the footer"
   },
+  "link.title.Guides": {
+    "message": "Hướng dẫn",
+    "description": "The title of the footer links column with title=Guides in the footer"
+  },
   "link.title.Legal": {
     "message": "Pháp lý",
     "description": "The title of the footer links column with title=Legal in the footer"
@@ -18,6 +22,26 @@
   "link.item.label.How it works": {
     "message": "Cách hoạt động",
     "description": "The label of footer link with label=How it works linking to /docs/how-it-works"
+  },
+  "link.item.label.Security tiers": {
+    "message": "Các gói bảo mật",
+    "description": "The label of footer link with label=Security tiers linking to /docs/security-tiers"
+  },
+  "link.item.label.Your passcode": {
+    "message": "Mã mở khoá của bạn",
+    "description": "The label of footer link with label=Your passcode linking to /docs/your-passcode"
+  },
+  "link.item.label.Autofill": {
+    "message": "Tự động điền",
+    "description": "The label of footer link with label=Autofill linking to /docs/autofill"
+  },
+  "link.item.label.Backups and exports": {
+    "message": "Sao lưu và xuất dữ liệu",
+    "description": "The label of footer link with label=Backups and exports linking to /docs/backups"
+  },
+  "link.item.label.One device per account": {
+    "message": "Một thiết bị cho mỗi tài khoản",
+    "description": "The label of footer link with label=One device per account linking to /docs/your-device"
   },
   "link.item.label.Privacy Policy": {
     "message": "Chính sách quyền riêng tư",

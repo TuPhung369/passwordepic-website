@@ -1,6 +1,7 @@
 ---
 title: Điều khoản dịch vụ
 description: Điều khoản sử dụng PasswordEpic, bao gồm những gì ứng dụng khôi phục được và không khôi phục được.
+hide_table_of_contents: true
 ---
 
 # Điều khoản dịch vụ

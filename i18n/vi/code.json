@@ -2,17 +2,222 @@
   "_comment": {
     "message": "Strings this site owns, plus the one theme.* key Docusaurus has not translated yet. Copying the rest of theme.* here would freeze them at today's version and quietly drift on the next upgrade."
   },
-
   "theme.colorToggle.ariaLabel.mode.system": {
     "message": "chế độ hệ thống",
     "description": "Upstream vi.json still has this one in English while light/dark are translated - drop this override once it lands."
   },
-
   "home.meta.title": {
     "message": "Trình quản lý mật khẩu không thể đọc mật khẩu của bạn"
   },
   "home.meta.description": {
     "message": "Trình quản lý mật khẩu zero-knowledge cho Android, dựa trên phần cứng bảo mật. Mã mở khoá không bao giờ rời khỏi thiết bị của bạn, và khoá của kho mật khẩu không thể ghép lại nếu thiếu nó."
+  },
+  "home.cta.heading": {
+    "message": "Hãy thẩm định, đừng chỉ tin"
+  },
+  "home.cta.text": {
+    "message": "Tài liệu mô tả chiếc khoá, các mảnh khoá và nơi từng mảnh nằm — kể cả những phần chúng tôi có xử lý. Hãy đọc nó trước khi quyết định có tin trang chủ hay không."
+  },
+  "home.cta.docs": {
+    "message": "Đọc tài liệu"
+  },
+  "home.cta.contactAria": {
+    "message": "Gửi email tới support@passwordepic.com"
+  },
+  "home.cta.contact": {
+    "message": "Hỏi chúng tôi"
+  },
+  "home.features.tag.paid": {
+    "message": "Từ Gold trở lên"
+  },
+  "home.features.tag.hardened": {
+    "message": "Platinum và Titanium"
+  },
+  "home.features.hardware.title": {
+    "message": "Khoá sinh ra trong phần cứng bảo mật"
+  },
+  "home.features.hardware.text": {
+    "message": "Shard 1 được sinh bên trong StrongBox hoặc TEE và không thể xuất ra — không phải bởi chúng tôi, không phải bởi bạn, cũng không phải bởi kẻ tấn công đang nắm tài khoản của bạn."
+  },
+  "home.features.zk.title": {
+    "message": "Zero-knowledge từ trong thiết kế"
+  },
+  "home.features.zk.text": {
+    "message": "Các mục trong kho được mã hoá trên thiết bị và không bao giờ được tải lên. Cơ sở dữ liệu của chúng tôi chỉ chứa dữ liệu tài khoản và ciphertext của mảnh khoá, không có thứ gì bạn đã lưu."
+  },
+  "home.features.drive.title": {
+    "message": "Bản sao lưu đi vào Drive của bạn"
+  },
+  "home.features.drive.text": {
+    "message": "Tệp sao lưu được ghi vào chính tài khoản Google Drive của bạn, ở dạng đã mã hoá. Chúng tôi không bao giờ nhận được chúng, và có nhận cũng không đọc được."
+  },
+  "home.features.autofill.title": {
+    "message": "Không gì được điền nếu không có bạn"
+  },
+  "home.features.autofill.text": {
+    "message": "Mỗi lần tự động điền đều phải qua xác thực vân tay hoặc mã mở khoá, và các cửa sổ của chính ứng dụng được loại khỏi ảnh chụp và bản ghi màn hình."
+  },
+  "home.features.reset.title": {
+    "message": "Xoá sạch mọi thứ, ngay lập tức"
+  },
+  "home.features.reset.text": {
+    "message": "Cài đặt → Đặt lại tài khoản xoá kho mật khẩu và dữ liệu tài khoản của bạn khỏi máy chủ của chúng tôi. Không hàng đợi, không thời gian lưu giữ, không cần mở phiếu hỗ trợ."
+  },
+  "home.features.device.title": {
+    "message": "Một thiết bị, có tên và nhìn thấy được"
+  },
+  "home.features.device.text": {
+    "message": "Tài khoản trả phí chạy trên một thiết bị tại một thời điểm, được nhận diện bằng một khoá phần cứng chứ không phải bằng mã định danh mà máy nào cũng có thể tự khai. Lần đăng nhập thứ hai bị từ chối, chứ không được lặng lẽ cho qua."
+  },
+  "home.features.integrity.title": {
+    "message": "Ứng dụng tự kiểm tra rằng nó đúng là nó"
+  },
+  "home.features.integrity.text": {
+    "message": "Play Integrity được xác minh phía máy chủ, và kết nối trả về một phần khoá được ghim chứng chỉ. Mật mã học giả định ứng dụng còn nguyên vẹn; đây là thứ kiểm chứng giả định đó."
+  },
+  "home.features.tamper.title": {
+    "message": "Phát hiện lớp phủ và can thiệp"
+  },
+  "home.features.tamper.text": {
+    "message": "Các thao tác khoá bị từ chối trên thiết bị đã bị root, hook hay phủ lớp giả, thay vì cứ chạy tiếp và hy vọng."
+  },
+  "home.features.rust.title": {
+    "message": "OPAQUE, trong một lõi Rust"
+  },
+  "home.features.rust.text": {
+    "message": "Ở Titanium, mã mở khoá mở kho thông qua OPAQUE, nên không có gì dẫn xuất từ nó được ghi ra đĩa — và lõi Rust có thể xoá sạch những giá trị đó khỏi bộ nhớ native, điều JavaScript không làm được."
+  },
+  "home.features.tag.titanium": {
+    "message": "Titanium"
+  },
+  "home.features.eyebrow": {
+    "message": "Khả năng"
+  },
+  "home.features.heading": {
+    "message": "Ứng dụng thật sự làm được gì"
+  },
+  "home.features.lead": {
+    "message": "Chỗ nào một tính năng không có ở mọi gói, thẻ đó sẽ ghi rõ."
+  },
+  "home.unlock.1.title": {
+    "message": "Bạn gõ mã mở khoá"
+  },
+  "home.unlock.1.text": {
+    "message": "Một bí mật duy nhất, và là bí mật duy nhất bạn từng gõ. Nó không rời khỏi điện thoại và không bao giờ được gửi tới máy chủ."
+  },
+  "home.unlock.1.note": {
+    "message": "Không bao giờ truyền đi"
+  },
+  "home.unlock.2.title": {
+    "message": "Argon2id kéo dãn nó ra"
+  },
+  "home.unlock.2.text": {
+    "message": "128 MiB bộ nhớ và 10 lượt biến mã mở khoá thành một vault secret. Kẻ tấn công cũng phải trả đúng cái giá đó cho mỗi lần đoán."
+  },
+  "home.unlock.2.note": {
+    "message": "128 MiB · 10 lượt"
+  },
+  "home.unlock.3.title": {
+    "message": "Vault secret mở Shard 2"
+  },
+  "home.unlock.3.text": {
+    "message": "Shard 2 được lưu ở dạng mã hoá trên thiết bị, kèm một bản sao ciphertext được đồng bộ để phòng mất dữ liệu. Tự nó thì không mở được gì."
+  },
+  "home.unlock.4.title": {
+    "message": "Shard 1 ra khỏi phần cứng bảo mật"
+  },
+  "home.unlock.4.text": {
+    "message": "Được sinh bên trong StrongBox hoặc TEE và không thể xuất ra, do thiết kế của phần cứng. Đây là mảnh khiến mọi thứ còn lại đứng vững."
+  },
+  "home.unlock.4.note": {
+    "message": "Không thể rời khỏi máy"
+  },
+  "home.unlock.5.title": {
+    "message": "Máy chủ tính ShardVault"
+  },
+  "home.unlock.5.text": {
+    "message": "Một phép HMAC chạy bên trong mô-đun phần cứng Cloud KMS, dùng một pepper không bao giờ rời khỏi đó — và gắn với tài khoản của bạn, nên không thể yêu cầu nó cho người khác."
+  },
+  "home.unlock.6.title": {
+    "message": "Ba mảnh ghép lại trên thiết bị của bạn"
+  },
+  "home.unlock.6.text": {
+    "message": "Chiếc khoá chỉ tồn tại trong bộ nhớ native, chỉ trên điện thoại của bạn, và chỉ trong đúng khoảng thời gian của thao tác bạn vừa yêu cầu."
+  },
+  "home.unlock.7.title": {
+    "message": "Rồi nó bị xoá sạch"
+  },
+  "home.unlock.7.text": {
+    "message": "Khoá được xoá ngay sau khi dùng và dựng lại từ đầu ở lần sau. Không bao giờ ghi ra đĩa, không ghi log, không lưu đệm."
+  },
+  "home.unlock.7.note": {
+    "message": "Dựng lại mỗi lần"
+  },
+  "home.unlock.eyebrow": {
+    "message": "Cơ chế"
+  },
+  "home.unlock.heading": {
+    "message": "Chuyện gì xảy ra khi bạn mở khoá"
+  },
+  "home.unlock.lead": {
+    "message": "Chiếc khoá giải mã kho mật khẩu của bạn không được lưu ở đâu cả. Nó được dựng lại từ những mảnh riêng biệt mỗi lần, rồi bị huỷ ngay sau đó."
+  },
+  "home.unlock.formula": {
+    "message": "Thiếu bất kỳ mảnh nào trong ba là không có khoá. Chúng tôi nắm hai trong số đó và vẫn không mở được kho của bạn, bởi Shard 1 chưa từng tồn tại ở đâu khác ngoài điện thoại của bạn."
+  },
+  "home.autofill.1.title": {
+    "message": "Bạn chạm vào ô đăng nhập"
+  },
+  "home.autofill.1.text": {
+    "message": "Trong bất kỳ ứng dụng hay trang web nào dùng ô mật khẩu thông thường."
+  },
+  "home.autofill.2.title": {
+    "message": "Android hỏi PasswordEpic"
+  },
+  "home.autofill.2.text": {
+    "message": "Thông qua khung tự động điền của hệ thống — ứng dụng không hề theo dõi màn hình để tự tìm ô đó."
+  },
+  "home.autofill.3.title": {
+    "message": "Bạn xác nhận đúng là bạn"
+  },
+  "home.autofill.3.text": {
+    "message": "Vân tay hoặc mã mở khoá, mọi lần, không ngoại lệ. Không có khoảng thời gian nào việc điền diễn ra mà không có bạn."
+  },
+  "home.autofill.3.note": {
+    "message": "Mọi lần"
+  },
+  "home.autofill.4.title": {
+    "message": "Đúng một mục được giải mã"
+  },
+  "home.autofill.4.text": {
+    "message": "Chỉ mục đang được điền, và chỉ cho lần điền đó. Phần còn lại của kho vẫn nằm nguyên ở dạng mã hoá."
+  },
+  "home.autofill.5.title": {
+    "message": "Bản rõ bị bỏ đi"
+  },
+  "home.autofill.5.text": {
+    "message": "Giá trị đã giải mã và chiếc khoá được giải phóng ngay khi ô đã được điền."
+  },
+  "home.autofill.eyebrow": {
+    "message": "Dùng hằng ngày"
+  },
+  "home.autofill.heading": {
+    "message": "Điền một mật khẩu, từng bước một"
+  },
+  "home.autofill.lead": {
+    "message": "Tự động điền cần Android 8.0 trở lên. Một số ứng dụng chủ động từ chối tính năng này — đó là lựa chọn của họ, không phải lỗi của PasswordEpic."
+  },
+  "home.hero.chip.recovery": {
+    "message": "Không có khôi phục tài khoản — do thiết kế"
+  },
+  "home.hero.chip.passcode": {
+    "message": "Mã mở khoá của bạn không bao giờ được truyền đi"
+  },
+  "home.hero.chip.backup": {
+    "message": "Bản sao lưu đi vào Google Drive của chính bạn"
+  },
+  "home.hero.eyebrow": {
+    "message": "Android · Zero-knowledge"
   },
   "home.hero.title": {
     "message": "Trình quản lý mật khẩu không thể đọc mật khẩu của bạn"
@@ -23,21 +228,167 @@
   "home.hero.cta": {
     "message": "Xem chính xác bằng cách nào"
   },
-
-  "home.who.heading": {
-    "message": "Ai thấy được gì"
+  "home.hero.cta2": {
+    "message": "So sánh các gói"
   },
-  "home.who.intro": {
-    "message": "Đáng chú ý là những hàng có câu trả lời “không bao giờ” — và hàng duy nhất không phải vậy."
+  "home.limits.files.title": {
+    "message": "Bản sao lưu chỉ mở được trên chiếc máy đã tạo ra nó"
   },
-  "home.who.col.data": {
-    "message": "Dữ liệu"
+  "home.limits.files.text": {
+    "message": "Mọi bản sao lưu và bản xuất đều mang một lớp mã hoá gắn với phần cứng bảo mật của thiết bị đó. Chúng bảo vệ bạn khỏi việc mất dữ liệu trên chiếc điện thoại bạn vẫn còn — không phải khỏi việc mất chính chiếc điện thoại."
   },
-  "home.who.col.device": {
-    "message": "Thiết bị của bạn"
+  "home.limits.migration.title": {
+    "message": "Không có đường chuyển sang điện thoại mới"
   },
-  "home.who.col.server": {
-    "message": "Máy chủ của chúng tôi"
+  "home.limits.migration.text": {
+    "message": "Ở mọi gói. Bộ phận hỗ trợ có thể giải phóng tài khoản để bạn bắt đầu lại trên máy mới, nhưng điều đó không mang kho cũ đi theo."
+  },
+  "home.limits.keyboard.title": {
+    "message": "Bàn phím của bạn đọc được những gì bạn gõ"
+  },
+  "home.limits.keyboard.text": {
+    "message": "Trong mọi ứng dụng, không riêng ứng dụng này. Các cửa sổ của chính ứng dụng được loại khỏi ảnh chụp và bản ghi màn hình, nhưng bàn phím thuộc về một ứng dụng khác nên không thể. PasswordEpic sẽ cảnh báo khi bàn phím đang dùng không đi kèm máy."
+  },
+  "home.limits.recording.title": {
+    "message": "Từ chối nhập mã khi đang bị quay màn hình cần Android 15"
+  },
+  "home.limits.recording.text": {
+    "message": "Ở phiên bản thấp hơn, ứng dụng vẫn làm đen các cửa sổ của chính nó trong bản ghi, nhưng không phát hiện được là đang có bản ghi để dừng bạn lại."
+  },
+  "home.limits.silver.title": {
+    "message": "Gói miễn phí hoàn toàn bằng phần mềm"
+  },
+  "home.limits.silver.text": {
+    "message": "Silver mã hoá trong JavaScript bằng AES-256-CTR kèm một thẻ xác thực riêng, không lưu khoá bằng phần cứng, và sau đó không thể xoá khoá khỏi bộ nhớ một cách đáng tin cậy. Đó là những đánh đổi được chấp nhận, không phải khiếm khuyết — nhưng chúng là thật."
+  },
+  "home.limits.ios.title": {
+    "message": "Chỉ có trên Android"
+  },
+  "home.limits.ios.text": {
+    "message": "Android 7.0 trở lên. Không có phiên bản iOS, và các gói dựa trên phần cứng không có thứ tương đương trên iOS để chuyển sang."
+  },
+  "home.limits.eyebrow": {
+    "message": "Đọc kỹ phần này"
+  },
+  "home.limits.heading": {
+    "message": "Bằng chứng nằm ở những gì chúng tôi không thể làm"
+  },
+  "home.limits.lead": {
+    "message": "Một dịch vụ có thể khôi phục kho của bạn là một dịch vụ có thể đọc nó. Những giới hạn này chính là điều đó, nói từ phía ngược lại."
+  },
+  "home.limits.headline": {
+    "message": "Không có khôi phục tài khoản. Nếu bạn quên mã mở khoá hoặc mất thiết bị, kho mật khẩu mất theo — không liên kết đặt lại, không câu hỏi khôi phục, không quyền can thiệp của bộ phận hỗ trợ, và không có cách nào để chúng tôi bị ép tạo ra một quyền như vậy."
+  },
+  "home.stats.shards.label": {
+    "message": "Mảnh khoá"
+  },
+  "home.stats.shards.note": {
+    "message": "Nằm ở bốn nơi tách biệt. Không ai nắm đủ để dựng lại chiếc khoá."
+  },
+  "home.stats.entropy.label": {
+    "message": "Entropy tối thiểu của mã mở khoá"
+  },
+  "home.stats.entropy.note": {
+    "message": "Đo bằng bit chứ không phải số ký tự — nên bộ ký tự càng rộng thì mã càng được phép ngắn."
+  },
+  "home.stats.argon.label": {
+    "message": "Bộ nhớ Argon2id cho mỗi lần đoán"
+  },
+  "home.stats.argon.note": {
+    "message": "Cái giá mà kẻ đã cầm được điện thoại của bạn phải trả cho từng lần thử."
+  },
+  "home.stats.recovery.label": {
+    "message": "Số cách chúng tôi khôi phục được kho của bạn"
+  },
+  "home.stats.recovery.note": {
+    "message": "Không liên kết đặt lại, không quyền can thiệp, và không có gì để người khác đòi ở chúng tôi."
+  },
+  "home.stats.heading": {
+    "message": "Thiết kế này trong bốn con số"
+  },
+  "home.stats.lead": {
+    "message": "Ba con số đầu khiến kho mật khẩu trở nên đắt đỏ để tấn công. Con số thứ tư là cái giá bạn phải trả cho chúng."
+  },
+  "home.tiers.free": {
+    "message": "Miễn phí"
+  },
+  "home.tiers.silver.summary": {
+    "message": "Gói miễn phí, và là gói duy nhất chạy được mà không cần mô-đun native của Android."
+  },
+  "home.tiers.silver.1": {
+    "message": "AES-256-CTR kèm HMAC-SHA256 riêng, chạy trong JavaScript"
+  },
+  "home.tiers.silver.2": {
+    "message": "Khoá dựng lại từ hai mảnh, tính ngay trên thiết bị"
+  },
+  "home.tiers.silver.3": {
+    "message": "Không giới hạn thiết bị"
+  },
+  "home.tiers.silver.no1": {
+    "message": "Không lưu khoá bằng phần cứng"
+  },
+  "home.tiers.silver.no2": {
+    "message": "Không đảm bảo khoá được xoá khỏi bộ nhớ"
+  },
+  "home.tiers.paid": {
+    "message": "Trả phí"
+  },
+  "home.tiers.gold.summary": {
+    "message": "Mốc bảo mật thật sự. Toàn bộ phần mã hoá chuyển vào mã native."
+  },
+  "home.tiers.gold.1": {
+    "message": "AES-256-GCM trong mã native Kotlin"
+  },
+  "home.tiers.gold.2": {
+    "message": "Shard 1 nằm trong StrongBox hoặc TEE, không thể xuất ra"
+  },
+  "home.tiers.gold.3": {
+    "message": "Mảnh khoá thứ ba được tính bên trong Cloud KMS"
+  },
+  "home.tiers.gold.4": {
+    "message": "Khoá bị xoá sạch ngay sau mỗi thao tác"
+  },
+  "home.tiers.platinum.summary": {
+    "message": "Giống hệt Gold về mật mã học. Cái nó thêm vào là bằng chứng rằng thiết bị xứng đáng với điều đó."
+  },
+  "home.tiers.platinum.1": {
+    "message": "Mọi thứ của Gold, giữ nguyên"
+  },
+  "home.tiers.platinum.2": {
+    "message": "Play Integrity, xác minh trên máy chủ"
+  },
+  "home.tiers.platinum.3": {
+    "message": "Ghim chứng chỉ cho lời gọi dẫn xuất khoá"
+  },
+  "home.tiers.platinum.4": {
+    "message": "Phát hiện lớp phủ, trợ năng và can thiệp"
+  },
+  "home.tiers.titanium.summary": {
+    "message": "Chỉ đổi một thứ trong bộ máy của Gold — nhưng thứ nó đổi lại chính là thứ chạm vào mã mở khoá của bạn."
+  },
+  "home.tiers.titanium.1": {
+    "message": "Mọi thứ của Platinum"
+  },
+  "home.tiers.titanium.2": {
+    "message": "Mã mở khoá mở kho thông qua OPAQUE"
+  },
+  "home.tiers.titanium.3": {
+    "message": "Không lưu bất cứ thứ gì mở được kho ở dạng bản rõ"
+  },
+  "home.tiers.titanium.4": {
+    "message": "Lõi Rust có thể xoá bí mật khỏi bộ nhớ native"
+  },
+  "home.tiers.eyebrow": {
+    "message": "Chọn mức bảo vệ"
+  },
+  "home.tiers.heading": {
+    "message": "Bốn gói, mỗi gói là gói dưới nó cộng thêm một phần"
+  },
+  "home.tiers.lead": {
+    "message": "Chúng không phải bốn sản phẩm riêng biệt. Gold, Platinum và Titanium đều chạy cùng một bộ máy native, chỉ khác ở chỗ cái gì canh gác nó hoặc cái gì mở khoá."
+  },
+  "home.tiers.more": {
+    "message": "Bảng so sánh đầy đủ, từng dòng một"
   },
   "home.never": {
     "message": "Không bao giờ"
@@ -81,101 +432,35 @@
   "home.who.account": {
     "message": "Email, mẫu thiết bị, sự kiện bảo mật"
   },
+  "home.who.yes": {
+    "message": "Có"
+  },
   "home.who.account.server": {
-    "message": "Có — để vận hành tài khoản của bạn và chặn lạm dụng"
+    "message": "— để vận hành tài khoản của bạn và chặn lạm dụng"
+  },
+  "home.who.eyebrow": {
+    "message": "Minh bạch"
+  },
+  "home.who.heading": {
+    "message": "Ai thấy được gì"
+  },
+  "home.who.lead": {
+    "message": "Đáng chú ý là những hàng có câu trả lời “không bao giờ” — và hàng duy nhất không phải vậy."
+  },
+  "home.who.col.data": {
+    "message": "Dữ liệu"
+  },
+  "home.who.col.device": {
+    "message": "Thiết bị của bạn"
+  },
+  "home.who.col.server": {
+    "message": "Máy chủ của chúng tôi"
   },
   "home.who.footnote": {
     "message": "Chúng tôi liệt kê thẳng hàng thứ tư đó thay vì làm tròn nó đi. Máy chủ của chúng tôi có xử lý một mảnh của khoá — và vẫn không thể mở kho mật khẩu của bạn, bởi mảnh 1 chưa từng tồn tại ở đâu khác ngoài điện thoại của bạn."
   },
-
-  "home.proof.heading": {
-    "message": "Bằng chứng nằm ở những gì chúng tôi không thể làm"
-  },
-  "home.proof.lead": {
-    "message": "Không có khôi phục tài khoản. Nếu bạn quên mã mở khoá hoặc mất thiết bị, kho mật khẩu mất theo."
-  },
-  "home.proof.body": {
-    "message": "Không có liên kết đặt lại, không có câu hỏi khôi phục, không có quyền can thiệp của bộ phận hỗ trợ — và cũng không có cách nào để chúng tôi bị ép phải tạo ra một quyền như vậy. Một dịch vụ có thể khôi phục kho mật khẩu của bạn là một dịch vụ có thể đọc nó; đây chính là điều đó, nói từ phía ngược lại."
-  },
-  "home.proof.backups": {
-    "message": "Bản sao lưu và bản xuất mang một lớp mã hoá gắn với thiết bị đã tạo ra chúng, nên chỉ mở được ở đúng thiết bị đó. Xin cân nhắc điều này trước khi ứng dụng trở thành bản lưu duy nhất của thứ gì đó quan trọng."
-  },
-
-  "home.controls.heading": {
-    "message": "Những gì bạn kiểm soát"
-  },
-  "home.controls.reset.title": {
-    "message": "Xoá sạch mọi thứ, ngay lập tức"
-  },
-  "home.controls.reset.body": {
-    "message": "Cài đặt → Đặt lại tài khoản xoá kho mật khẩu và dữ liệu tài khoản của bạn khỏi máy chủ của chúng tôi. Không hàng đợi, không thời gian lưu giữ, không cần mở phiếu hỗ trợ."
-  },
-  "home.controls.backup.title": {
-    "message": "Bản sao lưu đi vào Drive của bạn"
-  },
-  "home.controls.backup.body": {
-    "message": "Không phải Drive của chúng tôi. Tệp sao lưu được ghi vào chính tài khoản Google Drive của bạn, ở dạng đã mã hoá. Chúng tôi không bao giờ nhận được chúng."
-  },
-  "home.controls.device.title": {
-    "message": "Bạn biết thiết bị nào đang giữ tài khoản"
-  },
-  "home.controls.device.body": {
-    "message": "Ở các gói trả phí, mỗi tài khoản chỉ chạy trên một thiết bị tại một thời điểm, và ứng dụng cho bạn biết tên thiết bị đang giữ nó. Lần đăng nhập thứ hai bị từ chối, chứ không được lặng lẽ cho qua."
-  },
-  "home.controls.autofill.title": {
-    "message": "Không gì được điền nếu không có bạn"
-  },
-  "home.controls.autofill.body": {
-    "message": "Mỗi lần tự động điền đều phải qua xác thực vân tay hoặc mã mở khoá — mọi lần, không ngoại lệ."
-  },
-
-  "home.tiers.heading": {
-    "message": "Chọn mức bảo vệ bạn muốn"
-  },
-  "home.tiers.col.tier": {
-    "message": "Gói"
-  },
-  "home.tiers.col.encryption": {
-    "message": "Mã hoá"
-  },
-  "home.tiers.col.extras": {
-    "message": "Bổ sung"
-  },
-  "home.tiers.free": {
-    "message": "Miễn phí"
-  },
-  "home.tiers.silver.encryption": {
-    "message": "AES-256-CTR kèm HMAC-SHA256, bằng phần mềm"
-  },
-  "home.tiers.silver.extras": {
-    "message": "Không giới hạn thiết bị"
-  },
-  "home.tiers.gold.encryption": {
-    "message": "AES-256-GCM trong mã native, khoá dựa trên StrongBox/TEE"
-  },
-  "home.tiers.gold.extras": {
-    "message": "Mảnh khoá trên đám mây, một thiết bị cho mỗi tài khoản"
-  },
-  "home.tiers.sameAsGold": {
-    "message": "Giống Gold"
-  },
-  "home.tiers.platinum.extras": {
-    "message": "Chứng thực thiết bị, ghim chứng chỉ, phát hiện lớp phủ và can thiệp"
-  },
-  "home.tiers.titanium.extras": {
-    "message": "Giao thức zero-knowledge OPAQUE viết bằng Rust — máy chủ không bao giờ thấy bất cứ thứ gì dẫn xuất từ mã mở khoá của bạn"
-  },
-  "home.tiers.footnote": {
-    "message": "Silver chạy bằng JavaScript và không dùng lưu trữ khoá bằng phần cứng. Các gói trả phí chuyển phần mã hoá sang mã native với khoá được phần cứng bảo vệ."
-  },
-
-  "home.availability.heading": {
-    "message": "Chạy được trên thiết bị nào"
-  },
-  "home.availability.lead": {
-    "message": "Android 7.0 trở lên."
-  },
-  "home.availability.body": {
-    "message": "Các gói dựa trên phần cứng cần thiết bị có StrongBox hoặc TEE; chống quay màn hình khi nhập mã mở khoá cần Android 15. Không có phiên bản iOS."
+  "starToc.label": {
+    "message": "Mục lục",
+    "description": "Label for the floating table-of-contents button"
   }
 }

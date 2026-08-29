@@ -68,7 +68,11 @@ const config: Config = {
       'classic',
       {
         docs: {
-          sidebarPath: './sidebars.ts',
+          // No sidebar. The navbar is the only chrome on this site: docs get
+          // the full width, and the floating star in src/components/StarToc
+          // replaces the right-hand table of contents. Navigation between doc
+          // pages lives in the navbar dropdown below.
+          sidebarPath: false,
           routeBasePath: 'docs',
         },
         blog: false,
@@ -90,8 +94,21 @@ const config: Config = {
     navbar: {
       title: 'PasswordEpic',
       logo: { alt: 'PasswordEpic', src: 'img/logo.png' },
+      hideOnScroll: false,
       items: [
-        { to: '/docs/how-it-works', label: 'How it works', position: 'left' },
+        {
+          type: 'dropdown',
+          label: 'Documentation',
+          position: 'left',
+          items: [
+            { to: '/docs/how-it-works', label: 'How it works' },
+            { to: '/docs/security-tiers', label: 'Security tiers' },
+            { to: '/docs/your-passcode', label: 'Your passcode' },
+            { to: '/docs/autofill', label: 'Autofill' },
+            { to: '/docs/backups', label: 'Backups and exports' },
+            { to: '/docs/your-device', label: 'One device per account' },
+          ],
+        },
         { to: '/support', label: 'Support', position: 'left' },
         { to: '/privacy', label: 'Privacy', position: 'right' },
         { to: '/terms', label: 'Terms', position: 'right' },
@@ -106,6 +123,16 @@ const config: Config = {
           items: [
             { label: 'Overview', to: '/' },
             { label: 'How it works', to: '/docs/how-it-works' },
+            { label: 'Security tiers', to: '/docs/security-tiers' },
+          ],
+        },
+        {
+          title: 'Guides',
+          items: [
+            { label: 'Your passcode', to: '/docs/your-passcode' },
+            { label: 'Autofill', to: '/docs/autofill' },
+            { label: 'Backups and exports', to: '/docs/backups' },
+            { label: 'One device per account', to: '/docs/your-device' },
           ],
         },
         {

@@ -1,6 +1,7 @@
 ---
 title: Support
 description: Help with PasswordEpic — account reactivation, device changes, and what can and cannot be recovered.
+hide_table_of_contents: true
 ---
 
 # Support

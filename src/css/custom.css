@@ -1,4 +1,11 @@
-/* PasswordEpic — theme overrides on top of Docusaurus classic. */
+/* PasswordEpic — theme overrides on top of Docusaurus classic.
+ *
+ * Layout decision that drives much of this file: the navbar is the only chrome.
+ * Docs have no left sidebar (`sidebarPath: false`) and no right table of
+ * contents - the floating star in src/components/StarToc replaces it. So
+ * content owns the full width and has to set its own measure, which is what
+ * `--pe-measure` and the `.markdown` rules below do.
+ */
 
 :root {
   --ifm-color-primary: #2563eb;
@@ -10,6 +17,31 @@
   --ifm-color-primary-lightest: #6f9bf4;
   --ifm-code-font-size: 92%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.08);
+
+  /* Design tokens. Everything below this line is ours, not Infima's. */
+  --pe-surface: #ffffff;
+  --pe-surface-raised: #ffffff;
+  --pe-surface-accent: rgba(37, 99, 235, 0.07);
+  --pe-surface-sunken: #f6f8fc;
+  --pe-border: rgba(15, 23, 42, 0.12);
+  --pe-border-strong: rgba(15, 23, 42, 0.2);
+  --pe-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.08);
+  --pe-shadow-md: 0 4px 12px rgba(15, 23, 42, 0.09);
+  --pe-shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.16);
+  --pe-hero-from: #0f172a;
+  --pe-hero-to: #1e3a8a;
+
+  /* Reading measure for long-form pages. */
+  --pe-measure: 46rem;
+
+  /* Elemental accents, taken from the five keys in the app icon. Used to give
+     each tier and each workflow step its own identity without inventing a
+     second palette. */
+  --pe-metal: #eab308;
+  --pe-wood: #22a852;
+  --pe-water: #2563eb;
+  --pe-fire: #ef4444;
+  --pe-earth: #a16207;
 }
 
 [data-theme='dark'] {
@@ -21,43 +53,205 @@
   --ifm-color-primary-lighter: #a3c8ff;
   --ifm-color-primary-lightest: #d9e8ff;
   --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+
+  --pe-surface: #1b1f26;
+  --pe-surface-raised: #222730;
+  --pe-surface-accent: rgba(110, 168, 255, 0.14);
+  --pe-surface-sunken: #14171d;
+  --pe-border: rgba(255, 255, 255, 0.13);
+  --pe-border-strong: rgba(255, 255, 255, 0.24);
+  --pe-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --pe-shadow-md: 0 4px 14px rgba(0, 0, 0, 0.45);
+  --pe-shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.55);
+  --pe-hero-from: #0a0f1a;
+  --pe-hero-to: #16244a;
+
+  --pe-metal: #facc15;
+  --pe-wood: #4ade80;
+  --pe-water: #60a5fa;
+  --pe-fire: #f87171;
+  --pe-earth: #d69e2e;
 }
 
-/* Landing page */
-.heroBanner {
-  padding: 4rem 1rem 3rem;
+/* ---------------------------------------------------------------------------
+ * Navbar-only chrome
+ * ------------------------------------------------------------------------ */
+
+/* The star panel supersedes the built-in TOC. Belt and braces: `sidebarPath:
+   false` removes the left column, and doc frontmatter sets
+   `hide_table_of_contents`, but a page that forgets the frontmatter would
+   otherwise reintroduce a second contents list. */
+.theme-doc-toc-desktop,
+.theme-doc-toc-mobile {
+  display: none;
+}
+
+/* With no sidebar the doc column stretches to the viewport. Long lines are
+   unreadable, so re-impose a measure - and let tables and code blocks out of it,
+   since those genuinely use the width. */
+.theme-doc-markdown {
+  max-width: var(--pe-measure);
+  margin-inline: auto;
+}
+
+.theme-doc-markdown > .markdown > table,
+.theme-doc-markdown > .markdown > .tabs-container,
+.theme-doc-markdown > .markdown > div[class*='codeBlockContainer'] {
+  max-width: min(64rem, 100%);
+  margin-inline: auto;
+}
+
+/* Infima already gives every Markdown table `display: block; overflow: auto`,
+   which is what lets a wide table scroll inside itself on a phone instead of
+   pushing the whole page sideways. Do not override that to `display: table` -
+   the scroll goes with it, and the tier comparison is five columns wide. */
+
+/* Give doc pages breathing room now that nothing flanks them. */
+.theme-doc-markdown .markdown h2 {
+  margin-top: 2.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--pe-border);
+}
+
+.theme-doc-markdown .markdown h2:first-of-type {
+  margin-top: 1rem;
+  border-top: none;
+  padding-top: 0;
+}
+
+/* Keep pages clear of the floating star. */
+.theme-doc-markdown,
+main .container {
+  scroll-padding-top: calc(var(--ifm-navbar-height) + 1rem);
+}
+
+html {
+  scroll-padding-top: calc(var(--ifm-navbar-height) + 1rem);
+}
+
+/* Standalone Markdown pages - privacy, terms, support. Their frontmatter sets
+   `hide_table_of_contents`, which drops both the TOC column and the `col--8`
+   that was constraining the prose, leaving it full-bleed. Put the measure back
+   on the article itself. The selector deliberately uses MDXPage's unhashed
+   classes; the wrapper's own class is a CSS-module hash and not addressable. */
+main.container--fluid > .row > .col > article {
+  max-width: var(--pe-measure);
+  margin-inline: auto;
+}
+
+/* ---------------------------------------------------------------------------
+ * Shared page furniture
+ * ------------------------------------------------------------------------ */
+
+.peSection {
+  width: 100%;
+  padding: 4rem 1rem;
+}
+
+.peSectionSunken {
+  background: var(--pe-surface-sunken);
+  border-block: 1px solid var(--pe-border);
+}
+
+.peInner {
+  max-width: 68rem;
+  margin-inline: auto;
+}
+
+.peInnerNarrow {
+  max-width: 52rem;
+  margin-inline: auto;
+}
+
+.peSectionHead {
   text-align: center;
+  margin-bottom: 2.5rem;
 }
-.heroTitle {
-  font-size: clamp(1.9rem, 5vw, 2.9rem);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  margin-bottom: 1rem;
-}
-.heroSubtitle {
-  font-size: 1.12rem;
-  color: var(--ifm-color-emphasis-700);
-  max-width: 44rem;
-  margin: 0 auto 2rem;
-}
-.featureGrid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr;
-  margin: 0 auto 3rem;
-  max-width: 58rem;
-  padding: 0 1rem;
-}
-@media (min-width: 700px) {
-  .featureGrid { grid-template-columns: 1fr 1fr; }
-}
-.featureCard {
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 12px;
-  padding: 1.15rem 1.25rem;
-  background: var(--ifm-background-surface-color);
-}
-.featureCard h3 { margin: 0 0 0.4rem; font-size: 1.02rem; }
-.featureCard p { margin: 0; color: var(--ifm-color-emphasis-700); font-size: 0.95rem; }
 
-.sectionNarrow { max-width: 52rem; margin: 0 auto; padding: 0 1rem 3rem; }
+.peSectionHead h2 {
+  font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.6rem;
+}
+
+.peSectionHead p {
+  color: var(--ifm-color-emphasis-700);
+  max-width: 40rem;
+  margin-inline: auto;
+  margin-bottom: 0;
+}
+
+.peUnderline {
+  width: 68px;
+  height: 4px;
+  border-radius: 2px;
+  margin: 1rem auto 0;
+  background: linear-gradient(
+    90deg,
+    var(--pe-fire),
+    var(--pe-metal),
+    var(--pe-wood),
+    var(--pe-water)
+  );
+}
+
+.peEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+  margin-bottom: 0.75rem;
+}
+
+/* Tables inside hand-built sections. */
+/* Sits inside .peTableWrap, which owns the horizontal scrolling - so unlike a
+   Markdown table this one wants a real table layout. min-width forces the wrap
+   to scroll rather than crushing five columns into a phone. */
+.peTable {
+  display: table;
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+  font-size: 0.94rem;
+  margin-bottom: 0;
+}
+
+.peTable th,
+.peTable td {
+  text-align: left;
+  padding: 0.7rem 0.85rem;
+  border-bottom: 1px solid var(--pe-border);
+  vertical-align: top;
+}
+
+.peTable thead th {
+  font-size: 0.74rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-600);
+  border-bottom: 1px solid var(--pe-border-strong);
+  white-space: nowrap;
+}
+
+.peTableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--pe-border);
+  border-radius: 14px;
+  background: var(--pe-surface);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,7 +1,7 @@
 ---
 title: Chính sách quyền riêng tư
 description: PasswordEpic lưu những gì, không thể thấy những gì, và dữ liệu của bạn sẽ ra sao.
-hide_table_of_contents: false
+hide_table_of_contents: true
 ---
 
 # Chính sách quyền riêng tư

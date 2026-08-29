@@ -1,6 +1,7 @@
 ---
 title: Hỗ trợ
 description: Trợ giúp về PasswordEpic — kích hoạt lại tài khoản, đổi thiết bị, và những gì khôi phục được hay không.
+hide_table_of_contents: true
 ---
 
 # Hỗ trợ

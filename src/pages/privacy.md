@@ -1,7 +1,7 @@
 ---
 title: Privacy Policy
 description: What PasswordEpic stores, what it cannot see, and what happens to your data.
-hide_table_of_contents: false
+hide_table_of_contents: true
 ---
 
 # Privacy Policy

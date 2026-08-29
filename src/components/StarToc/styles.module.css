@@ -1,0 +1,148 @@
+/* Floating star table of contents. See index.tsx for why it exists. */
+
+.container {
+  position: fixed;
+  top: calc(var(--ifm-navbar-height) + 0.75rem);
+  right: 1rem;
+  z-index: 200;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--pe-border);
+  background: var(--pe-surface);
+  color: var(--ifm-color-primary);
+  font-size: 1.05rem;
+  cursor: pointer;
+  box-shadow: var(--pe-shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.trigger:hover {
+  transform: scale(1.08);
+  box-shadow: var(--pe-shadow-md);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+.container[data-open] .trigger {
+  background: var(--ifm-color-primary);
+  color: #fff;
+  border-color: var(--ifm-color-primary);
+}
+
+.panel {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  right: 0;
+  width: min(20rem, calc(100vw - 2rem));
+  max-height: min(60vh, 32rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0.4rem;
+  border-radius: 14px;
+  border: 1px solid var(--pe-border);
+  background: var(--pe-surface);
+  box-shadow: var(--pe-shadow-lg);
+}
+
+.panel[hidden] {
+  display: none;
+}
+
+.panelHead {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.65rem 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-600);
+  border-bottom: 1px solid var(--pe-border);
+  margin-bottom: 0.35rem;
+}
+
+.panelHeadIcon {
+  color: var(--ifm-color-primary);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  display: block;
+  padding: 0.4rem 0.65rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  line-height: 1.35;
+  color: var(--ifm-color-emphasis-800);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.link[data-level='3'] {
+  padding-left: 1.5rem;
+  font-size: 0.82rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.link:hover {
+  background: var(--pe-surface-accent);
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+.link[data-active] {
+  background: var(--pe-surface-accent);
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+/* Phones: a bottom sheet beats a dropdown pinned to a 40px button, and the
+   trigger moves out of the thumb's way for scrolling. */
+@media (max-width: 768px) {
+  .container {
+    top: auto;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .trigger {
+    width: 46px;
+    height: 46px;
+    box-shadow: var(--pe-shadow-md);
+  }
+
+  .panel {
+    position: fixed;
+    top: auto;
+    bottom: calc(1rem + 46px + 0.6rem);
+    right: 1rem;
+    left: 1rem;
+    width: auto;
+    max-height: 55vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trigger {
+    transition: none;
+  }
+  .trigger:hover {
+    transform: none;
+  }
+}

@@ -1,6 +1,7 @@
 ---
 title: Terms of Service
 description: Terms for using PasswordEpic, including what the app can and cannot recover.
+hide_table_of_contents: true
 ---
 
 # Terms of Service
