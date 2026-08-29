@@ -112,6 +112,16 @@ chiếc khoá chỉ từng tồn tại bên trong chiếc điện thoại cũ. X
 
 ### "Device Integrity Check Failed" / Kiểm tra toàn vẹn thiết bị thất bại
 
+```mermaid
+flowchart TD
+  A["“Device Integrity Check Failed”"] --> B{"Máy có bị root hay bị sửa,<br/>hoặc bootloader đang mở khoá?"}
+  B -->|"Có"| C["Platinum và Titanium sẽ không<br/>đạt trên thiết bị này"]
+  B -->|"Không, mà vẫn lỗi"| D["Phép kiểm tra cũng trượt trên máy ảo<br/>và trên bản dựng không lấy từ store"]
+  C --> E["🥇 Hãy chọn Gold.<br/>Cùng thuật toán, cùng khoá dựa trên phần cứng,<br/>cùng bộ máy — nó chỉ đơn giản là không<br/>chạy những phép kiểm tra lúc chạy đó."]
+  D --> E
+  C --> F["Hoặc dùng một thiết bị chưa bị sửa<br/>với bootloader đã khoá"]
+```
+
 Platinum và Titanium yêu cầu ứng dụng chứng minh nó là bản thật, chưa bị sửa, và
 đang chạy trên một thiết bị chưa bị can thiệp. Một phần nào đó trong phép kiểm tra
 đã không đạt — bootloader đã khoá là một yêu cầu phổ biến, và máy đã root hoặc đã
@@ -134,6 +144,15 @@ Bản thân chiếc khoá nằm trong phần cứng thì vẫn được bảo v�
 quanh nó thì không. Các gói trả phí từ chối thao tác khoá ở đây là có chủ đích.
 
 ### Mở khoá bằng sinh trắc học không chạy
+
+```mermaid
+flowchart TD
+  A["Vân tay hoặc khuôn mặt<br/>không mở khoá được"] --> B{"Thông báo ghi gì?"}
+  B -->|"“Thiết bị không hỗ trợ”"| C["Không có phần cứng, hoặc chưa đăng ký.<br/>Hãy đăng ký trong cài đặt của máy."]
+  B -->|"“Không mở khoá được”"| D["Lần đọc bị lỗi.<br/>Hãy nhập mã mở khoá."]
+  C --> E["Kho của bạn không sao cả.<br/>Sinh trắc học chỉ là tiện lợi thay cho<br/>mã mở khoá, không bao giờ<br/>thay thế được nó."]
+  D --> E
+```
 
 - **"Thiết bị này không hỗ trợ xác thực sinh trắc học"** — máy không có phần cứng
   vân tay hoặc khuôn mặt, hoặc chưa đăng ký. Hãy đăng ký trong cài đặt của máy.

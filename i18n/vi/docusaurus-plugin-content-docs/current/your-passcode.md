@@ -34,6 +34,17 @@ Thứ từng là mật khẩu chính không biến mất — nó chỉ thôi là
 Giờ nó là 256 bit ngẫu nhiên do ứng dụng sinh ra, bạn không bao giờ thấy và không
 bao giờ gõ.
 
+```mermaid
+flowchart TD
+  A["Thiết kế cũ hỏi hai bí mật"] --> B["🔑 Mật khẩu chính"]
+  A --> C["🔢 Mã PIN, chỉ chữ số"]
+  B --> D["Nhưng mật khẩu chính được lưu<br/>bọc bằng chính mã PIN"]
+  C --> D
+  D --> E["😈 Bẻ được PIN là có luôn<br/>mật khẩu chính miễn phí"]
+  E --> F["Nên cặp đôi ấy chỉ mạnh bằng nửa yếu hơn<br/>của nó — mã PIN ngắn toàn chữ số"]
+  F --> G["✅ Giờ: một mã mở khoá. Ký tự bất kỳ,<br/>không giới hạn độ dài, xét theo entropy."]
+```
+
 ## Mã mở khoá của bạn thật sự làm gì
 
 ```
@@ -98,6 +109,18 @@ hứa về những lựa chọn rõ ràng là tốt.
 
 Đây mới là phần thật sự làm người ta mất kho mật khẩu. Không phải kẻ tấn công —
 mà là quên.
+
+```mermaid
+flowchart TD
+  A["Chọn mã mở khoá"] --> B{"Một năm nữa bạn<br/>có còn nhớ nó không?"}
+  B -->|"Thật lòng thì không"| C["⚠️ Dừng ở đây. Quên mới là thứ<br/>thật sự làm mất kho mật khẩu."]
+  C --> D["Dùng một cụm từ, hoặc viết ra và<br/>cất ở nơi an toàn về mặt vật lý"]
+  B -->|"Có"| E{"Bạn đã dùng nó<br/>ở nơi nào khác chưa?"}
+  E -->|"Rồi"| F["⚠️ Nếu nó xuất hiện trong một vụ<br/>rò rỉ, mọi ước lượng độ mạnh<br/>đều vô nghĩa"]
+  E -->|"Chưa"| G["✅ Mã mở khoá tốt"]
+  D --> G
+  F --> G
+```
 
 - **Một cụm từ hơn hẳn một mật khẩu.** Bốn hoặc năm từ không liên quan tới nhau
   vượt 45 bit thoải mái và vẫn dễ gõ trên bàn phím điện thoại.

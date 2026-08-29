@@ -34,6 +34,17 @@ What used to be the master password did not disappear — it stopped being
 something a human chooses. It is now 256 random bits the app generates, that you
 never see and never type.
 
+```mermaid
+flowchart TD
+  A["The old design asked for two secrets"] --> B["🔑 Master password"]
+  A --> C["🔢 PIN, digits only"]
+  B --> D["But the master password was stored<br/>wrapped with the PIN"]
+  C --> D
+  D --> E["😈 Crack the PIN and the master<br/>password comes free with it"]
+  E --> F["So the pair was only as strong as its<br/>weaker half — the short numeric PIN"]
+  F --> G["✅ Now: one passcode. Any characters,<br/>no length limit, judged on entropy."]
+```
+
 ## What your passcode actually does
 
 ```
@@ -97,6 +108,18 @@ floor that blocks the clearly bad, not as a promise about the clearly good.
 ## Choosing one you will not forget
 
 This is the part that actually loses vaults. Not attackers — forgetting.
+
+```mermaid
+flowchart TD
+  A["Choosing a passcode"] --> B{"Will you still remember it<br/>in a year?"}
+  B -->|"Honestly, no"| C["⚠️ Stop here. Forgetting is what<br/>actually loses vaults."]
+  C --> D["Use a passphrase, or write it down<br/>and keep it somewhere<br/>physically safe"]
+  B -->|"Yes"| E{"Have you used it<br/>anywhere else?"}
+  E -->|"Yes"| F["⚠️ If it turns up in a breach dump,<br/>the strength estimate<br/>means nothing"]
+  E -->|"No"| G["✅ Good passcode"]
+  D --> G
+  F --> G
+```
 
 - **A passphrase beats a password.** Four or five unrelated words clear 45 bits
   comfortably and survive being typed on a phone keyboard.

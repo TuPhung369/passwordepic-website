@@ -108,6 +108,14 @@ autofill service directly and need no extra step.
 Some apps opt out of the autofill framework. That is their decision and no
 password manager can override it.
 
+```mermaid
+flowchart TD
+  A["Where do you need filling?"] --> B["Most apps, and websites"]
+  A --> C["An app that never offers it"]
+  B --> D["✅ Standard autofill<br/>No extra permission needed"]
+  C --> E["⚠️ Autofill Refill<br/>Uses the accessibility permission.<br/>Optional — read what it does first."]
+```
+
 For those, PasswordEpic offers a **separate, optional** service called
 **PasswordEpic Autofill Refill**, which uses Android's accessibility permission
 to fill forms the standard framework cannot reach.

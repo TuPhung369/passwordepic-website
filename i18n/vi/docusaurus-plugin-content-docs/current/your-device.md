@@ -35,6 +35,14 @@ khoá không thể xuất ra** — được sinh bên trong StrongBox hoặc TEE
 chúng tôi chỉ biết nửa công khai của nó. Mỗi lần dẫn xuất khoá đều được ký bằng
 chiếc khoá ấy.
 
+```mermaid
+flowchart TD
+  A["Máy chủ làm sao biết<br/>đây là chiếc điện thoại nào?"] --> B{"Bằng mã định danh<br/>mà ứng dụng gửi lên?"}
+  B -->|"Không — mười chiếc máy<br/>đều gửi được cùng một chuỗi"| C["❌ Không chứng minh được gì"]
+  B -->|"Bằng việc giữ một chiếc khoá<br/>không thể xuất ra"| D["✅ Sinh bên trong chip bảo mật.<br/>Chúng tôi chỉ biết nửa công khai."]
+  D --> E["Mỗi lần dẫn xuất khoá<br/>đều được ký bằng nó"]
+```
+
 Điểm thực thi chính là lời gọi trả về một phần khoá kho của bạn. Ở các gói trả
 phí:
 

@@ -33,6 +33,14 @@ Instead, your phone proves its identity by **holding a key it cannot export** �
 generated inside StrongBox or the TEE, with only the public half known to our
 servers. Each key derivation is signed with it.
 
+```mermaid
+flowchart TD
+  A["How does the server know<br/>which phone this is?"] --> B{"By a device ID<br/>the app sends up?"}
+  B -->|"No — ten phones could<br/>send the same string"| C["❌ Not proof of anything"]
+  B -->|"By holding a key that<br/>cannot be exported"| D["✅ Generated inside the security chip.<br/>Only the public half is ours."]
+  D --> E["Every key derivation<br/>is signed with it"]
+```
+
 The enforcement point is the same call that returns part of your vault key. On
 the paid tiers:
 

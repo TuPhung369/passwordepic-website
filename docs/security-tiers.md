@@ -22,6 +22,16 @@ rest twice.
 
 ```mermaid
 flowchart LR
+  S["🥈 Silver"] --> JS["JavaScript engine"]
+  G["🥇 Gold"] --> K["Native engine"]
+  P["💎 Platinum"] --> K
+  T["🛡️ Titanium"] --> K
+  JS --> N["Only two engines exist.<br/>Everything else is what<br/>guards them."]
+  K --> N
+```
+
+```mermaid
+flowchart LR
   S["🥈 Silver<br/>Free<br/>Software only"] -->|"adds hardware keys<br/>and real AES-256-GCM"| G["🥇 Gold<br/>The baseline"]
   G -->|"adds checks that the<br/>phone is not compromised"| P["💎 Platinum<br/>Same encryption as Gold"]
   P -->|"adds: nothing that opens<br/>the vault is ever stored"| T["🛡️ Titanium"]
@@ -96,6 +106,14 @@ or overlaid. Platinum is what turns that assumption into something checked:
   or reading the screen, stops key operations.
 - **Tamper and root detection.**
 
+```mermaid
+flowchart TD
+  A["Every guarantee on this site quietly<br/>assumes four things. Platinum<br/>is what checks them."] --> B["Is this the real app,<br/>on a real device?<br/>Play Integrity"]
+  A --> C["Is the key server<br/>really Google's?<br/>Certificate pinning"]
+  A --> D["Is anything reading the screen,<br/>or covering the passcode pad?<br/>Overlay and accessibility guard"]
+  A --> E["Has the running app been<br/>modified from the inside?<br/>Root and tamper detection"]
+```
+
 ## 🛡️ Titanium — nothing that opens the vault is ever stored
 
 Titanium keeps the entire Gold engine and changes exactly one thing: what
@@ -116,6 +134,17 @@ native memory — something JavaScript cannot do at all.
 
 On a supported Android device you choose your tier rather than having one
 detected for you.
+
+```mermaid
+flowchart TD
+  A["Which tier should I pick?"] --> B{"Android, unmodified,<br/>bootloader locked?"}
+  B -->|"No, or not sure"| S["🥈 Silver<br/>Runs anywhere. Software only."]
+  B -->|"Yes"| C{"Should the app also verify<br/>the device is not compromised?"}
+  C -->|"Encryption is enough for me"| G["🥇 Gold"]
+  C -->|"Yes, check the device"| D{"May anything that opens the<br/>vault be stored at all?"}
+  D -->|"Stored but wrapped is fine"| P["💎 Platinum"]
+  D -->|"Never stored, in any form"| T["🛡️ Titanium"]
+```
 
 :::warning There is no iOS version
 

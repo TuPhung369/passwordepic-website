@@ -111,6 +111,16 @@ existed only inside the old phone. See
 
 ### "Device Integrity Check Failed"
 
+```mermaid
+flowchart TD
+  A["“Device Integrity Check Failed”"] --> B{"Is the phone rooted or modified,<br/>or the bootloader unlocked?"}
+  B -->|"Yes"| C["Platinum and Titanium will<br/>not pass on this device"]
+  B -->|"No, and it still fails"| D["The check also fails on emulators<br/>and on builds not from the store"]
+  C --> E["🥇 Choose Gold.<br/>Same cipher, same hardware-backed keys,<br/>same engine — it simply does not run<br/>these runtime checks."]
+  D --> E
+  C --> F["Or use an unmodified device<br/>with a locked bootloader"]
+```
+
 Platinum and Titanium require the app to prove it is genuine and unmodified,
 running on a device that has not been tampered with. Something in that check did
 not pass — a locked bootloader is a common requirement, and a rooted or modified
@@ -134,6 +144,15 @@ The hardware-backed key itself is still protected, but everything around it is
 not. The paid tiers refuse key operations here on purpose.
 
 ### Biometric unlock is not working
+
+```mermaid
+flowchart TD
+  A["Fingerprint or face<br/>is not unlocking"] --> B{"What does the<br/>message say?"}
+  B -->|"“Not available on this device”"| C["No hardware, or none enrolled.<br/>Enrol one in your phone's settings."]
+  B -->|"“Unable to unlock”"| D["A read failed.<br/>Enter your passcode instead."]
+  C --> E["Your vault is fine either way.<br/>Biometrics are a convenience over<br/>the passcode, never a<br/>replacement for it."]
+  D --> E
+```
 
 - **"Biometric authentication is not available on this device"** — no fingerprint
   or face hardware, or none enrolled. Enrol one in your phone's settings.

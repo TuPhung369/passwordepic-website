@@ -104,6 +104,15 @@ ShardVault của người đó.
 buộc ấy, bất kỳ ai lấy được bản sao Shard 2 của bạn đều có thể nhờ chính máy chủ
 của chúng tôi biến nó thành hai phần ba chiếc khoá của bạn.
 
+```mermaid
+flowchart TD
+  Y["🙂 Bạn, đăng nhập bằng tài khoản mình"] --> S{"Máy chủ tính ShardVault"}
+  X["😈 Người khác, đăng nhập bằng tài khoản họ,<br/>gửi lên Shard 2 CỦA BẠN"] --> S
+  S --> M["Nó trộn thêm ID tài khoản của người<br/>đang hỏi, cùng một giá trị riêng cho<br/>từng tài khoản không rời khỏi máy chủ"]
+  M --> A["✅ Bạn nhận đúng của bạn"]
+  M --> B["❌ Họ nhận giá trị của TÀI KHOẢN HỌ,<br/>và nó không mở được gì"]
+```
+
 ## Đổi mã mở khoá không mã hoá lại thứ gì
 
 Đổi mã mở khoá chỉ bọc lại giá trị dùng để mở Shard 2. *Nội dung* của Shard 2
@@ -111,6 +120,15 @@ không đổi, nên ShardVault không đổi, nên khoá kho không đổi.
 
 Trên thực tế: đổi mã mở khoá diễn ra nhanh, không đụng tới mật khẩu bạn đã lưu,
 và các tệp sao lưu hiện có vẫn còn dùng được.
+
+```mermaid
+flowchart TD
+  A["🔑 Bạn đổi mã mở khoá"] --> B["Lớp bọc quanh Shard 2<br/>được làm lại"]
+  B --> C{"Nội dung Shard 2<br/>có đổi không?"}
+  C -->|"Không, chỉ đổi lớp bọc"| D["Nên khoá kho không đổi"]
+  D --> E["✅ Không một mật khẩu nào<br/>bị mã hoá lại"]
+  D --> F["✅ Bản sao lưu cũ vẫn dùng được"]
+```
 
 ## Vì sao chúng tôi không giúp được nếu bạn quên mã mở khoá
 

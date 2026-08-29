@@ -36,6 +36,16 @@ even be opened.
 encrypted with your vault key — which needs Shard 1, which never leaves the
 device.
 
+```mermaid
+flowchart TD
+  A["💾 Every backup has two locks"] --> B["🔐 The wrapper<br/>locks the whole file"]
+  A --> C["🔐 The contents<br/>lock each entry inside"]
+  B --> D["On Gold, Platinum and Titanium the<br/>inner layer uses this phone's security<br/>chip — the file will not even open"]
+  C --> E["On every tier except Gold the entries<br/>still need this phone's vault key —<br/>the file opens, and reads as noise"]
+  D --> F["❌ Blocked on every tier.<br/>Only the reason differs."]
+  E --> F
+```
+
 | Tier | Wrapper | Entries | Opens elsewhere? |
 | --- | --- | --- | --- |
 | 🥈 Silver | Portable | Encrypted with the vault key | ❌ contents are unreadable |
@@ -65,6 +75,18 @@ They protect you against **losing data on the phone you still have**:
 
 They do not protect you against losing the phone. Nothing in this product does,
 and nothing could without also giving us the ability to read your vault.
+
+```mermaid
+flowchart TD
+  A["💾 What can a backup save you from?"] --> B["🗑️ An entry deleted by accident"]
+  A --> C["📥 An import that went wrong"]
+  A --> D["♻️ A vault reset you did not mean"]
+  B --> E["✅ Yes — you still have the phone"]
+  C --> E
+  D --> E
+  A --> F["📱💥 The phone is lost or broken"]
+  F --> G["❌ No. And nothing could,<br/>without also letting us<br/>read your vault."]
+```
 
 ## Backups go to your Google Drive
 

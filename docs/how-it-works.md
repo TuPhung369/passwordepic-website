@@ -101,6 +101,15 @@ This matters because Shard 2 is the shard that can travel. Without that binding,
 anyone who obtained a copy of your Shard 2 could have asked our own server to
 turn it into two thirds of your key.
 
+```mermaid
+flowchart TD
+  Y["🙂 You, signed in as you"] --> S{"Server computes ShardVault"}
+  X["😈 Someone else, signed in as<br/>themselves, sending YOUR Shard 2"] --> S
+  S --> M["It mixes in the account ID of<br/>whoever is asking, plus a per-account<br/>value that never leaves the server"]
+  M --> A["✅ You get yours"]
+  M --> B["❌ They get a value for THEIR<br/>account, which opens nothing"]
+```
+
 ## Changing your passcode does not re-encrypt anything
 
 A passcode change re-wraps the value that unlocks Shard 2. Shard 2's *contents*
@@ -108,6 +117,15 @@ do not change, so ShardVault does not change, so the vault key does not change.
 
 Practically: changing your passcode is fast, it never touches your stored
 passwords, and existing backup files stay valid.
+
+```mermaid
+flowchart TD
+  A["🔑 You change your passcode"] --> B["The wrapper around<br/>Shard 2 is redone"]
+  B --> C{"Did Shard 2's<br/>contents change?"}
+  C -->|"No, only its wrapper"| D["So the vault key is unchanged"]
+  D --> E["✅ Not one stored password<br/>is re-encrypted"]
+  D --> F["✅ Existing backups stay valid"]
+```
 
 ## Why we cannot help if you forget the passcode
 

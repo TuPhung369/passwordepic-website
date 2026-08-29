@@ -34,6 +34,16 @@ ra được.
 **Nội dung.** Ở mọi gói trừ Gold, các mục bên trong tệp vẫn được mã hoá bằng khoá
 kho — mà khoá kho cần Shard 1, thứ không bao giờ rời khỏi thiết bị.
 
+```mermaid
+flowchart TD
+  A["💾 Mỗi bản sao lưu có hai ổ khoá"] --> B["🔐 Lớp vỏ<br/>khoá cả tệp"]
+  A --> C["🔐 Nội dung<br/>khoá từng mục bên trong"]
+  B --> D["Ở Gold, Platinum và Titanium, lớp trong<br/>dùng chip bảo mật của chính máy đó —<br/>tệp thậm chí không mở ra được"]
+  C --> E["Ở mọi gói trừ Gold, các mục vẫn cần<br/>khoá kho của chính máy đó — tệp mở ra,<br/>và đọc thấy toàn nhiễu"]
+  D --> F["❌ Bị chặn ở mọi gói.<br/>Chỉ khác nhau ở lý do."]
+  E --> F
+```
+
 | Gói | Lớp vỏ | Các mục bên trong | Mở được ở nơi khác? |
 | --- | --- | --- | --- |
 | 🥈 Silver | Di chuyển được | Mã hoá bằng khoá kho | ❌ không đọc được nội dung |
@@ -64,6 +74,18 @@ Chúng bảo vệ bạn khỏi việc **mất dữ liệu trên chiếc điện 
 Chúng không bảo vệ bạn khỏi việc mất điện thoại. Không có gì trong sản phẩm này
 làm được điều đó, và cũng không thể có, trừ khi đồng thời trao cho chúng tôi khả
 năng đọc kho của bạn.
+
+```mermaid
+flowchart TD
+  A["💾 Sao lưu cứu bạn khỏi điều gì?"] --> B["🗑️ Lỡ tay xoá một mục"]
+  A --> C["📥 Một lần nhập dữ liệu hỏng"]
+  A --> D["♻️ Lỡ đặt lại kho"]
+  B --> E["✅ Được — bạn vẫn còn máy"]
+  C --> E
+  D --> E
+  A --> F["📱💥 Mất máy hoặc máy hỏng"]
+  F --> G["❌ Không. Và cũng không thể,<br/>trừ khi đồng thời cho phép<br/>chúng tôi đọc kho của bạn."]
+```
 
 ## Bản sao lưu đi vào Google Drive của bạn
 

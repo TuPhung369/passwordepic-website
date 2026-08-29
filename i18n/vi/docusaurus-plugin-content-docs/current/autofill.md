@@ -109,6 +109,14 @@ vụ tự động điền của hệ thống và không cần bước thêm nào
 Một số ứng dụng chủ động không dùng khung tự động điền. Đó là quyết định của họ và
 không trình quản lý mật khẩu nào ghi đè được.
 
+```mermaid
+flowchart TD
+  A["Bạn cần điền ở đâu?"] --> B["Hầu hết ứng dụng, và trang web"]
+  A --> C["Một app không bao giờ hiện nó"]
+  B --> D["✅ Tự động điền tiêu chuẩn<br/>Không cần quyền gì thêm"]
+  C --> E["⚠️ Autofill Refill<br/>Dùng quyền trợ năng.<br/>Không bắt buộc — đọc kỹ trước đã."]
+```
+
 Cho những trường hợp đó, PasswordEpic có một dịch vụ **riêng và không bắt buộc**
 tên là **PasswordEpic Autofill Refill**, dùng quyền trợ năng của Android để điền
 vào những biểu mẫu mà khung tiêu chuẩn không với tới.

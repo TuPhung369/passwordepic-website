@@ -22,6 +22,16 @@ lại hai lần.
 
 ```mermaid
 flowchart LR
+  S["🥈 Silver"] --> JS["Bộ máy JavaScript"]
+  G["🥇 Gold"] --> K["Bộ máy native"]
+  P["💎 Platinum"] --> K
+  T["🛡️ Titanium"] --> K
+  JS --> N["Chỉ tồn tại hai bộ máy.<br/>Mọi thứ còn lại là<br/>thứ canh gác chúng."]
+  K --> N
+```
+
+```mermaid
+flowchart LR
   S["🥈 Silver<br/>Miễn phí<br/>Chỉ bằng phần mềm"] -->|"thêm khoá phần cứng<br/>và AES-256-GCM thật"| G["🥇 Gold<br/>Mốc nền tảng"]
   G -->|"thêm kiểm tra máy<br/>có bị xâm phạm không"| P["💎 Platinum<br/>Mã hoá y hệt Gold"]
   P -->|"thêm: không lưu bất cứ thứ gì<br/>mở được kho"| T["🛡️ Titanium"]
@@ -99,6 +109,14 @@ hook hay phủ lớp giả. Platinum là thứ biến giả định đó thành 
   mã, hoặc đọc màn hình, sẽ làm dừng các thao tác khoá.
 - **Phát hiện can thiệp và root.**
 
+```mermaid
+flowchart TD
+  A["Mọi đảm bảo trên trang này đều ngầm<br/>giả định bốn điều. Platinum<br/>là thứ đi kiểm tra chúng."] --> B["Đây có phải ứng dụng thật,<br/>trên thiết bị thật không?<br/>Play Integrity"]
+  A --> C["Máy chủ khoá có đúng<br/>là của Google không?<br/>Ghim chứng chỉ"]
+  A --> D["Có thứ gì đang đọc màn hình,<br/>hay che lên bàn phím nhập mã?<br/>Chống lớp phủ và trợ năng"]
+  A --> E["Ứng dụng đang chạy có bị sửa<br/>từ bên trong không?<br/>Phát hiện root và can thiệp"]
+```
+
 ## 🛡️ Titanium — không lưu bất cứ thứ gì mở được kho
 
 Titanium giữ nguyên toàn bộ bộ máy của Gold và thay đổi đúng một thứ: cái gì mở
@@ -119,6 +137,17 @@ khỏi bộ nhớ native — điều JavaScript hoàn toàn không làm được
 
 Trên một thiết bị Android được hỗ trợ, bạn tự chọn gói chứ không bị hệ thống ấn
 định.
+
+```mermaid
+flowchart TD
+  A["Tôi nên chọn gói nào?"] --> B{"Máy Android, chưa bị sửa,<br/>bootloader đã khoá?"}
+  B -->|"Không, hoặc không chắc"| S["🥈 Silver<br/>Chạy ở đâu cũng được.<br/>Chỉ bằng phần mềm."]
+  B -->|"Đúng vậy"| C{"Có muốn ứng dụng kiểm tra luôn<br/>xem máy có bị xâm phạm không?"}
+  C -->|"Mã hoá là đủ với tôi"| G["🥇 Gold"]
+  C -->|"Có, kiểm tra máy đi"| D{"Thứ mở được kho có được phép<br/>lưu lại ở dạng nào không?"}
+  D -->|"Lưu nhưng có bọc là được"| P["💎 Platinum"]
+  D -->|"Không lưu, dưới mọi hình thức"| T["🛡️ Titanium"]
+```
 
 :::warning Không có phiên bản iOS
 
