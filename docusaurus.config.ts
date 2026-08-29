@@ -128,9 +128,19 @@ const config: Config = {
             { to: '/docs/your-device', label: 'One device per account' },
           ],
         },
-        { to: '/support', label: 'Support', position: 'left' },
-        { to: '/privacy', label: 'Privacy', position: 'right' },
-        { to: '/terms', label: 'Terms', position: 'right' },
+        // Support, Privacy and Terms are one group: the reader who wants any
+        // of them wants "help and the legal bits", and three separate top-level
+        // items for that crowded out the one that matters, Documentation.
+        {
+          type: 'dropdown',
+          label: 'Help',
+          position: 'right',
+          items: [
+            { to: '/support', label: 'Support' },
+            { to: '/privacy', label: 'Privacy Policy' },
+            { to: '/terms', label: 'Terms of Service' },
+          ],
+        },
         { type: 'localeDropdown', position: 'right' },
       ],
     },

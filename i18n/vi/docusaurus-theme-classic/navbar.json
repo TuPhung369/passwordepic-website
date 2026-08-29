@@ -11,17 +11,9 @@
     "message": "Tài liệu",
     "description": "Navbar item with label Documentation"
   },
-  "item.label.Support": {
-    "message": "Hỗ trợ",
-    "description": "Navbar item with label Support"
-  },
-  "item.label.Privacy": {
-    "message": "Quyền riêng tư",
-    "description": "Navbar item with label Privacy"
-  },
-  "item.label.Terms": {
-    "message": "Điều khoản",
-    "description": "Navbar item with label Terms"
+  "item.label.Help": {
+    "message": "Trợ giúp",
+    "description": "Navbar item with label Help"
   },
   "item.label.How it works": {
     "message": "Cách hoạt động",
@@ -54,5 +46,17 @@
   "item.label.One device per account": {
     "message": "Một thiết bị cho mỗi tài khoản",
     "description": "Navbar item with label One device per account"
+  },
+  "item.label.Support": {
+    "message": "Hỗ trợ",
+    "description": "Navbar item with label Support"
+  },
+  "item.label.Privacy Policy": {
+    "message": "Chính sách quyền riêng tư",
+    "description": "Navbar item with label Privacy Policy"
+  },
+  "item.label.Terms of Service": {
+    "message": "Điều khoản dịch vụ",
+    "description": "Navbar item with label Terms of Service"
   }
 }

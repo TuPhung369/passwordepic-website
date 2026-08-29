@@ -3,8 +3,8 @@
  * Layout decision that drives much of this file: the navbar is the only chrome.
  * Docs have no left sidebar (`sidebarPath: false`) and no right table of
  * contents - the floating star in src/components/StarToc replaces it. So
- * content owns the full width and has to set its own measure, which is what
- * `--pe-measure` and the `.markdown` rules below do.
+ * content owns the full width, and `--pe-content-width` is what decides how
+ * much of it to take: everything on a phone, 80% above that.
  */
 
 :root {
@@ -31,8 +31,10 @@
   --pe-hero-from: #0f172a;
   --pe-hero-to: #1e3a8a;
 
-  /* Reading measure for long-form pages. */
-  --pe-measure: 46rem;
+  /* How wide content runs. Full width on phones, 80% everywhere else - with no
+     sidebar and no table-of-contents column, a fixed reading measure left most
+     of a laptop screen empty on both sides. */
+  --pe-content-width: 80%;
 
   /* Elemental accents, taken from the five keys in the app icon. Used to give
      each tier and each workflow step its own identity without inventing a
@@ -86,19 +88,18 @@
   display: none;
 }
 
-/* With no sidebar the doc column stretches to the viewport. Long lines are
-   unreadable, so re-impose a measure - and let tables and code blocks out of it,
-   since those genuinely use the width. */
+/* With no sidebar and no table-of-contents column, the doc column has the whole
+   viewport. Narrow it to 80% on anything but a phone so it is not running edge
+   to edge, and leave phones the full width - there is nothing to spare there. */
 .theme-doc-markdown {
-  max-width: var(--pe-measure);
+  width: 100%;
   margin-inline: auto;
 }
 
-.theme-doc-markdown > .markdown > table,
-.theme-doc-markdown > .markdown > .tabs-container,
-.theme-doc-markdown > .markdown > div[class*='codeBlockContainer'] {
-  max-width: min(64rem, 100%);
-  margin-inline: auto;
+@media (min-width: 997px) {
+  .theme-doc-markdown {
+    width: var(--pe-content-width);
+  }
 }
 
 /* Infima already gives every Markdown table `display: block; overflow: auto`,
@@ -131,12 +132,18 @@ html {
 
 /* Standalone Markdown pages - privacy, terms, support. Their frontmatter sets
    `hide_table_of_contents`, which drops both the TOC column and the `col--8`
-   that was constraining the prose, leaving it full-bleed. Put the measure back
-   on the article itself. The selector deliberately uses MDXPage's unhashed
-   classes; the wrapper's own class is a CSS-module hash and not addressable. */
+   that was constraining the prose, leaving it full-bleed. The selector
+   deliberately uses MDXPage's unhashed classes; the wrapper's own class is a
+   CSS-module hash and not addressable. */
 main.container--fluid > .row > .col > article {
-  max-width: var(--pe-measure);
+  width: 100%;
   margin-inline: auto;
+}
+
+@media (min-width: 997px) {
+  main.container--fluid > .row > .col > article {
+    width: var(--pe-content-width);
+  }
 }
 
 /* ---------------------------------------------------------------------------
@@ -186,8 +193,14 @@ main.container--fluid > .row > .col > article {
 }
 
 .peInner {
-  max-width: 68rem;
+  width: 100%;
   margin-inline: auto;
+}
+
+@media (min-width: 997px) {
+  .peInner {
+    width: var(--pe-content-width);
+  }
 }
 
 .peInnerNarrow {

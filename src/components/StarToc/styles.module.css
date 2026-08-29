@@ -86,6 +86,18 @@
   display: none;
 }
 
+/* Bridges the gap between button and panel so a mouse travelling between them
+   never leaves the container - otherwise the panel closes out from under the
+   pointer halfway there. */
+.panel::before {
+  content: '';
+  position: absolute;
+  top: -0.7rem;
+  left: 0;
+  right: 0;
+  height: 0.7rem;
+}
+
 /* Solid header, so the panel reads as its own surface where it overlaps text. */
 .panelHead {
   position: sticky;
@@ -114,24 +126,38 @@
   padding: 0.35rem;
 }
 
+/* Top-level headings: the page's real sections. Heavier, darker, and separated
+   by a rule so the panel reads as a handful of sections rather than one long
+   list of similar-looking links. */
 .link {
   display: block;
-  padding: 0.45rem 0.65rem;
+  padding: 0.55rem 0.7rem;
   border-left: 3px solid transparent;
   border-radius: 0 8px 8px 0;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   line-height: 1.35;
-  font-weight: 600;
-  color: var(--ifm-color-emphasis-800);
+  font-weight: 700;
+  color: var(--ifm-heading-color);
   text-decoration: none;
   transition: background 0.15s ease, color 0.15s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Sub-headings step in and lighten, so the panel shows the page's shape rather
-   than a flat list. */
+/* A rule above every top-level entry except the first, which is what turns the
+   list into groups. `:first-child` on the li, not the link, because the rule
+   belongs to the row. */
+.list li + li > .link[data-level='2'] {
+  border-top: 1px solid var(--pe-border);
+  margin-top: 0.3rem;
+  padding-top: 0.65rem;
+}
+
+/* Sub-headings: lighter, smaller, stepped in, and no separator - they belong to
+   the heading above rather than standing on their own. */
 .link[data-level='3'] {
-  padding-left: 1.5rem;
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
+  padding-left: 1.6rem;
   font-size: 0.83rem;
   font-weight: 400;
   color: var(--ifm-color-emphasis-700);

@@ -11,6 +11,11 @@ import styles from './styles.module.css';
  * every page to show something a reader consults occasionally. Collapsed it is
  * one 40px button; open it is a panel over the content.
  *
+ * On a pointer device it opens on hover, the way the sample project's does; on
+ * touch it opens on tap. The panel's own top gap is bridged by a transparent
+ * pseudo-element so that crossing from button to panel never leaves the
+ * container and slams it shut mid-reach.
+ *
  * It reads the DOM rather than the route's TOC data on purpose: this renders
  * from `src/theme/Root`, which sits outside the doc plugin's context and has no
  * access to that data. Headings are what a reader sees anyway, so scanning them
@@ -39,7 +44,14 @@ export default function StarToc(): React.ReactNode {
   const [open, setOpen] = useState(false);
   const [activeId, setActiveId] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  // Pointer devices open the panel on hover; touch devices have no hover to
+  // speak of, and reading the query once here keeps the handlers cheap.
+  const hoverable = useRef(false);
   const {pathname, hash} = useLocation();
+
+  useEffect(() => {
+    hoverable.current = window.matchMedia('(hover: hover)').matches;
+  }, []);
 
   const collect = useCallback(() => {
     const main = document.querySelector('main');
@@ -161,7 +173,17 @@ export default function StarToc(): React.ReactNode {
     <div
       ref={containerRef}
       className={styles.container}
-      data-open={open || undefined}>
+      data-open={open || undefined}
+      onMouseEnter={() => {
+        if (hoverable.current) {
+          setOpen(true);
+        }
+      }}
+      onMouseLeave={() => {
+        if (hoverable.current) {
+          setOpen(false);
+        }
+      }}>
       <button
         type="button"
         className={styles.trigger}
