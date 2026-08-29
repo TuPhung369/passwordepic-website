@@ -46,9 +46,16 @@ bị.
 
 ## Tự động điền không xuất hiện
 
-- Vào **Cài đặt → Mật khẩu và tài khoản → Dịch vụ tự động điền** của Android — hãy chắc chắn PasswordEpic đang được chọn.
-- Tự động điền cần Android 8.0 trở lên.
-- Một số ứng dụng chủ động từ chối tự động điền; đó là lựa chọn của họ, không phải lỗi của PasswordEpic.
+Trước hết vào **Cài đặt → Mật khẩu và tài khoản → Dịch vụ tự động điền** của
+Android và chắc chắn PasswordEpic đang được chọn. Tự động điền cần Android 8.0
+trở lên.
+
+Nếu nó chạy trong ứng dụng nhưng không chạy trên trang web, Chrome cần thêm một
+mục cài đặt của riêng nó — mục đó và đường dẫn menu theo từng hãng máy đều có ở
+[Cài đặt tự động điền](/vi/docs/autofill).
+
+Với mọi thứ còn lại, kể cả các thông báo ứng dụng có thể hiện ra và ý nghĩa của
+chúng, xem [Sự cố thường gặp](/vi/docs/faq).
 
 ## Báo cáo vấn đề bảo mật
 

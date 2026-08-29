@@ -35,9 +35,13 @@
     "message": "Mã mở khoá của bạn",
     "description": "The label of footer link with label=Your passcode linking to /docs/your-passcode"
   },
-  "link.item.label.Autofill": {
-    "message": "Tự động điền",
-    "description": "The label of footer link with label=Autofill linking to /docs/autofill"
+  "link.item.label.Setting up autofill": {
+    "message": "Cài đặt tự động điền",
+    "description": "The label of footer link with label=Setting up autofill linking to /docs/autofill"
+  },
+  "link.item.label.Common problems": {
+    "message": "Sự cố thường gặp",
+    "description": "The label of footer link with label=Common problems linking to /docs/faq"
   },
   "link.item.label.Backups and exports": {
     "message": "Sao lưu và xuất dữ liệu",

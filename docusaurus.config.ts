@@ -33,6 +33,11 @@ const config: Config = {
   trailingSlash: true,
 
   onBrokenLinks: 'throw',
+  // The FAQ links into specific sections of the setup guide. A broken anchor
+  // does not 404 - it silently drops the reader at the top of a long page,
+  // which is exactly the failure this site cannot afford in troubleshooting
+  // steps. Same reasoning as onBrokenLinks above.
+  onBrokenAnchors: 'throw',
 
   // Docusaurus emits `favicon` only; iOS wants its own tag when a visitor adds
   // the site to their home screen.
@@ -105,7 +110,8 @@ const config: Config = {
             { to: '/docs/plain-words', label: 'What these words mean' },
             { to: '/docs/security-tiers', label: 'Security tiers' },
             { to: '/docs/your-passcode', label: 'Your passcode' },
-            { to: '/docs/autofill', label: 'Autofill' },
+            { to: '/docs/autofill', label: 'Setting up autofill' },
+            { to: '/docs/faq', label: 'Common problems' },
             { to: '/docs/backups', label: 'Backups and exports' },
             { to: '/docs/your-device', label: 'One device per account' },
           ],
@@ -132,7 +138,8 @@ const config: Config = {
           title: 'Guides',
           items: [
             { label: 'Your passcode', to: '/docs/your-passcode' },
-            { label: 'Autofill', to: '/docs/autofill' },
+            { label: 'Setting up autofill', to: '/docs/autofill' },
+            { label: 'Common problems', to: '/docs/faq' },
             { label: 'Backups and exports', to: '/docs/backups' },
             { label: 'One device per account', to: '/docs/your-device' },
           ],

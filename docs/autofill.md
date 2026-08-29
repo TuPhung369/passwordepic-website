@@ -1,31 +1,121 @@
 ---
-title: Autofill
-description: Turning on autofill, what happens each time it fires, and what a screen recorder can and cannot see.
+title: Setting up autofill
+description: Turning autofill on, where the setting hides on each brand of phone, how to make it work in Chrome, and what a screen recorder can see.
 hide_table_of_contents: true
 ---
 
-# Autofill
+# Setting up autofill
 
 PasswordEpic fills logins through Android's own autofill framework. It does not
-watch your screen, and it does not need an accessibility permission to work.
+watch your screen, and the basic setup does not need an accessibility
+permission.
 
-## Turning it on
+**Autofill needs Android 8.0 or newer.** On anything older the option will not
+appear at all — that is Android, not the app.
 
-1. Open Android **Settings → Passwords & accounts → Autofill service**.
-2. Choose **PasswordEpic**.
+## The short version
 
-That is the whole setup. Autofill needs **Android 8.0 or newer**.
+The app can take you straight there: **Settings → Autofill Management → Enable
+Autofill**. That opens the right system screen on most phones.
 
-If it does not appear afterwards:
+If it opens the wrong screen, or nothing happens, use the manual path for your
+brand below. This is worth knowing anyway, because Android moved this setting
+several times and every manufacturer renamed it.
 
-- Check the setting again — some launchers reset it after an update.
-- Some apps opt out of autofill entirely. That is their choice, not a fault in
-  PasswordEpic, and no password manager can fill those fields.
-- The autofill dialog is a separate window from the main app. If it is not
-  appearing at all, make sure PasswordEpic is not being restricted in the
-  background by battery optimisation.
+## Where the setting actually lives
 
-## What happens each time
+<h3 id="samsung">Samsung</h3>
+
+**Settings → General management → Language and input → Autofill service →
+PasswordEpic**
+
+:::caution Samsung Pass gets in the way
+
+Samsung phones ship with Samsung Pass set as the autofill service. You may have
+to select **None** first, then choose PasswordEpic. If PasswordEpic does not
+appear in the list, back out to the previous screen and go in again.
+
+:::
+
+<h3 id="huawei">Huawei and Honor</h3>
+
+**Settings → System → Languages &amp; input → More input settings → Autofill
+service → PasswordEpic**
+
+<h3 id="pixel">Pixel and stock Android</h3>
+
+**Settings → Passwords &amp; accounts → Autofill service → PasswordEpic**
+
+On Android 14 and newer this is often **Settings → Passwords, passkeys &amp;
+accounts → Additional providers**.
+
+<h3 id="other">Xiaomi, Oppo, Vivo, and anything else</h3>
+
+The name of the screen changes, the words "Autofill service" do not. Open
+Settings, use the **search box at the top**, and type `autofill`. That is far
+faster than guessing the menu tree.
+
+If you would rather navigate, one of these two usually works:
+
+- **Settings → System → Languages &amp; input → Autofill service**
+- **Settings → Apps → Default apps → Autofill service**
+
+## Making it work in Chrome
+
+This is the step most people miss, and the reason autofill often works in apps
+but not on websites.
+
+**Chrome has its own password manager, and by default it will not hand web forms
+to anyone else.** Setting PasswordEpic as your phone's autofill service is not
+enough on its own.
+
+1. Set PasswordEpic as the system autofill service first, using the steps above.
+2. Open **Chrome → ⋮ (three dots) → Settings**.
+3. Find **Autofill services** and turn on **"Autofill using another service"**.
+4. Confirm, then **fully close Chrome and reopen it**. Chrome only picks the
+   change up on a restart.
+
+:::note The menu name moves between Chrome versions
+
+Depending on your Chrome version this setting sits under **Autofill services**,
+under **Passwords**, or inside **Autofill and passwords**. The wording to look
+for is *"Autofill using another service"* or *"Use another service"*.
+
+If you cannot find it anywhere, Chrome is on a version that keeps web forms to
+Google Password Manager, and no third-party manager will be offered on websites.
+
+:::
+
+Other browsers — Firefox, Samsung Internet, Brave — mostly use the system
+autofill service directly and need no extra step.
+
+## When an app refuses autofill entirely
+
+Some apps opt out of the autofill framework. That is their decision and no
+password manager can override it.
+
+For those, PasswordEpic offers a **separate, optional** service called
+**PasswordEpic Autofill Refill**, which uses Android's accessibility permission
+to fill forms the standard framework cannot reach.
+
+**Settings → Accessibility → PasswordEpic Autofill Refill → On**
+
+:::warning This one deserves a moment's thought
+
+Accessibility is a powerful permission — it is exactly the permission this site
+warns you about elsewhere, because malware abuses it to read screens.
+
+What the app does with it: reads on-screen fields only to find login forms and
+fill credentials you saved, always after a fingerprint or passcode check.
+Everything happens on your device; the contents of your screen are never
+collected, stored or transmitted.
+
+It is **optional**. If the standard autofill covers the apps you use, leave this
+off. You can turn it off at any time from the same screen.
+
+:::
+
+## What happens each time it fires
 
 1. You tap a login field in another app or a website.
 2. **Android** — not PasswordEpic — notices the field and asks the selected
@@ -36,7 +126,7 @@ If it does not appear afterwards:
    vault stays encrypted.
 5. The plaintext and the key are released as soon as the field is filled.
 
-There is no window during which fills happen unattended, and no "unlock for 5
+There is no window during which fills happen unattended, and no "unlock for five
 minutes" mode.
 
 ## What a screen recorder sees
@@ -54,8 +144,8 @@ Two things follow, and both matter:
 - **Key-preview bubbles are the real leak.** Keyboards suppress the little
   letter that pops up above each key only for password fields — so the passcode
   field stays in password mode permanently, even when you tap the eye to reveal
-  what you typed. Revealing the text inside a protected window is safe;
-  taking the keyboard out of password mode is not.
+  what you typed. Revealing the text inside a protected window is safe; taking
+  the keyboard out of password mode is not.
 - **Touch positions are not recorded** unless you have turned on the "Show taps"
   developer option.
 
@@ -73,12 +163,16 @@ PasswordEpic warns you when the active keyboard did not.
 
 :::
 
-## Signing out
+## Turning it off
 
-Signing out revokes autofill immediately. The service stops offering
-suggestions rather than continuing to answer requests with a stale session.
+**Settings → Autofill Management → Disable Autofill**, or go back to the same
+system screen you used above and choose **None** or another service.
+
+Signing out of PasswordEpic also revokes autofill immediately — the service stops
+answering requests rather than continuing with a stale session.
 
 ## Read next
 
+- [Common problems](./faq.md) — autofill not appearing, error messages, and what they mean
 - [Your passcode](./your-passcode.md) — what you will be asked for on each fill
 - [How it works](./how-it-works.md) — what has to happen before an entry can be decrypted

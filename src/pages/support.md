@@ -43,9 +43,15 @@ We would rather say this plainly than let you discover it after losing a device.
 
 ## Autofill is not appearing
 
-- Android **Settings → Passwords & accounts → Autofill service** — make sure PasswordEpic is selected.
-- Autofill needs Android 8.0 or newer.
-- Some apps opt out of autofill entirely; that is their choice, not a fault in PasswordEpic.
+Start with **Android Settings → Passwords & accounts → Autofill service** and
+make sure PasswordEpic is selected. Autofill needs Android 8.0 or newer.
+
+If it works in apps but not on websites, Chrome needs one extra setting of its
+own — that and the per-brand menu paths are in
+[Setting up autofill](/docs/autofill).
+
+For everything else, including the messages the app can show you and what they
+mean, see [Common problems](/docs/faq).
 
 ## Reporting a security issue
 
