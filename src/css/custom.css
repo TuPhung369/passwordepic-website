@@ -146,6 +146,39 @@ main.container--fluid > .row > .col > article {
   }
 }
 
+/* The store link in the navbar. A plain link would sit among Documentation and
+   Help as one more thing to read past; this is the one action on the site. */
+.navbar-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.9rem;
+  margin-left: 0.35rem;
+  border-radius: 8px;
+  background: var(--ifm-color-primary);
+  color: #fff !important;
+  font-weight: 600;
+  transition: background 0.18s ease;
+}
+
+.navbar-cta:hover {
+  background: var(--ifm-color-primary-dark);
+  text-decoration: none;
+}
+
+/* Docusaurus appends an external-link glyph to any navbar item with an href.
+   On a button it reads as a rendering artefact. */
+.navbar-cta svg {
+  display: none;
+}
+
+/* In the mobile drawer the navbar items are full-width rows, so the button
+   treatment fights the list. Let it be a normal row there. */
+.navbar-sidebar .navbar-cta {
+  display: block;
+  margin-left: 0;
+  border-radius: 0.25rem;
+}
+
 /* ---------------------------------------------------------------------------
  * Diagrams
  * ------------------------------------------------------------------------ */

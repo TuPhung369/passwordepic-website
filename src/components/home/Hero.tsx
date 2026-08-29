@@ -2,7 +2,8 @@ import React, {type ReactNode} from 'react';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Translate, {translate} from '@docusaurus/Translate';
-import {FaArrowRight, FaCheck, FaShieldAlt, FaAndroid} from 'react-icons/fa';
+import {FaArrowRight, FaCheck, FaGooglePlay, FaAndroid} from 'react-icons/fa';
+import {PLAY_STORE_URL} from '@site/src/constants';
 import styles from './styles.module.css';
 
 /**
@@ -12,6 +13,11 @@ import styles from './styles.module.css';
  * immediately says what makes it structural rather than a promise, and the
  * chips underneath lead with the cost - no account recovery - instead of
  * burying it. A reader who finds that out later has already lost a vault.
+ *
+ * The download button is our own, in this site's design language, rather than
+ * a redrawn copy of Google's official Play badge. Google publishes that badge
+ * with rules about how it may be reproduced; if you want it here, take the
+ * real artwork from Google rather than approximating it.
  */
 export default function Hero(): ReactNode {
   const chips = [
@@ -64,13 +70,16 @@ export default function Hero(): ReactNode {
         </p>
 
         <div className={styles.heroButtons}>
-          <Link className={styles.btnPrimary} to="/docs/how-it-works">
+          {/* Install first, then the argument. A reader who is already
+              convinced should not have to hunt for the download, and one who
+              is not will take the second button anyway. */}
+          <Link className={styles.btnPrimary} href={PLAY_STORE_URL}>
+            <FaGooglePlay aria-hidden />
+            <Translate id="home.hero.download">Get it on Google Play</Translate>
+          </Link>
+          <Link className={styles.btnGhost} to="/docs/how-it-works">
             <Translate id="home.hero.cta">See exactly how</Translate>
             <FaArrowRight aria-hidden />
-          </Link>
-          <Link className={styles.btnGhost} to="/docs/security-tiers">
-            <FaShieldAlt aria-hidden />
-            <Translate id="home.hero.cta2">Compare the tiers</Translate>
           </Link>
         </div>
 

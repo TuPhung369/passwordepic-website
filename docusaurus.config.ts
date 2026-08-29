@@ -1,6 +1,8 @@
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+import { PLAY_STORE_URL } from './src/constants';
+
 /**
  * Site config for passwordepic.com.
  *
@@ -142,6 +144,16 @@ const config: Config = {
           ],
         },
         { type: 'localeDropdown', position: 'right' },
+        // The only thing on this site a visitor can actually *do*, so it gets
+        // the last slot and a button treatment - see `.navbar-cta` in
+        // src/css/custom.css.
+        {
+          href: PLAY_STORE_URL,
+          label: 'Get the app',
+          position: 'right',
+          className: 'navbar-cta',
+          'aria-label': 'Get PasswordEpic on Google Play',
+        },
       ],
     },
     footer: {
@@ -150,6 +162,7 @@ const config: Config = {
         {
           title: 'Product',
           items: [
+            { label: 'Get the app', href: PLAY_STORE_URL },
             { label: 'Overview', to: '/' },
             { label: 'How it works', to: '/docs/how-it-works' },
             { label: 'Security tiers', to: '/docs/security-tiers' },

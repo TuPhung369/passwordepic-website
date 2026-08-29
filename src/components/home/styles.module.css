@@ -598,8 +598,72 @@
 
 .ctaText {
   max-width: 38rem;
-  margin: 0 auto 1.8rem;
+  margin: 0 auto 2rem;
   color: #b8c7e8;
+}
+
+.ctaSplit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.ctaActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  align-items: stretch;
+  min-width: 15rem;
+}
+
+/* The buttons are centred as a block, but each label sits left of its icon so
+   three stacked buttons do not read as three different widths of nothing. */
+.ctaActions > * {
+  justify-content: center;
+}
+
+/* White card, always. A QR tinted to match a dark section is a QR that fails
+   to scan under real lighting. */
+.qrCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 0.9rem 0.75rem;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.qrImage {
+  display: block;
+  width: 148px;
+  height: 148px;
+  /* The SVG is 41 modules wide; without this the browser smooths it into a
+     blur at 148px and phones struggle to read it. */
+  image-rendering: pixelated;
+}
+
+.qrCaption {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #0f172a;
+}
+
+/* Below this, the reader is already holding the phone the code would send them
+   to. */
+@media (max-width: 700px) {
+  .qrCard {
+    display: none;
+  }
+
+  .ctaActions {
+    width: 100%;
+  }
 }
 
 /* ---------------------------------------------------------------------------

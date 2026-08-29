@@ -21,6 +21,8 @@ is ever upscaled.
 """
 
 import os
+
+import segno
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -35,6 +37,11 @@ CARD_MUTED = (148, 163, 184)
 
 FONT_BOLD = r'C:\Windows\Fonts\segoeuib.ttf'
 FONT_REG = r'C:\Windows\Fonts\segoeui.ttf'
+
+# Deliberately without the `&hl=` the store's own share links carry: that pins
+# the listing to one language, and a shorter URL is also a less dense QR, which
+# matters when someone is scanning it off a laptop screen at arm's length.
+PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.passwordepic.mobile'
 
 
 def artwork() -> Image.Image:
@@ -108,7 +115,21 @@ def main() -> None:
 
     social_card(art).save(os.path.join(OUT, 'social-card.png'))
 
-    for name in ('logo.png', 'favicon.ico', 'apple-touch-icon.png', 'social-card.png'):
+    # Store QR. Black on white and nothing else: a themed or tinted QR is a QR
+    # that fails to scan in someone's kitchen light, and the page puts it on a
+    # white card for the same reason. Error correction M tolerates a scuffed
+    # phone camera without inflating the module count.
+    segno.make(PLAY_STORE_URL, error='m').save(
+        os.path.join(OUT, 'play-qr.svg'),
+        kind='svg',
+        scale=1,
+        border=2,
+        dark='#0f172a',
+        light='#ffffff',
+    )
+
+    for name in ('logo.png', 'favicon.ico', 'apple-touch-icon.png',
+                 'social-card.png', 'play-qr.svg'):
         p = os.path.join(OUT, name)
         print(f'  {name:24s} {os.path.getsize(p):>8,} bytes')
 

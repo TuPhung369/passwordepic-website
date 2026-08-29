@@ -12,11 +12,18 @@
   "home.meta.description": {
     "message": "Trình quản lý mật khẩu zero-knowledge cho Android, dựa trên phần cứng bảo mật. Mã mở khoá không bao giờ rời khỏi thiết bị của bạn, và khoá của kho mật khẩu không thể ghép lại nếu thiếu nó."
   },
+  "starToc.label": {
+    "message": "Mục lục",
+    "description": "Label for the floating table-of-contents button"
+  },
   "home.cta.heading": {
     "message": "Hãy thẩm định, đừng chỉ tin"
   },
   "home.cta.text": {
     "message": "Tài liệu mô tả chiếc khoá, các mảnh khoá và nơi từng mảnh nằm — kể cả những phần chúng tôi có xử lý. Hãy đọc nó trước khi quyết định có tin trang chủ hay không."
+  },
+  "home.cta.download": {
+    "message": "Tải trên Google Play"
   },
   "home.cta.docs": {
     "message": "Đọc tài liệu"
@@ -26,6 +33,12 @@
   },
   "home.cta.contact": {
     "message": "Hỏi chúng tôi"
+  },
+  "home.cta.qrAlt": {
+    "message": "Mã QR dẫn tới PasswordEpic trên Google Play"
+  },
+  "home.cta.qr": {
+    "message": "Quét để cài"
   },
   "home.unlock.1.title": {
     "message": "Bạn gõ mã mở khoá"
@@ -153,11 +166,11 @@
   "home.hero.subtitle": {
     "message": "Không phải một lời hứa — mà là hệ quả của cách khoá được tạo ra. Một mảnh của khoá được sinh ra bên trong phần cứng bảo mật của điện thoại và không bao giờ rời khỏi đó, nên khoá của kho mật khẩu không thể ghép lại ở bất kỳ đâu ngoài thiết bị của bạn, đúng vào lúc bạn mở khoá."
   },
+  "home.hero.download": {
+    "message": "Tải trên Google Play"
+  },
   "home.hero.cta": {
     "message": "Xem chính xác bằng cách nào"
-  },
-  "home.hero.cta2": {
-    "message": "So sánh các gói"
   },
   "home.limits.files.title": {
     "message": "Bản sao lưu chỉ mở được trên chiếc máy đã tạo ra nó"
@@ -548,9 +561,5 @@
   },
   "home.who.footnote": {
     "message": "Chúng tôi liệt kê thẳng hàng thứ tư đó thay vì làm tròn nó đi. Máy chủ của chúng tôi có xử lý một mảnh của khoá — và vẫn không thể mở kho mật khẩu của bạn, bởi mảnh 1 chưa từng tồn tại ở đâu khác ngoài điện thoại của bạn."
-  },
-  "starToc.label": {
-    "message": "Mục lục",
-    "description": "Label for the floating table-of-contents button"
   }
 }

@@ -15,6 +15,10 @@
     "message": "Trợ giúp",
     "description": "Navbar item with label Help"
   },
+  "item.label.Get the app": {
+    "message": "Tải ứng dụng",
+    "description": "Navbar item with label Get the app"
+  },
   "item.label.How it works": {
     "message": "Cách hoạt động",
     "description": "Navbar item with label How it works"
