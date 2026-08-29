@@ -1,7 +1,37 @@
 {
-  "extends": "@docusaurus/tsconfig",
+  // Deliberately does NOT extend "@docusaurus/tsconfig", though it is a copy of
+  // it as of Docusaurus 3.10.2 with one option removed.
+  //
+  // That base config sets `baseUrl`, which TypeScript deprecated and drops in
+  // 7.0. It cannot simply be overridden away: `extends` resolves a base
+  // config's relative paths against the base config's own directory, so the
+  // inherited `baseUrl` points at node_modules/@docusaurus/tsconfig/ and takes
+  // `paths` with it. Re-declaring `paths` here does not help either - while any
+  // `baseUrl` is in effect, paths resolve against it rather than against this
+  // file. Both were tried; both leave every `@site/*` import unresolved.
+  //
+  // With no `baseUrl` anywhere, `paths` resolves relative to this file, which
+  // is the project root - exactly what `@site/*` should mean.
+  //
+  // Only `tsc --noEmit` and the editor read this. Docusaurus builds through
+  // Babel and wires the `@site` webpack alias itself, so the build never
+  // depended on any of it.
+  //
+  // Go back to `extends` once @docusaurus/tsconfig drops `baseUrl`; nothing
+  // else here differs from it.
   "compilerOptions": {
-    "baseUrl": "."
+    "allowJs": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM"],
+    "moduleResolution": "bundler",
+    "module": "esnext",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "paths": {
+      "@site/*": ["./*"]
+    }
   },
   "exclude": [".docusaurus", "build"]
 }
