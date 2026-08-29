@@ -144,7 +144,8 @@ paste it. Slower, and honest.
    Every time, without exception.
 4. The one entry being filled is decrypted, for that fill only. The rest of the
    vault stays encrypted.
-5. The plaintext and the key are released as soon as the field is filled.
+5. The decrypted password and the key are released as soon as the field is
+   filled.
 
 There is no window during which fills happen unattended, and no "unlock for five
 minutes" mode.
@@ -155,7 +156,7 @@ flowchart LR
   B --> C["👤 Fingerprint or passcode.<br/>Every time."]
   C --> D["🔓 One entry decrypted,<br/>for this fill only"]
   D --> E["✅ Field filled"]
-  E --> F["🧹 Plaintext and key<br/>dropped immediately"]
+  E --> F["🧹 Decrypted password and key<br/>dropped immediately"]
 ```
 
 ## What a screenshot or a recording can capture

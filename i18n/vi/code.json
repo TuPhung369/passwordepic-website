@@ -124,10 +124,10 @@
     "message": "Chỉ mục đang được điền, và chỉ cho lần điền đó. Phần còn lại của kho vẫn nằm nguyên ở dạng mã hoá."
   },
   "home.autofill.5.title": {
-    "message": "Bản rõ bị bỏ đi"
+    "message": "Mật khẩu vừa giải mã bị bỏ đi"
   },
   "home.autofill.5.text": {
-    "message": "Giá trị đã giải mã và chiếc khoá được giải phóng ngay khi ô đã được điền."
+    "message": "Mật khẩu sau khi được giải mã, cùng với chiếc khoá, được giải phóng ngay khi ô đã được điền."
   },
   "home.autofill.eyebrow": {
     "message": "Dùng hằng ngày"
@@ -466,7 +466,7 @@
     "message": "Mã mở khoá mở kho thông qua OPAQUE"
   },
   "home.tiers.titanium.3": {
-    "message": "Không lưu bất cứ thứ gì mở được kho ở dạng bản rõ"
+    "message": "Không bao giờ lưu thứ gì mở được kho ở dạng chưa mã hoá"
   },
   "home.tiers.titanium.4": {
     "message": "Lõi Rust có thể xoá bí mật khỏi bộ nhớ native"

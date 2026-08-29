@@ -148,7 +148,7 @@ export default function Tiers(): ReactNode {
         }),
         translate({
           id: 'home.tiers.titanium.3',
-          message: 'Nothing that unwraps the vault is stored in plaintext',
+          message: 'Nothing that unwraps the vault is ever stored unencrypted',
         }),
         translate({
           id: 'home.tiers.titanium.4',

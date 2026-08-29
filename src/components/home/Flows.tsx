@@ -250,11 +250,11 @@ export function AutofillFlow(): ReactNode {
       icon: <FaEraser aria-hidden />,
       title: translate({
         id: 'home.autofill.5.title',
-        message: 'The plaintext is dropped',
+        message: 'The decrypted password is dropped',
       }),
       text: translate({
         id: 'home.autofill.5.text',
-        message: 'The decrypted value and the key are released as soon as the field is filled.',
+        message: 'The decrypted password and the key are released as soon as the field is filled.',
       }),
     },
   ];

@@ -144,7 +144,8 @@ vào. Chậm hơn, nhưng trung thực.
    không ngoại lệ.
 4. Đúng một mục được giải mã, chỉ cho lần điền đó. Phần còn lại của kho vẫn nằm
    nguyên ở dạng mã hoá.
-5. Bản rõ và chiếc khoá được giải phóng ngay khi ô đã được điền.
+5. Mật khẩu sau khi được giải mã, cùng với chiếc khoá, được giải phóng ngay khi ô
+   đã được điền.
 
 Không có khoảng thời gian nào mà việc điền diễn ra không cần bạn, và không có chế
 độ "mở khoá trong năm phút".
@@ -155,7 +156,7 @@ flowchart LR
   B --> C["👤 Vân tay hoặc mã mở khoá.<br/>Mọi lần."]
   C --> D["🔓 Đúng một mục được giải mã,<br/>chỉ cho lần điền này"]
   D --> E["✅ Ô đã được điền"]
-  E --> F["🧹 Bản rõ và khoá<br/>bị bỏ đi ngay"]
+  E --> F["🧹 Mật khẩu vừa giải mã<br/>và khoá bị bỏ đi ngay"]
 ```
 
 ## Ảnh chụp và bản ghi màn hình bắt được gì
