@@ -38,6 +38,15 @@ assesses the request for automated abuse. Its use is subject to
 If you enable backup, files are written to *your* Google Drive account — not to
 us. We never receive them and cannot read them.
 
+The app asks Google for two permissions only, and both are narrow: **its own
+private folder**, and **files it created itself**. Neither grants access to the
+rest of your Drive, so the app cannot read, list or touch anything else you keep
+there.
+
+Backups go to that private folder, where nothing but this app can open them.
+When you *export* rather than back up, you choose: the phone's own storage, your
+visible Google Drive, or that same private folder.
+
 :::warning Losing your phone means losing the vault
 
 Backups and exports carry a layer of encryption tied to the device that created

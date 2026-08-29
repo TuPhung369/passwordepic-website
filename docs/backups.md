@@ -93,6 +93,14 @@ flowchart TD
 If you enable backup, files are written to **your own** Google Drive account, not
 to us. We never receive them and could not read them if we did.
 
+Specifically, a backup goes to a **private area of your Drive that only this app
+can open** — it is not listed among your files, so you cannot rename it by
+accident or share it by mistake. An *export* is different: there you choose
+between the phone's storage, your visible My Drive, or that same private area.
+
+The app asks Google for two narrow permissions — its own private folder, and
+files it created itself. Neither lets it see the rest of your Drive.
+
 ## What to do instead of relying on migration
 
 Since a new phone starts an empty vault, plan for that up front:

@@ -93,6 +93,15 @@ Nếu bạn bật sao lưu, tệp được ghi vào tài khoản Google Drive **
 không phải của chúng tôi. Chúng tôi không bao giờ nhận được chúng và có nhận cũng
 không đọc được.
 
+Cụ thể hơn, bản sao lưu đi vào một **vùng riêng trong Drive mà chỉ ứng dụng này mở
+được** — nó không được liệt kê giữa các tệp của bạn, nên bạn không thể lỡ tay đổi
+tên hay chia sẻ nhầm. *Xuất dữ liệu* thì khác: ở đó bạn tự chọn giữa bộ nhớ máy,
+My Drive nhìn thấy được, hoặc chính vùng riêng đó.
+
+Ứng dụng chỉ xin Google hai quyền hẹp: thư mục riêng của chính nó, và những tệp do
+chính nó tạo ra. Không quyền nào cho phép nó nhìn phần còn lại trong Drive của
+bạn.
+
 ## Nên làm gì thay vì trông chờ vào việc chuyển máy
 
 Vì điện thoại mới sẽ bắt đầu với một kho rỗng, hãy tính trước cho điều đó:

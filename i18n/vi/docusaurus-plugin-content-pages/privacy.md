@@ -40,6 +40,15 @@ Nếu bạn bật sao lưu, các tệp được ghi vào tài khoản Google Dri
 không phải của chúng tôi. Chúng tôi không bao giờ nhận được chúng và không thể
 đọc chúng.
 
+Ứng dụng chỉ xin Google đúng hai quyền, và cả hai đều hẹp: **thư mục riêng của
+chính nó**, và **những tệp do chính nó tạo ra**. Không quyền nào cho phép truy cập
+phần còn lại trong Drive của bạn, nên ứng dụng không thể đọc, liệt kê hay đụng tới
+bất cứ thứ gì khác bạn để ở đó.
+
+Bản sao lưu đi vào đúng thư mục riêng đó, nơi không gì ngoài ứng dụng này mở được.
+Khi bạn *xuất dữ liệu* thay vì sao lưu, bạn được chọn: bộ nhớ của chính máy, Google
+Drive nhìn thấy được, hoặc chính thư mục riêng đó.
+
 :::warning Mất điện thoại là mất kho mật khẩu
 
 Bản sao lưu và bản xuất mang một lớp mã hoá gắn với thiết bị đã tạo ra chúng, nên

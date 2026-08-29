@@ -21,9 +21,9 @@ Từ trái sang phải:
 | 2 | ⇅ **Sắp xếp** | Tên A–Z hoặc Z–A, mới nhất hoặc cũ nhất, vừa dùng, hoặc theo độ mạnh. |
 | 3 | ▽ **Lọc** | Thu hẹp danh sách: yếu, dùng lại, cũ, không 2FA, đã rò rỉ, yêu thích, theo nhóm. |
 | 4 | ➕ **Thêm** | Tạo một mục mới. |
-| 5 | ↗ **Xuất** | Ghi các mục ra một tệp. |
-| 6 | ⭳ **Nhập** | Đọc các mục vào từ một tệp trên máy này. |
-| 7 | ☁ **Sao lưu** | Sao lưu lên, hoặc khôi phục từ, Google Drive của chính bạn. |
+| 5 | ↗ **Xuất** | Ghi các mục ra một tệp — trên máy, hoặc lên Drive của bạn. |
+| 6 | ⭳ **Nhập** | Đọc các mục vào lại, từ chính ba nơi đó. |
+| 7 | ☁ **Sao lưu** | Sao lưu lên, hoặc khôi phục từ, một vùng riêng trong Drive của bạn. |
 | 8 | ☑ **Chọn** | Chế độ chọn nhiều, để làm một việc cho nhiều mục cùng lúc. |
 
 Hai trong số đó cần một lời cảnh báo trước khi dùng, và nó nằm ở cuối trang:
@@ -141,11 +141,35 @@ Hãy đọc [Sao lưu và xuất dữ liệu](./backups.md) trước khi trông 
 
 :::
 
-- **Xuất** ghi ra một tệp mà bạn tự chọn nội dung: siêu dữ liệu, nhóm, thẻ, ghi
-  chú, lịch sử, tệp đính kèm.
-- **Nhập** đọc các mục vào lại từ một tệp trên máy này.
-- **Sao lưu** dùng Google Drive **của chính bạn**. Chúng tôi không bao giờ nhận
-  được tệp đó.
+### Tệp được ghi vào đâu
+
+**Xuất** hỏi bạn chọn một trong ba nơi. **Sao lưu** thì không hỏi, vì nó luôn dùng
+nơi thứ ba.
+
+```mermaid
+flowchart TD
+  E["↗ Xuất<br/>Bạn tự chọn"] --> L["📁 Local<br/>Một tệp trong bộ nhớ máy.<br/>Bạn tự di chuyển, sao chép, xoá."]
+  E --> D["☁️ Drive<br/>My Drive của bạn, nơi bạn<br/>nhìn thấy và quản lý được tệp."]
+  E --> H["🙈 Hidden<br/>Một vùng riêng trong Drive mà chỉ<br/>ứng dụng này mở được. Nó không<br/>hiện ra giữa các tệp của bạn."]
+  B["☁ Sao lưu<br/>Luôn luôn"] --> H
+```
+
+| Nơi lưu | Ai nhìn thấy tệp |
+| --- | --- |
+| **Local** | Bạn, và mọi thứ trên máy có quyền truy cập bộ nhớ |
+| **Drive** | Bạn, trong My Drive, như mọi tệp khác bạn sở hữu |
+| **Hidden** | Chỉ ứng dụng này. Nó không được liệt kê trong Drive của bạn |
+
+**Nhập** đọc được từ cả ba, nên một tệp bạn xuất ra ở đâu cũng đưa về lại được
+theo đúng đường đó.
+
+**Chúng tôi không bao giờ nhận được tệp nào trong số đó.** Chúng được ghi vào tài
+khoản Google *của bạn*, không phải của chúng tôi. Và ứng dụng chỉ xin Google hai
+quyền hẹp: thư mục riêng của chính nó, và *những tệp do chính nó tạo ra*. Không
+quyền nào cho phép nó nhìn vào phần còn lại trong Drive của bạn.
+
+Vùng ẩn là mặc định cho sao lưu vì một bản sao lưu không phải tài liệu — nó không
+phải thứ bạn muốn vấp phải khi duyệt thư mục, đổi tên nhầm, hay lỡ tay chia sẻ.
 
 ## Nếu có gì đó không ổn
 

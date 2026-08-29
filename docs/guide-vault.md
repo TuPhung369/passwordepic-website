@@ -21,9 +21,9 @@ Left to right:
 | 2 | ⇅ **Sort** | Name A–Z or Z–A, newest or oldest, recently used, or by password strength. |
 | 3 | ▽ **Filter** | Narrow the list: weak, reused, old, no 2FA, breached, favourites, or by category. |
 | 4 | ➕ **Add** | Create a new entry. |
-| 5 | ↗ **Export** | Write your entries to a file. |
-| 6 | ⭳ **Import** | Read entries in from a file on this phone. |
-| 7 | ☁ **Backup** | Back up to, or restore from, your own Google Drive. |
+| 5 | ↗ **Export** | Write your entries to a file — on the phone, or to your Drive. |
+| 6 | ⭳ **Import** | Read entries back in, from any of the same three places. |
+| 7 | ☁ **Backup** | Back up to, or restore from, a private area of your own Drive. |
 | 8 | ☑ **Select** | Selection mode, for doing one thing to several entries at once. |
 
 Two of those deserve a warning before you use them, and they are covered further
@@ -142,10 +142,36 @@ Read [Backups and exports](./backups.md) before you rely on one.
 
 :::
 
-- **Export** writes a file you choose the contents of: metadata, categories,
-  tags, notes, history, attachments.
-- **Import** reads entries back in from a file on this phone.
-- **Backup** uses **your own** Google Drive. We never receive the file.
+### Where the files go
+
+**Export** asks you to pick one of three places. **Backup** does not ask,
+because it always uses the third.
+
+```mermaid
+flowchart TD
+  E["↗ Export<br/>You choose"] --> L["📁 Local<br/>A file in the phone's storage.<br/>Yours to move, copy or delete."]
+  E --> D["☁️ Drive<br/>Your My Drive, where you can<br/>see the file and manage it."]
+  E --> H["🙈 Hidden<br/>A private area of your Drive that<br/>only this app can open. It does<br/>not appear among your files."]
+  B["☁ Backup<br/>Always"] --> H
+```
+
+| Destination | Who can see the file |
+| --- | --- |
+| **Local** | You, and anything on the phone with storage access |
+| **Drive** | You, in My Drive, like any other file you own |
+| **Hidden** | Only this app. It is not listed in your Drive |
+
+**Import** reads from all three, so a file you exported anywhere can be brought
+back the same way.
+
+**We never receive any of them.** They are written to *your* Google account, not
+ours. And the app asks Google for two narrow permissions only — its own private
+folder, and *files it created itself*. Neither one lets it look at the rest of
+your Drive.
+
+The hidden area is the default for backups because a backup is not a document —
+it is not something you want to trip over in a folder listing, rename by
+accident, or share by mistake.
 
 ## If something is missing
 
