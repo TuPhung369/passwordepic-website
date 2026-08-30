@@ -43,6 +43,32 @@ flowchart LR
   E -.-> B
 ```
 
+### DEK
+
+The technical name for the vault key: **data encryption key**. It is what you
+will see in the app's own developer documentation, and in the formula itself:
+
+```
+DEK = Shard 1 ⊕ Shard 2 ⊕ ShardVault
+```
+
+There is one key here under two names. These pages say **vault key**, because
+that is what it does. The acronym is written down here so that meeting `DEK`
+somewhere else does not send you looking for a second key that does not exist.
+
+The **⊕** is XOR, a way of combining values with two properties that matter
+here: every input is required to get the result back, and holding some of the
+inputs tells you nothing at all about the rest.
+
+```mermaid
+flowchart LR
+  A["📱 Shard 1<br/>your phone only"] --> X(("⊕"))
+  B["☁️ Shard 2<br/>fetched, encrypted"] --> X
+  C["🧮 ShardVault<br/>computed per unlock"] --> X
+  X --> K["🔑 The vault key<br/>— the DEK"]
+  K --> Z["🧹 Used once, then wiped"]
+```
+
 ### Shard
 
 One piece of the vault key. The key is split into pieces that live in different
@@ -53,11 +79,44 @@ flowchart TD
   M["🧠 Your passcode<br/>Only in your head"] --> Q
   P["🔒 Shard 1<br/>Your phone's security chip"] --> K["🔑 Vault key"]
   Q["📦 Shard 2<br/>Encrypted in our database,<br/>fetched by your phone"] --> K
-  R["🧮 Shard 3<br/>Computed inside Google Cloud KMS"] --> K
+  R["🧮 ShardVault<br/>Computed inside Google Cloud KMS"] --> K
   K --> N["Take away any one<br/>and there is no key"]
 ```
 
 All three are needed. See [How it works](./how-it-works.md).
+
+You may notice there is no "Shard 3" in that picture. There is one — it is the
+**pepper** — and it is not drawn because it never travels. It stays inside
+Google's hardware and is what ShardVault gets computed *with*. See
+[Cloud KMS and the pepper](#pepper).
+
+### ShardVault
+
+The third piece of the vault key, and the only one that is not stored anywhere —
+because between unlocks it does not exist.
+
+Shard 1 and Shard 2 are values that sit somewhere and get fetched. ShardVault is
+not fetched. It is **computed**, from scratch, every time you unlock, inside a
+Google Cloud hardware module, from your Shard 2 and the pepper.
+
+```mermaid
+flowchart LR
+  A["📦 Your Shard 2<br/>still encrypted"] --> S["☁️ Our server"]
+  S --> H["🔐 Cloud KMS hardware"]
+  P["🌶️ The pepper<br/>never leaves the module"] --> H
+  H --> V["🧮 ShardVault<br/>for this one unlock"]
+  V --> D["📱 Returned to your phone"]
+  D --> W["🧹 Gone again"]
+```
+
+Two things follow from that:
+
+- **There is nothing to steal between unlocks.** A value that does not exist
+  cannot be copied out of a database.
+- **It is tied to your account, not just to your Shard 2.** Someone who somehow
+  obtained your encrypted Shard 2 and asked our server to process it would get a
+  different value back, because who is asking is mixed into the calculation. See
+  [How it works](./how-it-works.md).
 
 ### Zero-knowledge
 
@@ -270,7 +329,7 @@ It runs as a Google service, so its use falls under
 
 ## On our side
 
-### Cloud KMS and the "pepper"
+### Cloud KMS and the "pepper" {#pepper}
 
 **Cloud KMS** is Google's key management service. Part of it runs inside a
 **hardware security module** — the server-side twin of your phone's security
@@ -284,8 +343,8 @@ flowchart LR
   H -->|"❌ It never leaves"| S
 ```
 
-The **pepper** is a secret held inside one of those modules. Our server uses it
-to compute the third piece of your vault key. The pepper itself never leaves
+The **pepper** is a secret held inside one of those modules — it is Shard 3.
+Our server uses it to compute **ShardVault**, the third piece of your vault key. The pepper itself never leaves
 the module, and never appears in a reply — not even to our own code.
 
 ### Firestore

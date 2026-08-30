@@ -43,6 +43,33 @@ flowchart LR
   E -.-> B
 ```
 
+### DEK
+
+Tên kỹ thuật của khoá kho: **data encryption key** — khoá mã hoá dữ liệu. Đây là
+cái tên bạn sẽ gặp trong tài liệu kỹ thuật của chính ứng dụng, và trong bản thân
+công thức:
+
+```
+DEK = Shard 1 ⊕ Shard 2 ⊕ ShardVault
+```
+
+Ở đây chỉ có một chiếc khoá, mang hai cái tên. Các trang này gọi nó là **khoá
+kho**, vì đó là việc nó làm. Từ viết tắt được ghi lại ở đây để khi gặp `DEK` ở
+chỗ khác, bạn không đi tìm một chiếc khoá thứ hai vốn không tồn tại.
+
+Dấu **⊕** là phép XOR, một cách kết hợp các giá trị với hai tính chất quan trọng
+ở đây: phải có đủ mọi thành phần mới dựng lại được kết quả, và nắm trong tay một
+phần các thành phần không cho bạn biết bất cứ điều gì về phần còn lại.
+
+```mermaid
+flowchart LR
+  A["📱 Shard 1<br/>chỉ nằm trong máy bạn"] --> X(("⊕"))
+  B["☁️ Shard 2<br/>tải về, đã mã hoá"] --> X
+  C["🧮 ShardVault<br/>tính ở mỗi lần mở khoá"] --> X
+  X --> K["🔑 Khoá kho<br/>— chính là DEK"]
+  K --> Z["🧹 Dùng một lần, rồi xoá"]
+```
+
 ### Mảnh khoá (shard)
 
 Một phần của khoá kho. Chiếc khoá được chia thành các mảnh nằm ở những nơi khác
@@ -53,11 +80,44 @@ flowchart TD
   M["🧠 Mã mở khoá của bạn<br/>Chỉ nằm trong đầu bạn"] --> Q
   P["🔒 Mảnh 1<br/>Chip bảo mật trong máy bạn"] --> K["🔑 Khoá kho"]
   Q["📦 Mảnh 2<br/>Mã hoá trong cơ sở dữ liệu,<br/>điện thoại bạn tải về"] --> K
-  R["🧮 Mảnh 3<br/>Tính bên trong Google Cloud KMS"] --> K
+  R["🧮 ShardVault<br/>Tính bên trong Google Cloud KMS"] --> K
   K --> N["Bỏ đi bất kỳ mảnh nào<br/>là không có khoá"]
 ```
 
 Cần đủ cả ba. Xem [Cách hoạt động](./how-it-works.md).
+
+Có thể bạn để ý trong hình không có "Mảnh 3". Nó có tồn tại — đó chính là
+**pepper** — và không được vẽ vào vì nó không bao giờ di chuyển. Nó nằm yên trong
+phần cứng của Google, và là thứ mà ShardVault được tính *bằng*. Xem
+[Cloud KMS và "pepper"](#pepper).
+
+### ShardVault
+
+Mảnh thứ ba của khoá kho, và là mảnh duy nhất không được lưu ở đâu cả — bởi giữa
+hai lần mở khoá, nó không tồn tại.
+
+Shard 1 và Shard 2 là những giá trị nằm sẵn ở đâu đó rồi được lấy về. ShardVault
+thì không được lấy về. Nó được **tính ra**, từ đầu, mỗi lần bạn mở khoá, bên
+trong một mô-đun phần cứng của Google Cloud, từ Shard 2 của bạn và pepper.
+
+```mermaid
+flowchart LR
+  A["📦 Shard 2 của bạn<br/>vẫn đang mã hoá"] --> S["☁️ Máy chủ của chúng tôi"]
+  S --> H["🔐 Phần cứng Cloud KMS"]
+  P["🌶️ Pepper<br/>không bao giờ rời mô-đun"] --> H
+  H --> V["🧮 ShardVault<br/>cho đúng lần mở khoá này"]
+  V --> D["📱 Trả về điện thoại bạn"]
+  D --> W["🧹 Lại biến mất"]
+```
+
+Hai điều rút ra từ đó:
+
+- **Giữa hai lần mở khoá, không có gì để lấy cắp.** Một giá trị không tồn tại thì
+  không thể bị sao chép ra khỏi cơ sở dữ liệu.
+- **Nó gắn với tài khoản của bạn, chứ không chỉ gắn với Shard 2 của bạn.** Kẻ nào
+  đó lấy được Shard 2 đã mã hoá của bạn rồi nhờ máy chủ chúng tôi xử lý sẽ nhận
+  về một giá trị khác, vì danh tính người gọi cũng được trộn vào phép tính. Xem
+  [Cách hoạt động](./how-it-works.md).
 
 ### Zero-knowledge
 
@@ -272,7 +332,7 @@ cạnh chính sách của chúng tôi.
 
 ## Ở phía chúng tôi
 
-### Cloud KMS và "pepper"
+### Cloud KMS và "pepper" {#pepper}
 
 **Cloud KMS** là dịch vụ quản lý khoá của Google. Một phần của nó chạy bên trong
 **mô-đun bảo mật phần cứng** — bản sinh đôi phía máy chủ của con chip bảo mật
@@ -286,8 +346,8 @@ flowchart LR
   H -->|"❌ Nó không bao giờ rời khỏi đây"| S
 ```
 
-**Pepper** là một bí mật nằm trong một mô-đun như vậy. Máy chủ của chúng tôi dùng
-nó để tính ra mảnh thứ ba của khoá kho. Bản thân pepper không bao giờ rời khỏi
+**Pepper** là một bí mật nằm trong một mô-đun như vậy — nó chính là Mảnh 3. Máy
+chủ của chúng tôi dùng nó để tính ra **ShardVault**, mảnh thứ ba của khoá kho. Bản thân pepper không bao giờ rời khỏi
 mô-đun, và không bao giờ xuất hiện trong phản hồi — kể cả phản hồi gửi cho chính
 mã của chúng tôi.
 

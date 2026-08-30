@@ -25,7 +25,7 @@ flowchart LR
   S2["☁️ Shard 2<br/>Encrypted in our database.<br/>Your phone fetches it, and<br/>cannot open it without you."]
   S1["📱 Shard 1<br/>Your phone's security chip.<br/>Never leaves it."] --> KEY
   S2 --> KEY
-  S3["🔐 Shard 3<br/>Computed inside Google Cloud KMS,<br/>fresh at every unlock."] --> KEY
+  S3["🧮 ShardVault<br/>Computed inside Google Cloud KMS,<br/>fresh at every unlock."] --> KEY
   KEY["🔑 Your vault key<br/>Assembled on your phone.<br/>Wiped straight after."]
   KEY --> N["Four places, no two of them<br/>under the same control."]
 ```

@@ -585,5 +585,8 @@
   },
   "home.who.footnote.tier": {
     "message": "Lưu khoá bằng phần cứng và ShardVault có từ gói Gold trở lên. Silver thay vào đó giữ mảnh của mình trong bộ nhớ ứng dụng đã mã hoá, và dẫn xuất khoá ngay trên máy."
+  },
+  "home.unlock.formula.code": {
+    "message": "khoá kho = Shard 1 ⊕ Shard 2 ⊕ ShardVault"
   }
 }

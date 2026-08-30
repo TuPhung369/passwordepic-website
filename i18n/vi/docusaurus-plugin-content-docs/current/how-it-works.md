@@ -25,7 +25,7 @@ flowchart LR
   S2["☁️ Shard 2<br/>Mã hoá trong cơ sở dữ liệu của chúng tôi.<br/>Điện thoại bạn tải về, và không<br/>mở được nếu thiếu bạn."]
   S1["📱 Shard 1<br/>Chip bảo mật trong máy bạn.<br/>Không bao giờ rời khỏi đó."] --> KEY
   S2 --> KEY
-  S3["🔐 Shard 3<br/>Tính bên trong Google Cloud KMS,<br/>mới tinh ở mỗi lần mở khoá."] --> KEY
+  S3["🧮 ShardVault<br/>Tính bên trong Google Cloud KMS,<br/>mới tinh ở mỗi lần mở khoá."] --> KEY
   KEY["🔑 Khoá kho của bạn<br/>Ghép lại trên máy bạn.<br/>Xoá ngay sau đó."]
   KEY --> N["Bốn nơi, và không hai nơi nào<br/>nằm dưới cùng một quyền kiểm soát."]
 ```

@@ -332,7 +332,12 @@
   font-family: var(--ifm-font-family-monospace);
   font-size: clamp(0.82rem, 2.4vw, 1rem);
   font-weight: 600;
+  /* One line is the point - it should read as a single statement. On a narrow
+     phone that can be wider than the screen, so it scrolls itself rather than
+     dragging the whole page sideways. */
   white-space: nowrap;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .formulaNote {
