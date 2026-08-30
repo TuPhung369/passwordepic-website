@@ -6,16 +6,21 @@ import styles from './styles.module.css';
 /**
  * Who can see what.
  *
- * The fourth row is the reason this table is persuasive. Every password
- * manager can publish a grid of "never"s; publishing the row where the server
- * does handle part of the key, and explaining why that still opens nothing, is
- * what separates a checkable claim from a slogan.
+ * The rows where the answer is not "never" are the reason this table is
+ * persuasive. Every password manager can publish a grid of "never"s; publishing
+ * the two rows where the server does handle part of the key - shard 2 as
+ * ciphertext, and ShardVault computed on request - and explaining why holding
+ * two of the three still opens nothing, is what separates a checkable claim
+ * from a slogan.
+ *
+ * The pepper row runs the other way, and is worth the space for it: a secret
+ * our own servers cannot read, only ask to be used.
  */
 
 type Row = {
   id: string;
   data: string;
-  device: string;
+  device: ReactNode;
   server: ReactNode;
 };
 
@@ -90,6 +95,40 @@ export default function Visibility(): ReactNode {
       ),
     },
     {
+      id: 'shard3',
+      data: translate({
+        id: 'home.who.share3',
+        message: 'Key shard 3 — the “pepper”',
+      }),
+      device: (
+        <>
+          {never}{' '}
+          <Translate id="home.who.share3.device">
+            — it never reaches your phone
+          </Translate>
+        </>
+      ),
+      server: (
+        <Translate id="home.who.share3.server">
+          Sealed in a hardware security module. It can be used, but not read out
+          — by anyone, us included
+        </Translate>
+      ),
+    },
+    {
+      id: 'shardvault',
+      data: 'ShardVault',
+      device: translate({
+        id: 'home.who.shardvault.device',
+        message: 'Arrives for one unlock, then it is gone',
+      }),
+      server: (
+        <Translate id="home.who.shardvault.server">
+          Computed for you at each unlock, from shard 2 and the pepper
+        </Translate>
+      ),
+    },
+    {
       id: 'account',
       data: translate({
         id: 'home.who.account',
@@ -120,7 +159,7 @@ export default function Visibility(): ReactNode {
         })}
         lead={translate({
           id: 'home.who.lead',
-          message: 'The interesting rows are the ones where the answer is “never” — and the one where it is not.',
+          message: 'The interesting rows are the ones where the answer is “never” — and the ones where it is not.',
         })}
       />
 
@@ -153,9 +192,18 @@ export default function Visibility(): ReactNode {
         </div>
         <p className={styles.tableFootnote}>
           <Translate id="home.who.footnote">
-            We list that fourth row rather than rounding it away. Our servers do
-            handle one shard of the key — and still cannot open your vault,
-            because shard 1 has never existed anywhere but your phone.
+            We list those rows rather than rounding them away. Our servers hold
+            shard 2 as ciphertext and compute ShardVault on request — two of the
+            three pieces your key is built from. They still cannot open your
+            vault, because the third one, shard 1, has never existed anywhere
+            but your phone.
+          </Translate>
+        </p>
+        <p className={styles.tableFootnote}>
+          <Translate id="home.who.footnote.tier">
+            Hardware key storage and ShardVault are Gold and above. Silver keeps
+            its shard in encrypted app storage instead, and derives its key on
+            the phone alone.
           </Translate>
         </p>
       </div>

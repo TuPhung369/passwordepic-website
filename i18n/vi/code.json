@@ -550,7 +550,7 @@
     "message": "Ai thấy được gì"
   },
   "home.who.lead": {
-    "message": "Đáng chú ý là những hàng có câu trả lời “không bao giờ” — và hàng duy nhất không phải vậy."
+    "message": "Đáng chú ý là những hàng có câu trả lời “không bao giờ” — và những hàng không phải vậy."
   },
   "home.who.col.data": {
     "message": "Dữ liệu"
@@ -562,10 +562,28 @@
     "message": "Máy chủ của chúng tôi"
   },
   "home.who.footnote": {
-    "message": "Chúng tôi liệt kê thẳng hàng thứ tư đó thay vì làm tròn nó đi. Máy chủ của chúng tôi có xử lý một mảnh của khoá — và vẫn không thể mở kho mật khẩu của bạn, bởi mảnh 1 chưa từng tồn tại ở đâu khác ngoài điện thoại của bạn."
+    "message": "Chúng tôi liệt kê thẳng những hàng đó thay vì làm tròn chúng đi. Máy chủ của chúng tôi giữ mảnh 2 ở dạng mã hoá và tính ra ShardVault khi được yêu cầu — hai trong ba mảnh dựng nên khoá của bạn. Và vẫn không mở được kho của bạn, bởi mảnh thứ ba, mảnh 1, chưa từng tồn tại ở đâu khác ngoài điện thoại của bạn."
   },
   "starToc.label": {
     "message": "Mục lục",
     "description": "Label for the floating table-of-contents button"
+  },
+  "home.who.share3": {
+    "message": "Mảnh khoá 3 — “hạt tiêu” (pepper)"
+  },
+  "home.who.share3.device": {
+    "message": "— nó không bao giờ tới được điện thoại của bạn"
+  },
+  "home.who.share3.server": {
+    "message": "Niêm trong một mô-đun bảo mật phần cứng. Nó dùng được, nhưng không đọc ra được — với bất kỳ ai, kể cả chúng tôi"
+  },
+  "home.who.shardvault.device": {
+    "message": "Tới nơi cho đúng một lần mở khoá, rồi biến mất"
+  },
+  "home.who.shardvault.server": {
+    "message": "Được tính riêng cho bạn ở mỗi lần mở khoá, từ mảnh 2 và hạt tiêu"
+  },
+  "home.who.footnote.tier": {
+    "message": "Lưu khoá bằng phần cứng và ShardVault có từ gói Gold trở lên. Silver thay vào đó giữ mảnh của mình trong bộ nhớ ứng dụng đã mã hoá, và dẫn xuất khoá ngay trên máy."
   }
 }
