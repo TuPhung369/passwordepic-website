@@ -84,5 +84,27 @@ if (LOCALE) {
   args.push('--locale', LOCALE);
 }
 
-const child = spawn('npx', args, {stdio: 'inherit', shell: true});
+/**
+ * Docusaurus signs off with `Serving "build" directory at http://0.0.0.0:3000/`.
+ * That is the address it *bound* to, not an address anybody can open - paste it
+ * into a browser and nothing happens. It is also the last line on screen, so it
+ * is the one people copy.
+ *
+ * So the child's output is piped through here and that address is rewritten to
+ * the one that actually works. FORCE_COLOR keeps Docusaurus' colours, which it
+ * would otherwise drop on noticing it is writing to a pipe rather than a
+ * terminal.
+ */
+const reachable = primary ? primary.address : 'localhost';
+const fix = chunk =>
+  chunk.toString().replaceAll('0.0.0.0', reachable).replaceAll('[::]', reachable);
+
+const child = spawn('npx', args, {
+  stdio: ['inherit', 'pipe', 'pipe'],
+  shell: true,
+  env: {...process.env, FORCE_COLOR: process.env.FORCE_COLOR ?? '1'},
+});
+
+child.stdout.on('data', c => process.stdout.write(fix(c)));
+child.stderr.on('data', c => process.stderr.write(fix(c)));
 child.on('exit', code => process.exit(code ?? 0));

@@ -177,6 +177,26 @@ main.container--fluid > .row > .col > article {
   }
 }
 
+/* Mobile navbar: hamburger alone on the left, the brand on the right.
+ *
+ * Below 996px Docusaurus hides every right-hand item — the nav items and the
+ * colour-mode toggle all move into the drawer — so that group is an empty half
+ * of a bar split 50/50 by two `flex: 1` children. Collapsing it lets the left
+ * group span the full width, and the brand can then ride to the far edge.
+ *
+ * `flex: 0 0 auto` rather than a width, because `.navbar__inner` wraps: a right
+ * group with any basis at all could drop the brand onto a second line. */
+@media (max-width: 996px) {
+  .navbar__inner > .theme-layout-navbar-right {
+    flex: 0 0 auto;
+  }
+
+  .navbar__inner > .theme-layout-navbar-left .navbar__brand {
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
 /* The store link in the navbar. A plain link would sit among Documentation and
    Help as one more thing to read past; this is the one action on the site. */
 .navbar-cta {

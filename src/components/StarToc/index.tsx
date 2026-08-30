@@ -11,9 +11,19 @@ import styles from './styles.module.css';
  * every page to show something a reader consults occasionally. Collapsed it is
  * one 40px button; open it is a panel over the content.
  *
- * On a pointer device it opens on hover, the way the sample project's does; on
- * touch it opens on tap. Because the panel grows out of the button rather than
- * sitting below it, there is no gap for a travelling pointer to fall through.
+ * A mouse opens it on hover, the way the sample project's does; a finger opens
+ * it on tap. Because the panel grows out of the button rather than sitting
+ * below it, there is no gap for a travelling pointer to fall through.
+ *
+ * Hover is gated on `pointerType === 'mouse'` rather than on a
+ * `(hover: hover)` media query, and that distinction was a real bug rather
+ * than a preference. Phones report `hover: hover` more often than you would
+ * think - with "Request desktop site" on, with a mouse or stylus ever paired,
+ * in DeX, in some in-app browsers - and where they do, a tap fires an emulated
+ * `mouseenter` that opened the panel, and then the `click` toggled it straight
+ * back shut. The button looked dead, on some phones and not others, with
+ * nothing about the page to explain it. `pointerType` is the direct signal:
+ * a finger is always `touch`, whatever the media query claims.
  *
  * It reads the DOM rather than the route's TOC data on purpose: this renders
  * from `src/theme/Root`, which sits outside the doc plugin's context and has no
@@ -43,15 +53,8 @@ export default function StarToc(): React.ReactNode {
   const [open, setOpen] = useState(false);
   const [activeId, setActiveId] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  // Pointer devices open the panel on hover; touch devices have no hover to
-  // speak of, and reading the query once here keeps the handlers cheap.
-  const hoverable = useRef(false);
   const closeTimer = useRef<number | null>(null);
   const {pathname, hash} = useLocation();
-
-  useEffect(() => {
-    hoverable.current = window.matchMedia('(hover: hover)').matches;
-  }, []);
 
   const cancelClose = useCallback(() => {
     if (closeTimer.current !== null) {
@@ -184,24 +187,26 @@ export default function StarToc(): React.ReactNode {
       ref={containerRef}
       className={styles.container}
       data-open={open || undefined}
-      onMouseEnter={() => {
-        if (hoverable.current) {
-          cancelClose();
-          setOpen(true);
+      onPointerEnter={e => {
+        if (e.pointerType !== 'mouse') {
+          return;
         }
+        cancelClose();
+        setOpen(true);
       }}
-      onMouseLeave={() => {
-        if (hoverable.current) {
-          // Closing on a delay, rather than immediately, is what stops the
-          // flicker at the edges of the closed circle. The trigger is round
-          // and the open panel is a rounded rectangle, so a pointer resting a
-          // pixel or two inside one shape can be outside the other: it opens,
-          // the shape changes underneath the pointer, mouseleave fires, it
-          // closes, and the loop runs at frame rate. A short grace period
-          // means the pointer is back inside before the close would run.
-          cancelClose();
-          closeTimer.current = window.setTimeout(() => setOpen(false), 220);
+      onPointerLeave={e => {
+        if (e.pointerType !== 'mouse') {
+          return;
         }
+        // Closing on a delay, rather than immediately, is what stops the
+        // flicker at the edges of the closed circle. The trigger is round
+        // and the open panel is a rounded rectangle, so a pointer resting a
+        // pixel or two inside one shape can be outside the other: it opens,
+        // the shape changes underneath the pointer, the leave fires, it
+        // closes, and the loop runs at frame rate. A short grace period
+        // means the pointer is back inside before the close would run.
+        cancelClose();
+        closeTimer.current = window.setTimeout(() => setOpen(false), 220);
       }}>
       {/* One element in two states rather than a button with a panel hanging
           off it: closed it is the star, open it becomes the panel's header.
