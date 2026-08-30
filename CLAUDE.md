@@ -23,9 +23,28 @@ static/CNAME            custom domain for GitHub Pages
 
 ```
 npm install
-npm start        # local dev at :3000
-npm run build    # must pass before pushing — the workflow runs the same build
+npm start            # dev server, this computer only, one locale at a time
+npm run dev:lan      # same, but reachable from a phone on the same Wi-Fi
+npm run preview      # build, then serve it — both locales, exactly as deployed
+npm run preview:lan  # the same, reachable from a phone
+npm run check        # typecheck + diagrams + build. Run this before pushing.
 ```
+
+`npm run check` is the pre-push gate and runs what CI runs. The build is the
+part that catches most things, because `onBrokenLinks` and `onBrokenAnchors`
+are both `throw` — a dead link or a dead anchor fails it rather than shipping.
+
+**Dev vs preview matters here.** `npm start` compiles **one locale**; pass
+`-- vi` to see the Vietnamese site. Mermaid diagrams render client-side and the
+star contents panel reads the DOM, so both only exist in a browser — neither
+appears in the built HTML, and neither can be checked by grepping `build/`.
+`npm run check:diagrams` parses every diagram with Mermaid's own parser for
+exactly that reason, since a broken one builds clean and then shows the reader
+an error box.
+
+`dev:lan` and `preview:lan` print the URL to type on the phone. Windows will ask
+to allow Node through the firewall the first time — allow it for Private
+networks, or the phone will simply time out.
 
 ## The app repository is the source of truth
 

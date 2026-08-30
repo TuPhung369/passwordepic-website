@@ -4,12 +4,16 @@
   "private": true,
   "scripts": {
     "start": "docusaurus start",
+    "dev:lan": "node scripts/serve-lan.mjs dev",
     "build": "docusaurus build",
     "serve": "docusaurus serve",
-    "clear": "docusaurus clear",
-    "write-translations": "docusaurus write-translations",
+    "preview": "npm run build && npm run serve",
+    "preview:lan": "npm run build && node scripts/serve-lan.mjs preview",
+    "check": "npm run typecheck && npm run check:diagrams && npm run build",
     "typecheck": "tsc --noEmit",
-    "check:diagrams": "node scripts/check-diagrams.mjs"
+    "check:diagrams": "node scripts/check-diagrams.mjs",
+    "clear": "docusaurus clear",
+    "write-translations": "docusaurus write-translations"
   },
   "dependencies": {
     "@docusaurus/core": "^3.6.0",
