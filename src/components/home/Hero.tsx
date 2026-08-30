@@ -64,7 +64,7 @@ export default function Hero(): ReactNode {
           <Translate id="home.hero.subtitle">
             Not as a promise — as a consequence of how the key is built. One
             share of it is created inside your phone&apos;s secure hardware and
-            can never leave, so the vault key cannot be assembled anywhere but on
+            can never leave, so the DEK cannot be assembled anywhere but on
             your device, at the moment you unlock it.
           </Translate>
         </p>

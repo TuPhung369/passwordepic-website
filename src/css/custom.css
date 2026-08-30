@@ -311,6 +311,20 @@ main.container--fluid > .row > .col > article {
   }
 }
 
+/* The mirror image of the rule above. In the mobile drawer the item is a full
+   menu row reading "Languages", so the globe is decoration next to a word that
+   already says the same thing - and the only row in that menu carrying an icon,
+   which made it read as the odd one out rather than as a set. Text alone.
+
+   `className` reaches the drawer: DropdownNavbarItemMobile forwards it to the
+   NavbarNavLink, so the globe is a direct child of `.navbar-locale` in both
+   layouts. */
+@media (max-width: 996px) {
+  .navbar-locale > svg {
+    display: none;
+  }
+}
+
 /* ---------------------------------------------------------------------------
  * Page background
  *

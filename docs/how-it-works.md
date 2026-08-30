@@ -12,7 +12,8 @@ trusting it.
 
 ## The key is never stored
 
-The key that decrypts your vault — call it the **vault key** — is not saved
+The key that decrypts your vault — the **DEK**, for *data encryption key* — is
+not saved
 anywhere. Not on your phone, not on our servers, not in a backup. It is rebuilt
 from separate pieces each time you unlock, used for one operation, and wiped
 from memory immediately after.
@@ -26,7 +27,7 @@ flowchart LR
   S1["📱 Shard 1<br/>Your phone's security chip.<br/>Never leaves it."] --> KEY
   S2 --> KEY
   S3["🧮 ShardVault<br/>Computed inside Google Cloud KMS,<br/>fresh at every unlock."] --> KEY
-  KEY["🔑 Your vault key<br/>Assembled on your phone.<br/>Wiped straight after."]
+  KEY["🔑 Your DEK<br/>Assembled on your phone.<br/>Wiped straight after."]
   KEY --> N["Four places, no two of them<br/>under the same control."]
 ```
 
@@ -47,7 +48,7 @@ third value, **ShardVault**, and returns only that. Then, on your device, in
 native code:
 
 ```
-vault key = Shard 1  ⊕  Shard 2  ⊕  ShardVault
+DEK = Shard 1  ⊕  Shard 2  ⊕  ShardVault
 ```
 
 Miss any one of the three and there is no key.
@@ -110,7 +111,7 @@ flowchart TD
 ## Changing your passcode does not re-encrypt anything
 
 A passcode change re-wraps the value that unlocks Shard 2. Shard 2's *contents*
-do not change, so ShardVault does not change, so the vault key does not change.
+do not change, so ShardVault does not change, so the DEK does not change.
 
 Practically: changing your passcode is fast, it never touches your stored
 passwords, and existing backup files stay valid.
@@ -119,7 +120,7 @@ passwords, and existing backup files stay valid.
 flowchart TD
   A["🔑 You change your passcode"] --> B["The wrapper around<br/>Shard 2 is redone"]
   B --> C{"Did Shard 2's<br/>contents change?"}
-  C -->|"No, only its wrapper"| D["So the vault key is unchanged"]
+  C -->|"No, only its wrapper"| D["So the DEK is unchanged"]
   D --> E["✅ Not one stored password<br/>is re-encrypted"]
   D --> F["✅ Existing backups stay valid"]
 ```

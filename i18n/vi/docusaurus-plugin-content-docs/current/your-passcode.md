@@ -63,7 +63,7 @@ tương tự nhưng không hề được lưu lại. Xem [Các gói bảo mật]
 flowchart LR
   A["🔑 Mã mở khoá của bạn<br/>Thứ duy nhất bạn gõ"] --> B["🐢 Argon2id<br/>128 MiB bộ nhớ.<br/>Cố ý làm cho chậm."]
   B --> C["🎲 Một bí mật 256-bit<br/>Ứng dụng tự sinh ra.<br/>Bạn không bao giờ thấy."]
-  C --> D["📦 Mở mảnh 2<br/>của khoá kho"]
+  C --> D["📦 Mở mảnh 2<br/>của DEK"]
 ```
 
 ## Độ mạnh đo bằng bit, không phải số ký tự
@@ -145,7 +145,7 @@ không có gì để đặt lại.
 ## Đổi mã mở khoá
 
 Đổi mã mở khoá diễn ra nhanh và an toàn. Nó chỉ bọc lại bí mật do máy sinh ra;
-bản thân khoá kho không đổi, nên **không mật khẩu nào bạn đã lưu bị mã hoá lại**
+bản thân DEK không đổi, nên **không mật khẩu nào bạn đã lưu bị mã hoá lại**
 và các tệp sao lưu hiện có vẫn còn dùng được.
 
 ## Một điểm bất đối xứng nhỏ, và là cố ý

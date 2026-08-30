@@ -175,10 +175,7 @@ export function UnlockFlow(): ReactNode {
       <Flow steps={steps} cols3 />
       <div className={styles.formula}>
         <div className={styles.formulaCode}>
-          {translate({
-            id: 'home.unlock.formula.code',
-            message: 'vault key = Shard 1 ⊕ Shard 2 ⊕ ShardVault',
-          })}
+          DEK = Shard 1 ⊕ Shard 2 ⊕ ShardVault
         </div>
         <p className={styles.formulaNote}>
           <Translate id="home.unlock.formula">

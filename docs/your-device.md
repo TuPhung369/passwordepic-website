@@ -41,11 +41,11 @@ flowchart TD
   D --> E["Every key derivation<br/>is signed with it"]
 ```
 
-The enforcement point is the same call that returns part of your vault key. On
+The enforcement point is the same call that returns part of your DEK. On
 the paid tiers:
 
 ```
-no successful key derivation  =  no vault key  =  no vault
+no successful key derivation  =  no DEK  =  no vault
 ```
 
 That closes the usual escape hatch for this kind of check. Going offline does not

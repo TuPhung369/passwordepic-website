@@ -137,7 +137,7 @@ hardware-backed keys, the same cipher. See
 
 The app has detected that your phone's built-in restrictions have been removed.
 On a rooted phone, other apps can read this app's memory — including your
-passcode as you type it, and the vault key while it is in use.
+passcode as you type it, and the DEK while it is in use.
 
 The hardware-backed key itself is still protected, but everything around it is
 not. The paid tiers refuse key operations here on purpose.
@@ -233,7 +233,7 @@ and no setting makes them one. See [Backups and exports](./backups.md).
 ### My backup restored but the entries are unreadable
 
 Same cause. The file opened because you had the passcode, but the entries inside
-are still encrypted with a vault key that needs the original phone's hardware.
+are still encrypted with a DEK that needs the original phone's hardware.
 
 ### I want to move to a new phone
 

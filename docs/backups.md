@@ -33,7 +33,7 @@ device layer *first*, so without that phone's secure hardware the file cannot
 even be opened.
 
 **The contents.** On every tier except Gold, the entries inside the file stay
-encrypted with your vault key — which needs Shard 1, which never leaves the
+encrypted with your DEK — which needs Shard 1, which never leaves the
 device.
 
 ```mermaid
@@ -41,17 +41,17 @@ flowchart TD
   A["💾 Every backup has two locks"] --> B["🔐 The wrapper<br/>locks the whole file"]
   A --> C["🔐 The contents<br/>lock each entry inside"]
   B --> D["On Gold, Platinum and Titanium the<br/>inner layer uses this phone's security<br/>chip — the file will not even open"]
-  C --> E["On every tier except Gold the entries<br/>still need this phone's vault key —<br/>the file opens, and reads as noise"]
+  C --> E["On every tier except Gold the entries<br/>still need this phone's DEK —<br/>the file opens, and reads as noise"]
   D --> F["❌ Blocked on every tier.<br/>Only the reason differs."]
   E --> F
 ```
 
 | Tier | Wrapper | Entries | Opens elsewhere? |
 | --- | --- | --- | --- |
-| 🥈 Silver | Portable | Encrypted with the vault key | ❌ contents are unreadable |
+| 🥈 Silver | Portable | Encrypted with the DEK | ❌ contents are unreadable |
 | 🥇 Gold | Device-bound | Decrypted | ❌ wrapper cannot be opened |
-| 💎 Platinum | Device-bound | Encrypted with the vault key | ❌ both |
-| 🛡️ Titanium | Device-bound | Encrypted with the vault key | ❌ both |
+| 💎 Platinum | Device-bound | Encrypted with the DEK | ❌ both |
+| 🛡️ Titanium | Device-bound | Encrypted with the DEK | ❌ both |
 
 Every tier is blocked. Only the reason differs — which is exactly why partial
 readings of this keep producing confident, wrong conclusions.
@@ -61,7 +61,7 @@ flowchart TD
   A["💾 A backup file"] --> B{"Which phone are you<br/>opening it on?"}
   B -->|"The one that made it"| C["✅ Opens normally"]
   B -->|"Any other phone"| D["🔒 The outer lock needs<br/>that phone's security chip"]
-  D --> E["🔒 And the entries inside need<br/>that phone's vault key"]
+  D --> E["🔒 And the entries inside need<br/>that phone's DEK"]
   E --> F["❌ It cannot be opened.<br/>On every tier."]
 ```
 

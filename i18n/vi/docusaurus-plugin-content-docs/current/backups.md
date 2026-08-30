@@ -31,25 +31,24 @@ StrongBox hoặc TEE của chính chiếc điện thoại đó. Khi giải mã, 
 gỡ *trước* — nên không có phần cứng bảo mật của máy đó thì tệp thậm chí không mở
 ra được.
 
-**Nội dung.** Ở mọi gói trừ Gold, các mục bên trong tệp vẫn được mã hoá bằng khoá
-kho — mà khoá kho cần Shard 1, thứ không bao giờ rời khỏi thiết bị.
+**Nội dung.** Ở mọi gói trừ Gold, các mục bên trong tệp vẫn được mã hoá bằng DEK — mà DEK cần Shard 1, thứ không bao giờ rời khỏi thiết bị.
 
 ```mermaid
 flowchart TD
   A["💾 Mỗi bản sao lưu có hai ổ khoá"] --> B["🔐 Lớp vỏ<br/>khoá cả tệp"]
   A --> C["🔐 Nội dung<br/>khoá từng mục bên trong"]
   B --> D["Ở Gold, Platinum và Titanium, lớp trong<br/>dùng chip bảo mật của chính máy đó —<br/>tệp thậm chí không mở ra được"]
-  C --> E["Ở mọi gói trừ Gold, các mục vẫn cần<br/>khoá kho của chính máy đó — tệp mở ra,<br/>và đọc thấy toàn nhiễu"]
+  C --> E["Ở mọi gói trừ Gold, các mục vẫn cần<br/>DEK của chính máy đó — tệp mở ra,<br/>và đọc thấy toàn nhiễu"]
   D --> F["❌ Bị chặn ở mọi gói.<br/>Chỉ khác nhau ở lý do."]
   E --> F
 ```
 
 | Gói | Lớp vỏ | Các mục bên trong | Mở được ở nơi khác? |
 | --- | --- | --- | --- |
-| 🥈 Silver | Di chuyển được | Mã hoá bằng khoá kho | ❌ không đọc được nội dung |
+| 🥈 Silver | Di chuyển được | Mã hoá bằng DEK | ❌ không đọc được nội dung |
 | 🥇 Gold | Gắn với thiết bị | Đã giải mã | ❌ không mở được lớp vỏ |
-| 💎 Platinum | Gắn với thiết bị | Mã hoá bằng khoá kho | ❌ cả hai |
-| 🛡️ Titanium | Gắn với thiết bị | Mã hoá bằng khoá kho | ❌ cả hai |
+| 💎 Platinum | Gắn với thiết bị | Mã hoá bằng DEK | ❌ cả hai |
+| 🛡️ Titanium | Gắn với thiết bị | Mã hoá bằng DEK | ❌ cả hai |
 
 Mọi gói đều bị chặn. Chỉ khác nhau ở lý do — và đó chính là vì sao đọc lướt phần
 này cứ liên tục dẫn tới những kết luận rất chắc chắn và rất sai.
@@ -59,7 +58,7 @@ flowchart TD
   A["💾 Một tệp sao lưu"] --> B{"Bạn mở nó trên<br/>máy nào?"}
   B -->|"Chính máy đã tạo ra nó"| C["✅ Mở bình thường"]
   B -->|"Bất kỳ máy nào khác"| D["🔒 Lớp ngoài cần chip bảo mật<br/>của đúng máy đó"]
-  D --> E["🔒 Và các mục bên trong cần<br/>khoá kho của đúng máy đó"]
+  D --> E["🔒 Và các mục bên trong cần<br/>DEK của đúng máy đó"]
   E --> F["❌ Không mở được.<br/>Ở mọi gói."]
 ```
 

@@ -10,7 +10,7 @@
     "message": "Trình quản lý mật khẩu không thể đọc mật khẩu của bạn"
   },
   "home.meta.description": {
-    "message": "Trình quản lý mật khẩu zero-knowledge cho Android, dựa trên phần cứng bảo mật. Mã mở khoá không bao giờ rời khỏi thiết bị của bạn, và khoá của kho mật khẩu không thể ghép lại nếu thiếu nó."
+    "message": "Trình quản lý mật khẩu zero-knowledge cho Android, dựa trên phần cứng bảo mật. Mã mở khoá không bao giờ rời khỏi thiết bị của bạn, và DEK không thể ghép lại nếu thiếu nó."
   },
   "home.cta.heading": {
     "message": "Hãy thẩm định, đừng chỉ tin"
@@ -154,7 +154,7 @@
     "message": "Trình quản lý mật khẩu không thể đọc mật khẩu của bạn"
   },
   "home.hero.subtitle": {
-    "message": "Không phải một lời hứa — mà là hệ quả của cách khoá được tạo ra. Một mảnh của khoá được sinh ra bên trong phần cứng bảo mật của điện thoại và không bao giờ rời khỏi đó, nên khoá của kho mật khẩu không thể ghép lại ở bất kỳ đâu ngoài thiết bị của bạn, đúng vào lúc bạn mở khoá."
+    "message": "Không phải một lời hứa — mà là hệ quả của cách khoá được tạo ra. Một mảnh của khoá được sinh ra bên trong phần cứng bảo mật của điện thoại và không bao giờ rời khỏi đó, nên DEK không thể ghép lại ở bất kỳ đâu ngoài thiết bị của bạn, đúng vào lúc bạn mở khoá."
   },
   "home.hero.download": {
     "message": "Tải trên Google Play"
@@ -585,8 +585,5 @@
   },
   "home.who.footnote.tier": {
     "message": "Lưu khoá bằng phần cứng và ShardVault có từ gói Gold trở lên. Silver thay vào đó giữ mảnh của mình trong bộ nhớ ứng dụng đã mã hoá, và dẫn xuất khoá ngay trên máy."
-  },
-  "home.unlock.formula.code": {
-    "message": "khoá kho = Shard 1 ⊕ Shard 2 ⊕ ShardVault"
   }
 }

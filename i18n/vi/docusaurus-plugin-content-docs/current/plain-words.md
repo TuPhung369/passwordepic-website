@@ -28,34 +28,30 @@ một bước *tăng* bảo mật chứ không phải đơn giản hoá. Xem
 Toàn bộ những gì bạn đã lưu trong ứng dụng. Khi trang này nói "chúng tôi không mở
 được kho của bạn", đó là nghĩa đen, chứ không phải "chúng tôi hứa sẽ không mở".
 
-### Khoá kho
+### DEK
 
-Chiếc khoá giải mã những mật khẩu bạn đã lưu. Nó không được lưu ở bất cứ đâu —
-không trên điện thoại, không trên máy chủ. Nó được dựng lại mỗi lần bạn mở khoá,
-dùng một lần, rồi bị xoá.
+Chiếc khoá giải mã những mật khẩu bạn đã lưu. **DEK** là viết tắt của *data
+encryption key* — khoá mã hoá dữ liệu — và đó là cái tên được dùng ở đây, trong
+ứng dụng, và trong tài liệu kỹ thuật của ứng dụng: một cái tên cho một chiếc
+khoá, để khi gặp nó ở chỗ khác bạn không tưởng là chiếc khoá thứ hai.
+
+Nó không được lưu ở bất cứ đâu — không trên điện thoại, không trên máy chủ. Nó
+được dựng lại mỗi lần bạn mở khoá, dùng một lần, rồi bị xoá.
 
 ```mermaid
 flowchart LR
-  A["🔓 Bạn mở khoá"] --> B["Khoá được dựng lại<br/>từ các mảnh"]
+  A["🔓 Bạn mở khoá"] --> B["DEK được dựng lại<br/>từ các mảnh"]
   B --> C["Nó làm đúng một thao tác"]
   C --> D["🧹 Xoá khỏi bộ nhớ"]
   D --> E["Lần sau lại dựng<br/>từ đầu"]
   E -.-> B
 ```
 
-### DEK
-
-Tên kỹ thuật của khoá kho: **data encryption key** — khoá mã hoá dữ liệu. Đây là
-cái tên bạn sẽ gặp trong tài liệu kỹ thuật của chính ứng dụng, và trong bản thân
-công thức:
+Nó được dựng như thế này:
 
 ```
 DEK = Shard 1 ⊕ Shard 2 ⊕ ShardVault
 ```
-
-Ở đây chỉ có một chiếc khoá, mang hai cái tên. Các trang này gọi nó là **khoá
-kho**, vì đó là việc nó làm. Từ viết tắt được ghi lại ở đây để khi gặp `DEK` ở
-chỗ khác, bạn không đi tìm một chiếc khoá thứ hai vốn không tồn tại.
 
 Dấu **⊕** là phép XOR, một cách kết hợp các giá trị với hai tính chất quan trọng
 ở đây: phải có đủ mọi thành phần mới dựng lại được kết quả, và nắm trong tay một
@@ -66,19 +62,19 @@ flowchart LR
   A["📱 Shard 1<br/>chỉ nằm trong máy bạn"] --> X(("⊕"))
   B["☁️ Shard 2<br/>tải về, đã mã hoá"] --> X
   C["🧮 ShardVault<br/>tính ở mỗi lần mở khoá"] --> X
-  X --> K["🔑 Khoá kho<br/>— chính là DEK"]
+  X --> K["🔑 Chính là DEK"]
   K --> Z["🧹 Dùng một lần, rồi xoá"]
 ```
 
 ### Mảnh khoá (shard)
 
-Một phần của khoá kho. Chiếc khoá được chia thành các mảnh nằm ở những nơi khác
+Một phần của DEK. Chiếc khoá được chia thành các mảnh nằm ở những nơi khác
 nhau, nên không nơi nào — kể cả chúng tôi — nắm đủ để dựng lại nó.
 
 ```mermaid
 flowchart TD
   M["🧠 Mã mở khoá của bạn<br/>Chỉ nằm trong đầu bạn"] --> Q
-  P["🔒 Mảnh 1<br/>Chip bảo mật trong máy bạn"] --> K["🔑 Khoá kho"]
+  P["🔒 Mảnh 1<br/>Chip bảo mật trong máy bạn"] --> K["🔑 DEK"]
   Q["📦 Mảnh 2<br/>Mã hoá trong cơ sở dữ liệu,<br/>điện thoại bạn tải về"] --> K
   R["🧮 ShardVault<br/>Tính bên trong Google Cloud KMS"] --> K
   K --> N["Bỏ đi bất kỳ mảnh nào<br/>là không có khoá"]
@@ -93,7 +89,7 @@ phần cứng của Google, và là thứ mà ShardVault được tính *bằng*
 
 ### ShardVault
 
-Mảnh thứ ba của khoá kho, và là mảnh duy nhất không được lưu ở đâu cả — bởi giữa
+Mảnh thứ ba của DEK, và là mảnh duy nhất không được lưu ở đâu cả — bởi giữa
 hai lần mở khoá, nó không tồn tại.
 
 Shard 1 và Shard 2 là những giá trị nằm sẵn ở đâu đó rồi được lấy về. ShardVault
@@ -293,7 +289,7 @@ flowchart TD
   B -->|"Chứng chỉ mà máy bạn được bảo<br/>là phải tin — hồ sơ công ty,<br/>chứng chỉ gốc cài thêm"| D["❌ Bị từ chối, dù<br/>điện thoại vẫn tin nó"]
 ```
 
-Ghim chứng chỉ thu hẹp lại: lời gọi trả về một phần khoá kho của bạn **chỉ chấp
+Ghim chứng chỉ thu hẹp lại: lời gọi trả về một phần DEK của bạn **chỉ chấp
 nhận một tập cố định các chứng chỉ gốc của chính Google**.
 
 ### TLS 1.3
@@ -347,7 +343,7 @@ flowchart LR
 ```
 
 **Pepper** là một bí mật nằm trong một mô-đun như vậy — nó chính là Mảnh 3. Máy
-chủ của chúng tôi dùng nó để tính ra **ShardVault**, mảnh thứ ba của khoá kho. Bản thân pepper không bao giờ rời khỏi
+chủ của chúng tôi dùng nó để tính ra **ShardVault**, mảnh thứ ba của DEK. Bản thân pepper không bao giờ rời khỏi
 mô-đun, và không bao giờ xuất hiện trong phản hồi — kể cả phản hồi gửi cho chính
 mã của chúng tôi.
 

@@ -12,7 +12,8 @@ lời khẳng định ấy thay vì phải tin nó.
 
 ## Khoá không được lưu ở đâu cả
 
-Chiếc khoá giải mã kho mật khẩu của bạn — gọi là **khoá kho** — không được lưu ở
+Chiếc khoá giải mã kho mật khẩu của bạn — **DEK**, viết tắt của *data encryption
+key* — không được lưu ở
 bất cứ đâu. Không trên điện thoại, không trên máy chủ của chúng tôi, không trong
 bản sao lưu. Nó được dựng lại từ những mảnh riêng biệt mỗi lần bạn mở khoá, dùng
 cho đúng một thao tác, rồi bị xoá khỏi bộ nhớ ngay sau đó.
@@ -26,7 +27,7 @@ flowchart LR
   S1["📱 Shard 1<br/>Chip bảo mật trong máy bạn.<br/>Không bao giờ rời khỏi đó."] --> KEY
   S2 --> KEY
   S3["🧮 ShardVault<br/>Tính bên trong Google Cloud KMS,<br/>mới tinh ở mỗi lần mở khoá."] --> KEY
-  KEY["🔑 Khoá kho của bạn<br/>Ghép lại trên máy bạn.<br/>Xoá ngay sau đó."]
+  KEY["🔑 DEK của bạn<br/>Ghép lại trên máy bạn.<br/>Xoá ngay sau đó."]
   KEY --> N["Bốn nơi, và không hai nơi nào<br/>nằm dưới cùng một quyền kiểm soát."]
 ```
 
@@ -48,7 +49,7 @@ chúng để tính ra một giá trị thứ ba, **ShardVault**, và chỉ trả
 đó. Sau đó, ngay trên thiết bị của bạn, trong mã native:
 
 ```
-khoá kho = Shard 1  ⊕  Shard 2  ⊕  ShardVault
+DEK = Shard 1  ⊕  Shard 2  ⊕  ShardVault
 ```
 
 Thiếu bất kỳ mảnh nào trong ba mảnh đó là không có khoá.
@@ -114,7 +115,7 @@ flowchart TD
 ## Đổi mã mở khoá không mã hoá lại thứ gì
 
 Đổi mã mở khoá chỉ bọc lại giá trị dùng để mở Shard 2. *Nội dung* của Shard 2
-không đổi, nên ShardVault không đổi, nên khoá kho không đổi.
+không đổi, nên ShardVault không đổi, nên DEK không đổi.
 
 Trên thực tế: đổi mã mở khoá diễn ra nhanh, không đụng tới mật khẩu bạn đã lưu,
 và các tệp sao lưu hiện có vẫn còn dùng được.
@@ -123,7 +124,7 @@ và các tệp sao lưu hiện có vẫn còn dùng được.
 flowchart TD
   A["🔑 Bạn đổi mã mở khoá"] --> B["Lớp bọc quanh Shard 2<br/>được làm lại"]
   B --> C{"Nội dung Shard 2<br/>có đổi không?"}
-  C -->|"Không, chỉ đổi lớp bọc"| D["Nên khoá kho không đổi"]
+  C -->|"Không, chỉ đổi lớp bọc"| D["Nên DEK không đổi"]
   D --> E["✅ Không một mật khẩu nào<br/>bị mã hoá lại"]
   D --> F["✅ Bản sao lưu cũ vẫn dùng được"]
 ```

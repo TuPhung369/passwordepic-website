@@ -102,7 +102,7 @@ flowchart TD
   A["😈 Đăng nhập bằng tài khoản bạn,<br/>trên máy của anh ta"] --> B{"Máy này có giữ chiếc khoá<br/>phần cứng đã gắn không?"}
   B -->|"Không"| C["❌ Từ chối. Tài khoản đã<br/>gắn với thiết bị khác."]
   B -->|"😈 'Vậy tôi ngắt mạng<br/>để né phép kiểm tra'"| D["Không có lời gọi dẫn xuất khoá"]
-  D --> E["❌ Không dẫn xuất nghĩa là không có<br/>khoá kho, tức là không có kho.<br/>Ngắt mạng không né được — nó<br/>chỉ khiến chẳng gì mở ra."]
+  D --> E["❌ Không dẫn xuất nghĩa là không có<br/>DEK, tức là không có kho.<br/>Ngắt mạng không né được — nó<br/>chỉ khiến chẳng gì mở ra."]
 ```
 
 > **Anh ta có danh tính của bạn. Anh ta không có thiết bị của bạn.**
@@ -130,7 +130,7 @@ ANH TA CÓ:                    ANH TA KHÔNG CÓ:
 ✓ Hồ sơ tài khoản             ✗ Dù chỉ một mục trong kho
 ✓ Shard 2, đã mã hoá          ✗ Shard 1
                               ✗ Mã mở khoá của bạn
-                              ✗ Bất kỳ khoá kho nào
+                              ✗ Bất kỳ DEK nào
 ```
 
 > 🛡️ *"Anh ta chiếm được máy chủ. Anh ta vẫn không có cái kho."*
@@ -168,7 +168,7 @@ dụng tin bất cứ chứng chỉ nào mà điện thoại tin.
 > 🛡️ *"Điện thoại bạn tin thêm một chứng chỉ, nhưng PasswordEpic thì không buộc
 > phải tin."*
 
-Ở Platinum và Titanium, lời gọi trả về một phần khoá kho **chỉ chấp nhận một tập
+Ở Platinum và Titanium, lời gọi trả về một phần DEK **chỉ chấp nhận một tập
 cố định các chứng chỉ gốc của chính Google**. Mọi thứ khác đều bị từ chối — kể cả
 những chứng chỉ mà chính thiết bị coi là hoàn toàn hợp lệ.
 
@@ -287,7 +287,7 @@ Anh ta lấy được tệp. Nó đúng là kho của bạn. Và nó là một c
 ```mermaid
 flowchart TD
   A["💾 Anh ta có tệp sao lưu của bạn"] --> B["🔐 Ổ ngoài — từ Gold trở lên:<br/>gắn với chip bảo mật của đúng máy đó"]
-  A --> C["🔐 Ổ trong — mọi gói trừ Gold:<br/>các mục vẫn cần khoá kho của máy đó"]
+  A --> C["🔐 Ổ trong — mọi gói trừ Gold:<br/>các mục vẫn cần DEK của máy đó"]
   B --> D["❌ Tệp thậm chí không mở ra được"]
   C --> E["❌ Tệp mở ra, và đọc thấy toàn nhiễu"]
   D --> F["Bị chặn ở mọi gói.<br/>Chỉ khác nhau ở lý do."]
@@ -368,7 +368,7 @@ flowchart LR
   D -.->|"Thao tác sau:<br/>lại dựng từ đầu"| A
 ```
 
-- Khoá kho được dẫn xuất mới cho **từng thao tác một** và xoá sạch ngay sau đó.
+- DEK được dẫn xuất mới cho **từng thao tác một** và xoá sạch ngay sau đó.
   Không bao giờ lưu đệm. Không ghi ra đĩa. Không ghi log.
 - Các mục được giải mã **từng cái một**, cho đúng một lần điền hoặc một lần xem.
 - Ở Titanium, những giá trị quan trọng nằm trong lõi Rust, thứ có thể ghi đè bộ
@@ -521,7 +521,7 @@ Nhìn trộm qua vai không cần lỗ hổng nào và không tốn ngân sách 
 phòng thủ cũng phải rẻ đúng như vậy.
 
 **Đổi mã mở khoá thì nhanh, và không mã hoá lại thứ gì.** Nó chỉ bọc lại bí mật do
-máy sinh ra; bản thân khoá kho không đổi, nên không một mật khẩu nào bạn đã lưu bị
+máy sinh ra; bản thân DEK không đổi, nên không một mật khẩu nào bạn đã lưu bị
 đụng tới và các bản sao lưu hiện có vẫn còn giá trị.
 
 > 🛡️ *"Khắc phục một mã mở khoá có thể đã bị nhìn thấy thì phải rẻ. Nên nó rẻ."*

@@ -55,7 +55,7 @@ export default function Home(): ReactNode {
       description={translate({
         id: 'home.meta.description',
         message:
-          'Hardware-backed, zero-knowledge password manager for Android. Your passcode never leaves your device, and the vault key cannot be assembled without it.',
+          'Hardware-backed, zero-knowledge password manager for Android. Your passcode never leaves your device, and the DEK cannot be assembled without it.',
       })}>
       <Hero />
       <main>

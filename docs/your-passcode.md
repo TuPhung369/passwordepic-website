@@ -64,7 +64,7 @@ expensive way but never stored at all. See
 flowchart LR
   A["🔑 Your passcode<br/>The only thing you type"] --> B["🐢 Argon2id<br/>128 MiB of memory.<br/>Deliberately slow."]
   B --> C["🎲 A 256-bit secret<br/>The app generated it.<br/>You never see it."]
-  C --> D["📦 Unlocks piece 2<br/>of your vault key"]
+  C --> D["📦 Unlocks piece 2<br/>of your DEK"]
 ```
 
 ## Strength is measured in bits, not characters
@@ -143,7 +143,7 @@ how you will remember it.
 ## Changing it
 
 Changing your passcode is fast and safe. It re-wraps the machine-generated
-secret; the vault key itself does not change, so **none of your stored passwords
+secret; the DEK itself does not change, so **none of your stored passwords
 are re-encrypted** and existing backup files stay valid.
 
 ## One small asymmetry, on purpose

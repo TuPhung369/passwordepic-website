@@ -137,7 +137,7 @@ cứng, cùng thuật toán. Xem [Các gói bảo mật](./security-tiers.md).
 
 Ứng dụng phát hiện các hạn chế có sẵn của máy đã bị gỡ bỏ. Trên một chiếc máy đã
 root, ứng dụng khác có thể đọc bộ nhớ của ứng dụng này — kể cả mã mở khoá lúc bạn
-đang gõ, và khoá kho lúc đang được dùng.
+đang gõ, và DEK lúc đang được dùng.
 
 Bản thân chiếc khoá nằm trong phần cứng thì vẫn được bảo vệ, nhưng mọi thứ xung
 quanh nó thì không. Các gói trả phí từ chối thao tác khoá ở đây là có chủ đích.
@@ -234,7 +234,7 @@ có tuỳ chọn nào biến chúng thành như vậy. Xem
 ### Bản sao lưu khôi phục được nhưng các mục bên trong không đọc được
 
 Cùng một nguyên nhân. Tệp mở ra được vì bạn có mã mở khoá, nhưng các mục bên trong
-vẫn đang được mã hoá bằng một khoá kho cần tới phần cứng của chiếc máy gốc.
+vẫn đang được mã hoá bằng một DEK cần tới phần cứng của chiếc máy gốc.
 
 ### Tôi muốn chuyển sang điện thoại mới
 

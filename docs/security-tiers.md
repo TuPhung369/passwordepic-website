@@ -60,7 +60,7 @@ when nothing else is possible.
 - Encryption runs in **JavaScript**: AES-256-CTR with a separate HMAC-SHA256
   authentication tag.
 - Shard 1 lives in encrypted app storage rather than in a hardware module.
-- The vault key is `Shard 1 ⊕ Shard 2`. There is no Cloud KMS shard and no
+- The DEK is `Shard 1 ⊕ Shard 2`. There is no Cloud KMS shard and no
   network call to unlock.
 - Unlimited devices.
 
@@ -83,7 +83,7 @@ cryptographic moves into native code.
   hardware design.
 - A **third shard is computed inside Google Cloud KMS**, keyed by a value that
   never leaves the hardware security module.
-- The vault key is **derived fresh per operation and zeroed straight after** —
+- The DEK is **derived fresh per operation and zeroed straight after** —
   never cached, never written to disk, never logged.
 - One device per account. See [One device per account](./your-device.md).
 

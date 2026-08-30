@@ -43,11 +43,11 @@ flowchart TD
   D --> E["Mỗi lần dẫn xuất khoá<br/>đều được ký bằng nó"]
 ```
 
-Điểm thực thi chính là lời gọi trả về một phần khoá kho của bạn. Ở các gói trả
+Điểm thực thi chính là lời gọi trả về một phần DEK của bạn. Ở các gói trả
 phí:
 
 ```
-không dẫn xuất khoá thành công  =  không có khoá kho  =  không có kho
+không dẫn xuất khoá thành công  =  không có DEK  =  không có kho
 ```
 
 Điều đó bịt lại lối thoát quen thuộc của kiểu kiểm tra này. Ngắt mạng không giúp

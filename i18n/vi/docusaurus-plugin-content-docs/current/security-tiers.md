@@ -61,7 +61,7 @@ phòng khi không còn lựa chọn nào khác.
   riêng.
 - Shard 1 nằm trong bộ nhớ ứng dụng đã mã hoá chứ không nằm trong một mô-đun phần
   cứng.
-- Khoá kho là `Shard 1 ⊕ Shard 2`. Không có mảnh khoá từ Cloud KMS và không cần
+- DEK là `Shard 1 ⊕ Shard 2`. Không có mảnh khoá từ Cloud KMS và không cần
   gọi mạng để mở khoá.
 - Không giới hạn thiết bị.
 
@@ -85,7 +85,7 @@ thứ liên quan tới mã hoá đều chuyển vào mã native.
   thiết kế của phần cứng.
 - Một **mảnh khoá thứ ba được tính bên trong Google Cloud KMS**, dùng một giá trị
   không bao giờ rời khỏi mô-đun bảo mật phần cứng.
-- Khoá kho được **dẫn xuất mới cho từng thao tác và xoá sạch ngay sau đó** —
+- DEK được **dẫn xuất mới cho từng thao tác và xoá sạch ngay sau đó** —
   không lưu đệm, không ghi ra đĩa, không ghi log.
 - Một thiết bị cho mỗi tài khoản. Xem
   [Một thiết bị cho mỗi tài khoản](./your-device.md).

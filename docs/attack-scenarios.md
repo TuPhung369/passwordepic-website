@@ -100,7 +100,7 @@ flowchart TD
   A["😈 Signs in as you,<br/>on his phone"] --> B{"Does this device hold<br/>the bound hardware key?"}
   B -->|"No"| C["❌ Refused. The account is<br/>already bound elsewhere."]
   B -->|"😈 'Then I'll go offline<br/>and skip the check'"| D["No key-derivation call"]
-  D --> E["❌ No derivation means no vault key,<br/>which means no vault.<br/>Offline doesn't dodge it — it<br/>just means nothing opens."]
+  D --> E["❌ No derivation means no DEK,<br/>which means no vault.<br/>Offline doesn't dodge it — it<br/>just means nothing opens."]
 ```
 
 > **He has your identity. He does not have your device.**
@@ -127,7 +127,7 @@ HE HAS:                      HE DOES NOT HAVE:
 ✓ Account records            ✗ A single vault entry
 ✓ Shard 2, encrypted         ✗ Shard 1
                              ✗ Your passcode
-                             ✗ Any vault key
+                             ✗ Any DEK
 ```
 
 > 🛡️ *"He compromised the server. He still doesn't have the vault."*
@@ -164,7 +164,7 @@ whatever certificate the phone trusts.
 > 🛡️ *"Even if your phone trusts an extra certificate, PasswordEpic doesn't
 > have to."*
 
-On Platinum and Titanium, the call that returns part of your vault key accepts
+On Platinum and Titanium, the call that returns part of your DEK accepts
 **only a fixed set of Google's own root certificates**. Anything else is refused
 — including certificates the device itself considers perfectly valid.
 
@@ -282,7 +282,7 @@ He gets the file. It is genuinely your vault. And it is a brick.
 ```mermaid
 flowchart TD
   A["💾 He has your backup file"] --> B["🔐 Outer lock — Gold and above:<br/>tied to that phone's security chip"]
-  A --> C["🔐 Inner lock — every tier but Gold:<br/>entries still need that phone's vault key"]
+  A --> C["🔐 Inner lock — every tier but Gold:<br/>entries still need that phone's DEK"]
   B --> D["❌ The file will not open at all"]
   C --> E["❌ The file opens, and reads as noise"]
   D --> F["Blocked on every tier.<br/>Only the reason differs."]
@@ -361,7 +361,7 @@ flowchart LR
   D -.->|"Next operation:<br/>build it again from scratch"| A
 ```
 
-- The vault key is derived fresh for **every single operation** and zeroed
+- The DEK is derived fresh for **every single operation** and zeroed
   immediately after. Never cached. Never written to disk. Never logged.
 - Entries are decrypted **one at a time**, for one fill or one view.
 - On Titanium the values that matter live in a Rust core, which can overwrite
@@ -508,7 +508,7 @@ Shoulder-surfing needs no exploit and no budget at all, so the defence should be
 just as cheap.
 
 **Changing your passcode is fast, and it re-encrypts nothing.** It re-wraps the
-machine-generated secret; the vault key itself does not change, so not one of
+machine-generated secret; the DEK itself does not change, so not one of
 your stored passwords is touched and your existing backups stay valid.
 
 > 🛡️ *"Recovering from a passcode someone may have seen should be cheap. So it

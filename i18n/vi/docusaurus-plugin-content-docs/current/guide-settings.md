@@ -17,7 +17,7 @@ thể xoá sạch mọi thứ. Trang này đi qua tất cả, theo đúng thứ 
 
 Mở khoá bằng vân tay hoặc khuôn mặt thay vì gõ mã mở khoá mỗi lần.
 
-**Nó thay cho việc gõ, không thay cho mã mở khoá.** Khoá kho của bạn vẫn được
+**Nó thay cho việc gõ, không thay cho mã mở khoá.** DEK của bạn vẫn được
 dựng từ mã mở khoá; sinh trắc học chỉ mở một bản đã lưu của bước đó. Nếu lần đọc
 sinh trắc thất bại, bạn nhập mã mở khoá — và đó là lý do quên nó vẫn là vĩnh viễn.
 
@@ -44,7 +44,7 @@ Hướng dẫn cài đặt đầy đủ, kể cả bước phụ mà Chrome đò
 Đổi bí mật duy nhất bạn gõ. Bạn phải xác thực trước.
 
 **Việc này rẻ hơn vẻ ngoài của nó, và bạn nên dùng nó thoải mái hơn mức bạn đang
-dùng.** Nó chỉ bọc lại một bí mật do máy sinh ra; bản thân khoá kho không đổi, nên
+dùng.** Nó chỉ bọc lại một bí mật do máy sinh ra; bản thân DEK không đổi, nên
 **không một mật khẩu nào đã lưu bị mã hoá lại** và các bản sao lưu hiện có vẫn còn
 giá trị.
 

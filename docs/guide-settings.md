@@ -17,7 +17,7 @@ bottom that deletes everything. This page covers all of them, in order.
 
 Unlock with your fingerprint or face instead of typing the passcode every time.
 
-**It replaces the typing, not the passcode.** Your vault key is still built from
+**It replaces the typing, not the passcode.** Your DEK is still built from
 your passcode; biometrics unlock a stored copy of that step. If a biometric read
 fails, you enter the passcode — which is why forgetting it is still permanent.
 
@@ -43,7 +43,7 @@ Full setup, including the extra step Chrome needs, is in
 Changes the one secret you type. You verify yourself first.
 
 **This is cheaper than it sounds and you should use it more freely than you
-probably do.** It re-wraps a machine-generated secret; the vault key itself does
+probably do.** It re-wraps a machine-generated secret; the DEK itself does
 not change, so **not one stored password is re-encrypted** and existing backups
 stay valid.
 
