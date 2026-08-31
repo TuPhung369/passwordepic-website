@@ -37,6 +37,15 @@ flowchart TD
 
 ## Where the setting actually lives
 
+Wherever the menu path leads, the screen you are looking for is this one — a
+list of every app that can fill passwords, with a single dot to award:
+
+![The Android autofill service picker](/img/guide/autofill-android-picker.webp)
+
+Note what else is on that list. Only one service can be preferred at a time, so
+choosing PasswordEpic means un-choosing Samsung Pass or Google.
+
+
 <h3 id="samsung">Samsung</h3>
 
 **Settings → General management → Language and input → Autofill service →
@@ -135,6 +144,18 @@ paste it. Slower, and honest.
 
 :::
 
+## The notice you see the first time
+
+![The autofill privacy notice](/img/guide/autofill-notice.webp)
+
+Before autofill starts, the app tells you what the permission actually grants:
+the ability to read the input fields on screen. It also tells you the limits —
+processing stays on the device, and nothing from other apps is collected, stored
+or transmitted.
+
+Read it rather than tapping past it. It is the one permission in this app that
+touches other apps, and you should know what you are agreeing to.
+
 ## What happens each time it fires
 
 1. You tap a login field in another app or a website.
@@ -159,7 +180,25 @@ flowchart LR
   E --> F["🧹 Decrypted password and key<br/>dropped immediately"]
 ```
 
-## What a screenshot or a recording can capture
+### The same three steps, on a real login
+
+![The suggestion appears under the field](/img/guide/autofill-suggestion.webp)
+
+You tap the field; the saved username appears above the keyboard with the
+PasswordEpic icon beside it. Nothing has been decrypted yet — that row is a
+label, not a password.
+
+![The passcode is asked for](/img/guide/autofill-passcode.webp)
+
+Choosing it asks for your passcode, and names the app it is about to fill —
+*Autofill for `fi.hsl.app`*. Check that name. It is how you catch a fill aimed
+at something that only looks like the app you wanted.
+
+![Both fields filled](/img/guide/autofill-filled.webp)
+
+Then both fields are filled at once, and the key is gone again.
+
+## What a screenshot or a recording can capture {#screen-capture}
 
 These are two different things and Android treats them differently. One is
 fully handled; the other is not, and that difference is the whole reason the
@@ -216,6 +255,32 @@ If that matters to you, use the keyboard that shipped with your phone.
 PasswordEpic warns you when the active keyboard did not.
 
 :::
+
+## Inside Autofill Management
+
+**Settings → Autofill Management** has three tabs.
+
+![The Service tab](/img/guide/autofill-service.webp)
+
+**Service** is the on/off switch and a plain-language explanation. The one line
+worth carrying away: *your passwords are encrypted and require biometric
+authentication before being filled.*
+
+![The Domains tab](/img/guide/autofill-domains.webp)
+
+**Domains** is the trusted-domain list, and it does not start empty — the app
+ships with several hundred pre-approved domains already verified as safe, so
+common sites work on day one. You can search it, add your own, and remove any of
+them.
+
+![The Stats tab](/img/guide/autofill-stats.webp)
+
+**Stats** counts what has actually happened: total fills, when it last fired and
+for which app, plus per-domain performance and service health.
+
+This is more useful than it sounds. Autofill is a feature you stop noticing when
+it works, so a count that stays at zero is the fastest way to find out it never
+started.
 
 ## Turning it off
 

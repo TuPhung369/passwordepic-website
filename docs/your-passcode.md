@@ -140,7 +140,25 @@ how you will remember it.
 
 :::
 
-## Changing it
+## Where you create it
+
+![Signing in](/img/guide/signin-dark.webp)
+
+You sign in with Google first. That establishes *which account* the vault
+belongs to — it does not, on its own, open anything.
+
+![Creating the passcode](/img/guide/setup-passcode.webp)
+
+Then you set the passcode, and the app counts the characters as you type. Below
+the button is the sentence this whole page exists to explain:
+
+> Your passcode cannot be recovered. Make sure to remember it or store it
+> somewhere safe.
+
+That box is not legal cover. It is a statement about the mathematics, and it is
+the reason the rest of the app can make the promises it makes.
+
+## Changing it {#changing-it}
 
 Changing your passcode is fast and safe. It re-wraps the machine-generated
 secret; the DEK itself does not change, so **none of your stored passwords

@@ -1,85 +1,124 @@
 ---
 title: Generating passwords
-description: The generator screen — the switches, the six presets, the history, and which preset to reach for.
+description: The generator screen — the ten templates, what each one actually sets, and which to reach for.
 hide_table_of_contents: true
 ---
 
 # Generating passwords
 
-The **Generator** tab makes passwords you do not have to remember — which is the
+The **Generate** tab makes passwords you do not have to remember — which is the
 whole reason a password manager is worth having. You only ever remember one
 secret, and it is not any of these.
 
 ## The screen
 
-![The generator screen](/img/guide/generator-main.png)
+![The generator screen](/img/guide/generator-templates.webp)
 
-| Control | What it does |
-| --- | --- |
-| **Generate** | Makes a new password with the current settings. Tap it as often as you like. |
-| **Length** | The slider. Longer is better, and costs you nothing when you never type it. |
-| **Uppercase (A–Z)** | |
-| **Lowercase (a–z)** | |
-| **Numbers (0–9)** | |
-| **Symbols (!@#)** | |
-| **Exclude ambiguous** | Drops the characters people misread — `l` `1` `I`, `0` `O`. |
-| **Copy** | Puts it on the clipboard. |
-| **Save to vault** | Creates an entry with this password already filled in. |
+Three parts, top to bottom:
 
-### When to turn character types off
+1. **The preview box.** Before you press anything it says *Tap Generate to
+   create a secure password*, and its heading names the template in force —
+   *Generated Custom Template* until you pick one.
+2. **Generate New Password.** Press it as often as you like. Each press is a
+   fresh draw, and nothing is kept unless you save it.
+3. **Choose Template**, then **Settings**.
 
-Almost never — every switch you turn off makes the password weaker. There is one
-honest exception: **a site that rejects symbols.** Some still do. Turn symbols
-off and add a few characters of length to compensate.
+## The ten templates
 
-**Exclude ambiguous** is different. It costs you very little and it is worth
-turning on for any password you might one day have to read aloud, type on a TV
-remote, or dictate over the phone.
+A template is not a different generator. It is a **saved set of the settings
+below it** — length and which character types are in play — chosen for a
+particular kind of account.
 
-## The six presets
+| Template | Length | A–Z | a–z | 0–9 | !@# | Notes |
+| --- | --- | --- | --- | --- | --- | --- |
+| 🏦 **Banking** | 50 | ✓ | ✓ | ✓ | ✓ | Look-alike characters removed |
+| 💼 **Business** | 46 | ✓ | ✓ | ✓ | ✓ | Look-alike characters removed |
+| 👥 **Social** | 40 | ✓ | ✓ | ✓ | — | Pronounceable |
+| ✉️ **Email** | 38 | ✓ | ✓ | ✓ | ✓ | Look-alike characters removed |
+| 💡 **Memorable** | 36 | ✓ | ✓ | ✓ | — | Word combinations |
+| 📶 **WiFi** | 34 | ✓ | ✓ | ✓ | ✓ | Look-alike characters removed |
+| 📄 **Phrase** | 34 | ✓ | ✓ | ✓ | — | Like `BlueSky2024Fast` |
+| 🛒 **Shopping** | 30 | ✓ | ✓ | ✓ | ✓ | |
+| 🎮 **Gaming** | 24 | ✓ | ✓ | ✓ | — | |
+| 🔢 **PIN** | 6 | — | — | ✓ | — | Digits only |
 
-![The preset sheet](/img/guide/generator-presets.png)
+Read that table as a ladder rather than a menu. **The length is the real
+difference**, and it runs from 50 down to 6.
 
-Presets set all the switches at once. They exist because the right password for
-your bank is not the right password for the Wi-Fi you read out to guests.
+```mermaid
+flowchart LR
+  A["🏦 Banking · 50"] --> B["💼 Business · 46"]
+  B --> C["👥 Social · 40"]
+  C --> D["✉️ Email · 38"]
+  D --> E["💡 Memorable · 36"]
+  E --> F["📶 WiFi · 34<br/>📄 Phrase · 34"]
+  F --> G["🛒 Shopping · 30"]
+  G --> H["🎮 Gaming · 24"]
+  H --> I["🔢 PIN · 6"]
+```
 
-| Preset | Looks like | Reach for it when |
-| --- | --- | --- |
-| **Strong** | `K7#mQ2$vX9!pL4` | Anything that matters — email, bank, anything that can reset other accounts. **The default answer.** |
-| **Memory** | Pronounceable | You will have to type it by hand sometimes. |
-| **PIN** | `483920` | A card PIN, a SIM, a door code. Digits only. |
-| **Phrase** | `BlueSky2024Fast` | You need to remember or say it, but still want length. |
-| **WiFi** | `HomeNet2024` | Something guests will type on a TV or a games console. |
-| **Basic** | Simple | Low-risk throwaway accounts. Use it sparingly. |
+### How to choose without thinking about it
 
-:::tip One preset, one job
+The names are about **what has to happen to the password**, not about how
+precious the account is:
 
-**Strong** for anything you sign into. **Phrase** or **Memory** only where a
-human has to reproduce it. **PIN** and **WiFi** are for the two specific things
-they are named after.
+- **Nobody ever types it** → Banking, Business, Email, Shopping. Symbols on,
+  long. Autofill does not care how ugly it is.
+- **A human has to read or say it** → WiFi, Phrase, Memorable, Social. These
+  drop symbols or use words, because a guest typing your Wi-Fi key into a
+  television has to get it right first time.
+- **A keypad, not a keyboard** → PIN. Six digits, because that is what a card or
+  a SIM will accept.
 
-If you find yourself picking **Basic** for a real account, the account is
-probably more important than it feels — the accounts people underestimate are
-the ones that turn out to hold a password-reset link.
+Where the two pull in different directions, pick the longer one. A password you
+never type has no cost.
+
+:::tip The templates that remove look-alikes
+
+Banking, Business, Email and WiFi drop the characters people misread —
+`l` `1` `I`, `0` `O`. It costs a little entropy and buys back much more the
+first time somebody has to read one aloud or copy it off a screen.
 
 :::
 
-Note the naming: the **PIN** preset makes a numeric PIN for a *bank card or SIM*.
-It is not related to your PasswordEpic passcode, which is
+Note the naming: the **PIN** template makes a numeric PIN for *a bank card or a
+SIM*. It is not related to your PasswordEpic passcode, which is
 [a different thing entirely](./your-passcode.md) and is not limited to digits.
 
-## History
+## Settings
 
-![The generation history](/img/guide/generator-history.png)
+![The generator settings](/img/guide/generator-settings.webp)
 
-Everything you generate lands in **History**, split into **Favourites** and
-**Recent**, with a timestamp.
+Picking a template fills these in. You can then move them, which is what makes
+the preview heading say **Custom**.
 
-This exists for one specific moment: you generated a password, pasted it into a
-sign-up form, and the form failed. Without history the password is gone and the
-account is in limbo. With it, you tap **Use** and carry on.
+| Control | What it does |
+| --- | --- |
+| **Length** | The slider. Longer is better, and costs you nothing when you never type it. |
+| **A–Z** · **a–z** · **0–9** · **!@#** | Which character sets are drawn from. |
 
-**Clear History** empties it, and cannot be undone.
+### When to turn a character type off
+
+Almost never — every box you clear makes the password weaker. There is one
+honest exception: **a site that rejects symbols.** Some still do. Clear `!@#`
+and push the length slider up to compensate.
+
+That trade is close to fair. Dropping symbols costs roughly the same as
+shortening the password by four characters, so add five and you are ahead.
+
+## After you generate
+
+The generated password is not saved anywhere on its own. What you do with it:
+
+- **Copy** — onto the clipboard, for pasting into a sign-up form.
+- **Save to Vault** — creates an entry with the password already filled in.
+- **History** — everything you have generated, newest first, with **Favorites**
+  and **Recent**, and a **Use** button on each. **Clear History** empties it and
+  cannot be undone.
+
+History exists for one specific moment: you generated a password, pasted it into
+a sign-up form, and the form failed. Without history that password is gone and
+the account is in limbo. With it, you tap **Use** and carry on.
 
 ## The habit worth building
 

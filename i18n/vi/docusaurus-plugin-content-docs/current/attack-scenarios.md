@@ -526,7 +526,7 @@ máy sinh ra; bản thân DEK không đổi, nên không một mật khẩu nào
 
 > 🛡️ *"Khắc phục một mã mở khoá có thể đã bị nhìn thấy thì phải rẻ. Nên nó rẻ."*
 
-Xem [Mã mở khoá của bạn](./your-passcode.md#đổi-mã-mở-khoá).
+Xem [Mã mở khoá của bạn](./your-passcode.md#changing-it).
 
 ---
 

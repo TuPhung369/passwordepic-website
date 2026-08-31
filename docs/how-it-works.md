@@ -18,6 +18,12 @@ anywhere. Not on your phone, not on our servers, not in a backup. It is rebuilt
 from separate pieces each time you unlock, used for one operation, and wiped
 from memory immediately after.
 
+![What the app says on first run](/img/guide/onboarding-dark.webp)
+
+The app opens with the same claim this page is about to unpack — *your key is
+built on this device and stays here*. What follows is how that is arranged so
+that it is true rather than promised.
+
 Those pieces are called **shards**, and they live in four different places.
 
 ```mermaid

@@ -37,6 +37,8 @@ flowchart LR
   P -->|"adds: nothing that opens<br/>the vault is ever stored"| T["🛡️ Titanium"]
 ```
 
+![The five keys](/img/guide/splash-keys.webp)
+
 ## At a glance
 
 | | 🥈 Silver | 🥇 Gold | 💎 Platinum | 🛡️ Titanium |
@@ -126,6 +128,14 @@ not even wrapped.
 
 It also adds a **Rust crypto core**, which is what lets those values be zeroed in
 native memory — something JavaScript cannot do at all.
+
+## Where you choose it
+
+![Choosing a tier while creating your passcode](/img/guide/setup-tiers.webp)
+
+The tier is picked once, on the screen where you create your passcode — not
+later in Settings. Each row names its engine rather than a marketing adjective,
+and **Gold** carries the *Recommended* badge.
 
 ## Which one you get
 

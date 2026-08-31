@@ -142,7 +142,25 @@ không có gì để đặt lại.
 
 :::
 
-## Đổi mã mở khoá
+## Bạn tạo nó ở đâu
+
+![Đăng nhập](/img/guide/signin-dark.webp)
+
+Bạn đăng nhập bằng Google trước. Việc đó xác lập kho này *thuộc về tài khoản
+nào* — tự nó không mở được gì cả.
+
+![Tạo mã mở khoá](/img/guide/setup-passcode.webp)
+
+Rồi bạn đặt mã mở khoá, và ứng dụng đếm số ký tự ngay khi bạn gõ. Bên dưới nút
+bấm là đúng cái câu mà cả trang này tồn tại để giải thích:
+
+> Mã mở khoá của bạn không thể khôi phục được. Hãy chắc chắn rằng bạn nhớ nó,
+> hoặc cất nó ở một nơi an toàn.
+
+Cái khung đó không phải một dòng miễn trừ trách nhiệm. Nó là một phát biểu về mặt
+toán học, và là lý do phần còn lại của ứng dụng dám hứa những gì nó hứa.
+
+## Đổi mã mở khoá {#changing-it}
 
 Đổi mã mở khoá diễn ra nhanh và an toàn. Nó chỉ bọc lại bí mật do máy sinh ra;
 bản thân DEK không đổi, nên **không mật khẩu nào bạn đã lưu bị mã hoá lại**

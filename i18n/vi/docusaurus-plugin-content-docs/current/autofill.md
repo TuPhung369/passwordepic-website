@@ -37,6 +37,15 @@ flowchart TD
 
 ## Mục cài đặt nằm ở đâu
 
+Dù đường menu có khác nhau thế nào, màn hình bạn cần tìm là màn hình này — danh
+sách mọi ứng dụng có thể điền mật khẩu, và bạn chọn đúng một:
+
+![Màn hình chọn dịch vụ tự động điền của Android](/img/guide/autofill-android-picker.webp)
+
+Để ý những cái tên còn lại trong danh sách. Mỗi lúc chỉ một dịch vụ được ưu tiên,
+nên chọn PasswordEpic đồng nghĩa với bỏ chọn Samsung Pass hay Google.
+
+
 <h3 id="samsung">Samsung</h3>
 
 **Cài đặt → Quản lý chung → Ngôn ngữ và bàn phím → Dịch vụ tự động điền →
@@ -135,6 +144,17 @@ vào. Chậm hơn, nhưng trung thực.
 
 :::
 
+## Thông báo bạn thấy ở lần đầu
+
+![Thông báo quyền riêng tư của tự động điền](/img/guide/autofill-notice.webp)
+
+Trước khi bật tự động điền, ứng dụng nói thẳng quyền đó cho phép làm gì: đọc được
+các ô nhập liệu đang hiển thị trên màn hình. Và nói luôn giới hạn — mọi xử lý nằm
+trên máy, không thu thập, không lưu, không gửi đi bất cứ thứ gì từ ứng dụng khác.
+
+Hãy đọc nó thay vì bấm cho qua. Đây là quyền duy nhất trong ứng dụng này chạm tới
+các ứng dụng khác, và bạn nên biết mình đang đồng ý điều gì.
+
 ## Mỗi lần nó chạy thì chuyện gì xảy ra
 
 1. Bạn chạm vào một ô đăng nhập trong ứng dụng khác hoặc trên một trang web.
@@ -159,7 +179,25 @@ flowchart LR
   E --> F["🧹 Mật khẩu vừa giải mã<br/>và khoá bị bỏ đi ngay"]
 ```
 
-## Ảnh chụp và bản ghi màn hình bắt được gì
+### Ba bước đó, trên một màn đăng nhập thật
+
+![Gợi ý hiện ra dưới ô nhập](/img/guide/autofill-suggestion.webp)
+
+Bạn chạm vào ô; tên đăng nhập đã lưu hiện lên phía trên bàn phím, kèm biểu tượng
+PasswordEpic. Chưa có gì được giải mã cả — dòng đó là một cái nhãn, không phải mật
+khẩu.
+
+![Ứng dụng hỏi mã mở khoá](/img/guide/autofill-passcode.webp)
+
+Chọn nó thì ứng dụng hỏi mã mở khoá, và nói rõ nó sắp điền cho ứng dụng nào —
+*Autofill for `fi.hsl.app`*. Hãy nhìn cái tên đó. Đấy là cách bạn phát hiện một
+lần điền nhắm vào thứ chỉ trông giống ứng dụng bạn muốn.
+
+![Cả hai ô đã được điền](/img/guide/autofill-filled.webp)
+
+Rồi cả hai ô được điền cùng lúc, và chiếc khoá lại biến mất.
+
+## Ảnh chụp và bản ghi màn hình bắt được gì {#screen-capture}
 
 Đây là hai chuyện khác nhau và Android xử lý chúng khác hẳn nhau. Một cái được xử
 lý trọn vẹn; cái còn lại thì không, và chính khác biệt đó là lý do ứng dụng hành
@@ -218,6 +256,32 @@ Nếu điều đó quan trọng với bạn, hãy dùng bàn phím đi kèm máy
 báo khi bàn phím đang dùng không phải bàn phím gốc.
 
 :::
+
+## Bên trong Quản lý tự động điền
+
+**Cài đặt → Quản lý tự động điền** có ba tab.
+
+![Tab Service](/img/guide/autofill-service.webp)
+
+**Service** là công tắc bật/tắt kèm một đoạn giải thích bằng lời thường. Câu đáng
+nhớ nhất: *mật khẩu của bạn được mã hoá và luôn phải xác thực sinh trắc học trước
+khi được điền.*
+
+![Tab Domains](/img/guide/autofill-domains.webp)
+
+**Domains** là danh sách tên miền tin cậy, và nó không bắt đầu từ con số không —
+ứng dụng đi kèm sẵn vài trăm tên miền đã được duyệt trước, nên các trang phổ biến
+chạy được ngay từ ngày đầu. Bạn tìm kiếm được, tự thêm được, và xoá được bất kỳ
+mục nào.
+
+![Tab Stats](/img/guide/autofill-stats.webp)
+
+**Stats** đếm những gì đã thực sự xảy ra: tổng số lần điền, lần gần nhất là lúc
+nào và cho ứng dụng nào, kèm hiệu quả theo từng tên miền và tình trạng dịch vụ.
+
+Cái này hữu ích hơn vẻ ngoài của nó. Tự động điền là thứ bạn thôi để ý khi nó
+chạy tốt, nên một con số đếm cứ đứng yên ở 0 là cách nhanh nhất để phát hiện ra
+nó chưa từng chạy.
 
 ## Tắt đi
 

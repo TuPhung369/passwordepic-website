@@ -37,6 +37,8 @@ flowchart LR
   P -->|"thêm: không lưu bất cứ thứ gì<br/>mở được kho"| T["🛡️ Titanium"]
 ```
 
+![Năm chiếc chìa khoá](/img/guide/splash-keys.webp)
+
 ## Nhìn tổng quan
 
 | | 🥈 Silver | 🥇 Gold | 💎 Platinum | 🛡️ Titanium |
@@ -129,6 +131,14 @@ nào, kể cả dạng đã bọc.
 
 Nó còn bổ sung một **lõi mã hoá Rust**, thứ cho phép xoá sạch những giá trị đó
 khỏi bộ nhớ native — điều JavaScript hoàn toàn không làm được.
+
+## Bạn chọn nó ở đâu
+
+![Chọn gói lúc tạo mã mở khoá](/img/guide/setup-tiers.webp)
+
+Gói được chọn đúng một lần, ngay trên màn hình bạn tạo mã mở khoá — không phải
+trong Cài đặt về sau. Mỗi dòng nêu tên engine của nó chứ không nêu một tính từ
+quảng cáo, và **Gold** mang nhãn *Recommended*.
 
 ## Bạn dùng được gói nào
 
