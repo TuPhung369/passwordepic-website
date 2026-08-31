@@ -1,5 +1,19 @@
 name: Deploy to GitHub Pages
 
+# Actions are pinned to a commit SHA, not a tag.
+#
+# `@v4` is a branch-like ref the action's owner can repoint at any time, so a
+# compromised upstream account publishes new code into this workflow without a
+# single byte changing here. This job has `pages: write` and `id-token: write`
+# and its artifact IS passwordepic.com, so that is a path to serving forged
+# content from the real domain, with the real certificate — the one kind of
+# spoofing a visitor has no way to detect.
+#
+# A SHA is immutable. The trailing comment is the human-readable version; keep
+# the two in step when bumping, and take the new SHA from the tag itself:
+#   curl -sS https://api.github.com/repos/actions/checkout/git/ref/tags/v4
+# (dereference `object.url` when `object.type` is "tag").
+
 on:
   push:
     branches: [main]
@@ -18,8 +32,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 20
           cache: npm
@@ -32,7 +46,7 @@ jobs:
       # rather than shipping a page whose qualifying link has gone missing.
       # `onBrokenAnchors` is set the same way.
       - run: npm run build
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
           path: build
 
@@ -44,4 +58,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
