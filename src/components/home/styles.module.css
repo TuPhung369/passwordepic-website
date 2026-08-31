@@ -14,7 +14,7 @@
   overflow: hidden;
   padding: 4.5rem 1rem 5.5rem;
   background: linear-gradient(160deg, var(--pe-hero-from), var(--pe-hero-to));
-  color: #e9eefb;
+  color: var(--pe-on-hero);
   text-align: center;
 }
 
@@ -26,11 +26,13 @@
   inset: 0;
   background-image: linear-gradient(
       90deg,
-      rgba(255, 255, 255, 0.05) 1px,
+      var(--pe-hero-grid) 1px,
       transparent 1px
     ),
-    linear-gradient(0deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(0deg, var(--pe-hero-grid) 1px, transparent 1px);
   background-size: 44px 44px;
+  /* #000 here is a MASK channel, not a colour: the gradient's alpha is what
+     decides where the grid shows. A theme token would break the fade. */
   -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 10%, transparent 72%);
   mask-image: radial-gradient(ellipse at 50% 0%, #000 10%, transparent 72%);
   pointer-events: none;
@@ -47,7 +49,7 @@
   height: 92px;
   margin: 0 auto 1.25rem;
   display: block;
-  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.35));
+  filter: drop-shadow(0 6px 20px var(--pe-hero-shadow));
 }
 
 .heroEyebrow {
@@ -56,13 +58,13 @@
   gap: 0.5rem;
   padding: 0.3rem 0.8rem;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--pe-hero-line);
+  background: var(--pe-hero-fill);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.11em;
   text-transform: uppercase;
-  color: #cfe0ff;
+  color: var(--pe-on-hero-dim);
   margin-bottom: 1.1rem;
 }
 
@@ -71,13 +73,13 @@
   line-height: 1.12;
   letter-spacing: -0.025em;
   margin-bottom: 1rem;
-  color: #fff;
+  color: var(--pe-on-hero-strong);
 }
 
 .heroSubtitle {
   font-size: clamp(1rem, 2.2vw, 1.15rem);
   line-height: 1.6;
-  color: #b8c7e8;
+  color: var(--pe-on-hero-muted);
   max-width: 42rem;
   margin: 0 auto 1.9rem;
 }
@@ -103,28 +105,30 @@
   transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
 }
 
+/* A fill with a white label, so `--pe-brand-fill` — not `--ifm-color-primary`,
+   which is the link colour and is far too pale for this in dark. */
 .btnPrimary {
-  background: var(--ifm-color-primary);
-  color: #fff;
-  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.4);
+  background: var(--pe-brand-fill);
+  color: var(--pe-on-brand);
+  box-shadow: 0 6px 18px var(--pe-brand-glow);
 }
 
 .btnPrimary:hover {
-  background: var(--ifm-color-primary-light);
-  color: #fff;
+  background: var(--ifm-color-primary-darkest);
+  color: var(--pe-on-brand);
   text-decoration: none;
   transform: translateY(-2px);
 }
 
 .btnGhost {
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #e9eefb;
-  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--pe-hero-line);
+  color: var(--pe-on-hero);
+  background: var(--pe-hero-fill-soft);
 }
 
 .btnGhost:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
+  background: var(--pe-hero-fill);
+  color: var(--pe-on-hero-strong);
   text-decoration: none;
   transform: translateY(-2px);
 }
@@ -142,14 +146,14 @@
   gap: 0.45rem;
   padding: 0.4rem 0.85rem;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--pe-hero-line-soft);
+  background: var(--pe-hero-fill-soft);
   font-size: 0.83rem;
-  color: #cbd8f2;
+  color: var(--pe-on-hero-muted);
 }
 
 .heroChip svg {
-  color: #7fe6a5;
+  color: var(--pe-on-hero-accent);
   flex-shrink: 0;
 }
 
@@ -591,20 +595,20 @@
   text-align: center;
   padding: 3.5rem 1rem 4.5rem;
   background: linear-gradient(160deg, var(--pe-hero-from), var(--pe-hero-to));
-  color: #e9eefb;
+  color: var(--pe-on-hero);
 }
 
 .ctaTitle {
   font-size: clamp(1.5rem, 3.6vw, 2.1rem);
   line-height: 1.2;
-  color: #fff;
+  color: var(--pe-on-hero-strong);
   margin-bottom: 0.75rem;
 }
 
 .ctaText {
   max-width: 38rem;
   margin: 0 auto 2rem;
-  color: #b8c7e8;
+  color: var(--pe-on-hero-muted);
 }
 
 .ctaSplit {
@@ -638,8 +642,8 @@
   gap: 0.6rem;
   padding: 0.9rem 0.9rem 0.75rem;
   border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  background: var(--pe-qr-card);
+  box-shadow: 0 10px 30px var(--pe-hero-shadow);
 }
 
 .qrImage {
@@ -656,7 +660,7 @@
   font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: #0f172a;
+  color: var(--pe-qr-ink);
 }
 
 /* Below this, the reader is already holding the phone the code would send them

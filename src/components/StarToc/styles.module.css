@@ -76,8 +76,8 @@
   justify-content: flex-start;
   height: 42px;
   padding: 0 0.9rem;
-  background: var(--ifm-color-primary);
-  color: #fff;
+  background: var(--pe-brand-fill);
+  color: var(--pe-on-brand);
 }
 
 .triggerLabel {

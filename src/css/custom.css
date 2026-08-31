@@ -7,29 +7,92 @@
  * much of it to take: everything on a phone, 80% above that.
  */
 
+/* ---------------------------------------------------------------------------
+ * Palette
+ *
+ * The two ramps are the app's, copied verbatim from
+ * `e:\IT\Mobile\PasswordEpic\src	hemeppThemes.json`,
+ * `brandPalette.ts` and `categoryColors.ts`. Dark is "Cyber Purple", light is
+ * "Secure Emerald" — two identities on purpose: dark reads as security/tech,
+ * light as trust/professional. They are frozen; if the app's ramps move, move
+ * these to match rather than inventing a web-only value.
+ *
+ * ⚠️ THE ONE THING TO GET RIGHT: fill and text are different tokens.
+ *
+ * `--ifm-color-primary` is what Docusaurus paints LINKS with, so it must clear
+ * 4.5. `--pe-brand-fill` is what a button is painted with and carries white on
+ * top, so it is judged the other way round. The app makes exactly this split
+ * (`primary` is a fill, `secondary`/`core600` is for words) and the numbers say
+ * why — measured, not guessed:
+ *
+ *          as link text   white on it
+ *   light  #047857  5.48   #047857  5.48    <- --ifm-color-primary
+ *          #059669  3.77   #059669  3.77    <- --pe-brand-fill (the app's `primary`)
+ *   dark   #A78BFA  7.27   #A78BFA  2.72    <- --ifm-color-primary
+ *          #7C3AED  3.47   #7C3AED  5.70    <- --pe-brand-fill
+ *
+ * Read down each column: neither value is good at both jobs, in either theme.
+ * Painting a button with `--ifm-color-primary` puts white on #A78BFA at 2.72;
+ * linking with `--pe-brand-fill` puts link text at 3.47. Use the right one.
+ * ------------------------------------------------------------------------ */
+
 :root {
-  --ifm-color-primary: #2563eb;
-  --ifm-color-primary-dark: #1d4ed8;
-  --ifm-color-primary-darker: #1b46c4;
-  --ifm-color-primary-darkest: #163aa1;
-  --ifm-color-primary-light: #3b76ef;
-  --ifm-color-primary-lighter: #4a80f0;
-  --ifm-color-primary-lightest: #6f9bf4;
+  /* Emerald, light. The ramp climbs from the text-safe step toward the fill. */
+  --ifm-color-primary: #047857;
+  --ifm-color-primary-dark: #036b4d;
+  --ifm-color-primary-darker: #035f45;
+  --ifm-color-primary-darkest: #024c37;
+  --ifm-color-primary-light: #059669;
+  --ifm-color-primary-lighter: #0fa974;
+  --ifm-color-primary-lightest: #10b981;
   --ifm-code-font-size: 92%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.08);
+  --docusaurus-highlighted-code-line-bg: rgba(2, 44, 34, 0.08);
 
   /* Design tokens. Everything below this line is ours, not Infima's. */
+
+  /* Fills only — never text. `--pe-brand-fill` is the app's frozen `primary`;
+     `--pe-brand-accent` is its `accent`, 2.54 on white and unreadable as a
+     glyph. */
+  --pe-brand-fill: #059669;
+  --pe-brand-accent: #10b981;
+  --pe-brand-glow: rgba(5, 150, 105, 0.4);
+  --pe-on-brand: #ffffff;
+
   --pe-surface: #ffffff;
   --pe-surface-raised: #ffffff;
-  --pe-surface-accent: rgba(37, 99, 235, 0.07);
-  --pe-surface-sunken: #f6f8fc;
-  --pe-border: rgba(15, 23, 42, 0.12);
-  --pe-border-strong: rgba(15, 23, 42, 0.2);
-  --pe-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.08);
-  --pe-shadow-md: 0 4px 12px rgba(15, 23, 42, 0.09);
-  --pe-shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.16);
-  --pe-hero-from: #0f172a;
-  --pe-hero-to: #1e3a8a;
+  --pe-surface-accent: rgba(5, 150, 105, 0.09);
+  --pe-surface-sunken: #f0fdf4;
+  --pe-border: #dcfce7;
+  --pe-border-strong: #86efac;
+  --pe-shadow-sm: 0 1px 2px rgba(2, 44, 34, 0.06), 0 1px 3px rgba(2, 44, 34, 0.09);
+  --pe-shadow-md: 0 4px 12px rgba(2, 44, 34, 0.1);
+  --pe-shadow-lg: 0 12px 32px rgba(2, 44, 34, 0.18);
+
+  /* The hero is a dark band in BOTH themes, so everything painted on it needs
+     its own tokens — the page's text colours are wrong there by definition. */
+  --pe-hero-from: #022c22;
+  --pe-hero-to: #065f46;
+  --pe-on-hero: #ecfdf5;
+  --pe-on-hero-strong: #ffffff;
+  --pe-on-hero-muted: #a7f3d0;
+  --pe-on-hero-dim: #6ee7b7;
+  --pe-on-hero-accent: #6ee7b7;
+  --pe-hero-line: rgba(255, 255, 255, 0.22);
+  --pe-hero-line-soft: rgba(255, 255, 255, 0.18);
+  --pe-hero-fill: rgba(255, 255, 255, 0.08);
+  --pe-hero-fill-soft: rgba(255, 255, 255, 0.06);
+  --pe-hero-grid: rgba(255, 255, 255, 0.05);
+
+  /* Not theme colours: a QR tinted to match a section is a QR that fails to
+     scan. Pinned to the same values in both themes on purpose. */
+  --pe-qr-card: #ffffff;
+  --pe-qr-ink: #0f172a;
+
+  /* Also theme-independent. Both sit on the hero, which is a dark band in both
+     modes, so a shadow that followed the theme would be wrong in one of them.
+     The flag outline separates a pale flag from a pale menu. */
+  --pe-hero-shadow: rgba(0, 0, 0, 0.35);
+  --pe-flag-outline: rgba(0, 0, 0, 0.14);
 
   /* How wide content runs: everything on a phone, and progressively more of a
      big screen. With no sidebar and no table-of-contents column there is
@@ -37,43 +100,62 @@
      thing on the page. Overridden per breakpoint below. */
   --pe-content-width: 100%;
 
-  /* Elemental accents, taken from the five keys in the app icon. Used to give
-     each tier and each workflow step its own identity without inventing a
-     second palette. */
-  --pe-metal: #eab308;
-  --pe-wood: #22a852;
-  --pe-water: #2563eb;
-  --pe-fire: #ef4444;
-  --pe-earth: #a16207;
+  /* Elemental accents, taken from the five keys in the app icon. These are the
+     app's own category colours (LIGHT_CATEGORY_COLORS: yellow, green, blue,
+     red, brown), so a tier badge here and a category dot in the app are
+     literally the same value. */
+  --pe-metal: #ca8a04;
+  --pe-wood: #16a34a;
+  --pe-water: #007aff;
+  --pe-fire: #dc2626;
+  --pe-earth: #92400e;
 }
 
 [data-theme='dark'] {
-  --ifm-color-primary: #6ea8ff;
-  --ifm-color-primary-dark: #4b93ff;
-  --ifm-color-primary-darker: #3988ff;
-  --ifm-color-primary-darkest: #0068ff;
-  --ifm-color-primary-light: #91bdff;
-  --ifm-color-primary-lighter: #a3c8ff;
-  --ifm-color-primary-lightest: #d9e8ff;
+  /* Violet, dark. Same split: the ramp descends from the text-safe step. */
+  --ifm-color-primary: #a78bfa;
+  --ifm-color-primary-dark: #8b5cf6;
+  --ifm-color-primary-darker: #7c3aed;
+  --ifm-color-primary-darkest: #6d28d9;
+  --ifm-color-primary-light: #b9a2fc;
+  --ifm-color-primary-lighter: #c4b5fd;
+  --ifm-color-primary-lightest: #ddd6fe;
   --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
 
-  --pe-surface: #1b1f26;
-  --pe-surface-raised: #222730;
-  --pe-surface-accent: rgba(110, 168, 255, 0.14);
-  --pe-surface-sunken: #14171d;
-  --pe-border: rgba(255, 255, 255, 0.13);
-  --pe-border-strong: rgba(255, 255, 255, 0.24);
+  --pe-brand-fill: #7c3aed;
+  --pe-brand-accent: #a78bfa;
+  --pe-brand-glow: rgba(124, 58, 237, 0.45);
+  --pe-on-brand: #ffffff;
+
+  --pe-surface: #11131a;
+  --pe-surface-raised: #171a23;
+  --pe-surface-accent: rgba(167, 139, 250, 0.14);
+  --pe-surface-sunken: #0d0f16;
+  --pe-border: #272333;
+  --pe-border-strong: #3f3f46;
   --pe-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --pe-shadow-md: 0 4px 14px rgba(0, 0, 0, 0.45);
   --pe-shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.55);
-  --pe-hero-from: #0a0f1a;
-  --pe-hero-to: #16244a;
 
-  --pe-metal: #facc15;
-  --pe-wood: #4ade80;
-  --pe-water: #60a5fa;
-  --pe-fire: #f87171;
-  --pe-earth: #d69e2e;
+  --pe-hero-from: #090a0f;
+  --pe-hero-to: #4c1d95;
+  --pe-on-hero: #f5f3ff;
+  --pe-on-hero-strong: #ffffff;
+  --pe-on-hero-muted: #c4b5fd;
+  --pe-on-hero-dim: #a78bfa;
+  --pe-on-hero-accent: #a78bfa;
+
+  /* DARK_CATEGORY_COLORS, same five. */
+  --pe-metal: #ffd166;
+  --pe-wood: #3ddb72;
+  --pe-water: #4d9fff;
+  --pe-fire: #ff5c57;
+  --pe-earth: #c09a6b;
+
+  /* Starfield, drawn from the violet ramp so the sky belongs to the theme. */
+  --pe-star-far: #c4b5fd;
+  --pe-star-near: #a78bfa;
+  --pe-star-white: #ffffff;
 }
 
 @media (min-width: 997px) {
@@ -210,14 +292,14 @@ main.container--fluid > .row > .col > article {
   margin-left: 0.5rem;
   margin-right: 0.75rem;
   border-radius: 8px;
-  background: var(--ifm-color-primary);
-  color: #fff !important;
+  background: var(--pe-brand-fill);
+  color: var(--pe-on-brand) !important;
   font-weight: 600;
   transition: background 0.18s ease;
 }
 
 .navbar-cta:hover {
-  background: var(--ifm-color-primary-dark);
+  background: var(--ifm-color-primary-darkest);
   text-decoration: none;
 }
 
@@ -263,7 +345,7 @@ main.container--fluid > .row > .col > article {
   border-radius: 2px;
   background-size: cover;
   background-position: center;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 0 0 1px var(--pe-flag-outline);
 }
 
 /* Prefix matching, so an htmlLang of `en`, `en-US` or `en-GB` all resolve. */
@@ -366,11 +448,15 @@ body::before {
 
 [data-theme='dark'] body::before {
   /* Far stars: small, dense, drifting slowly across. */
-  background-image: radial-gradient(1px 1px at 30px 40px, #cfe0ff, transparent),
-    radial-gradient(1px 1px at 140px 90px, #ffffff, transparent),
-    radial-gradient(1.5px 1.5px at 220px 30px, #a3c8ff, transparent),
-    radial-gradient(1px 1px at 70px 200px, #ffffff, transparent),
-    radial-gradient(1.5px 1.5px at 300px 160px, #cfe0ff, transparent);
+  background-image: radial-gradient(
+      1px 1px at 30px 40px,
+      var(--pe-star-far),
+      transparent
+    ),
+    radial-gradient(1px 1px at 140px 90px, var(--pe-star-white), transparent),
+    radial-gradient(1.5px 1.5px at 220px 30px, var(--pe-star-near), transparent),
+    radial-gradient(1px 1px at 70px 200px, var(--pe-star-white), transparent),
+    radial-gradient(1.5px 1.5px at 300px 160px, var(--pe-star-far), transparent);
   background-size: 360px 360px;
   background-position: 0 0;
   opacity: 0.55;
@@ -380,9 +466,13 @@ body::before {
 [data-theme='dark'] body::after {
   /* Near stars: fewer, larger, breathing in and out on their own clock so the
      sky never pulses as one. */
-  background-image: radial-gradient(2px 2px at 80px 120px, #ffffff, transparent),
-    radial-gradient(2.5px 2.5px at 260px 260px, #91bdff, transparent),
-    radial-gradient(2px 2px at 420px 60px, #ffffff, transparent);
+  background-image: radial-gradient(
+      2px 2px at 80px 120px,
+      var(--pe-star-white),
+      transparent
+    ),
+    radial-gradient(2.5px 2.5px at 260px 260px, var(--pe-star-near), transparent),
+    radial-gradient(2px 2px at 420px 60px, var(--pe-star-white), transparent);
   background-size: 520px 520px;
   opacity: 0.5;
   animation: pe-twinkle 7s ease-in-out infinite;
