@@ -114,5 +114,27 @@ hosted player for video over committing large files. `onBrokenLinks: 'throw'` is
 set on purpose: a dead link to the page that qualifies a claim is how the
 unqualified version survives, so the build fails instead.
 
+### Guide screenshots follow the site theme
+
+`static/img/guide/` holds `<name>.webp` for the dark shot of a screen and
+`<name>-light.webp` for the same screen in light. The Markdown only ever names
+the dark one — `src/theme/MDXComponents/Img` swaps in the light twin when the
+reader has the site in light, and `docusaurus.config.ts` builds the list of
+pairs by reading the directory, so adding a light shot is a file drop and
+nothing else.
+
+Two consequences worth knowing before editing either file:
+
+- A name that spells out `-light` or `-dark` is left exactly as written. That
+  is how the Settings guide shows the app in both themes at once to explain the
+  app's own Theme setting; do not "tidy" those two names.
+- Style screenshots through the `guideShot` class, not the path. Docusaurus
+  rewrites every Markdown image to a hashed `/assets/images/…` URL, so a CSS
+  selector matching `/img/guide/` matches nothing on the rendered page.
+
+Phone shots are 1080×2316 from the device, resized to 720 wide and saved as
+WebP at quality 82 — the numbers the existing files were made with, so a new one
+sits at the same weight as its neighbours.
+
 Run `npm run build` before pushing. The deploy workflow runs the same command,
 so a build that fails locally fails in CI too.

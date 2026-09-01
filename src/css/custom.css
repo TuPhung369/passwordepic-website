@@ -496,8 +496,13 @@ body::before {
 
 /* Screenshots in the user guide. A phone screenshot is tall enough to fill the
    viewport on its own, which turns a guide into a scroll; capping the height
-   keeps the surrounding text in view where the reader can follow it. */
-.markdown img[src*='/img/guide/'] {
+   keeps the surrounding text in view where the reader can follow it.
+
+   Keyed off the class that src/theme/MDXComponents/Img puts on them, not off
+   the path: Docusaurus rewrites every Markdown image to a hashed
+   `/assets/images/...` URL, so a selector matching `/img/guide/` matches
+   nothing by the time the page is rendered. */
+.markdown img.guideShot {
   display: block;
   max-width: min(100%, 26rem);
   max-height: 78vh;
@@ -508,10 +513,27 @@ body::before {
   box-shadow: var(--pe-shadow-md);
 }
 
-/* Cropped strips - the toolbar shot - are wide rather than tall, so let them
-   use the measure instead of being squeezed into a phone-shaped box. */
-.markdown img[src*='vault-header'] {
-  max-width: 100%;
+/* A screen shot in both app themes is emitted twice - once per theme - and CSS
+   picks the one to show, so the right image is on screen at first paint rather
+   than after hydration. Both rules carry an extra class over the one above,
+   which sets `display: block` on every screenshot, so neither depends on the
+   order the two land in after minification. */
+.markdown img.guideShot.themedShot {
+  display: none;
+}
+
+html[data-theme='light'] .markdown img.guideShot.themedShot--light,
+html[data-theme='dark'] .markdown img.guideShot.themedShot--dark,
+/* No attribute means the theme script has not run - JavaScript is off, or we
+   are between first paint and hydration. Show something rather than a gap. */
+html:not([data-theme]) .markdown img.guideShot.themedShot--light {
+  display: block;
+}
+
+/* theme-classic's own rule for Markdown images, which the swizzle replaces:
+   keeps an image given an explicit width from being stretched vertically. */
+.markdown img {
+  height: auto;
 }
 
 /* ---------------------------------------------------------------------------

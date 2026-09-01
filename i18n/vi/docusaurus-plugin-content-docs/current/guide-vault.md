@@ -1,6 +1,6 @@
 ---
 title: Kho của bạn
-description: Màn hình Vault từng nút một — tám nút, cách thêm một mục, và ô tên miền thật ra để làm gì.
+description: Màn hình Vault từng nút một — tám nút, cách thêm và sửa một mục, và ô tên miền thật ra để làm gì.
 hide_table_of_contents: true
 ---
 
@@ -54,7 +54,7 @@ Mọi thứ đều nằm trên tấm thẻ — không có màn hình chi tiết 
 | 🔒 Mật khẩu | Che đi, kèm **con mắt** để hiện và một nút sao chép |
 | Thời gian | Lần thay đổi gần nhất — "Just now" |
 | Huy hiệu độ mạnh | Một điểm số trên 100 kèm một chữ: **86 Strong** |
-| ✏️ / 🗑️ | Sửa và xoá |
+| ✏️ / 🗑️ | [Sửa](#editing-an-entry) và xoá |
 
 Huy hiệu độ mạnh là **một con số, không phải thang năm mức bằng chữ**. Nó chấm
 bản thân mật khẩu, không chấm mức độ quan trọng của tài khoản — phần đó bạn tự
@@ -164,6 +164,47 @@ mở khoá ngay lúc bạn lưu, chứ không phải mỗi phiên một lần.
 
 Không có chế độ "mở khoá trong năm phút". Đó cũng chính là tính chất khiến cái
 kho này đáng có.
+
+## Sửa một mục {#editing-an-entry}
+
+Nút ✏️ trên thẻ mở mục đó ra trong đúng biểu mẫu bạn đã điền lúc tạo, với các giá
+trị của bạn nằm sẵn trong đó.
+
+![Sửa một mục](/img/guide/vault-edit.webp)
+
+**Cancel** và **Save** nằm trên thanh tiêu đề. Save còn mờ cho tới khi thật sự có
+gì đó thay đổi, và Cancel hỏi lại trước khi bỏ đi các thay đổi — nút back của
+Android và thao tác vuốt ngược cũng đi qua đúng câu hỏi ấy.
+
+Màn hình này cố tình không có nút xoá. Trước đây nút xoá nằm ở góc trên bên phải,
+đúng cái góc ngón tay bạn với tới để *xác nhận* một việc gì đó. Việc xoá giờ làm
+từ danh sách.
+
+### Hỏi gì là tuỳ bạn đã đổi gì
+
+| Bạn đổi | Ứng dụng hỏi |
+| --- | --- |
+| Mật khẩu | Vân tay hoặc khuôn mặt, rồi tới mã mở khoá |
+| Mọi thứ khác — tiêu đề, tên đăng nhập, tên miền, nhóm, ghi chú, yêu thích | Vân tay hoặc khuôn mặt |
+
+Một mật khẩu mới thì phải được mã hoá, mà mã hoá thì cần khoá do mã mở khoá của
+bạn dựng nên. Đổi tên một mục thì không đụng gì tới phần đã mã hoá, nên cũng
+không cần tới khoá.
+
+Điều đó dẫn tới một chuyện có thể bạn không ngờ: nếu máy không có vân tay hay
+mở khoá bằng khuôn mặt dùng được, một lần lưu **chỉ đổi thông tin mô tả** sẽ bị
+từ chối thẳng, trong khi đổi mật khẩu thì vẫn được — đường đó còn lùi về mã mở
+khoá được, còn đường ngắn kia thì không có gì để lùi về.
+
+### Mật khẩu cũ được giữ lại
+
+Khi bạn đổi mật khẩu, cái bị thay thế được ghi vào lịch sử của mục đó — mười cái
+gần nhất — và bảng lịch sử ở phía dưới biểu mẫu có thể đưa một mật khẩu cũ trở
+lại ô nhập. Từ đó trở đi nó là một lần sửa bình thường: ứng dụng lại hỏi mã mở
+khoá, vì một mật khẩu được khôi phục thì vẫn là một mật khẩu đang được ghi xuống.
+
+Để trống ô mật khẩu không phải là cách xoá nó. Ô trống nghĩa là "không đổi", và
+mật khẩu đã lưu vẫn nguyên như cũ.
 
 ## Xoá nhiều mục cùng lúc
 

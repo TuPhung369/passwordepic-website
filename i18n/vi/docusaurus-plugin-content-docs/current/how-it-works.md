@@ -18,7 +18,7 @@ bất cứ đâu. Không trên điện thoại, không trên máy chủ của ch
 bản sao lưu. Nó được dựng lại từ những mảnh riêng biệt mỗi lần bạn mở khoá, dùng
 cho đúng một thao tác, rồi bị xoá khỏi bộ nhớ ngay sau đó.
 
-![Điều ứng dụng nói ở lần mở đầu tiên](/img/guide/onboarding-dark.webp)
+![Điều ứng dụng nói ở lần mở đầu tiên](/img/guide/onboarding.webp)
 
 Ứng dụng mở ra với đúng lời khẳng định mà trang này sắp mổ xẻ — *khoá của bạn
 được dựng trên máy này và ở lại đây*. Phần tiếp theo là cách nó được sắp đặt để

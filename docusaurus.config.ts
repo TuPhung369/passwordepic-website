@@ -1,7 +1,28 @@
+import fs from 'node:fs';
+import path from 'node:path';
+
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 import { PLAY_STORE_URL } from './src/constants';
+
+/**
+ * Every screenshot in `static/img/guide/`, without the extension.
+ *
+ * The swizzled `src/theme/MDXComponents/Img` needs two things this answers.
+ * It has to recognise a guide screenshot at all - by the time it runs, the
+ * `/img/guide/vault-list.webp` written in the Markdown has become a hashed
+ * `/assets/images/...` URL - and it has to know which screens were shot in
+ * both app themes: `<name>.webp` is the dark one, `<name>-light.webp` is the
+ * same screen in light, and it swaps between them with the site theme.
+ *
+ * Read from disk rather than kept by hand, so adding a light shot is a file
+ * drop and the Markdown never mentions a theme.
+ */
+const guideShots = fs
+  .readdirSync(path.join(__dirname, 'static', 'img', 'guide'))
+  .filter((name) => name.endsWith('.webp'))
+  .map((name) => name.replace(/\.webp$/, ''));
 
 /**
  * Site config for passwordepic.com.
@@ -62,6 +83,8 @@ const config: Config = {
     // Top-level `onBrokenMarkdownLinks` is deprecated and removed in v4.
     hooks: { onBrokenMarkdownLinks: 'warn' },
   },
+
+  customFields: { guideShots },
 
   // Adding a language = add the code here, then drop translated Markdown into
   // `i18n/<code>/`. Untranslated strings fall back to English rather than

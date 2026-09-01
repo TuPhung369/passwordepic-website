@@ -1,6 +1,6 @@
 ---
 title: Your vault
-description: The Vault screen button by button — the eight controls, adding an entry, and what the domain field is really for.
+description: The Vault screen button by button — the eight controls, adding and editing an entry, and what the domain field is really for.
 hide_table_of_contents: true
 ---
 
@@ -56,7 +56,7 @@ Everything is on the card — there is no separate detail screen to open.
 | 🔒 Password | Masked, with an **eye** to reveal and a copy button |
 | Time | When it last changed — "Just now" |
 | Strength badge | A score out of 100 and a word: **86 Strong** |
-| ✏️ / 🗑️ | Edit and delete |
+| ✏️ / 🗑️ | [Edit](#editing-an-entry) and delete |
 
 The strength badge is a **number, not a five-step word scale**. It judges the
 password itself, not how important the account is — that part is yours to weigh.
@@ -167,6 +167,47 @@ so the app asks for the passcode at the moment you save, not once per session.
 
 There is no "unlocked for five minutes" mode. That is the same property that
 makes the vault worth having.
+
+## Editing an entry {#editing-an-entry}
+
+The ✏️ on the card opens the entry in the same form you filled in to create it,
+with your values already in it.
+
+![Editing an entry](/img/guide/vault-edit.webp)
+
+**Cancel** and **Save** are in the header. Save stays greyed out until something
+has actually changed, and Cancel asks before throwing changes away — the Android
+back button and the back-swipe go through the same question.
+
+There is no delete button on this screen, on purpose. Delete used to sit in the
+top right, which is the corner your thumb goes to in order to *confirm*
+something. Deleting is done from the list instead.
+
+### What it asks for depends on what you changed
+
+| You changed | The app asks for |
+| --- | --- |
+| The password | Your fingerprint or face, then your passcode |
+| Anything else — title, username, domain, category, notes, favourite | Your fingerprint or face |
+
+A new password has to be encrypted, and encrypting needs the key your passcode
+builds. Renaming an entry never touches the ciphertext, so it never needs the
+key.
+
+That cuts one way you might not expect: if the phone has no working fingerprint
+or face unlock, a **metadata-only** save is refused outright, while changing the
+password still works — that path can fall back to the passcode, and the shorter
+one has nothing to fall back to.
+
+### The old password is kept
+
+When you change a password, the one it replaced is written to that entry's
+history — the last ten — and the history panel further down the form can put an
+old one back in the field. It is a normal edit from there: the app asks for the
+passcode again, because a restored password is still a password being written.
+
+Leaving the password box empty is not a way to clear it. An empty field means
+"unchanged", and the stored password stays exactly as it was.
 
 ## Deleting several at once
 

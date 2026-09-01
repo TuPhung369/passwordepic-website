@@ -131,6 +131,11 @@ Bảng so sánh đầy đủ nằm trong [Các gói bảo mật](./security-tier
 **Theme** không đổi ứng dụng — vẫn những màn hình đó, vẫn những chữ đó, và vẫn năm
 chiếc chìa khoá đặt tên cho các gói:
 
+{/* Named `-light` and `-dark` on purpose. A guide screenshot normally
+    follows the reader's site theme, and these two are the subject of the
+    section rather than the frame around it: a light page would otherwise
+    show the light shot twice, illustrating nothing. */}
+
 ![Ứng dụng ở giao diện sáng](/img/guide/signin-light.webp)
 
 ![Ứng dụng ở giao diện tối](/img/guide/signin-dark.webp)

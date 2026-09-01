@@ -144,7 +144,7 @@ không có gì để đặt lại.
 
 ## Bạn tạo nó ở đâu
 
-![Đăng nhập](/img/guide/signin-dark.webp)
+![Đăng nhập](/img/guide/signin.webp)
 
 Bạn đăng nhập bằng Google trước. Việc đó xác lập kho này *thuộc về tài khoản
 nào* — tự nó không mở được gì cả.

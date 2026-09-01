@@ -142,7 +142,7 @@ how you will remember it.
 
 ## Where you create it
 
-![Signing in](/img/guide/signin-dark.webp)
+![Signing in](/img/guide/signin.webp)
 
 You sign in with Google first. That establishes *which account* the vault
 belongs to — it does not, on its own, open anything.

@@ -131,6 +131,11 @@ The full comparison is in [Security tiers](./security-tiers.md).
 **Theme** is the same app either way — the same screens, the same words, and the
 five keys that give the tiers their names:
 
+{/* Named `-light` and `-dark` on purpose. A guide screenshot normally
+    follows the reader's site theme, and these two are the subject of the
+    section rather than the frame around it: a light page would otherwise
+    show the light shot twice, illustrating nothing. */}
+
 ![The app in the light theme](/img/guide/signin-light.webp)
 
 ![The app in the dark theme](/img/guide/signin-dark.webp)
