@@ -1,17 +1,86 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-  <g fill="#eab308">
-    <ellipse cx="50" cy="22" rx="7" ry="17"/>
-    <ellipse cx="50" cy="22" rx="7" ry="17" transform="rotate(30 50 50)"/>
-    <ellipse cx="50" cy="22" rx="7" ry="17" transform="rotate(60 50 50)"/>
-    <ellipse cx="50" cy="22" rx="7" ry="17" transform="rotate(90 50 50)"/>
-    <ellipse cx="50" cy="22" rx="7" ry="17" transform="rotate(120 50 50)"/>
-    <ellipse cx="50" cy="22" rx="7" ry="17" transform="rotate(150 50 50)"/>
-    <ellipse cx="50" cy="22" rx="7" ry="17" transform="rotate(180 50 50)"/>
-    <ellipse cx="50" cy="22" rx="7" ry="17" transform="rotate(210 50 50)"/>
-    <ellipse cx="50" cy="22" rx="7" ry="17" transform="rotate(240 50 50)"/>
-    <ellipse cx="50" cy="22" rx="7" ry="17" transform="rotate(270 50 50)"/>
-    <ellipse cx="50" cy="22" rx="7" ry="17" transform="rotate(300 50 50)"/>
-    <ellipse cx="50" cy="22" rx="7" ry="17" transform="rotate(330 50 50)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 960" width="960" height="960">
+  <!-- One tile of the light theme's page background: ten sunflower heads
+       scattered across 960px, with the gaps between them several times wider
+       than the flowers themselves.
+
+       Three things here are deliberate. Petal count, length, width and angle
+       all vary, flower to flower and petal to petal - a head built from twelve
+       identical ellipses at exact 30-degree steps reads as a logo, not a
+       flower. The heads are placed by eye rather than on a grid, with one
+       clump and one wide gap, because an even spread is the other way a
+       pattern announces itself. And the tile is large: at 640px the repeat was
+       visible twice across an ordinary window.
+
+       Every head sits clear of the edge, so the tile repeats without cutting
+       one in half. css/custom.css lays a second, smaller copy of this same
+       tile over the first at an offset. -->
+<defs>
+  <g id="a">
+    <g fill="#eab308">
+      <path d="M0 -10.0 Q7.2 -18.8 0 -34.2 Q-7.2 -18.8 0 -10.0Z" transform="rotate(-2.4)"/>
+      <path d="M0 -10.0 Q6.5 -19.1 0 -34.7 Q-6.5 -19.1 0 -10.0Z" transform="rotate(28.6)"/>
+      <path d="M0 -10.0 Q7.0 -19.7 0 -35.9 Q-7.0 -19.7 0 -10.0Z" transform="rotate(51.0)"/>
+      <path d="M0 -10.0 Q7.4 -20.2 0 -36.7 Q-7.4 -20.2 0 -10.0Z" transform="rotate(80.7)"/>
+      <path d="M0 -10.0 Q7.8 -18.6 0 -33.9 Q-7.8 -18.6 0 -10.0Z" transform="rotate(113.8)"/>
+      <path d="M0 -10.0 Q8.3 -19.1 0 -34.7 Q-8.3 -19.1 0 -10.0Z" transform="rotate(135.3)"/>
+      <path d="M0 -10.0 Q7.9 -19.4 0 -35.3 Q-7.9 -19.4 0 -10.0Z" transform="rotate(166.4)"/>
+      <path d="M0 -10.0 Q7.7 -19.5 0 -35.4 Q-7.7 -19.5 0 -10.0Z" transform="rotate(189.9)"/>
+      <path d="M0 -10.0 Q8.3 -17.3 0 -31.4 Q-8.3 -17.3 0 -10.0Z" transform="rotate(219.7)"/>
+      <path d="M0 -10.0 Q8.4 -19.4 0 -35.2 Q-8.4 -19.4 0 -10.0Z" transform="rotate(249.0)"/>
+      <path d="M0 -10.0 Q7.3 -20.0 0 -36.3 Q-7.3 -20.0 0 -10.0Z" transform="rotate(278.9)"/>
+      <path d="M0 -10.0 Q8.5 -18.5 0 -33.7 Q-8.5 -18.5 0 -10.0Z" transform="rotate(307.3)"/>
+      <path d="M0 -10.0 Q6.7 -17.5 0 -31.8 Q-6.7 -17.5 0 -10.0Z" transform="rotate(335.7)"/>
+    </g>
+    <circle r="11.0" fill="#a16207"/>
+    <circle r="6.1" fill="#78350f"/>
   </g>
-  <circle cx="50" cy="50" r="15" fill="#a16207"/>
+  <g id="b">
+    <g fill="#eab308">
+      <path d="M0 -11.0 Q9.7 -19.0 0 -34.5 Q-9.7 -19.0 0 -11.0Z" transform="rotate(0.2)"/>
+      <path d="M0 -11.0 Q9.0 -18.9 0 -34.3 Q-9.0 -18.9 0 -11.0Z" transform="rotate(28.1)"/>
+      <path d="M0 -11.0 Q7.3 -17.1 0 -31.0 Q-7.3 -17.1 0 -11.0Z" transform="rotate(61.5)"/>
+      <path d="M0 -11.0 Q7.9 -18.8 0 -34.2 Q-7.9 -18.8 0 -11.0Z" transform="rotate(89.0)"/>
+      <path d="M0 -11.0 Q9.4 -17.6 0 -32.1 Q-9.4 -17.6 0 -11.0Z" transform="rotate(120.0)"/>
+      <path d="M0 -11.0 Q9.8 -17.9 0 -32.5 Q-9.8 -17.9 0 -11.0Z" transform="rotate(154.0)"/>
+      <path d="M0 -11.0 Q9.5 -19.0 0 -34.6 Q-9.5 -19.0 0 -11.0Z" transform="rotate(176.1)"/>
+      <path d="M0 -11.0 Q8.7 -18.7 0 -34.0 Q-8.7 -18.7 0 -11.0Z" transform="rotate(206.9)"/>
+      <path d="M0 -11.0 Q8.6 -17.3 0 -31.5 Q-8.6 -17.3 0 -11.0Z" transform="rotate(244.1)"/>
+      <path d="M0 -11.0 Q8.0 -18.5 0 -33.7 Q-8.0 -18.5 0 -11.0Z" transform="rotate(273.4)"/>
+      <path d="M0 -11.0 Q8.4 -19.4 0 -35.2 Q-8.4 -19.4 0 -11.0Z" transform="rotate(296.2)"/>
+      <path d="M0 -11.0 Q9.3 -17.2 0 -31.2 Q-9.3 -17.2 0 -11.0Z" transform="rotate(334.5)"/>
+    </g>
+    <circle r="12.0" fill="#a16207"/>
+    <circle r="6.6" fill="#78350f"/>
+  </g>
+  <g id="c">
+    <g fill="#eab308">
+      <path d="M0 -9.0 Q7.2 -18.7 0 -34.1 Q-7.2 -18.7 0 -9.0Z" transform="rotate(0.4)"/>
+      <path d="M0 -9.0 Q6.2 -19.3 0 -35.1 Q-6.2 -19.3 0 -9.0Z" transform="rotate(23.8)"/>
+      <path d="M0 -9.0 Q5.7 -20.8 0 -37.8 Q-5.7 -20.8 0 -9.0Z" transform="rotate(50.7)"/>
+      <path d="M0 -9.0 Q6.2 -18.3 0 -33.3 Q-6.2 -18.3 0 -9.0Z" transform="rotate(76.6)"/>
+      <path d="M0 -9.0 Q6.7 -18.7 0 -34.0 Q-6.7 -18.7 0 -9.0Z" transform="rotate(107.3)"/>
+      <path d="M0 -9.0 Q6.4 -20.0 0 -36.4 Q-6.4 -20.0 0 -9.0Z" transform="rotate(127.8)"/>
+      <path d="M0 -9.0 Q6.3 -19.0 0 -34.6 Q-6.3 -19.0 0 -9.0Z" transform="rotate(151.3)"/>
+      <path d="M0 -9.0 Q5.9 -19.5 0 -35.4 Q-5.9 -19.5 0 -9.0Z" transform="rotate(182.6)"/>
+      <path d="M0 -9.0 Q6.5 -18.6 0 -33.8 Q-6.5 -18.6 0 -9.0Z" transform="rotate(207.3)"/>
+      <path d="M0 -9.0 Q7.1 -19.0 0 -34.5 Q-7.1 -19.0 0 -9.0Z" transform="rotate(228.9)"/>
+      <path d="M0 -9.0 Q7.0 -20.1 0 -36.5 Q-7.0 -20.1 0 -9.0Z" transform="rotate(257.3)"/>
+      <path d="M0 -9.0 Q6.3 -19.7 0 -35.9 Q-6.3 -19.7 0 -9.0Z" transform="rotate(283.6)"/>
+      <path d="M0 -9.0 Q5.7 -20.2 0 -36.7 Q-5.7 -20.2 0 -9.0Z" transform="rotate(309.6)"/>
+      <path d="M0 -9.0 Q5.8 -18.8 0 -34.2 Q-5.8 -18.8 0 -9.0Z" transform="rotate(338.2)"/>
+    </g>
+    <circle r="10.0" fill="#a16207"/>
+    <circle r="5.5" fill="#78350f"/>
+  </g>
+</defs>
+  <use href="#a" transform="translate(120 150) rotate(-14) scale(1.0)"/>
+  <use href="#c" transform="translate(232 268) rotate(27) scale(0.58)"/>
+  <use href="#b" transform="translate(520 92) rotate(-38) scale(0.72)"/>
+  <use href="#a" transform="translate(830 210) rotate(12) scale(0.95)"/>
+  <use href="#c" transform="translate(352 470) rotate(44) scale(0.52)"/>
+  <use href="#b" transform="translate(655 548) rotate(-21) scale(0.85)"/>
+  <use href="#c" transform="translate(140 645) rotate(33) scale(0.66)"/>
+  <use href="#a" transform="translate(905 700) rotate(-9) scale(0.55)"/>
+  <use href="#b" transform="translate(430 828) rotate(19) scale(1.02)"/>
+  <use href="#c" transform="translate(762 880) rotate(-30) scale(0.6)"/>
 </svg>

@@ -58,10 +58,20 @@
   --pe-brand-glow: rgba(5, 150, 105, 0.4);
   --pe-on-brand: #ffffff;
 
+  /* The page ground. Emerald-50, the same green the hero already uses for the
+     words printed on it (`--pe-on-hero`) - the palette's lightest step, doing
+     both jobs. White is still the surface: cards, tables and code blocks sit
+     on top of this rather than dissolving into it. */
+  --pe-page: #ecfdf5;
+  --ifm-background-color: var(--pe-page);
+
   --pe-surface: #ffffff;
   --pe-surface-raised: #ffffff;
   --pe-surface-accent: rgba(5, 150, 105, 0.09);
-  --pe-surface-sunken: #f0fdf4;
+  /* One step further into the ramp than the page, because "sunken" has to be
+     visible against the ground now that the ground is green rather than
+     white. */
+  --pe-surface-sunken: #d1fae5;
   --pe-border: #dcfce7;
   --pe-border-strong: #86efac;
   --pe-shadow-sm: 0 1px 2px rgba(2, 44, 34, 0.06), 0 1px 3px rgba(2, 44, 34, 0.09);
@@ -126,6 +136,12 @@
   --pe-brand-accent: #a78bfa;
   --pe-brand-glow: rgba(124, 58, 237, 0.45);
   --pe-on-brand: #ffffff;
+
+  /* Written out rather than inherited: the light value above would otherwise
+     reach dark too, since `:root` and `[data-theme='dark']` weigh the same and
+     ours is the later file. This is the ground the dark theme already had. */
+  --pe-page: #1b1b1d;
+  --ifm-background-color: var(--pe-page);
 
   --pe-surface: #11131a;
   --pe-surface-raised: #171a23;
@@ -436,14 +452,17 @@ body::after {
   z-index: 1;
 }
 
-/* Three tilings of one flower at different sizes and offsets, which is what
-   gives the small-large-small-large scatter rather than a regular grid. */
+/* The tile is already a scatter of ten heads across 960px - see the comment in
+   the file itself - so what the second copy adds is scale: laid over the first
+   at 62% and pushed off both axes, it breaks the 960px repeat and mixes flower
+   sizes the way a field does. Three tilings of a single head at 92-190px used
+   to sit here, and at that spacing the flowers touched: a dense, even,
+   obviously printed wallpaper rather than something growing. */
 body::before {
-  background-image: url('/img/sunflower.svg'), url('/img/sunflower.svg'),
-    url('/img/sunflower.svg');
-  background-size: 190px 190px, 92px 92px, 138px 138px;
-  background-position: 0 0, 120px 150px, 260px 60px;
-  opacity: 0.07;
+  background-image: url('/img/sunflower.svg'), url('/img/sunflower.svg');
+  background-size: 960px 960px, 600px 600px;
+  background-position: 0 0, 330px 420px;
+  opacity: 0.12;
 }
 
 [data-theme='dark'] body::before {
