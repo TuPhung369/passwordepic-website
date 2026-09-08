@@ -164,6 +164,23 @@ Changing your passcode is fast and safe. It re-wraps the machine-generated
 secret; the DEK itself does not change, so **none of your stored passwords
 are re-encrypted** and existing backup files stay valid.
 
+What happens to the files you already have:
+
+| | |
+|---|---|
+| **Backup files** | Left exactly as they are. A backup made before the change still restores after it. |
+| **Export files** | Re-encrypted with your new passcode — *all* of them, in every place you keep them: the phone's storage, your My Drive, and the app's private Drive area. |
+| **Anything deleted** | Nothing. |
+
+That last row used to read differently. Changing your passcode once kept only
+your newest export and deleted the older ones "for security", and deleted all of
+them if you declined the re-encryption. That protected against nothing — an
+export still locked with your *old* passcode is not a leak, and the passwords
+inside it are separately encrypted with a key that never leaves your phone — so
+it has been removed. Tidying up old files is your call, in the Backup screen.
+
+This is the same on every tier, Silver included.
+
 ## One small asymmetry, on purpose
 
 Setting a passcode enforces the entropy rule. **Entering** one only checks that

@@ -166,6 +166,23 @@ toán học, và là lý do phần còn lại của ứng dụng dám hứa nh�
 bản thân DEK không đổi, nên **không mật khẩu nào bạn đã lưu bị mã hoá lại**
 và các tệp sao lưu hiện có vẫn còn dùng được.
 
+Còn những tệp bạn đã có thì sao:
+
+| | |
+|---|---|
+| **Tệp sao lưu** | Giữ nguyên không đụng tới. Bản sao lưu tạo trước khi đổi vẫn phục hồi được sau khi đổi. |
+| **Tệp xuất** | Được mã hoá lại bằng mã mới — *toàn bộ*, ở mọi nơi bạn lưu: bộ nhớ máy, My Drive của bạn, và vùng riêng của ứng dụng trên Drive. |
+| **Bị xoá** | Không tệp nào. |
+
+Dòng cuối trước đây không phải như vậy. Mỗi lần đổi mã, ứng dụng chỉ giữ tệp
+xuất mới nhất rồi xoá các tệp cũ "để bảo mật", và xoá sạch nếu bạn không chọn
+mã hoá lại. Điều đó chẳng bảo vệ được gì — một tệp xuất còn khoá bằng mã **cũ**
+không phải là lỗ hổng, và các mật khẩu bên trong nó được mã hoá riêng bằng một
+khoá không bao giờ rời khỏi máy bạn — nên nó đã được bỏ. Dọn tệp cũ là quyền
+của bạn, làm ở màn hình Sao lưu.
+
+Điều này giống nhau ở mọi hạng, kể cả Silver.
+
 ## Một điểm bất đối xứng nhỏ, và là cố ý
 
 Khi *đặt* mã mở khoá, quy tắc entropy được áp dụng. Khi *nhập*, ứng dụng chỉ kiểm
